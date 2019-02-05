@@ -21,7 +21,7 @@ public class AttendenceAutomation extends Application
     @Override
     public void start(Stage stage) throws Exception
     {
-        Parent root = FXMLLoader.load(getClass().getResource("GUI/View/AttendenceMainView.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("GUI/View/AttendenceMainView1.fxml"));
         
         Scene scene = new Scene(root);
         

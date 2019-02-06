@@ -9,7 +9,24 @@ package attendenceautomation.BE;
  *
  * @author kokus
  */
-public class Student
+public class Student extends Person
 {
-    
+   private String studentLogin;
+   private String studentPassword;
+
+    public String getStudentLogin()
+    {
+        return studentLogin;
+    }
+
+    public void setStudentLogin(String studentLogin)
+    {
+        this.studentLogin = studentLogin;
+    }
+
+    public Student(String studentLogin, String studentPassword)
+    {
+        this.studentLogin = studentLogin;
+        this.studentPassword = studentPassword;
+    }
 }

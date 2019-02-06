@@ -121,11 +121,11 @@ and open the template in the editor.
 }
 
 .button:hover {
-    -fx-background-color: #3a3a3a;
+    -fx-background-color: #242f35;
 }
 
 .button:pressed, .button:default:hover:pressed {
-  -fx-background-color: white;
+  -fx-background-color: #242f35;
   -fx-text-fill: #1d1d1d;
 }
 

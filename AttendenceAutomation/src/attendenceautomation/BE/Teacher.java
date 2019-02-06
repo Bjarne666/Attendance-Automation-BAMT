@@ -14,8 +14,9 @@ public class Teacher extends Person
  private String teacherLogin;
  private String teacherPassword;
 
-    public Teacher(String teacherLogin, String teacherPassword)
+    public Teacher(int id, String name, String email, String teacherLogin, String teacherPassword)
     {
+        super(id, name, email);
         this.teacherLogin = teacherLogin;
         this.teacherPassword = teacherPassword;
     }
@@ -23,5 +24,10 @@ public class Teacher extends Person
     public String getTeacherLogin()
     {
         return teacherLogin;
+    }
+    
+    public String getTeacherPassword()
+    {
+        return teacherPassword;
     }
 }

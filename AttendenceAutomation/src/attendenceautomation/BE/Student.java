@@ -14,19 +14,21 @@ public class Student extends Person
    private String studentLogin;
    private String studentPassword;
 
+    public Student(int id, String name, String email, String studentLogin, String studentPassword)
+    {
+        super(id, name, email);
+        this.studentLogin = studentLogin;
+        this.studentPassword = studentPassword;
+    }
+    
+    
     public String getStudentLogin()
     {
         return studentLogin;
     }
 
-    public void setStudentLogin(String studentLogin)
+    public String getStudentpassword()
     {
-        this.studentLogin = studentLogin;
-    }
-
-    public Student(String studentLogin, String studentPassword)
-    {
-        this.studentLogin = studentLogin;
-        this.studentPassword = studentPassword;
+        return studentPassword;
     }
 }

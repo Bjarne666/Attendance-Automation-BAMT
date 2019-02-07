@@ -66,13 +66,13 @@ public class TestViewController implements Initializable
     {
         if (event.getSource() == btnCalender)
         {
-            AnchorPane pane = FXMLLoader.load(getClass().getResource("/attendenceautomation/GUI/View/AttendenceCalenderView1.fxml"));
+            AnchorPane pane = FXMLLoader.load(getClass().getResource("/attendenceautomation/GUI/View/AttendanceCalenderView.fxml"));
             stackCal.getChildren().add(pane);
             stackCal.toFront();
         }
          if (event.getSource() == btnEdit)
         {
-            AnchorPane pane1 = FXMLLoader.load(getClass().getResource("/attendenceautomation/GUI/View/AttendenceMainView.fxml"));
+            AnchorPane pane1 = FXMLLoader.load(getClass().getResource("/attendenceautomation/GUI/View/AttendenceMainView1.fxml"));
             stackEdit.getChildren().add(pane1);
             stackEdit.toFront();
             

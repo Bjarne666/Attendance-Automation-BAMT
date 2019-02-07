@@ -5,30 +5,37 @@
  */
 package attendenceautomation.BE;
 
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+
 /**
  *
  * @author kokus
  */
 public class Student extends Person
 {
-   private String studentLogin;
-   private String studentPassword;
+   private final StringProperty studentLogin;
+   private final StringProperty studentPassword;
 
     public Student(int id, String name, String email, String studentLogin, String studentPassword)
     {
         super(id, name, email);
-        this.studentLogin = studentLogin;
-        this.studentPassword = studentPassword;
+        this.studentLogin = new SimpleStringProperty();
+        this.studentPassword = new SimpleStringProperty();
+        this.studentLogin.set(studentLogin);
+        this.studentPassword.set(studentPassword);
     }
-    
-    
-    public String getStudentLogin()
+
+    public StringProperty getStudentLogin()
     {
         return studentLogin;
     }
 
-    public String getStudentpassword()
+    public StringProperty getStudentPassword()
     {
         return studentPassword;
     }
+    
+    
+   
 }

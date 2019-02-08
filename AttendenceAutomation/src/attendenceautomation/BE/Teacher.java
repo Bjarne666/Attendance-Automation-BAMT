@@ -5,6 +5,7 @@
  */
 package attendenceautomation.BE;
 
+import java.util.ArrayList;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
@@ -16,6 +17,7 @@ public class Teacher extends Person
 {
  private final StringProperty teacherLogin;
  private final StringProperty teacherPassword;
+ private ArrayList<Class> schoolClass;
 
     public Teacher(int id, String name, String email, String teacherLogin, String teacherPassword)
     {
@@ -27,6 +29,11 @@ public class Teacher extends Person
         this.teacherPassword.set(teacherPassword);
     }
 
+    public ArrayList<Class> getSchoolClass()
+    {
+        return schoolClass;
+    }
+
     public StringProperty getTeacherLogin()
     {
         return teacherLogin;
@@ -36,6 +43,21 @@ public class Teacher extends Person
     {
         return teacherPassword;
     }
+    
+    public void setTeacherPassword(String newPassword)
+    {
+        teacherPassword.set(newPassword);
+    }
+    public void setTeacherLogin(String newLogin)
+    {
+        teacherPassword.set(newLogin);
+    }
+    public void addClass(Class newClass)
+    {
+        schoolClass.add(newClass);
+    }
+    
+   
 
    
 }

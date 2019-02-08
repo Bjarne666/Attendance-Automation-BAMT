@@ -43,4 +43,19 @@ public abstract class Person
         return email;
     }
 
+    public void setName(String newName)
+    {
+        name.set(newName);
+    }
+    
+    public void setEmail(String newEmail)
+    {
+        email.set(newEmail);
+    }
+    
+    public void setId(int newId)
+    {
+        this.id = id;
+    }
+            
 }

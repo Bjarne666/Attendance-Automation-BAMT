@@ -59,6 +59,11 @@ public class AttendenceLoginViewController implements Initializable
             stage.setScene(new Scene(pane));
             
             stage.show();
+            
+            
+            //Close this windows
+            Stage currentWindows = (Stage) btnLogin.getScene().getWindow();
+            currentWindows.close();
         }
     }
 

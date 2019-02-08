@@ -58,8 +58,27 @@ public class TestViewController implements Initializable
     @Override
     public void initialize(URL url, ResourceBundle rb)
     {
-        // TODO
-    }    
+        try
+        {
+            loadMainView();    
+        } catch (Exception e)
+        {
+        }
+        
+                
+// TODO
+    }   
+    
+    
+    
+    private void loadMainView() throws IOException
+    {
+        AnchorPane pane1 = FXMLLoader.load(getClass().getResource("/attendenceautomation/GUI/View/AttendenceMainView1.fxml"));
+        anchorTest.getChildren().clear();
+        anchorTest.getChildren().add(pane1);
+    }        
+    
+    
 
     @FXML
     private void loadView(ActionEvent event) throws IOException
@@ -72,9 +91,7 @@ public class TestViewController implements Initializable
         }
          if (event.getSource() == btnEdit)
         {
-            AnchorPane pane1 = FXMLLoader.load(getClass().getResource("/attendenceautomation/GUI/View/AttendenceMainView1.fxml"));
-            anchorTest.getChildren().clear();
-            anchorTest.getChildren().add(pane1);    
+                
         }
     }
     

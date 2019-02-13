@@ -7,6 +7,9 @@ package attendenceautomation.BLL;
 
 import attendenceautomation.BE.Student;
 import attendenceautomation.BE.Teacher;
+import attendenceautomation.DAL.AADALInterface;
+import attendenceautomation.DAL.MockDAO;
+import java.util.List;
 
 /**
  *
@@ -14,23 +17,30 @@ import attendenceautomation.BE.Teacher;
  */
 public class AAManager implements AttendanceInterface
 {
+    AADALInterface aDAO = new MockDAO();
 
     @Override
-    public Student getAllStudents(Student studentsToGet)
+    public List<Student> getAllStudents()
     {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return aDAO.getAllStudents();
     }
 
     @Override
-    public Class getAllClasses(Class classesToGet)
+    public List<Class> getAllClasses()
     {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return aDAO.getAllClasses();
     }
 
     @Override
-    public Teacher getAllTeachers(Teacher teachersToGet)
+    public List<Teacher> getAllTeachers()
     {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return aDAO.getAllTeachers();
+    }
+
+    @Override
+    public List<Student> getStudentsInClass(Class chosenClass)
+    {
+        return aDAO.getStudentsInClass(chosenClass);
     }
     
 }

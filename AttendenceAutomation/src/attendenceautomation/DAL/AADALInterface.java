@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package attendenceautomation.BLL;
+package attendenceautomation.DAL;
 
 import attendenceautomation.BE.Student;
 import attendenceautomation.BE.Teacher;
@@ -13,10 +13,9 @@ import java.util.List;
  *
  * @author kokus
  */
-public interface AttendanceInterface
+public interface AADALInterface
 {
-
-   /**
+  /**
      *
      * @return
      */

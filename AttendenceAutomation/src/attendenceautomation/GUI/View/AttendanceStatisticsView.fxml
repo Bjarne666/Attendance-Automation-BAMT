@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="620.0" xmlns="http://javafx.com/javafx/8.0.181" xmlns:fx="http://javafx.com/fxml/1" />
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="620.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="attendenceautomation.GUI.View.AttendanceStatisticsViewController">
+   <children>
+      <PieChart layoutY="142.0" prefHeight="286.0" prefWidth="620.0" />
+      <Label layoutX="310.0" layoutY="14.0" text="Nuværende fravær:" />
+      <JFXTextField layoutX="445.0" layoutY="9.0" />
+      <Label layoutX="23.0" layoutY="14.0" text="User:" />
+      <JFXTextField layoutX="64.0" layoutY="9.0" />
+      <JFXButton layoutX="254.0" layoutY="455.0" text="Logout" />
+   </children>
+</AnchorPane>

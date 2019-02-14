@@ -6,6 +6,7 @@
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="620.0" style="-fx-background-color: #ededed;" xmlns="http://javafx.com/javafx/8.0.181" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <JFXListView fx:id="listStudents" prefHeight="500.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <AnchorPane layoutX="200.0" layoutY="449.0" prefHeight="51.0" prefWidth="420.0" style="-fx-background-color: #4b4b4b;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="0.0" />
       <AnchorPane layoutX="230.0" layoutY="60.0" prefHeight="365.0" prefWidth="340.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="238.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="45.0" />
    </children>
 </AnchorPane>

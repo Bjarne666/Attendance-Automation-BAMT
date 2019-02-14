@@ -22,7 +22,7 @@
             <RadioButton layoutX="122.0" layoutY="247.0" mnemonicParsing="false" text="absent" />
             <RadioButton layoutX="14.0" layoutY="247.0" mnemonicParsing="false" text="Present" />
             <Label layoutX="72.0" layoutY="292.0" text="present/absent" />
-            <Button layoutX="289.0" layoutY="302.0" mnemonicParsing="false" text="Confirm" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="14.0" />
+            <Button layoutX="289.0" layoutY="302.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="72.0" text="Confirm" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="14.0" />
             <Label layoutX="49.0" layoutY="130.0" text="name" />
          </children>
       </AnchorPane>

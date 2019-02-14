@@ -98,6 +98,11 @@ public class TestViewController implements Initializable
 
     }
 
+    /**
+     * Adds a mouseEvent to change scenes back to main scene.
+     * @param event
+     * @throws IOException 
+     */
     @FXML
     private void clickImage(MouseEvent event) throws IOException
     {

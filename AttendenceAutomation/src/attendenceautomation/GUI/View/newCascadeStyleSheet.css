@@ -111,7 +111,7 @@ and open the template in the editor.
  */
 .button {
     -fx-padding: 0 0 0 0;   
-    -fx-border-color: #242f35;
+    /*-fx-border-color: #242f35;*/
     -fx-border-width: 2;
     -fx-background-radius: 0;
     -fx-background-color: #263238;

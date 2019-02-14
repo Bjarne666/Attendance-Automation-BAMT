@@ -17,7 +17,7 @@
                      <children>
                         <AnchorPane prefHeight="80.0" prefWidth="180.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
-                              <ImageView fx:id="imgLogo" fitHeight="80.0" fitWidth="180.0" layoutX="-10.0" layoutY="-24.0" onMouseClicked="#clickImage" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                              <ImageView fx:id="imgLogo" fitHeight="60.0" fitWidth="180.0" layoutX="-10.0" layoutY="-24.0" onMouseClicked="#clickImage" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="15.0">
                                  <image>
                                     <Image url="@../../Image/easv_logo.png" />
                                  </image>

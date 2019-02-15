@@ -5,6 +5,7 @@
  */
 package attendenceautomation.BLL;
 
+import attendenceautomation.BE.SchoolClass;
 import attendenceautomation.BE.Student;
 import attendenceautomation.BE.Teacher;
 import java.util.List;
@@ -26,7 +27,7 @@ public interface AttendanceInterface
      *
      * @return
      */
-    public List<Class> getAllClasses();
+    public List<SchoolClass> getAllClasses();
     
     /**
      *
@@ -39,6 +40,12 @@ public interface AttendanceInterface
      * @param chosenClass
      * @return
      */
-    public List<Student> getStudentsInClass (Class chosenClass);
+    public List<Student> getStudentsInClass (SchoolClass chosenClass);
    
+    /**
+     *
+     * @param chosenStudent
+     * @return
+     */
+//    public Student getStudent(Student chosenStudent);
 }

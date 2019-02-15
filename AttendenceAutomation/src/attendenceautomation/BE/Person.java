@@ -19,9 +19,9 @@ public abstract class Person
     private final StringProperty name;
     private final StringProperty email;
 
-    public Person(int id, String name, String email)
+    public Person(String name, String email)
     {
-        this.id = id;
+//        this.id = id;
         this.name = new SimpleStringProperty();
         this.email = new SimpleStringProperty();
         this.name.set(name);

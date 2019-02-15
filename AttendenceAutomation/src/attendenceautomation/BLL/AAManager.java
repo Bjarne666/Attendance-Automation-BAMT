@@ -5,6 +5,7 @@
  */
 package attendenceautomation.BLL;
 
+import attendenceautomation.BE.SchoolClass;
 import attendenceautomation.BE.Student;
 import attendenceautomation.BE.Teacher;
 import attendenceautomation.DAL.AADALInterface;
@@ -17,7 +18,12 @@ import java.util.List;
  */
 public class AAManager implements AttendanceInterface
 {
-    AADALInterface aDAO = new MockDAO();
+    AADALInterface aDAO;
+
+    public AAManager()
+    {
+     aDAO = new MockDAO();
+    }
 
     @Override
     public List<Student> getAllStudents()
@@ -26,7 +32,7 @@ public class AAManager implements AttendanceInterface
     }
 
     @Override
-    public List<Class> getAllClasses()
+    public List<SchoolClass> getAllClasses()
     {
         return aDAO.getAllClasses();
     }
@@ -38,9 +44,15 @@ public class AAManager implements AttendanceInterface
     }
 
     @Override
-    public List<Student> getStudentsInClass(Class chosenClass)
+    public List<Student> getStudentsInClass(SchoolClass chosenClass)
     {
         return aDAO.getStudentsInClass(chosenClass);
     }
+
+//    @Override
+//    public Student getStudent(Student chosenStudent)
+//    {
+//        return aDAO.getStudent(chosenStudent);
+//    }
     
 }

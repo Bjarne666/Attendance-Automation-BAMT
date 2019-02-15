@@ -15,29 +15,29 @@ import javafx.beans.property.StringProperty;
  */
 public class Teacher extends Person
 {
- private final StringProperty teacherLogin;
+// private final StringProperty teacherLogin;
  private final StringProperty teacherPassword;
- private ArrayList<Class> schoolClass;
+ private ArrayList<SchoolClass> schoolClass;
 
-    public Teacher(int id, String name, String email, String teacherLogin, String teacherPassword)
+    public Teacher(String name, String email, String teacherPassword)
     {
-        super(id, name, email);
+        super(name, email);
         
-        this.teacherLogin = new SimpleStringProperty();
+//        this.teacherLogin = new SimpleStringProperty();
         this.teacherPassword = new SimpleStringProperty();
-        this.teacherLogin.set(teacherLogin);
+//        this.teacherLogin.set(teacherLogin);
         this.teacherPassword.set(teacherPassword);
     }
 
-    public ArrayList<Class> getSchoolClass()
+    public ArrayList<SchoolClass> getSchoolClass()
     {
         return schoolClass;
     }
 
-    public StringProperty getTeacherLogin()
-    {
-        return teacherLogin;
-    }
+//    public StringProperty getTeacherLogin()
+//    {
+//        return teacherLogin;
+//    }
 
     public StringProperty getTeacherPassword()
     {
@@ -48,11 +48,11 @@ public class Teacher extends Person
     {
         teacherPassword.set(newPassword);
     }
-    public void setTeacherLogin(String newLogin)
-    {
-        teacherPassword.set(newLogin);
-    }
-    public void addClass(Class newClass)
+//    public void setTeacherLogin(String newLogin)
+//    {
+//        teacherLogin.set(newLogin);
+//    }
+    public void addClass(SchoolClass newClass)
     {
         schoolClass.add(newClass);
     }

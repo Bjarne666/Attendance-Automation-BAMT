@@ -5,6 +5,7 @@
  */
 package attendenceautomation.DAL;
 
+import attendenceautomation.BE.SchoolClass;
 import attendenceautomation.BE.Student;
 import attendenceautomation.BE.Teacher;
 import java.util.List;
@@ -25,7 +26,7 @@ public interface AADALInterface
      *
      * @return
      */
-    public List<Class> getAllClasses();
+    public List<SchoolClass> getAllClasses();
     
     /**
      *
@@ -38,6 +39,12 @@ public interface AADALInterface
      * @param chosenClass
      * @return
      */
-    public List<Student> getStudentsInClass (Class chosenClass);
+    public List<Student> getStudentsInClass (SchoolClass chosenClass);
    
+    /**
+     *
+     * @param chosenStudent
+     * @return
+     */
+//    public Student getStudent(Student chosenStudent);
 }

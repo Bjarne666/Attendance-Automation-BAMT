@@ -6,25 +6,22 @@
 package attendenceautomation.BE;
 
 import java.util.ArrayList;
-import java.util.List;
-import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
 /**
  *
  * @author kokus
  */
-public class SchoolClass
+public class Class
 {
     private StringProperty className;
-    private List<Student> students;
+    private ArrayList<Student> students;
     private int id;
 
-    public SchoolClass(String className)
+    public Class(int id, StringProperty className, ArrayList<Student> students)
     {
-//        this.id = id;
-        this.className = new SimpleStringProperty();
-        this.className.set(className);
+        this.id = id;
+        this.className = className;
         students = new ArrayList();
     }
 
@@ -33,7 +30,7 @@ public class SchoolClass
         return className;
     }
 
-    public List<Student> getStudents()
+    public ArrayList<Student> getStudents()
     {
         return students;
     }

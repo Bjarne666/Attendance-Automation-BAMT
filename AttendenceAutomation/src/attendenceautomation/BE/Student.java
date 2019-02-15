@@ -14,22 +14,22 @@ import javafx.beans.property.StringProperty;
  */
 public class Student extends Person
 {
-//   private final StringProperty studentLogin;
+   private final StringProperty studentLogin;
    private final StringProperty studentPassword;
 
-    public Student(String name, String email, String studentPassword)
+    public Student(int id, String name, String email, String studentLogin, String studentPassword)
     {
-        super(name, email);
-//        this.studentLogin = new SimpleStringProperty();
+        super(id, name, email);
+        this.studentLogin = new SimpleStringProperty();
         this.studentPassword = new SimpleStringProperty();
-//        this.studentLogin.set(studentLogin);
+        this.studentLogin.set(studentLogin);
         this.studentPassword.set(studentPassword);
     }
 
-//    public StringProperty getStudentLogin()
-//    {
-//        return studentLogin;
-//    }
+    public StringProperty getStudentLogin()
+    {
+        return studentLogin;
+    }
 
     public StringProperty getStudentPassword()
     {

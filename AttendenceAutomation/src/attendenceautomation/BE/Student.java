@@ -5,6 +5,9 @@
  */
 package attendenceautomation.BE;
 
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.List;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
@@ -15,7 +18,9 @@ import javafx.beans.property.StringProperty;
 public class Student extends Person
 {
 //   private final StringProperty studentLogin;
-   private final StringProperty studentPassword;
+
+    private final StringProperty studentPassword;
+    private List<Attendance> attendance;
 
     public Student(String name, String email, String studentPassword)
     {
@@ -24,18 +29,27 @@ public class Student extends Person
         this.studentPassword = new SimpleStringProperty();
 //        this.studentLogin.set(studentLogin);
         this.studentPassword.set(studentPassword);
+        
+        attendance = new ArrayList<>();
     }
 
 //    public StringProperty getStudentLogin()
 //    {
 //        return studentLogin;
 //    }
-
     public StringProperty getStudentPassword()
     {
         return studentPassword;
     }
     
+    public void addAttendance(Calendar currentDate, boolean present)
+    {
+        attendance.add(new Attendance(currentDate, present));
+    }
     
-   
+    public List<Attendance> getAttendance()
+    {
+        return attendance;
+    }
+    
 }

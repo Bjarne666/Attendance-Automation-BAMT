@@ -1,12 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXComboBox?>
 <?import com.jfoenix.controls.JFXListView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="620.0" style="-fx-background-color: #ededed;" xmlns="http://javafx.com/javafx/8.0.181" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="620.0" style="-fx-background-color: #ededed;" xmlns="http://javafx.com/javafx/8.0.181" xmlns:fx="http://javafx.com/fxml/1" fx:controller="attendenceautomation.GUI.View.TeacherMainViewController">
    <children>
-      <JFXListView fx:id="listStudents" prefHeight="500.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
-      <AnchorPane layoutX="200.0" layoutY="449.0" prefHeight="51.0" prefWidth="420.0" style="-fx-background-color: #4b4b4b;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="0.0" />
-      <AnchorPane layoutX="230.0" layoutY="60.0" prefHeight="365.0" prefWidth="340.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="238.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="45.0" />
+      <JFXListView fx:id="listStudents" layoutY="114.0" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="386.0" prefWidth="180.0" style="-fx-background-color: #263238;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="114.0" />
+      <AnchorPane layoutX="180.0" layoutY="449.0" prefHeight="51.0" prefWidth="440.0" style="-fx-background-color: #4b4b4b;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="180.0" AnchorPane.rightAnchor="0.0" />
+      <AnchorPane layoutX="220.0" layoutY="60.0" prefHeight="425.0" prefWidth="360.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="220.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="45.0" />
+      <AnchorPane layoutX="7.0" prefHeight="85.0" prefWidth="180.0" style="-fx-background-color: #4b4b4b;" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <ImageView fitHeight="80.0" fitWidth="180.0" layoutX="-10.0" layoutY="-35.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="15.0">
+               <image>
+                  <Image url="@../../Image/easv_logo.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <JFXComboBox fx:id="comboClassList" focusColor="#4b4b4b" layoutY="83.0" prefHeight="31.0" prefWidth="180.0" promptText="Select Class" styleClass="input" stylesheets="@newCascadeStyleSheet.css" unFocusColor="#4b4b4b" />
    </children>
 </AnchorPane>

@@ -14,6 +14,9 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 
 /**
  * FXML Controller class
@@ -24,19 +27,37 @@ public class TeacherMainViewController implements Initializable
 {
 
     @FXML
-    private JFXListView<Student> listStudents;
+    private TableView<Student> tbViewStudents;
     @FXML
     private JFXComboBox<SchoolClass> comboClassList;
 
     AAModel aaModel = new AAModel();
+    @FXML
+    private TableColumn<Student, String> colName;
+    @FXML
+    private TableColumn<Student, String> colEmail;
+    
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb)
     {
-        listStudents.setItems(aaModel.getAllStudents());
+        tbViewStudents.setItems(aaModel.getAllStudents());
         comboClassList.setItems(aaModel.getAllClasses());
+        
+//        colName.setCellValueFactory(new PropertyValueFactory<>("name"));
+//        colEmail.setCellValueFactory(new PropertyValueFactory<>("Email"));
+        
+        colName.setCellValueFactory(cellData -> cellData.getValue().getName());
+        colEmail.setCellValueFactory(cellData -> cellData.getValue().getEmail());
     }    
+    
+    public TeacherMainViewController()
+    {
+        
+    }
+    
+    
     
 }

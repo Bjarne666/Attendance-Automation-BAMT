@@ -57,5 +57,11 @@ public abstract class Person
     {
         this.id = id;
     }
+    
+    @Override
+    public String toString()
+    {
+        return name + "\t\t " + email;
+    }
             
 }

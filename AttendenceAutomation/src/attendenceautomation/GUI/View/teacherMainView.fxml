@@ -21,10 +21,10 @@
          </children>
       </AnchorPane>
       <JFXComboBox fx:id="comboClassList" focusColor="#4b4b4b" layoutY="83.0" prefHeight="31.0" prefWidth="180.0" promptText="Select Class" styleClass="input" stylesheets="@newCascadeStyleSheet.css" unFocusColor="#4b4b4b" />
-      <TableView fx:id="tbViewStudents" layoutY="135.0" prefHeight="385.0" prefWidth="180.0" style="-fx-background-color: #263238;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0">
+      <TableView fx:id="tbViewStudents" layoutY="135.0" prefHeight="385.0" prefWidth="180.0" style="-fx-background-color: #263238;" stylesheets="@newCascadeStyleSheet.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0">
         <columns>
-          <TableColumn fx:id="colName" prefWidth="75.0" text="Name" />
-          <TableColumn fx:id="colEmail" prefWidth="75.0" text="Email" />
+          <TableColumn fx:id="colName" prefWidth="79.0" text="Name" />
+          <TableColumn fx:id="colEmail" prefWidth="71.0" text="Email" />
         </columns>
       </TableView>
    </children>

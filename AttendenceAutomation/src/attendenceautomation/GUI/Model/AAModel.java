@@ -52,9 +52,9 @@ public class AAModel
         return aManager.getAllTeachers();
     }
 
-    public List<Student> getStudentsInClass(SchoolClass chosenClass)
+    public ObservableList<Student> getStudentsInClass(SchoolClass chosenClass)
     {
-        return aManager.getStudentsInClass(chosenClass);
+        return FXCollections.observableArrayList(aManager.getStudentsInClass(chosenClass));
     }
     
 }

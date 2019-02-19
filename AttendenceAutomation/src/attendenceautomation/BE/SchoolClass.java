@@ -16,19 +16,18 @@ import javafx.beans.property.StringProperty;
  */
 public class SchoolClass
 {
-    private StringProperty className;
+    private String className;
     private List<Student> students;
     private int id;
 
     public SchoolClass(String className)
     {
 //        this.id = id;
-        this.className = new SimpleStringProperty();
-        this.className.set(className);
+        this.className = className;
         students = new ArrayList();
     }
 
-    public StringProperty getClassName()
+    public String getClassName()
     {
         return className;
     }
@@ -47,5 +46,10 @@ public class SchoolClass
     {
         return id;
     }
-    
+ 
+    @Override
+    public String toString()
+    {
+        return className;
+    }
 }

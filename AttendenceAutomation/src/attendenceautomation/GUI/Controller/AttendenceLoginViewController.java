@@ -46,8 +46,7 @@ public class AttendenceLoginViewController implements Initializable
         {
             AnchorPane pane = FXMLLoader.load(getClass().getResource("/attendenceautomation/GUI/View/testView.fxml"));
             FXMLLoader loader = new FXMLLoader();
-//            loader.setLocation(AttendenceAutomation.class.getResource("/attendenceautomation/GUI/View/AttendenceMainView1.fxml"));
-//            anchorTest = (AnchorPane) loader.load();
+
               
             Stage stage = new Stage();
             stage.setScene(new Scene(pane));

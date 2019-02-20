@@ -162,4 +162,12 @@ and open the template in the editor.
     -fx-text-fill: white;
 }
 
+.default-color0.chart-pie
+{
+    -fx-pie-color: #00FF00;
+}
+.default-color1.chart-pie
+{
+    -fx-pie-color: #FF0000;
+}
 

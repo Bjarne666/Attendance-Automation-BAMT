@@ -29,8 +29,6 @@ public class AttendenceLoginViewController implements Initializable
     @FXML
     private TextField txtUserName;
     @FXML
-    private AnchorPane mainAnchor;
-    @FXML
     private Button btnLogin;
     
 

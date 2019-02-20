@@ -23,7 +23,9 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
 
 /**
  * FXML Controller class
@@ -52,6 +54,14 @@ public class TeacherMainViewController implements Initializable
     
     AAModel aaModel = new AAModel();
     
+    private Student chosenClass;
+   private SchoolClass classList;
+    @FXML
+    private AnchorPane mainAnchorPane;
+    @FXML
+    private StackPane mainStackPane;
+    
+
     public TeacherMainViewController()
     {
         
@@ -75,10 +85,6 @@ public class TeacherMainViewController implements Initializable
         StudentPieChart();
     }    
 
-    public void handlePaneSwitch(MouseEvent event)
-    {
-        
-    }
 
     @FXML
     private void handleTeacherLogout(ActionEvent event)
@@ -109,5 +115,33 @@ public class TeacherMainViewController implements Initializable
         
         return studentPieChart; 
     }
-    
+
+    @FXML
+    private void handlePaneSwitch(MouseEvent event)
+    {
+        {
+            if (!comboClassList.getSelectionModel().isEmpty())
+            {
+                chosenClass = tbViewStudents.getSelectionModel().getSelectedItem();
+                tbViewStudents.setItems(aaModel.getAllStudents());
+                System.out.println("view filled");
+
+                if (event.getButton().equals(MouseButton.PRIMARY))
+                {
+                    if (event.getClickCount() == 1)
+                    {
+                        System.out.println("student clicked");
+                        mainAnchorPane.getChildren().clear();
+
+                        paneStudentView.toFront();
+                        mainAnchorPane.getChildren().add(paneStudentView);
+                    }
+                }
+            }
+        
+        }
+        
+
+    }
+
 }

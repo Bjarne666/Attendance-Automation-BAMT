@@ -120,7 +120,7 @@ public class TeacherMainViewController implements Initializable
     private void handlePaneSwitch(MouseEvent event)
     {
         {
-            if (!comboClassList.getSelectionModel().isEmpty())
+            if (!tbViewStudents.getSelectionModel().isEmpty())
             {
                 chosenClass = tbViewStudents.getSelectionModel().getSelectedItem();
                 tbViewStudents.setItems(aaModel.getAllStudents());

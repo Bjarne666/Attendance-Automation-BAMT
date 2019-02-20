@@ -57,21 +57,18 @@ public class TeacherMainViewController implements Initializable
     private Pane paneStudentView;
     @FXML
     private Pane paneMainView;
-    
-    AAModel aaModel = new AAModel();
-    
-    private Student chosenClass;
-   private SchoolClass classList;
     @FXML
     private AnchorPane mainAnchorPane;
-    @FXML
-    private StackPane mainStackPane;
     @FXML
     private Pane paneClassView;
     @FXML
     private ImageView imgLogo;
-    @FXML
-    private AnchorPane ancMainPane;
+    
+    AAModel aaModel = new AAModel();
+    
+    private Student chosenClass;
+    
+    private SchoolClass classList;
     
 
     public TeacherMainViewController()
@@ -169,14 +166,6 @@ public class TeacherMainViewController implements Initializable
          paneMainView.toFront();
          mainAnchorPane.getChildren().add(paneMainView);
      }
-    
-
-
-    private void showClassStatistics(MouseEvent event)
-    {
-        
-        
-    }
 
     @FXML
     private void showClassStatistics(ActionEvent event)

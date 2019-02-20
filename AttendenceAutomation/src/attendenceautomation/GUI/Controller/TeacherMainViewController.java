@@ -12,12 +12,18 @@ import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXListView;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.chart.PieChart;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseButton;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Pane;
 
 /**
  * FXML Controller class
@@ -31,12 +37,25 @@ public class TeacherMainViewController implements Initializable
     private TableView<Student> tbViewStudents;
     @FXML
     private JFXComboBox<SchoolClass> comboClassList;
-
-    AAModel aaModel = new AAModel();
     @FXML
     private TableColumn<Student, String> colName;
     @FXML
     private TableColumn<Student, String> colEmail;
+    @FXML
+    private PieChart studentPieChart;
+    @FXML
+    private PieChart CollectiveStudentChart;
+    @FXML
+    private Pane paneStudentView;
+    @FXML
+    private Pane paneMainView;
+    
+    AAModel aaModel = new AAModel();
+    
+    public TeacherMainViewController()
+    {
+        
+    }
     
     /**
      * Initializes the controller class.
@@ -52,9 +71,10 @@ public class TeacherMainViewController implements Initializable
         
 //        colName.setCellValueFactory(cellData -> cellData.getValue().getName());
 //        colEmail.setCellValueFactory(cellData -> cellData.getValue().getEmail());
+        classPieChart();
     }    
-    
-    public TeacherMainViewController()
+
+    public void handlePaneSwitch(MouseEvent event)
     {
         
     }
@@ -65,6 +85,28 @@ public class TeacherMainViewController implements Initializable
         System.exit(0);
     }
     
+    public PieChart classPieChart()
+    {
+        ObservableList<PieChart.Data> classChart = FXCollections.observableArrayList(
+            new PieChart.Data("Present", 65),
+            new PieChart.Data("Absent", 35));
+        
+        CollectiveStudentChart.setData(classChart);
+        
+        return CollectiveStudentChart;
+        
+    }
     
+    private PieChart StudentPieChart()
+    {
+        ObservableList<PieChart.Data> studentChart = FXCollections.observableArrayList(
+            new PieChart.Data("Present", 90),
+            new PieChart.Data("Absent", 10));
+        
+        studentPieChart.setData(studentChart);
+        
+        
+        return studentPieChart; 
+    }
     
 }

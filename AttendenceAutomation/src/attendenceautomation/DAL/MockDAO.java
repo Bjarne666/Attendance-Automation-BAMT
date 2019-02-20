@@ -29,6 +29,16 @@ public class MockDAO implements AADALInterface {
 
     //create teacher
     Teacher t1 = new Teacher("Peter", "peter@easv365.com", "");
+
+    public MockDAO() {
+    c1.addStudent(s1);
+    c1.addStudent(s2);
+    c2.addStudent(s3);
+    c2.addStudent(s4);
+    
+
+    }
+    
     
     //adds the mockStudents to a list and returns it
     @Override
@@ -46,12 +56,7 @@ public class MockDAO implements AADALInterface {
     @Override
     public List<SchoolClass> getAllClasses() {
         List<SchoolClass> classes = new ArrayList<>();
-      
-        c1.addStudent(s1);
-        c1.addStudent(s2);
-        c2.addStudent(s3);
-        c2.addStudent(s4);
-      
+        
         classes.add(c1);
         classes.add(c2);
         return classes;
@@ -62,9 +67,6 @@ public class MockDAO implements AADALInterface {
     public List<Teacher> getAllTeachers() {
         List<Teacher> teachers = new ArrayList<>();
        
-        t1.addClass(c1);
-        t1.addClass(c2);
-        
         teachers.add(t1);
         return teachers;
     }

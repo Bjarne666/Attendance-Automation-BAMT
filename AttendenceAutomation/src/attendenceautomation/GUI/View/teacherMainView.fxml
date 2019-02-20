@@ -9,12 +9,12 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #ededed;" stylesheets="@newCascadeStyleSheet.css" xmlns="http://javafx.com/javafx/8.0.181" xmlns:fx="http://javafx.com/fxml/1" fx:controller="attendenceautomation.GUI.Controller.TeacherMainViewController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #ededed;" stylesheets="@AttendanceStyleSheet.css" xmlns="http://javafx.com/javafx/8.0.181" xmlns:fx="http://javafx.com/fxml/1" fx:controller="attendenceautomation.GUI.Controller.TeacherMainViewController">
    <children>
       <AnchorPane layoutX="180.0" layoutY="449.0" prefHeight="56.0" prefWidth="442.0" style="-fx-background-color: #4b4b4b;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="180.0" AnchorPane.rightAnchor="-2.0" />
       <AnchorPane layoutX="238.0" layoutY="60.0" prefHeight="525.0" prefWidth="522.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="238.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="45.0">
          <children>
-            <Button layoutX="457.0" layoutY="496.0" mnemonicParsing="false" onAction="#handleTeacherLogout" prefHeight="31.0" prefWidth="65.0" stylesheets="@newCascadeStyleSheet.css" text="Logout" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="5.0" />
+            <Button layoutX="457.0" layoutY="496.0" mnemonicParsing="false" onAction="#handleTeacherLogout" prefHeight="31.0" prefWidth="65.0" stylesheets="@AttendanceStyleSheet.css" text="Logout" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="5.0" />
             <Label layoutX="36.0" layoutY="39.0" text="CS2018A" />
             <Label layoutX="29.0" layoutY="105.0" text="Collective Absence:" />
             <Label layoutX="176.0" layoutY="105.0" text="25%" />
@@ -28,8 +28,8 @@
             </ImageView>
          </children>
       </AnchorPane>
-      <JFXComboBox fx:id="comboClassList" focusColor="#4b4b4b" layoutY="83.0" prefHeight="31.0" prefWidth="200.0" promptText="Select Class" styleClass="input" stylesheets="@newCascadeStyleSheet.css" unFocusColor="#4b4b4b" />
-      <TableView fx:id="tbViewStudents" layoutY="135.0" prefHeight="385.0" prefWidth="200.0" style="-fx-background-color: #263238;" stylesheets="@newCascadeStyleSheet.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="115.0">
+      <JFXComboBox fx:id="comboClassList" focusColor="#4b4b4b" layoutY="83.0" prefHeight="31.0" prefWidth="200.0" promptText="Select Class" styleClass="input" stylesheets="@AttendanceStyleSheet.css" unFocusColor="#4b4b4b" />
+      <TableView fx:id="tbViewStudents" layoutY="135.0" prefHeight="385.0" prefWidth="200.0" style="-fx-background-color: #263238;" stylesheets="@AttendanceStyleSheet.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="115.0">
         <columns>
           <TableColumn fx:id="colName" prefWidth="79.0" text="Name" />
           <TableColumn fx:id="colEmail" prefWidth="71.0" text="Email" />

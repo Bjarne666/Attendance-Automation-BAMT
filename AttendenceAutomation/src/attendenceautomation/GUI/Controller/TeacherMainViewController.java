@@ -10,22 +10,28 @@ import attendenceautomation.BE.Student;
 import attendenceautomation.GUI.Model.AAModel;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXListView;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.chart.PieChart;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -60,6 +66,12 @@ public class TeacherMainViewController implements Initializable
     private AnchorPane mainAnchorPane;
     @FXML
     private StackPane mainStackPane;
+    @FXML
+    private Pane paneClassView;
+    @FXML
+    private ImageView imgLogo;
+    @FXML
+    private AnchorPane ancMainPane;
     
 
     public TeacherMainViewController()
@@ -83,6 +95,8 @@ public class TeacherMainViewController implements Initializable
 //        colEmail.setCellValueFactory(cellData -> cellData.getValue().getEmail());
         classPieChart();
         StudentPieChart();
+        
+       
     }    
 
 
@@ -124,13 +138,11 @@ public class TeacherMainViewController implements Initializable
             {
                 chosenClass = tbViewStudents.getSelectionModel().getSelectedItem();
                 tbViewStudents.setItems(aaModel.getAllStudents());
-                System.out.println("view filled");
 
                 if (event.getButton().equals(MouseButton.PRIMARY))
                 {
                     if (event.getClickCount() == 1)
                     {
-                        System.out.println("student clicked");
                         mainAnchorPane.getChildren().clear();
 
                         paneStudentView.toFront();
@@ -142,6 +154,44 @@ public class TeacherMainViewController implements Initializable
         }
         
 
+    }
+
+    @FXML
+    private void clickImage(MouseEvent event) throws IOException
+    {
+        Stage mainStage = (Stage) imgLogo.getScene().getWindow();
+        loadMainView();
+    }
+    
+     private void loadMainView() throws IOException
+     {
+         mainAnchorPane.getChildren().clear();
+         paneMainView.toFront();
+         mainAnchorPane.getChildren().add(paneMainView);
+     }
+    
+
+
+    private void showClassStatistics(MouseEvent event)
+    {
+        
+        
+    }
+
+    @FXML
+    private void showClassStatistics(ActionEvent event)
+    {
+        if (!comboClassList.getSelectionModel().isEmpty())
+        {
+            classList = comboClassList.getSelectionModel().getSelectedItem();
+            comboClassList.setItems(aaModel.getAllClasses());
+            
+            mainAnchorPane.getChildren().clear();
+
+            paneClassView.toFront();
+            mainAnchorPane.getChildren().add(paneClassView);
+            
+        }
     }
 
 }

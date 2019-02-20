@@ -1,27 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXComboBox?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="620.0" style="-fx-background-color: #ededed;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="attendenceautomation.GUI.View.TeacherMainViewController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #ededed;" stylesheets="@newCascadeStyleSheet.css" xmlns="http://javafx.com/javafx/8.0.181" xmlns:fx="http://javafx.com/fxml/1" fx:controller="attendenceautomation.GUI.View.TeacherMainViewController">
    <children>
-      <AnchorPane layoutX="180.0" layoutY="449.0" prefHeight="51.0" prefWidth="440.0" style="-fx-background-color: #4b4b4b;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="180.0" AnchorPane.rightAnchor="0.0" />
-      <AnchorPane layoutX="220.0" layoutY="60.0" prefHeight="425.0" prefWidth="360.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="220.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="45.0" />
-      <AnchorPane layoutX="7.0" prefHeight="85.0" prefWidth="180.0" style="-fx-background-color: #4b4b4b;" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <AnchorPane layoutX="180.0" layoutY="449.0" prefHeight="56.0" prefWidth="442.0" style="-fx-background-color: #4b4b4b;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="180.0" AnchorPane.rightAnchor="-2.0" />
+      <AnchorPane layoutX="238.0" layoutY="60.0" prefHeight="525.0" prefWidth="522.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="238.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="45.0">
          <children>
-            <ImageView fitHeight="80.0" fitWidth="180.0" layoutX="-10.0" layoutY="-35.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="15.0">
+            <Button layoutX="457.0" layoutY="496.0" mnemonicParsing="false" onAction="#handleTeacherLogout" prefHeight="31.0" prefWidth="65.0" stylesheets="@newCascadeStyleSheet.css" text="Logout" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="5.0" />
+            <Label layoutX="29.0" layoutY="37.0" text="Chosen Class" />
+            <Label layoutX="29.0" layoutY="105.0" text="Collective Absence" />
+         </children></AnchorPane>
+      <AnchorPane layoutX="7.0" prefHeight="85.0" prefWidth="200.0" style="-fx-background-color: #4b4b4b;" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <ImageView fitHeight="80.0" fitWidth="200.0" layoutX="-10.0" layoutY="-35.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="15.0">
                <image>
                   <Image url="@../../Image/easv_logo.png" />
                </image>
             </ImageView>
          </children>
       </AnchorPane>
-      <JFXComboBox fx:id="comboClassList" focusColor="#4b4b4b" layoutY="83.0" prefHeight="31.0" prefWidth="180.0" promptText="Select Class" styleClass="jfx-combo-box" stylesheets="@newCascadeStyleSheet.css" unFocusColor="#4b4b4b" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="83.0" />
-      <TableView fx:id="tbViewStudents" layoutY="135.0" prefHeight="385.0" prefWidth="180.0" style="-fx-background-color: #263238;" stylesheets="@newCascadeStyleSheet.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="115.0">
+      <JFXComboBox fx:id="comboClassList" focusColor="#4b4b4b" layoutY="83.0" prefHeight="31.0" prefWidth="200.0" promptText="Select Class" styleClass="input" stylesheets="@newCascadeStyleSheet.css" unFocusColor="#4b4b4b" />
+      <TableView fx:id="tbViewStudents" layoutY="135.0" prefHeight="385.0" prefWidth="200.0" style="-fx-background-color: #263238;" stylesheets="@newCascadeStyleSheet.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="115.0">
         <columns>
           <TableColumn fx:id="colName" prefWidth="79.0" text="Name" />
           <TableColumn fx:id="colEmail" prefWidth="71.0" text="Email" />

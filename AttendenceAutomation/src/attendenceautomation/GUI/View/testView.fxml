@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.StackPane?>
 
-<AnchorPane fx:id="mainAnchor" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="attendenceautomation.GUI.View.TestViewController">
+<AnchorPane fx:id="mainAnchor" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.181" xmlns:fx="http://javafx.com/fxml/1" fx:controller="attendenceautomation.GUI.View.TestViewController">
    <children>
       <AnchorPane layoutY="-4.0" prefHeight="408.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -25,7 +25,7 @@
                            </children>
                         </AnchorPane>
                      </children></AnchorPane>
-                  <Button fx:id="btnLogout" layoutX="-10.0" layoutY="256.0" mnemonicParsing="false" onAction="#loadView" prefHeight="50.0" prefWidth="180.0" text="Logout" AnchorPane.leftAnchor="0.0" />
+                  <Button fx:id="btnLogout" layoutX="-10.0" layoutY="256.0" mnemonicParsing="false" onAction="#handleStudentLogout" prefHeight="50.0" prefWidth="180.0" text="Logout" AnchorPane.leftAnchor="0.0" />
                   <Button fx:id="btnEdit" layoutX="-14.0" layoutY="205.0" mnemonicParsing="false" onAction="#loadView" prefHeight="50.0" prefWidth="180.0" text="Edit" AnchorPane.leftAnchor="0.0" />
                   <Button fx:id="btnStatistics" layoutX="-3.0" layoutY="151.0" mnemonicParsing="false" onAction="#loadView" prefHeight="50.0" prefWidth="180.0" text="Statistics" AnchorPane.leftAnchor="0.0" />
                </children>

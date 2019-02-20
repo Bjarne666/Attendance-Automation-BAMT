@@ -72,6 +72,7 @@ public class TeacherMainViewController implements Initializable
 //        colName.setCellValueFactory(cellData -> cellData.getValue().getName());
 //        colEmail.setCellValueFactory(cellData -> cellData.getValue().getEmail());
         classPieChart();
+        StudentPieChart();
     }    
 
     public void handlePaneSwitch(MouseEvent event)

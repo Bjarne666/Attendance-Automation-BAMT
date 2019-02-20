@@ -31,24 +31,28 @@
           <TableColumn fx:id="colEmail" prefWidth="86.0" text="Email" />
         </columns>
       </TableView>
-      <AnchorPane layoutX="239.0" layoutY="47.0" prefHeight="525.0" prefWidth="522.0" style="-fx-background-color: pink;" AnchorPane.bottomAnchor="28.0" AnchorPane.leftAnchor="239.0" AnchorPane.rightAnchor="39.0" AnchorPane.topAnchor="47.0">
+      <AnchorPane layoutX="240.0" layoutY="47.0" prefHeight="525.0" prefWidth="522.0" style="-fx-background-color: pink;" AnchorPane.bottomAnchor="28.0" AnchorPane.leftAnchor="240.0" AnchorPane.rightAnchor="38.0" AnchorPane.topAnchor="47.0">
          <children>
+            <Pane prefHeight="525.0" prefWidth="522.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <Label layoutX="466.0" layoutY="11.0" text="Peter" />
+                  <Label layoutX="354.0" layoutY="11.0" text="Logged In as:" />
+                  <Button layoutX="443.0" layoutY="480.0" mnemonicParsing="false" onAction="#handleTeacherLogout" prefHeight="31.0" prefWidth="65.0" stylesheets="@AttendanceStyleSheet.css" text="Logout" />
+               </children>
+            </Pane>
             <StackPane prefHeight="525.0" prefWidth="522.0">
                <children>
-                  <Pane fx:id="paneStudentView" prefHeight="532.0" prefWidth="522.0" style="-fx-background-color: white;">
-                     <children>
-                        <PieChart fx:id="studentPieChart" layoutX="40.0" layoutY="180.0" prefHeight="270.0" prefWidth="308.0" />
-                        <Label layoutX="372.0" layoutY="14.0" text="Logged In as:" />
-                        <Label layoutX="473.0" layoutY="14.0" text="Peter" />
-                        <Button layoutX="441.0" layoutY="480.0" mnemonicParsing="false" onAction="#handleTeacherLogout" prefHeight="31.0" prefWidth="65.0" stylesheets="@AttendanceStyleSheet.css" text="Logout" />
-                     </children>
-                  </Pane>
                   <Pane fx:id="paneMainView" prefHeight="525.0" prefWidth="522.0" style="-fx-background-color: white;">
                      <children>
                         <Label layoutX="14.0" layoutY="129.0" text="Collective Absence:" />
                         <Label layoutX="14.0" layoutY="80.0" text="CS2018A" />
                         <Label layoutX="173.0" layoutY="129.0" text="25%" />
                         <PieChart fx:id="CollectiveStudentChart" layoutX="39.0" layoutY="203.0" prefHeight="270.0" prefWidth="297.0" styleClass="default-color0" stylesheets="@AttendanceStyleSheet.css" />
+                     </children>
+                  </Pane>
+                  <Pane fx:id="paneStudentView" prefHeight="532.0" prefWidth="522.0" style="-fx-background-color: white;">
+                     <children>
+                        <PieChart fx:id="studentPieChart" layoutX="40.0" layoutY="180.0" prefHeight="270.0" prefWidth="308.0" styleClass="default-color0" stylesheets="@AttendanceStyleSheet.css" />
                      </children>
                   </Pane>
                </children>

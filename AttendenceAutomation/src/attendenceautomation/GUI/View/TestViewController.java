@@ -109,6 +109,11 @@ public class TestViewController implements Initializable
         Stage mainStage = (Stage) imgLogo.getScene().getWindow();
         loadMainView();
     }
+
+    @FXML
+    private void handleStudentLogout(ActionEvent event)
+    {
+    }
     
     
     

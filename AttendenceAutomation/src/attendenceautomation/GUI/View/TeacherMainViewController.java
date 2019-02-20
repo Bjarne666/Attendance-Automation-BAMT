@@ -12,6 +12,7 @@ import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXListView;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
@@ -56,6 +57,11 @@ public class TeacherMainViewController implements Initializable
     public TeacherMainViewController()
     {
         
+    }
+
+    @FXML
+    private void handleTeacherLogout(ActionEvent event)
+    {
     }
     
     

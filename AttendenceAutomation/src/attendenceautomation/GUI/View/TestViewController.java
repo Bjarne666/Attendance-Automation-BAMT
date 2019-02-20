@@ -113,6 +113,7 @@ public class TestViewController implements Initializable
     @FXML
     private void handleStudentLogout(ActionEvent event)
     {
+        System.exit(0);
     }
     
     

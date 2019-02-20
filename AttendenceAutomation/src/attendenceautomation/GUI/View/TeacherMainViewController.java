@@ -62,6 +62,7 @@ public class TeacherMainViewController implements Initializable
     @FXML
     private void handleTeacherLogout(ActionEvent event)
     {
+        System.exit(0);
     }
     
     

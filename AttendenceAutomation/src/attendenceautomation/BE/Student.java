@@ -17,31 +17,16 @@ import javafx.beans.property.StringProperty;
  */
 public class Student extends Person
 {
-//   private final StringProperty studentLogin;
 
-    private final StringProperty studentPassword;
     private List<Attendance> attendance;
 
-    public Student(String name, String email, String studentPassword)
+    public Student(String name, String email, String password)
     {
-        super(name, email);
-//        this.studentLogin = new SimpleStringProperty();
-        this.studentPassword = new SimpleStringProperty();
-//        this.studentLogin.set(studentLogin);
-        this.studentPassword.set(studentPassword);
+        super(name, email, password);
         
         attendance = new ArrayList<>();
     }
 
-//    public StringProperty getStudentLogin()
-//    {
-//        return studentLogin;
-//    }
-    public StringProperty getStudentPassword()
-    {
-        return studentPassword;
-    }
-    
     public void addAttendance(Calendar currentDate, boolean present)
     {
         attendance.add(new Attendance(currentDate, present));

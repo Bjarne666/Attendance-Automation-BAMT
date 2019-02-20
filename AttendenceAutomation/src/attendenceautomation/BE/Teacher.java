@@ -6,8 +6,6 @@
 package attendenceautomation.BE;
 
 import java.util.ArrayList;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
 
 /**
  *
@@ -15,18 +13,12 @@ import javafx.beans.property.StringProperty;
  */
 public class Teacher extends Person
 {
-// private final StringProperty teacherLogin;
- private final StringProperty teacherPassword;
  private ArrayList<SchoolClass> schoolClass;
 
-    public Teacher(String name, String email, String teacherPassword)
+    public Teacher(String name, String email, String password)
     {
-        super(name, email);
+        super(name, email, password);
         
-//        this.teacherLogin = new SimpleStringProperty();
-        this.teacherPassword = new SimpleStringProperty();
-//        this.teacherLogin.set(teacherLogin);
-        this.teacherPassword.set(teacherPassword);
     }
 
     public ArrayList<SchoolClass> getSchoolClass()
@@ -34,24 +26,6 @@ public class Teacher extends Person
         return schoolClass;
     }
 
-//    public StringProperty getTeacherLogin()
-//    {
-//        return teacherLogin;
-//    }
-
-    public StringProperty getTeacherPassword()
-    {
-        return teacherPassword;
-    }
-    
-    public void setTeacherPassword(String newPassword)
-    {
-        teacherPassword.set(newPassword);
-    }
-//    public void setTeacherLogin(String newLogin)
-//    {
-//        teacherLogin.set(newLogin);
-//    }
     public void addClass(SchoolClass newClass)
     {
         schoolClass.add(newClass);

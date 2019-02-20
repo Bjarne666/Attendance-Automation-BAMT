@@ -46,11 +46,11 @@ public class TeacherMainViewController implements Initializable
         tbViewStudents.setItems(aaModel.getAllStudents());
         comboClassList.setItems(aaModel.getAllClasses());
         
-//        colName.setCellValueFactory(new PropertyValueFactory<>("name"));
-//        colEmail.setCellValueFactory(new PropertyValueFactory<>("Email"));
+        colName.setCellValueFactory(new PropertyValueFactory<>("name"));
+        colEmail.setCellValueFactory(new PropertyValueFactory<>("Email"));
         
-        colName.setCellValueFactory(cellData -> cellData.getValue().getName());
-        colEmail.setCellValueFactory(cellData -> cellData.getValue().getEmail());
+//        colName.setCellValueFactory(cellData -> cellData.getValue().getName());
+//        colEmail.setCellValueFactory(cellData -> cellData.getValue().getEmail());
     }    
     
     public TeacherMainViewController()

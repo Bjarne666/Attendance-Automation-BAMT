@@ -15,53 +15,63 @@ import javafx.beans.property.StringProperty;
 public abstract class Person
 {
 
-    private int id;
+    //currently not in use
+    //private int id;
     private final StringProperty name;
     private final StringProperty email;
-
-    public Person(String name, String email)
+    private StringProperty password;
+    public Person(String name, String email, String password)
     {
 //        this.id = id;
         this.name = new SimpleStringProperty();
         this.email = new SimpleStringProperty();
         this.name.set(name);
         this.email.set(email);
+        this.password = new SimpleStringProperty();
+        this.password.set(password);
     }
 
-    public int getId()
+//    public int getId()
+//    {
+//        return id;
+//    }
+    public String getName()
     {
-        return id;
+        return name.get();
     }
 
-    public StringProperty getName()
+    public String getEmail()
     {
-        return name;
-    }
-
-    public StringProperty getEmail()
-    {
-        return email;
+        return email.get();
     }
 
     public void setName(String newName)
     {
         name.set(newName);
     }
-    
+
     public void setEmail(String newEmail)
     {
         email.set(newEmail);
     }
     
-    public void setId(int newId)
+    public void getPassword(String password)
     {
-        this.id = id;
+        this.password.set(password);
     }
     
+    public void setPassword(String newPassword)
+    {
+        password.set(newPassword);
+    }
+//    public void setId(int newId)
+//    {
+//        this.id = id;
+//    }
     @Override
     public String toString()
     {
         return name + "\t\t " + email;
     }
-            
+
 }

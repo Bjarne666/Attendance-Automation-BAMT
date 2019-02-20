@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package attendenceautomation.GUI.View;
+package attendenceautomation.GUI.Controller;
 
 import java.io.IOException;
 import java.net.URL;
@@ -25,7 +25,7 @@ import javafx.stage.Stage;
  *
  * @author Asvør
  */
-public class TestViewController implements Initializable
+public class RootLayoutController implements Initializable
 {
     @FXML
     private Button btnLogout;

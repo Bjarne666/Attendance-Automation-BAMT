@@ -5,8 +5,8 @@
  */
 package attendenceautomation;
 
-import attendenceautomation.GUI.View.AttendenceLoginViewController;
-import attendenceautomation.GUI.View.TestViewController;
+import attendenceautomation.GUI.Controller.AttendenceLoginViewController;
+import attendenceautomation.GUI.Controller.RootLayoutController;
 import javafx.application.Application;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;

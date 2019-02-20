@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXComboBox?>
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.chart.PieChart?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
@@ -33,17 +36,15 @@
       </TableView>
       <AnchorPane fx:id="mainAnchorPane" layoutX="240.0" layoutY="47.0" prefHeight="525.0" prefWidth="522.0" AnchorPane.bottomAnchor="28.0" AnchorPane.leftAnchor="240.0" AnchorPane.rightAnchor="38.0" AnchorPane.topAnchor="47.0">
          <children>
+            <Pane fx:id="paneMainView" prefHeight="525.0" prefWidth="522.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <Label layoutX="466.0" layoutY="11.0" text="Peter" />
+                  <Label layoutX="354.0" layoutY="11.0" text="Logged In as:" />
+                  <Button layoutX="443.0" layoutY="480.0" mnemonicParsing="false" onAction="#handleTeacherLogout" prefHeight="31.0" prefWidth="65.0" stylesheets="@AttendanceStyleSheet.css" text="Logout" />
+               </children>
+            </Pane>
             <StackPane prefHeight="525.0" prefWidth="522.0">
                <children>
-                  <Pane fx:id="paneStudentView" prefHeight="532.0" prefWidth="522.0" style="-fx-background-color: white;">
-                     <children>
-                        <PieChart fx:id="studentPieChart" layoutX="40.0" layoutY="180.0" prefHeight="270.0" prefWidth="308.0" styleClass="default-color0" stylesheets="@AttendanceStyleSheet.css" />
-                        <Label layoutX="22.0" layoutY="64.0" text="Student name:" />
-                        <Label layoutX="126.0" layoutY="64.0" text="Birgir" />
-                        <Label layoutX="23.0" layoutY="100.0" text="Absence :" />
-                        <Label layoutX="101.0" layoutY="100.0" text="10 %" />
-                     </children>
-                  </Pane>
                   <Pane fx:id="paneClassView" prefHeight="525.0" prefWidth="522.0" style="-fx-background-color: white;">
                      <children>
                         <Label layoutX="14.0" layoutY="129.0" text="Collective Absence:" />
@@ -52,15 +53,25 @@
                         <PieChart fx:id="CollectiveStudentChart" layoutX="39.0" layoutY="203.0" prefHeight="270.0" prefWidth="297.0" styleClass="default-color0" stylesheets="@AttendanceStyleSheet.css" />
                      </children>
                   </Pane>
+                  <Pane fx:id="paneStudentView" prefHeight="532.0" prefWidth="522.0" style="-fx-background-color: white;">
+                     <children>
+                        <PieChart fx:id="studentPieChart" layoutX="238.0" layoutY="31.0" prefHeight="181.0" prefWidth="232.0" styleClass="default-color0" stylesheets="@AttendanceStyleSheet.css" />
+                        <Label layoutX="22.0" layoutY="64.0" text="Student name:" />
+                        <Label layoutX="126.0" layoutY="64.0" text="Birgir" />
+                        <Label layoutX="23.0" layoutY="100.0" text="Absence :" />
+                        <Label layoutX="101.0" layoutY="100.0" text="10 %" />
+                        <BarChart fx:id="barChartAbsence" layoutX="38.0" layoutY="162.0" prefHeight="327.0" prefWidth="400.0" title="Over view of days absent">
+                          <xAxis>
+                            <CategoryAxis side="BOTTOM" />
+                          </xAxis>
+                          <yAxis>
+                            <NumberAxis side="LEFT" />
+                          </yAxis>
+                        </BarChart>
+                     </children>
+                  </Pane>
                </children>
             </StackPane>
-            <Pane fx:id="paneMainView" prefHeight="525.0" prefWidth="522.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-               <children>
-                  <Label layoutX="466.0" layoutY="11.0" text="Peter" />
-                  <Label layoutX="354.0" layoutY="11.0" text="Logged In as:" />
-                  <Button layoutX="443.0" layoutY="480.0" mnemonicParsing="false" onAction="#handleTeacherLogout" prefHeight="31.0" prefWidth="65.0" stylesheets="@AttendanceStyleSheet.css" text="Logout" />
-               </children>
-            </Pane>
          </children></AnchorPane>
    </children>
 </AnchorPane>

@@ -21,7 +21,11 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.chart.BarChart;
+import javafx.scene.chart.CategoryAxis;
+import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.PieChart;
+import javafx.scene.chart.XYChart;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -69,6 +73,8 @@ public class TeacherMainViewController implements Initializable
     private Student chosenClass;
     
     private SchoolClass classList;
+    @FXML
+    private BarChart<?, ?> barChartAbsence;
     
 
     public TeacherMainViewController()
@@ -92,6 +98,7 @@ public class TeacherMainViewController implements Initializable
 //        colEmail.setCellValueFactory(cellData -> cellData.getValue().getEmail());
         classPieChart();
         StudentPieChart();
+        studentBarChart();
         
        
     }    
@@ -115,7 +122,7 @@ public class TeacherMainViewController implements Initializable
         
     }
     
-    private PieChart StudentPieChart()
+    public PieChart StudentPieChart()
     {
         ObservableList<PieChart.Data> studentChart = FXCollections.observableArrayList(
             new PieChart.Data("Present", 90),
@@ -125,6 +132,33 @@ public class TeacherMainViewController implements Initializable
         
         
         return studentPieChart; 
+    }
+    
+    public BarChart studentBarChart()
+    {
+        // Define category axises
+        CategoryAxis daysAxis = new CategoryAxis();
+        daysAxis.setLabel("Days of absence");
+        NumberAxis yAxis = new NumberAxis();
+        yAxis.setLabel("Hours of absence");
+        
+        BarChart bChart = new BarChart(daysAxis, yAxis);
+        
+        XYChart.Series dataSet = new XYChart.Series();
+        dataSet.setName("Absence");
+        
+        dataSet.getData().add(new XYChart.Data("Monday", 2300));
+        dataSet.getData().add(new XYChart.Data("Tuesday", 1000));
+        dataSet.getData().add(new XYChart.Data("Wednesday", 986));
+        dataSet.getData().add(new XYChart.Data("Thursday", 870));
+        dataSet.getData().add(new XYChart.Data("Friday", 870));
+
+        //add dataset to chart
+        barChartAbsence.getData().add(dataSet);
+        
+        return barChartAbsence;
+        
+        
     }
 
     @FXML

@@ -29,7 +29,7 @@
                            </children>
                         </AnchorPane>
                      </children></AnchorPane>
-                  <Button fx:id="btnLogout" layoutX="-10.0" layoutY="256.0" mnemonicParsing="false" onAction="#handleStudentLogout" prefHeight="50.0" prefWidth="180.0" text="Logout" AnchorPane.leftAnchor="0.0" />
+                  <Button fx:id="btnLogout" cancelButton="true" layoutX="-10.0" layoutY="256.0" mnemonicParsing="false" onAction="#handleStudentLogout" prefHeight="50.0" prefWidth="180.0" text="Logout" AnchorPane.leftAnchor="0.0" />
                   <Button fx:id="btnEdit" layoutX="-14.0" layoutY="205.0" mnemonicParsing="false" onAction="#loadView" prefHeight="50.0" prefWidth="180.0" text="Edit" AnchorPane.leftAnchor="0.0" />
                   <Button fx:id="btnStatistics" layoutX="-3.0" layoutY="151.0" mnemonicParsing="false" onAction="#loadView" prefHeight="50.0" prefWidth="180.0" text="Statistics" AnchorPane.leftAnchor="0.0" />
                </children>

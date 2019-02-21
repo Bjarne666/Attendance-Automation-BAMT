@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.StackPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #ededed;" stylesheets="@AttendanceStyleSheet.css" xmlns="http://javafx.com/javafx/8.0.181" xmlns:fx="http://javafx.com/fxml/1" fx:controller="attendenceautomation.GUI.Controller.TeacherMainViewController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #ededed;" stylesheets="@AttendanceStyleSheet.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="attendenceautomation.GUI.Controller.TeacherMainViewController">
    <children>
       <AnchorPane layoutX="180.0" layoutY="449.0" prefHeight="56.0" prefWidth="442.0" style="-fx-background-color: #4b4b4b;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="180.0" AnchorPane.rightAnchor="-2.0" />
       <AnchorPane layoutX="7.0" prefHeight="85.0" prefWidth="200.0" style="-fx-background-color: #4b4b4b;" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -39,7 +39,7 @@
          <children>
             <Pane fx:id="paneMainView" prefHeight="525.0" prefWidth="522.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <Button layoutX="443.0" layoutY="480.0" mnemonicParsing="false" onAction="#handleTeacherLogout" prefHeight="31.0" prefWidth="65.0" stylesheets="@AttendanceStyleSheet.css" text="Logout" />
+                  <Button cancelButton="true" layoutX="443.0" layoutY="480.0" mnemonicParsing="false" onAction="#handleTeacherLogout" prefHeight="31.0" prefWidth="65.0" stylesheets="@AttendanceStyleSheet.css" text="Logout" />
                   <Label layoutX="29.0" layoutY="22.0" style="-fx-font-size: 32;" text="Teacher Overview" />
                </children>
             </Pane>

@@ -9,25 +9,30 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="620.0" stylesheets="@AttendanceStyleSheet.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="attendenceautomation.GUI.Controller.AttendanceEditViewController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="620.0" stylesheets="@AttendanceStyleSheet.css" xmlns="http://javafx.com/javafx/8.0.181" xmlns:fx="http://javafx.com/fxml/1" fx:controller="attendenceautomation.GUI.Controller.AttendanceEditViewController">
    <children>
-      <Label layoutX="177.0" layoutY="28.0" style="-fx-font-size: 32;" styleClass="Edit-Header-Label" text="Edit">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </Label>
-      <DatePicker fx:id="dPickerFrom" layoutX="106.0" layoutY="142.0" />
-      <Label fx:id="lblAReason" layoutX="111.0" layoutY="341.0" text="Reason for absence:" />
-      <TextField fx:id="txtAReason" layoutX="106.0" layoutY="373.0" prefHeight="37.0" prefWidth="237.0" />
-      <Label layoutX="106.0" layoutY="114.0" text="From" />
-      <Label layoutX="106.0" layoutY="200.0" text="To" />
-      <DatePicker fx:id="dPickerTo" layoutX="106.0" layoutY="221.0" />
-      <Button layoutX="521.0" layoutY="355.0" mnemonicParsing="false" onAction="#handleEditAttendance" prefHeight="30.0" prefWidth="46.0" text="Save" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="14.0" />
-      <RadioButton fx:id="rdBtnPresent" layoutX="106.0" layoutY="289.0" mnemonicParsing="false" text="Present">
-         <toggleGroup>
-            <ToggleGroup fx:id="editAttendance" />
-         </toggleGroup>
-      </RadioButton>
-      <RadioButton fx:id="rdBtnAbsent" layoutX="233.0" layoutY="289.0" mnemonicParsing="false" text="Absent" toggleGroup="$editAttendance" />
+      <AnchorPane layoutX="-1.0" layoutY="292.0" prefHeight="50.0" prefWidth="620.0" style="-fx-background-color: #4b4b4b;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+      <AnchorPane layoutX="33.0" layoutY="35.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="330.0" prefWidth="330.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="45.0">
+         <children>
+            <Label layoutX="242.0" layoutY="14.0" style="-fx-font-size: 32;" styleClass="Edit-Header-Label" text="Edit">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Button layoutX="477.0" layoutY="382.0" mnemonicParsing="false" onAction="#handleEditAttendance" prefHeight="30.0" prefWidth="46.0" text="Save" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="14.0" />
+            <DatePicker fx:id="dPickerFrom" layoutX="152.0" layoutY="130.0" />
+            <Label layoutX="152.0" layoutY="109.0" text="From" />
+            <DatePicker fx:id="dPickerTo" layoutX="152.0" layoutY="203.0" />
+            <Label layoutX="152.0" layoutY="182.0" text="To" />
+            <TextField fx:id="txtAReason" layoutX="152.0" layoutY="344.0" prefHeight="37.0" prefWidth="237.0" />
+            <Label fx:id="lblAReason" layoutX="152.0" layoutY="314.0" text="Reason for absence:" />
+            <RadioButton fx:id="rdBtnAbsent" layoutX="255.0" layoutY="254.0" mnemonicParsing="false" text="Absent">
+               <toggleGroup>
+                  <ToggleGroup fx:id="editAttendance" />
+               </toggleGroup>
+            </RadioButton>
+            <RadioButton fx:id="rdBtnPresent" layoutX="149.0" layoutY="254.0" mnemonicParsing="false" text="Present" toggleGroup="$editAttendance" />
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>

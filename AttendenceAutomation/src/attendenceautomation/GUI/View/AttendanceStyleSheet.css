@@ -11,6 +11,11 @@ and open the template in the editor.
 .background {
     -fx-background-color: #f0f0f0;
 }
+.Edit-Header-Label {
+    -fx-font-size: 32pt;
+    -fx-text-fill: #666666;
+    -fx-opacity: 0.8;
+}
 
 .label {
     -fx-font-size: 11pt;

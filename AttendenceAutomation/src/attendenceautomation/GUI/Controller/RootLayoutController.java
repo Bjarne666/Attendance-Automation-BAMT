@@ -91,7 +91,7 @@ public class RootLayoutController implements Initializable
         }
          if (event.getSource() == btnEdit)
         {
-            AnchorPane pane = FXMLLoader.load(getClass().getResource("/attendenceautomation/GUI/View/AttendanceCalenderView.fxml"));
+            AnchorPane pane = FXMLLoader.load(getClass().getResource("/attendenceautomation/GUI/View/AttendanceEditView.fxml"));
             anchorTest.getChildren().clear();
             anchorTest.getChildren().add(pane);
         }

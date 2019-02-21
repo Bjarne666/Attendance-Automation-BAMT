@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -15,12 +16,15 @@
                <children>
                   <AnchorPane layoutY="14.0" prefHeight="50.0" prefWidth="180.0" style="-fx-background-color: #4b4b4b;" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
-                        <AnchorPane prefHeight="80.0" prefWidth="180.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <AnchorPane prefHeight="80.0" prefWidth="180.0" style="-fx-cursor: hand;" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
                               <ImageView id="image-view" fx:id="imgLogo" fitHeight="60.0" fitWidth="180.0" layoutX="-10.0" layoutY="-24.0" onMouseClicked="#clickImage" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="15.0">
                                  <image>
                                     <Image url="@../../Image/easv_logo.png" />
                                  </image>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
                               </ImageView>
                            </children>
                         </AnchorPane>

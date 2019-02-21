@@ -7,31 +7,32 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="620.0" style="-fx-background-color: #ededed;" stylesheets="@AttendanceStyleSheet.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="attendenceautomation.GUI.Controller.AttendenceStudentViewController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="620.0" style="-fx-background-color: #ededed;" stylesheets="@AttendanceStyleSheet.css" xmlns="http://javafx.com/javafx/8.0.181" xmlns:fx="http://javafx.com/fxml/1" fx:controller="attendenceautomation.GUI.Controller.AttendenceStudentViewController">
    <children>
       <AnchorPane layoutY="353.0" prefHeight="50.0" prefWidth="440.0" style="-fx-background-color: #4b4b4b;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
       <AnchorPane layoutX="45.0" layoutY="37.0" prefHeight="333.0" prefWidth="330.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="45.0">
          <children>
-            <Label layoutX="360.0" layoutY="16.0" text="logged in as:" AnchorPane.rightAnchor="95.0" AnchorPane.topAnchor="16.0" />
-            <Label layoutX="49.0" layoutY="178.0" text="Education:" />
-            <Label layoutX="51.0" layoutY="85.0" prefHeight="21.0" prefWidth="47.0" text="Dato:">
+            <Label layoutX="25.0" layoutY="179.0" text="Education:" />
+            <Label layoutX="24.0" layoutY="87.0" prefHeight="21.0" prefWidth="47.0" text="Dato:">
                <font>
                   <Font size="24.0" />
                </font>
             </Label>
-            <Label fx:id="lblUser" text="user" textAlignment="CENTER" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="16.0" />
-            <RadioButton fx:id="rdBtnAbsent" layoutX="122.0" layoutY="247.0" mnemonicParsing="false" text="absent">
+            <RadioButton fx:id="rdBtnAbsent" layoutX="105.0" layoutY="320.0" mnemonicParsing="false" text="absent">
                <toggleGroup>
                   <ToggleGroup fx:id="attendance" />
                </toggleGroup></RadioButton>
-            <RadioButton fx:id="rdBtnPresent" layoutX="14.0" layoutY="247.0" mnemonicParsing="false" selected="true" text="Present" toggleGroup="$attendance" />
-            <Label fx:id="lblAttendance" layoutX="72.0" layoutY="292.0" text="present/absent" />
+            <RadioButton fx:id="rdBtnPresent" layoutX="22.0" layoutY="320.0" mnemonicParsing="false" selected="true" text="Present" toggleGroup="$attendance" />
+            <Label fx:id="lblAttendance" layoutX="59.0" layoutY="359.0" text="present/absent" />
             <Button layoutX="289.0" layoutY="302.0" mnemonicParsing="false" onAction="#handleAttendance" prefHeight="31.0" prefWidth="72.0" text="Confirm" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="14.0" />
-            <Label layoutX="49.0" layoutY="130.0" text="Name:" />
-            <Label fx:id="lblDate" layoutX="98.0" layoutY="87.0" text="Label" />
-            <Label fx:id="lblName" layoutX="102.0" layoutY="130.0" text="Label" />
-            <Label fx:id="lblEducation" layoutX="126.0" layoutY="179.0" text="Label" />
+            <Label layoutX="25.0" layoutY="130.0" text="Name:" />
+            <Label fx:id="lblDate" layoutX="73.0" layoutY="87.0" text="Label" />
+            <Label fx:id="lblName" layoutX="77.0" layoutY="130.0" text="Label" />
+            <Label fx:id="lblEducation" layoutX="105.0" layoutY="179.0" text="Label" />
+            <Label layoutX="25.0" layoutY="14.0" style="-fx-font-size: 32;" text="Submit attendance" />
          </children>
       </AnchorPane>
+      <Label fx:id="lblUser" layoutX="551.0" layoutY="16.0" text="user" textAlignment="CENTER" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="16.0" />
+      <Label layoutX="450.0" layoutY="16.0" text="logged in as:" AnchorPane.rightAnchor="85.0" AnchorPane.topAnchor="16.0" />
    </children>
 </AnchorPane>

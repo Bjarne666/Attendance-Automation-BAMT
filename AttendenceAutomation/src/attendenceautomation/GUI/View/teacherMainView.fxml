@@ -72,12 +72,12 @@
             </StackPane>
             <Pane fx:id="paneMainView" prefHeight="525.0" prefWidth="522.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <Label layoutX="466.0" layoutY="11.0" text="Peter" />
-                  <Label layoutX="354.0" layoutY="11.0" text="Logged In as:" />
                   <Button layoutX="443.0" layoutY="480.0" mnemonicParsing="false" onAction="#handleTeacherLogout" prefHeight="31.0" prefWidth="65.0" stylesheets="@AttendanceStyleSheet.css" text="Logout" />
                   <Label layoutX="29.0" layoutY="22.0" style="-fx-font-size: 32;" text="Teacher Overview" />
                </children>
             </Pane>
          </children></AnchorPane>
+      <Label layoutX="627.0" layoutY="14.0" text="Logged In as:" />
+      <Label layoutX="727.0" layoutY="14.0" text="Peter" />
    </children>
 </AnchorPane>

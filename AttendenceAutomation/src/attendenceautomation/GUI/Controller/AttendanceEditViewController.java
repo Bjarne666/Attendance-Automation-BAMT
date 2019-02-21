@@ -59,11 +59,11 @@ public class AttendanceEditViewController implements Initializable
     {
         if (editAttendance.getSelectedToggle() == rdBtnPresent)
         {
-
+            
             return;
         } else if (editAttendance.getSelectedToggle() == rdBtnAbsent)
         {
-            setReasonVisibility(true);
+            
             return;
         }
         Alert newAlert = new Alert(Alert.AlertType.ERROR, "You have to select either absent or present");

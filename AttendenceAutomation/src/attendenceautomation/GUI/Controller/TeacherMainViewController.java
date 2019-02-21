@@ -141,10 +141,8 @@ public class TeacherMainViewController implements Initializable
     public BarChart studentBarChart()
     {
         // Define category axises
-        CategoryAxis daysAxis = new CategoryAxis();
-        daysAxis.setLabel("Days of absence");
-        NumberAxis yAxis = new NumberAxis();
-        yAxis.setLabel("Hours of absence");
+        barChartAbsence.getXAxis().setLabel("Days of absence");
+        barChartAbsence.getYAxis().setLabel("Hours of absence");
         
         XYChart.Series dataSet = new XYChart.Series();
         dataSet.setName("Absence");
@@ -168,7 +166,8 @@ public class TeacherMainViewController implements Initializable
             if (!tbViewStudents.getSelectionModel().isEmpty())
             {
                 chosenClass = tbViewStudents.getSelectionModel().getSelectedItem();
-
+                classList = null;
+                            comboClassList.getSelectionModel().clearSelection();
                 if (event.getButton().equals(MouseButton.PRIMARY))
                 {
                     if (event.getClickCount() == 1)
@@ -202,9 +201,9 @@ public class TeacherMainViewController implements Initializable
     {
         if (!comboClassList.getSelectionModel().isEmpty())
         {
-            classList = null;
+//            classList = null;
             classList = comboClassList.getSelectionModel().getSelectedItem();
-            comboClassList.getSelectionModel().clearSelection();
+
             tbViewStudents.setItems(aaModel.getStudentsInClass(classList));
             
             mainAnchorPane.getChildren().clear();

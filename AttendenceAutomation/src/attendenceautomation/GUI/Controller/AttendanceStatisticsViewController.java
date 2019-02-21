@@ -59,12 +59,9 @@ private PieChart buildPieChart()
     public BarChart studentBarChart()
     {
         // Define category axises
-        CategoryAxis daysAxis = new CategoryAxis();
-        daysAxis.setLabel("Days of absence");
-        NumberAxis yAxis = new NumberAxis();
-        yAxis.setLabel("Hours of absence");
-
-        studentBarChart.setTitle("Over view of days absent (monthly)");
+        studentBarChart.getXAxis().setLabel("Days of absence");
+        studentBarChart.getYAxis().setLabel("Hours of absence");
+        studentBarChart.setTitle("Overview of days absent (monthly)");
         XYChart.Series dataSet = new XYChart.Series();
         dataSet.setName("Absence");
         

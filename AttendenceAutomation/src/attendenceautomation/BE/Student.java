@@ -15,14 +15,17 @@ import java.util.List;
  */
 public class Student extends Person
 {
+    private String absence;
 
     private List<Attendance> attendance;
 
-    public Student(String name, String email, String password)
+    public Student(String name, String email, String password, String absence)
     {
         super(name, email, password);
         
         attendance = new ArrayList<>();
+        
+        this.absence = absence;
     }
 
     public void addAttendance(Calendar currentDate, boolean present)
@@ -34,5 +37,13 @@ public class Student extends Person
     {
         return attendance;
     }
+
+    public String getAbsence()
+    {
+        return absence;
+    }
+    
+    
+    
     
 }

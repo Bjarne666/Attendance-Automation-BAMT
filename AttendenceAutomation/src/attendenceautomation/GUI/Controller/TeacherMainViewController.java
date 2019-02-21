@@ -54,6 +54,8 @@ public class TeacherMainViewController implements Initializable
     @FXML
     private TableColumn<Student, String> colEmail;
     @FXML
+    private TableColumn<Student, String> colAbsence;
+    @FXML
     private PieChart studentPieChart;
     @FXML
     private PieChart CollectiveStudentChart;
@@ -67,14 +69,16 @@ public class TeacherMainViewController implements Initializable
     private Pane paneClassView;
     @FXML
     private ImageView imgLogo;
+    @FXML
+    private BarChart<?, ?> barChartAbsence;
     
     AAModel aaModel = new AAModel();
     
     private Student chosenClass;
     
     private SchoolClass classList;
-    @FXML
-    private BarChart<?, ?> barChartAbsence;
+    
+    
     
 
     public TeacherMainViewController()
@@ -93,6 +97,7 @@ public class TeacherMainViewController implements Initializable
         
         colName.setCellValueFactory(new PropertyValueFactory<>("name"));
         colEmail.setCellValueFactory(new PropertyValueFactory<>("Email"));
+        colAbsence.setCellValueFactory(new PropertyValueFactory<>("absence"));
         
         try
         {
@@ -148,16 +153,14 @@ public class TeacherMainViewController implements Initializable
         NumberAxis yAxis = new NumberAxis();
         yAxis.setLabel("Hours of absence");
         
-        BarChart bChart = new BarChart(daysAxis, yAxis);
-        
         XYChart.Series dataSet = new XYChart.Series();
         dataSet.setName("Absence");
         
-        dataSet.getData().add(new XYChart.Data("Monday", 2300));
-        dataSet.getData().add(new XYChart.Data("Tuesday", 1000));
-        dataSet.getData().add(new XYChart.Data("Wednesday", 986));
-        dataSet.getData().add(new XYChart.Data("Thursday", 870));
-        dataSet.getData().add(new XYChart.Data("Friday", 870));
+        dataSet.getData().add(new XYChart.Data("Monday", 25));
+        dataSet.getData().add(new XYChart.Data("Tuesday", 2));
+        dataSet.getData().add(new XYChart.Data("Wednesday", 0));
+        dataSet.getData().add(new XYChart.Data("Thursday", 0));
+        dataSet.getData().add(new XYChart.Data("Friday", 20));
 
         //add dataset to chart
         barChartAbsence.getData().add(dataSet);

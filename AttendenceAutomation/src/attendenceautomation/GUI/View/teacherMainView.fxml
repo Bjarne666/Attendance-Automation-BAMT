@@ -32,11 +32,17 @@
         <columns>
           <TableColumn fx:id="colName" prefWidth="62.0" text="Name" />
           <TableColumn fx:id="colEmail" prefWidth="59.0" text="Email" />
-            <TableColumn prefWidth="104.0" text="Absence" />
+            <TableColumn fx:id="colAbsence" prefWidth="104.0" text="Absence" />
         </columns>
       </TableView>
       <AnchorPane fx:id="mainAnchorPane" layoutX="240.0" layoutY="47.0" prefHeight="525.0" prefWidth="522.0" AnchorPane.bottomAnchor="28.0" AnchorPane.leftAnchor="240.0" AnchorPane.rightAnchor="38.0" AnchorPane.topAnchor="47.0">
          <children>
+            <Pane fx:id="paneMainView" prefHeight="525.0" prefWidth="522.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <Button layoutX="443.0" layoutY="480.0" mnemonicParsing="false" onAction="#handleTeacherLogout" prefHeight="31.0" prefWidth="65.0" stylesheets="@AttendanceStyleSheet.css" text="Logout" />
+                  <Label layoutX="29.0" layoutY="22.0" style="-fx-font-size: 32;" text="Teacher Overview" />
+               </children>
+            </Pane>
             <StackPane prefHeight="525.0" prefWidth="522.0">
                <children>
                   <Pane fx:id="paneClassView" prefHeight="525.0" prefWidth="522.0" style="-fx-background-color: white;">
@@ -55,7 +61,7 @@
                         <Label layoutX="125.0" layoutY="75.0" text="Birgir" />
                         <Label layoutX="22.0" layoutY="111.0" text="Absence :" />
                         <Label layoutX="103.0" layoutY="111.0" text="10 %" />
-                        <BarChart fx:id="barChartAbsence" layoutY="198.0" prefHeight="327.0" prefWidth="400.0" title="Over view of days absent">
+                        <BarChart fx:id="barChartAbsence" layoutY="198.0" prefHeight="327.0" prefWidth="400.0" title="Over view of days absent (monthly)">
                           <xAxis>
                             <CategoryAxis side="BOTTOM" />
                           </xAxis>
@@ -70,12 +76,6 @@
                   </Pane>
                </children>
             </StackPane>
-            <Pane fx:id="paneMainView" prefHeight="525.0" prefWidth="522.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-               <children>
-                  <Button layoutX="443.0" layoutY="480.0" mnemonicParsing="false" onAction="#handleTeacherLogout" prefHeight="31.0" prefWidth="65.0" stylesheets="@AttendanceStyleSheet.css" text="Logout" />
-                  <Label layoutX="29.0" layoutY="22.0" style="-fx-font-size: 32;" text="Teacher Overview" />
-               </children>
-            </Pane>
          </children></AnchorPane>
       <Label layoutX="627.0" layoutY="14.0" text="Logged In as:" />
       <Label layoutX="727.0" layoutY="14.0" text="Peter" />

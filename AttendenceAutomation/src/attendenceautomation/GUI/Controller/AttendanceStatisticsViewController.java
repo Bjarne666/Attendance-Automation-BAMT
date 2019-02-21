@@ -63,17 +63,16 @@ private PieChart buildPieChart()
         daysAxis.setLabel("Days of absence");
         NumberAxis yAxis = new NumberAxis();
         yAxis.setLabel("Hours of absence");
-        
-        BarChart bChart = new BarChart(daysAxis, yAxis);
-        studentBarChart.setTitle("Days of absence this week");
+
+        studentBarChart.setTitle("Over view of days absent (monthly)");
         XYChart.Series dataSet = new XYChart.Series();
         dataSet.setName("Absence");
         
-        dataSet.getData().add(new XYChart.Data("Monday", 2300));
-        dataSet.getData().add(new XYChart.Data("Tuesday", 1000));
-        dataSet.getData().add(new XYChart.Data("Wednesday", 986));
-        dataSet.getData().add(new XYChart.Data("Thursday", 870));
-        dataSet.getData().add(new XYChart.Data("Friday", 870));
+        dataSet.getData().add(new XYChart.Data("Monday", 25));
+        dataSet.getData().add(new XYChart.Data("Tuesday", 2));
+        dataSet.getData().add(new XYChart.Data("Wednesday", 0));
+        dataSet.getData().add(new XYChart.Data("Thursday", 0));
+        dataSet.getData().add(new XYChart.Data("Friday", 20));
 
         //add dataset to chart
         studentBarChart.getData().add(dataSet);

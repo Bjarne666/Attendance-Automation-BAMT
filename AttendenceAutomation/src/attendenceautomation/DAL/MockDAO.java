@@ -22,10 +22,10 @@ public class MockDAO implements AADALInterface {
     SchoolClass c2 = new SchoolClass("CS2018B");
 
     //create students
-    Student s1 = new Student("Jens", "jens@easv365.com", "");
-    Student s2 = new Student("Peter", "peter@easv365.com", "");
-    Student s3 = new Student("Jørgen", "jørgen@easv365.com", "");
-    Student s4 = new Student("Birger", "birger@easv365.com", "");
+    Student s1 = new Student("Jens", "jens@easv365.com", "", "5%");
+    Student s2 = new Student("Peter", "peter@easv365.com", "", "25%");
+    Student s3 = new Student("Jørgen", "jørgen@easv365.com", "", "0%");
+    Student s4 = new Student("Birger", "birger@easv365.com", "", "10%");
 
     //create teacher
     Teacher t1 = new Teacher("Peter", "peter@easv365.com", "");

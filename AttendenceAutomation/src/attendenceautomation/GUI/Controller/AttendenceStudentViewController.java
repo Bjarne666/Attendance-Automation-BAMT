@@ -5,8 +5,11 @@
  */
 package attendenceautomation.GUI.Controller;
 
+import attendenceautomation.UTIL.DateConverter;
 import java.net.URL;
+import java.util.Calendar;
 import java.util.ResourceBundle;
+import javafx.beans.property.StringProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -44,10 +47,10 @@ public class AttendenceStudentViewController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        lblUser.setText("");
-        lblDate.setText("");
-        lblEducation.setText("");
-        lblName.setText("");
+        lblUser.setText("Birger");
+        lblDate.setText("22-02-2019");
+        lblEducation.setText("Computer Science");
+        lblName.setText("Birger");
         lblAttendance.setVisible(false);
     }    
 

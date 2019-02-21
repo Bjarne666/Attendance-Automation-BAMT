@@ -6,11 +6,13 @@
 package attendenceautomation.GUI.Controller;
 
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
@@ -57,36 +59,44 @@ public class AttendanceEditViewController implements Initializable
 
     public void handleButtons()
     {
-        if (editAttendance.getSelectedToggle() == rdBtnPresent)
+        if (editAttendance.getSelectedToggle() == rdBtnPresent && dPickerTo.getValue() != null)
         {
-            
+            informationAlert("Attendance for the chosen date set to present");
             return;
-        } else if (editAttendance.getSelectedToggle() == rdBtnAbsent)
+        } else if (editAttendance.getSelectedToggle() == rdBtnAbsent && dPickerTo.getValue() != null)
         {
-            
+            informationAlert("Attendance for the chosen date set to absent");
             return;
         }
-        Alert newAlert = new Alert(Alert.AlertType.ERROR, "You have to select either absent or present");
+        Alert newAlert = new Alert(Alert.AlertType.ERROR, "You either did not set a date to change or a state to change to");
         newAlert.showAndWait();
     }
-    
+
     public void setReasonVisibility(boolean visible)
     {
-      lblAReason.setVisible(visible);
-      txtAReason.setVisible(visible);   
+        lblAReason.setVisible(visible);
+        txtAReason.setVisible(visible);
     }
-    
+
     @FXML
     private void handleAbsenceVisibility(ActionEvent event)
     {
         if (editAttendance.getSelectedToggle() != rdBtnAbsent)
         {
             setReasonVisibility(false);
-        }
-        else if (editAttendance.getSelectedToggle() == rdBtnAbsent)
+        } else if (editAttendance.getSelectedToggle() == rdBtnAbsent)
         {
             setReasonVisibility(true);
         }
     }
 
+    public void informationAlert(String message)
+    {
+        Alert alert = new Alert(AlertType.INFORMATION);
+        alert.setTitle("Information Dialog");
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+
+        alert.showAndWait();
+    }
 }

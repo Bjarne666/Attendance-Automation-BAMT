@@ -12,7 +12,11 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.chart.BarChart;
+import javafx.scene.chart.CategoryAxis;
+import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.PieChart;
+import javafx.scene.chart.XYChart;
 import javafx.scene.layout.AnchorPane;
 
 
@@ -25,19 +29,19 @@ public class AttendanceStatisticsViewController implements Initializable
 {
     
     @FXML
-    private PieChart AttendencePieChart;
+    private BarChart<?, ?> studentBarChart;
+    @FXML
+    private PieChart attendencePieChart;
 	
 private PieChart buildPieChart()
     {
-        ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList(
-        new PieChart.Data("Attendence", 90),
-        new PieChart.Data("Absence", 10));
-          
+        ObservableList<PieChart.Data> classChart = FXCollections.observableArrayList(
+            new PieChart.Data("Present", 90),
+            new PieChart.Data("Absent", 10));
         
-        AttendencePieChart.setData(pieChartData);        
-    
+        attendencePieChart.setData(classChart);
         
-        return AttendencePieChart;
+        return attendencePieChart;
     }
 	
     /**
@@ -49,11 +53,33 @@ private PieChart buildPieChart()
     public void initialize(URL url, ResourceBundle rb)
     {
         buildPieChart();
+        studentBarChart();
     }    
     
-    @FXML 
-    private void handlePieChart(ActionEvent event) 
-            {
-                AnchorPane.getBottomAnchor(buildPieChart());
-            }
+    public BarChart studentBarChart()
+    {
+        // Define category axises
+        CategoryAxis daysAxis = new CategoryAxis();
+        daysAxis.setLabel("Days of absence");
+        NumberAxis yAxis = new NumberAxis();
+        yAxis.setLabel("Hours of absence");
+        
+        BarChart bChart = new BarChart(daysAxis, yAxis);
+        studentBarChart.setTitle("Days of absence this week");
+        XYChart.Series dataSet = new XYChart.Series();
+        dataSet.setName("Absence");
+        
+        dataSet.getData().add(new XYChart.Data("Monday", 2300));
+        dataSet.getData().add(new XYChart.Data("Tuesday", 1000));
+        dataSet.getData().add(new XYChart.Data("Wednesday", 986));
+        dataSet.getData().add(new XYChart.Data("Thursday", 870));
+        dataSet.getData().add(new XYChart.Data("Friday", 870));
+
+        //add dataset to chart
+        studentBarChart.getData().add(dataSet);
+        
+        return studentBarChart;
+        
+        
+    }
 }

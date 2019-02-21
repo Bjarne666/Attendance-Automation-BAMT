@@ -168,7 +168,7 @@ public class TeacherMainViewController implements Initializable
             if (!tbViewStudents.getSelectionModel().isEmpty())
             {
                 chosenClass = tbViewStudents.getSelectionModel().getSelectedItem();
-                tbViewStudents.setItems(aaModel.getAllStudents());
+//                tbViewStudents.setItems(aaModel.getAllStudents());
 
                 if (event.getButton().equals(MouseButton.PRIMARY))
                 {

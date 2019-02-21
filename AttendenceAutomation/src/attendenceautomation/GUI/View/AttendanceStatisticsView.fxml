@@ -1,15 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.chart.PieChart?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="620.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="attendenceautomation.GUI.Controller.AttendanceStatisticsViewController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="620.0" style="-fx-background-color: #ededed;" xmlns="http://javafx.com/javafx/8.0.181" xmlns:fx="http://javafx.com/fxml/1" fx:controller="attendenceautomation.GUI.Controller.AttendanceStatisticsViewController">
    <children>
-      <Label layoutX="310.0" layoutY="14.0" text="current absence:" />
-      <Label layoutX="23.0" layoutY="14.0" text="User:" />
-      <PieChart fx:id="AttendencePieChart" layoutX="60.0" layoutY="179.0" prefHeight="321.0" prefWidth="620.0" styleClass="default-color0" stylesheets="@AttendanceStyleSheet.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="179.0" />
-      <Label layoutX="70.0" layoutY="14.0" text="Student" />
-      <Label layoutX="434.0" layoutY="14.0" text="10%" />
+      <AnchorPane layoutX="-3.0" layoutY="300.0" prefHeight="50.0" prefWidth="620.0" style="-fx-background-color: #4b4b4b;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+      <AnchorPane layoutX="185.0" layoutY="112.0" prefHeight="330.0" prefWidth="330.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="45.0">
+         <children>
+            <Label layoutX="33.0" layoutY="14.0" style="-fx-font-size: 32;" stylesheets="@AttendanceStyleSheet.css" text="Absence Statistic" />
+            <PieChart fx:id="attendencePieChart" layoutX="340.0" layoutY="7.0" prefHeight="150.0" prefWidth="184.0" styleClass="default-color0" stylesheets="@AttendanceStyleSheet.css" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+         </children>
+      </AnchorPane>
+      <Label layoutX="74.0" layoutY="125.0" text="Total Absence:" />
+      <Label layoutX="189.0" layoutY="125.0" text="10%" />
+      <BarChart fx:id="studentBarChart" layoutX="74.0" layoutY="164.0" prefHeight="306.0" prefWidth="421.0">
+        <xAxis>
+          <CategoryAxis side="BOTTOM" />
+        </xAxis>
+        <yAxis>
+          <NumberAxis side="LEFT" />
+        </yAxis>
+      </BarChart>
    </children>
 </AnchorPane>

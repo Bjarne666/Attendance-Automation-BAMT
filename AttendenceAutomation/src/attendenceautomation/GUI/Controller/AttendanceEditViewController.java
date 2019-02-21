@@ -75,7 +75,7 @@ public class AttendanceEditViewController implements Initializable
       lblAReason.setVisible(visible);
       txtAReason.setVisible(visible);   
     }
-
+    
     @FXML
     private void handleAbsenceVisibility(ActionEvent event)
     {

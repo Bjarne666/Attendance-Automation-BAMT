@@ -106,7 +106,7 @@ and open the template in the editor.
 .text-field {
     -fx-font-size: 12pt;
     -fx-font-family: "Segoe UI Semibold";
-    -fx-text-fill: #d8d8d8
+    -fx-text-fill: #666666
 }
 
 

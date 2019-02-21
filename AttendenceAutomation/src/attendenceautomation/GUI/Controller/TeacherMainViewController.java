@@ -166,8 +166,6 @@ public class TeacherMainViewController implements Initializable
         barChartAbsence.getData().add(dataSet);
         
         return barChartAbsence;
-        
-        
     }
 
     @FXML
@@ -214,7 +212,9 @@ public class TeacherMainViewController implements Initializable
     {
         if (!comboClassList.getSelectionModel().isEmpty())
         {
+            classList = null;
             classList = comboClassList.getSelectionModel().getSelectedItem();
+            comboClassList.getSelectionModel().clearSelection();
             tbViewStudents.setItems(aaModel.getStudentsInClass(classList));
             
             mainAnchorPane.getChildren().clear();

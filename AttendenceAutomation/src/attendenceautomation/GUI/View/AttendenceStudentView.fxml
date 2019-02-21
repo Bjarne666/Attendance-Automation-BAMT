@@ -23,13 +23,14 @@
                   <ToggleGroup fx:id="attendance" />
                </toggleGroup></RadioButton>
             <RadioButton fx:id="rdBtnPresent" layoutX="22.0" layoutY="320.0" mnemonicParsing="false" selected="true" text="Present" toggleGroup="$attendance" />
-            <Label fx:id="lblAttendance" layoutX="59.0" layoutY="359.0" text="present/absent" />
+            <Label fx:id="lblAttendance" layoutX="59.0" layoutY="359.0" style="-fx-text-fill: #00ff00;" text="Present" />
             <Button layoutX="289.0" layoutY="302.0" mnemonicParsing="false" onAction="#handleAttendance" prefHeight="31.0" prefWidth="72.0" text="Confirm" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="14.0" />
             <Label layoutX="25.0" layoutY="130.0" text="Name:" />
             <Label fx:id="lblDate" layoutX="73.0" layoutY="87.0" text="Label" />
             <Label fx:id="lblName" layoutX="77.0" layoutY="130.0" text="Label" />
             <Label fx:id="lblEducation" layoutX="105.0" layoutY="179.0" text="Label" />
             <Label layoutX="25.0" layoutY="14.0" style="-fx-font-size: 32;" text="Submit attendance" />
+            <Label fx:id="lblAbsent" layoutX="61.0" layoutY="359.0" style="-fx-text-fill: #FF0000;" text="Absent" />
          </children>
       </AnchorPane>
       <Label fx:id="lblUser" layoutX="551.0" layoutY="16.0" text="user" textAlignment="CENTER" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="16.0" />

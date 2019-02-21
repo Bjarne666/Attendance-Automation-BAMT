@@ -41,6 +41,8 @@ public class AttendenceStudentViewController implements Initializable {
     private RadioButton rdBtnAbsent;
     @FXML
     private RadioButton rdBtnPresent;
+    @FXML
+    private Label lblAbsent;
 
     /**
      * Initializes the controller class.
@@ -52,6 +54,7 @@ public class AttendenceStudentViewController implements Initializable {
         lblEducation.setText("Computer Science");
         lblName.setText("Birger");
         lblAttendance.setVisible(false);
+        lblAbsent.setVisible(false);
     }    
 
     @FXML
@@ -59,11 +62,13 @@ public class AttendenceStudentViewController implements Initializable {
         if (attendance.getSelectedToggle() == rdBtnPresent) {
             lblAttendance.setText("Present");
             lblAttendance.setVisible(true);
+            lblAbsent.setVisible(false);
             return;
         }
         else if (attendance.getSelectedToggle() == rdBtnAbsent) {
-            lblAttendance.setText("Absent");
-            lblAttendance.setVisible(true);
+            lblAbsent.setText("Absent");
+            lblAbsent.setVisible(true);
+            lblAttendance.setVisible(false);
             return;
         }
          Alert alert = new Alert(Alert.AlertType.ERROR, "You have to select either present or absent");

@@ -7,7 +7,14 @@ package attendenceautomation.GUI.Controller;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.chart.PieChart;
+import javafx.scene.layout.AnchorPane;
+
 
 /**
  * FXML Controller class
@@ -16,14 +23,37 @@ import javafx.fxml.Initializable;
  */
 public class AttendanceStatisticsViewController implements Initializable
 {
-
+    
+    @FXML
+    private PieChart AttendencePieChart;
+	
+private PieChart buildPieChart()
+    {
+        ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList(
+        new PieChart.Data("Attendence", 90),
+        new PieChart.Data("Absence", 10));
+          
+        
+        AttendencePieChart.setData(pieChartData);        
+    
+        
+        return AttendencePieChart;
+    }
+	
     /**
      * Initializes the controller class.
+     * @param url
+     * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb)
     {
-        // TODO
+        buildPieChart();
     }    
     
+    @FXML 
+    private void handlePieChart(ActionEvent event) 
+            {
+                AnchorPane.getBottomAnchor(buildPieChart());
+            }
 }

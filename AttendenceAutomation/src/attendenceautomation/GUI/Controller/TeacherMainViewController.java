@@ -160,12 +160,13 @@ public class TeacherMainViewController implements Initializable
             if (!tbViewStudents.getSelectionModel().isEmpty())
             {
                 chosenStudent = tbViewStudents.getSelectionModel().getSelectedItem();
+                comboClassList.getSelectionModel().clearSelection();
                 if (event.getButton().equals(MouseButton.PRIMARY))
                 {
                     if (event.getClickCount() == 1)
                     {
                         mainAnchorPane.getChildren().clear();
-                        
+
                         paneStudentView.toFront();
                         mainAnchorPane.getChildren().add(paneStudentView);
                     }

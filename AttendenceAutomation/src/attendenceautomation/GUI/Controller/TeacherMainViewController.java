@@ -67,21 +67,20 @@ public class TeacherMainViewController implements Initializable
     private Pane paneClassView;
     @FXML
     private ImageView imgLogo;
-    
+
     AAModel aaModel = new AAModel();
-    
+
     private Student chosenClass;
-    
+
     private SchoolClass classList;
     @FXML
     private BarChart<?, ?> barChartAbsence;
-    
 
     public TeacherMainViewController()
     {
-        
+
     }
-    
+
     /**
      * Initializes the controller class.
      */
@@ -90,56 +89,53 @@ public class TeacherMainViewController implements Initializable
     {
 //        tbViewStudents.setItems(aaModel.getAllStudents());
         comboClassList.setItems(aaModel.getAllClasses());
-        
+
         colName.setCellValueFactory(new PropertyValueFactory<>("name"));
         colEmail.setCellValueFactory(new PropertyValueFactory<>("Email"));
-        
+
         try
         {
             loadMainView();
-        } 
-        catch (IOException ex)
+        } catch (IOException ex)
         {
             ex.printStackTrace();
         }
-        
+
         classPieChart();
         StudentPieChart();
-        studentBarChart(); 
-    }    
-
+        studentBarChart();
+    }
 
     @FXML
     private void handleTeacherLogout(ActionEvent event)
     {
         System.exit(0);
     }
-    
+
     public PieChart classPieChart()
     {
         ObservableList<PieChart.Data> classChart = FXCollections.observableArrayList(
-            new PieChart.Data("Present", 65),
-            new PieChart.Data("Absent", 35));
-        
+                new PieChart.Data("Present", 65),
+                new PieChart.Data("Absent", 35));
+
         CollectiveStudentChart.setData(classChart);
         CollectiveStudentChart.setLegendVisible(false);
-        
+
         return CollectiveStudentChart;
-        
+
     }
-    
+
     public PieChart StudentPieChart()
     {
         ObservableList<PieChart.Data> studentChart = FXCollections.observableArrayList(
-            new PieChart.Data("Present", 90),
-            new PieChart.Data("Absent", 10));
-        
+                new PieChart.Data("Present", 90),
+                new PieChart.Data("Absent", 10));
+
         studentPieChart.setData(studentChart);
-        
-        
-        return studentPieChart; 
+
+        return studentPieChart;
     }
-    
+
     public BarChart studentBarChart()
     {
         // Define category axises
@@ -147,12 +143,12 @@ public class TeacherMainViewController implements Initializable
         daysAxis.setLabel("Days of absence");
         NumberAxis yAxis = new NumberAxis();
         yAxis.setLabel("Hours of absence");
-        
+
         BarChart bChart = new BarChart(daysAxis, yAxis);
-        
+
         XYChart.Series dataSet = new XYChart.Series();
         dataSet.setName("Absence");
-        
+
         dataSet.getData().add(new XYChart.Data("Monday", 2300));
         dataSet.getData().add(new XYChart.Data("Tuesday", 1000));
         dataSet.getData().add(new XYChart.Data("Wednesday", 986));
@@ -161,10 +157,9 @@ public class TeacherMainViewController implements Initializable
 
         //add dataset to chart
         barChartAbsence.getData().add(dataSet);
-        
+
         return barChartAbsence;
-        
-        
+
     }
 
     @FXML
@@ -186,9 +181,8 @@ public class TeacherMainViewController implements Initializable
                     }
                 }
             }
-        
+
         }
-        
 
     }
 
@@ -198,25 +192,26 @@ public class TeacherMainViewController implements Initializable
         Stage mainStage = (Stage) imgLogo.getScene().getWindow();
         loadMainView();
     }
-    
-     private void loadMainView() throws IOException
-     {
-         mainAnchorPane.getChildren().clear();
-         paneMainView.toFront();
-         mainAnchorPane.getChildren().add(paneMainView);
-     }
+
+    private void loadMainView() throws IOException
+    {
+        mainAnchorPane.getChildren().clear();
+        paneMainView.toFront();
+        mainAnchorPane.getChildren().add(paneMainView);
+    }
 
     @FXML
     private void showClassStatistics(ActionEvent event)
     {
         if (!comboClassList.getSelectionModel().isEmpty())
         {
+            classList = null;
             classList = comboClassList.getSelectionModel().getSelectedItem();
+            comboClassList.getSelectionModel().clearSelection();
             tbViewStudents.setItems(aaModel.getStudentsInClass(classList));
-            
             mainAnchorPane.getChildren().clear();
             paneClassView.toFront();
-            mainAnchorPane.getChildren().add(paneClassView);  
+            mainAnchorPane.getChildren().add(paneClassView);
         }
     }
 

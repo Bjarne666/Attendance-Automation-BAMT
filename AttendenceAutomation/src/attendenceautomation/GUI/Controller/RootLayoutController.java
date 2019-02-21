@@ -71,7 +71,7 @@ public class RootLayoutController implements Initializable
     */
     private void loadMainView() throws IOException
     {
-        AnchorPane pane1 = FXMLLoader.load(getClass().getResource("/attendenceautomation/GUI/View/AttendenceMainView1.fxml"));
+        AnchorPane pane1 = FXMLLoader.load(getClass().getResource("/attendenceautomation/GUI/View/AttendenceStudentView.fxml"));
         anchorTest.getChildren().clear();
         anchorTest.getChildren().add(pane1);
     }         

@@ -94,13 +94,18 @@ public class TeacherMainViewController implements Initializable
         colName.setCellValueFactory(new PropertyValueFactory<>("name"));
         colEmail.setCellValueFactory(new PropertyValueFactory<>("Email"));
         
-//        colName.setCellValueFactory(cellData -> cellData.getValue().getName());
-//        colEmail.setCellValueFactory(cellData -> cellData.getValue().getEmail());
+        try
+        {
+            loadMainView();
+        } 
+        catch (IOException ex)
+        {
+            ex.printStackTrace();
+        }
+        
         classPieChart();
         StudentPieChart();
-        studentBarChart();
-        
-       
+        studentBarChart(); 
     }    
 
 
@@ -117,6 +122,7 @@ public class TeacherMainViewController implements Initializable
             new PieChart.Data("Absent", 35));
         
         CollectiveStudentChart.setData(classChart);
+        CollectiveStudentChart.setLegendVisible(false);
         
         return CollectiveStudentChart;
         
@@ -207,13 +213,10 @@ public class TeacherMainViewController implements Initializable
         if (!comboClassList.getSelectionModel().isEmpty())
         {
             classList = comboClassList.getSelectionModel().getSelectedItem();
-            comboClassList.setItems(aaModel.getAllClasses());
             
             mainAnchorPane.getChildren().clear();
-
             paneClassView.toFront();
-            mainAnchorPane.getChildren().add(paneClassView);
-            
+            mainAnchorPane.getChildren().add(paneClassView);  
         }
     }
 

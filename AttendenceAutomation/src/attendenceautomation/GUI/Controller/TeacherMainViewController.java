@@ -88,7 +88,7 @@ public class TeacherMainViewController implements Initializable
     @Override
     public void initialize(URL url, ResourceBundle rb)
     {
-        tbViewStudents.setItems(aaModel.getAllStudents());
+//        tbViewStudents.setItems(aaModel.getAllStudents());
         comboClassList.setItems(aaModel.getAllClasses());
         
         colName.setCellValueFactory(new PropertyValueFactory<>("name"));
@@ -174,7 +174,6 @@ public class TeacherMainViewController implements Initializable
             if (!tbViewStudents.getSelectionModel().isEmpty())
             {
                 chosenClass = tbViewStudents.getSelectionModel().getSelectedItem();
-//                tbViewStudents.setItems(aaModel.getAllStudents());
 
                 if (event.getButton().equals(MouseButton.PRIMARY))
                 {
@@ -213,6 +212,7 @@ public class TeacherMainViewController implements Initializable
         if (!comboClassList.getSelectionModel().isEmpty())
         {
             classList = comboClassList.getSelectionModel().getSelectedItem();
+            tbViewStudents.setItems(aaModel.getStudentsInClass(classList));
             
             mainAnchorPane.getChildren().clear();
             paneClassView.toFront();

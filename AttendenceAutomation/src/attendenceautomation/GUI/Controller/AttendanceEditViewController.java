@@ -75,4 +75,18 @@ public class AttendanceEditViewController implements Initializable
       lblAReason.setVisible(visible);
       txtAReason.setVisible(visible);   
     }
+
+    @FXML
+    private void handleAbsenceVisibility(ActionEvent event)
+    {
+        if (editAttendance.getSelectedToggle() != rdBtnAbsent)
+        {
+            setReasonVisibility(false);
+        }
+        else if (editAttendance.getSelectedToggle() == rdBtnAbsent)
+        {
+            setReasonVisibility(true);
+        }
+    }
+
 }

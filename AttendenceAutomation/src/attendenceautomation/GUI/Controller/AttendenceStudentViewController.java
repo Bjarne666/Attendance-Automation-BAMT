@@ -5,11 +5,8 @@
  */
 package attendenceautomation.GUI.Controller;
 
-import attendenceautomation.UTIL.DateConverter;
 import java.net.URL;
-import java.util.Calendar;
 import java.util.ResourceBundle;
-import javafx.beans.property.StringProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -58,14 +55,17 @@ public class AttendenceStudentViewController implements Initializable {
     }    
 
     @FXML
-    private void handleAttendance(ActionEvent event) {
-        if (attendance.getSelectedToggle() == rdBtnPresent) {
+    private void handleAttendance(ActionEvent event) 
+    {
+        if (attendance.getSelectedToggle() == rdBtnPresent) 
+        {
             lblAttendance.setText("Present");
             lblAttendance.setVisible(true);
             lblAbsent.setVisible(false);
             return;
         }
-        else if (attendance.getSelectedToggle() == rdBtnAbsent) {
+        else if (attendance.getSelectedToggle() == rdBtnAbsent) 
+        {
             lblAbsent.setText("Absent");
             lblAbsent.setVisible(true);
             lblAttendance.setVisible(false);

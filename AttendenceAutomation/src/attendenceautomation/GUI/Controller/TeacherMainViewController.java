@@ -9,17 +9,13 @@ import attendenceautomation.BE.SchoolClass;
 import attendenceautomation.BE.Student;
 import attendenceautomation.GUI.Model.AAModel;
 import com.jfoenix.controls.JFXComboBox;
-import com.jfoenix.controls.JFXListView;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.CategoryAxis;
@@ -34,7 +30,6 @@ import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 /**
@@ -72,15 +67,13 @@ public class TeacherMainViewController implements Initializable
     @FXML
     private BarChart<?, ?> barChartAbsence;
     
-    AAModel aaModel = new AAModel();
-    
     private Student chosenClass;
     
     private SchoolClass classList;
     
-    
-    
+    AAModel aaModel = new AAModel();
 
+    
     public TeacherMainViewController()
     {
         
@@ -92,7 +85,7 @@ public class TeacherMainViewController implements Initializable
     @Override
     public void initialize(URL url, ResourceBundle rb)
     {
-//        tbViewStudents.setItems(aaModel.getAllStudents());
+
         comboClassList.setItems(aaModel.getAllClasses());
         
         colName.setCellValueFactory(new PropertyValueFactory<>("name"));
@@ -187,10 +180,7 @@ public class TeacherMainViewController implements Initializable
                     }
                 }
             }
-        
         }
-        
-
     }
 
     @FXML

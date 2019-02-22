@@ -18,8 +18,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.chart.BarChart;
-import javafx.scene.chart.CategoryAxis;
-import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.PieChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.TableColumn;
@@ -40,6 +38,7 @@ import javafx.stage.Stage;
 public class TeacherMainViewController implements Initializable
 {
 
+    // our FXML elements
     @FXML
     private TableView<Student> tbViewStudents;
     @FXML
@@ -67,6 +66,7 @@ public class TeacherMainViewController implements Initializable
     @FXML
     private BarChart<?, ?> barChartAbsence;
 
+    // our instance variables
     private Student chosenStudent;
 
     AAModel aaModel = new AAModel();
@@ -101,13 +101,20 @@ public class TeacherMainViewController implements Initializable
         StudentPieChart();
         studentBarChart();
     }
-
+    /**
+     * handles exitting the program while in teacher view
+     * @param event 
+     */
     @FXML
     private void handleTeacherLogout(ActionEvent event)
     {
         System.exit(0);
     }
-
+    
+    /**
+     * The piechart showing overall class attendance
+     * @return 
+     */
     public PieChart classPieChart()
     {
         ObservableList<PieChart.Data> classChart = FXCollections.observableArrayList(
@@ -120,7 +127,11 @@ public class TeacherMainViewController implements Initializable
         return CollectiveStudentChart;
 
     }
-
+    
+    /**
+     * The piechart showing student attendance
+     * @return 
+     */
     public PieChart StudentPieChart()
     {
         ObservableList<PieChart.Data> studentChart = FXCollections.observableArrayList(
@@ -131,7 +142,10 @@ public class TeacherMainViewController implements Initializable
 
         return studentPieChart;
     }
-
+    /**
+     * The number of hours absent any given day for a monthly basis
+     * @return 
+     */
     public BarChart studentBarChart()
     {
         // Define category axises
@@ -152,7 +166,11 @@ public class TeacherMainViewController implements Initializable
 
         return barChartAbsence;
     }
-
+    /**
+     * Changes the stackpane currently shown and clears the combobox selection
+     * to allow returning to the same class overview.
+     * @param event 
+     */
     @FXML
     private void handlePaneSwitch(MouseEvent event)
     {
@@ -174,21 +192,35 @@ public class TeacherMainViewController implements Initializable
             }
         }
     }
-
+    
+    /**
+     * Gets the image and does a method call when said image is clicked
+     * @param event
+     * @throws IOException 
+     */
     @FXML
     private void clickImage(MouseEvent event) throws IOException
     {
         Stage mainStage = (Stage) imgLogo.getScene().getWindow();
         loadMainView();
     }
-
+    
+    /**
+     * Returns to the frontpage of the teacher's view
+     * @throws IOException 
+     */
     private void loadMainView() throws IOException
     {
         mainAnchorPane.getChildren().clear();
         paneMainView.toFront();
         mainAnchorPane.getChildren().add(paneMainView);
     }
-
+    
+    /**
+     * Chooses which class to show
+     * and shows the students currently associated with the selected class
+     * @param event 
+     */
     @FXML
     private void showClassStatistics(ActionEvent event)
     {

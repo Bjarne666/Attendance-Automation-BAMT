@@ -20,7 +20,8 @@ import javafx.scene.control.ToggleGroup;
  *
  * @author Kokushi
  */
-public class AttendenceStudentViewController implements Initializable {
+public class AttendenceStudentViewController implements Initializable
+{
 
     @FXML
     private Label lblUser;
@@ -45,35 +46,41 @@ public class AttendenceStudentViewController implements Initializable {
      * Initializes the controller class.
      */
     @Override
-    public void initialize(URL url, ResourceBundle rb) {
+    public void initialize(URL url, ResourceBundle rb)
+    {
         lblUser.setText("Birger");
         lblDate.setText("22-02-2019");
         lblEducation.setText("Computer Science");
         lblName.setText("Birger");
         lblAttendance.setVisible(false);
         lblAbsent.setVisible(false);
-    }    
+    }
 
+    /**
+     * Shows a label with the chosen state of attendance when the save button is
+     * pressed.
+     *
+     * @param event
+     */
     @FXML
-    private void handleAttendance(ActionEvent event) 
+    private void handleAttendance(ActionEvent event)
     {
-        if (attendance.getSelectedToggle() == rdBtnPresent) 
+        if (attendance.getSelectedToggle() == rdBtnPresent)
         {
             lblAttendance.setText("Present");
             lblAttendance.setVisible(true);
             lblAbsent.setVisible(false);
             return;
-        }
-        else if (attendance.getSelectedToggle() == rdBtnAbsent) 
+        } else if (attendance.getSelectedToggle() == rdBtnAbsent)
         {
             lblAbsent.setText("Absent");
             lblAbsent.setVisible(true);
             lblAttendance.setVisible(false);
             return;
         }
-         Alert alert = new Alert(Alert.AlertType.ERROR, "You have to select either present or absent");
-            alert.showAndWait();
-        
+        Alert alert = new Alert(Alert.AlertType.ERROR, "You have to select either present or absent");
+        alert.showAndWait();
+
     }
-    
+
 }

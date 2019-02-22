@@ -23,12 +23,12 @@ public class MockDAO implements AADALInterface {
 
     //create students
     Student s1 = new Student("Jens", "jens@easv365.com", "", "25%");
-    Student s2 = new Student("birger", "birger@easv365.com", "", "10%");
+    Student s2 = new Student("birger", "birger@easv365.com", "birger365", "10%"); //current student login
     Student s3 = new Student("Jørgen", "jørgen@easv365.com", "", "0%");
     Student s4 = new Student("Per", "per@easv365.com", "", "30%");
 
     //create teacher
-    Teacher t1 = new Teacher("Peter", "peter@easv365.com", "");
+    Teacher t1 = new Teacher("Peter", "peter@easv365.com", "peter365"); //current teacher login
 
     public MockDAO() {
     c1.addStudent(s1);

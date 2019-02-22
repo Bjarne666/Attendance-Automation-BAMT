@@ -6,7 +6,6 @@
 package attendenceautomation.GUI.Controller;
 
 import java.net.URL;
-import java.time.LocalDate;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -48,18 +47,19 @@ public class AttendanceEditViewController implements Initializable
     @Override
     public void initialize(URL url, ResourceBundle rb)
     {
-        setReasonVisibility(false);
+        lblAReason.setVisible(false);
+        txtAReason.setVisible(false);
     }
-
+    
+    /**
+     * handles changing the attendance based on the chosen buttons
+     * or a message if nothing is chosen
+     * @param event 
+     */
     @FXML
     private void handleEditAttendance(ActionEvent event)
     {
-        handleButtons();
-    }
-
-    public void handleButtons()
-    {
-        if (editAttendance.getSelectedToggle() == rdBtnPresent && dPickerTo.getValue() != null)
+         if (editAttendance.getSelectedToggle() == rdBtnPresent && dPickerTo.getValue() != null)
         {
             informationAlert("Attendance for the chosen date set to present");
             return;
@@ -72,24 +72,32 @@ public class AttendanceEditViewController implements Initializable
         newAlert.showAndWait();
     }
 
-    public void setReasonVisibility(boolean visible)
-    {
-        lblAReason.setVisible(visible);
-        txtAReason.setVisible(visible);
-    }
 
+    /**
+     * Changes visibility of the reason textfield depending on the radiobutton
+     * chosen.
+     *
+     * @param event
+     */
     @FXML
     private void handleAbsenceVisibility(ActionEvent event)
     {
         if (editAttendance.getSelectedToggle() != rdBtnAbsent)
         {
-            setReasonVisibility(false);
+            lblAReason.setVisible(false);
+            txtAReason.setVisible(false);
         } else if (editAttendance.getSelectedToggle() == rdBtnAbsent)
         {
-            setReasonVisibility(true);
+            lblAReason.setVisible(true);
+            txtAReason.setVisible(true);
         }
     }
 
+    /**
+     * handles information messages
+     *
+     * @param message
+     */
     public void informationAlert(String message)
     {
         Alert alert = new Alert(AlertType.INFORMATION);

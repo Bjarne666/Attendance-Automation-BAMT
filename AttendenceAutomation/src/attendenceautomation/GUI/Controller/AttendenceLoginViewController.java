@@ -5,6 +5,7 @@
  */
 package attendenceautomation.GUI.Controller;
 
+import com.jfoenix.controls.JFXPasswordField;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -30,6 +31,8 @@ public class AttendenceLoginViewController implements Initializable
     private TextField txtUserName;
     @FXML
     private Button btnLogin;
+    @FXML
+    private JFXPasswordField txtPassword;
     
 
      public AttendenceLoginViewController()
@@ -40,7 +43,8 @@ public class AttendenceLoginViewController implements Initializable
     @FXML
     private void handleLogin(ActionEvent event) throws IOException, InterruptedException
     {
-        if(txtUserName.getText().equals(" "))
+        //handles student login
+        if(txtUserName.getText().toLowerCase().equals("birger@easv365.com") && txtPassword.getText().toLowerCase().equals("birger365"))
         {
             AnchorPane pane = FXMLLoader.load(getClass().getResource("/attendenceautomation/GUI/View/RootLayout.fxml"));
             FXMLLoader loader = new FXMLLoader();
@@ -57,7 +61,8 @@ public class AttendenceLoginViewController implements Initializable
             currentWindows.close();
         }
         
-        if(txtUserName.getText().equals("1"))
+        //handles teacher login
+        if(txtUserName.getText().toLowerCase().equals("peter@easv365.com") && txtPassword.getText().toLowerCase().equals("peter365"))
         {
             AnchorPane pane = FXMLLoader.load(getClass().getResource("/attendenceautomation/GUI/View/teacherMainView.fxml"));
             FXMLLoader loader = new FXMLLoader();

@@ -9,16 +9,11 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.chart.BarChart;
-import javafx.scene.chart.CategoryAxis;
-import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.PieChart;
 import javafx.scene.chart.XYChart;
-import javafx.scene.layout.AnchorPane;
-
 
 /**
  * FXML Controller class
@@ -27,25 +22,31 @@ import javafx.scene.layout.AnchorPane;
  */
 public class AttendanceStatisticsViewController implements Initializable
 {
-    
+
     @FXML
     private BarChart<?, ?> studentBarChart;
     @FXML
     private PieChart attendencePieChart;
-	
-private PieChart buildPieChart()
+
+    /**
+     * sets the piechart data
+     *
+     * @return
+     */
+    private PieChart buildPieChart()
     {
         ObservableList<PieChart.Data> classChart = FXCollections.observableArrayList(
-            new PieChart.Data("Present", 90),
-            new PieChart.Data("Absent", 10));
-        
+                new PieChart.Data("Present", 90),
+                new PieChart.Data("Absent", 10));
+
         attendencePieChart.setData(classChart);
-        
+
         return attendencePieChart;
     }
-	
+
     /**
      * Initializes the controller class.
+     *
      * @param url
      * @param rb
      */
@@ -54,8 +55,13 @@ private PieChart buildPieChart()
     {
         buildPieChart();
         studentBarChart();
-    }    
-    
+    }
+
+    /**
+     * defines the barChart and inserts data
+     *
+     * @return
+     */
     public BarChart studentBarChart()
     {
         // Define category axises
@@ -64,7 +70,7 @@ private PieChart buildPieChart()
         studentBarChart.setTitle("Overview of days absent (monthly)");
         XYChart.Series dataSet = new XYChart.Series();
         dataSet.setName("Absence");
-        
+
         dataSet.getData().add(new XYChart.Data("Monday", 25));
         dataSet.getData().add(new XYChart.Data("Tuesday", 2));
         dataSet.getData().add(new XYChart.Data("Wednesday", 0));
@@ -73,9 +79,8 @@ private PieChart buildPieChart()
 
         //add dataset to chart
         studentBarChart.getData().add(dataSet);
-        
+
         return studentBarChart;
-        
-        
+
     }
 }

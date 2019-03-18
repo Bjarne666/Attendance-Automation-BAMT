@@ -80,7 +80,6 @@ public class AttendanceStatisticsViewController implements Initializable
         //add dataset to chart
         studentBarChart.getData().add(dataSet);
         studentBarChart.setLegendVisible(false);
-
         return studentBarChart;
 
     }

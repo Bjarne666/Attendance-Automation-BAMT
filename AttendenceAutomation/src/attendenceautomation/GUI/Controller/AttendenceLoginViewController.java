@@ -14,6 +14,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
@@ -60,7 +61,19 @@ public class AttendenceLoginViewController implements Initializable
             Stage currentWindows = (Stage) btnLogin.getScene().getWindow();
             currentWindows.close();
         }
+        if (!txtUserName.getText().toLowerCase().equals("birger@easv365.com") || !txtPassword.getText().toLowerCase().equals("birger365"))
+        {
+            Alert alert = new Alert(Alert.AlertType.ERROR, "Incorrect user name or password");
+                    alert.showAndWait();
+                    return;
+        }
         
+        
+       
+    }
+    
+     private void handelTeacherLogin() throws IOException
+        {
         //handles teacher login
         if(txtUserName.getText().toLowerCase().equals("peter@easv365.com") && txtPassword.getText().toLowerCase().equals("peter365"))
         {
@@ -77,7 +90,13 @@ public class AttendenceLoginViewController implements Initializable
             Stage currentWindows = (Stage) btnLogin.getScene().getWindow();
             currentWindows.close();
         }
-    }
+        if (!txtUserName.getText().toLowerCase().equals("peter@easv365.com") && !txtPassword.getText().toLowerCase().equals("peter365"))
+        {
+            Alert alert = new Alert(Alert.AlertType.ERROR, "Incorrect user name or password");
+                    alert.showAndWait();
+                    return;
+        }
+        }
 
     
     /**

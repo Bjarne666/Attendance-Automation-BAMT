@@ -49,9 +49,22 @@ public class AAManager implements AttendanceInterface
         return aDAO.getStudentsInClass(chosenClass);
     }
 
+//    @Override
+//    public Student getStudent(Student studentToGet)
+//    {
+//        return aDAO.getStudent(studentToGet);
+//    }
+
+//    @Override
+//    public Student getStudent(Student studentToGet)
+//    {
+//        return aDAO.getStudent();
+//    }
+
     @Override
     public Student getStudent(Student studentToGet)
     {
-        return aDAO.getStudent(studentToGet);
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+    
 }

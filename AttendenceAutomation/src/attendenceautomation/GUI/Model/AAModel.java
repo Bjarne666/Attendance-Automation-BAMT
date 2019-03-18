@@ -29,7 +29,7 @@ public class AAModel
 
     public AAModel()
     {
-       MockDAO mDAO = new MockDAO();
+        MockDAO mDAO = new MockDAO();
        aManager = new AAManager();
        studentList = FXCollections.observableArrayList(mDAO.getAllStudents());
        studentList.addAll(mDAO.getAllStudents());
@@ -55,11 +55,6 @@ public class AAModel
     public ObservableList<Student> getStudentsInClass(SchoolClass chosenClass)
     {
         return FXCollections.observableArrayList(aManager.getStudentsInClass(chosenClass));
-    }
-    
-    public Student getStudent(Student studentToGet)
-    {
-        return aManager.getStudent(studentToGet);
     }
     
 }

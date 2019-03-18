@@ -15,9 +15,9 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.StackPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #ededed;" stylesheets="@AttendanceStyleSheet.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="attendenceautomation.GUI.Controller.TeacherMainViewController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #ededed;" stylesheets="@AttendanceStyleSheet.css" xmlns="http://javafx.com/javafx/8.0.181" xmlns:fx="http://javafx.com/fxml/1" fx:controller="attendenceautomation.GUI.Controller.TeacherMainViewController">
    <children>
-      <AnchorPane layoutX="180.0" layoutY="449.0" prefHeight="56.0" prefWidth="442.0" style="-fx-background-color: #4b4b4b;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="180.0" AnchorPane.rightAnchor="-2.0" />
+      <AnchorPane layoutX="180.0" layoutY="449.0" prefHeight="56.0" prefWidth="442.0" style="-fx-background-color: #4b4b4b;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="180.0" AnchorPane.rightAnchor="0.0" />
       <AnchorPane layoutX="7.0" prefHeight="85.0" prefWidth="200.0" style="-fx-background-color: #4b4b4b;" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <ImageView fx:id="imgLogo" fitHeight="80.0" fitWidth="200.0" layoutX="-10.0" layoutY="-35.0" onMouseClicked="#clickImage" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="15.0">
@@ -43,7 +43,7 @@
                   <Label layoutX="29.0" layoutY="22.0" style="-fx-font-size: 32;" text="Teacher Overview" />
                </children>
             </Pane>
-            <StackPane prefHeight="525.0" prefWidth="522.0">
+            <StackPane prefHeight="525.0" prefWidth="522.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0">
                <children>
                   <Pane fx:id="paneClassView" prefHeight="525.0" prefWidth="522.0" style="-fx-background-color: white;">
                      <children>
@@ -61,7 +61,7 @@
                         <Label layoutX="125.0" layoutY="75.0" text="Birgir" />
                         <Label layoutX="22.0" layoutY="111.0" text="Absence :" />
                         <Label layoutX="103.0" layoutY="111.0" text="10 %" />
-                        <BarChart fx:id="barChartAbsence" layoutY="198.0" prefHeight="327.0" prefWidth="400.0" title="Over view of days absent (monthly)">
+                        <BarChart fx:id="barChartAbsence" layoutY="198.0" prefHeight="327.0" prefWidth="400.0" title="Overview of days absent (monthly)">
                           <xAxis>
                             <CategoryAxis side="BOTTOM" />
                           </xAxis>
@@ -77,7 +77,7 @@
                </children>
             </StackPane>
          </children></AnchorPane>
-      <Label layoutX="627.0" layoutY="14.0" text="Logged In as:" />
-      <Label layoutX="727.0" layoutY="14.0" text="Peter" />
+      <Label layoutX="625.0" layoutY="14.0" text="Logged In as:" AnchorPane.rightAnchor="86.0" AnchorPane.topAnchor="14.0" />
+      <Label layoutX="727.0" layoutY="14.0" text="Peter" AnchorPane.rightAnchor="38.0" AnchorPane.topAnchor="14.0" />
    </children>
 </AnchorPane>

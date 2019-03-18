@@ -22,19 +22,19 @@ public class MockDAO implements AADALInterface {
     SchoolClass c2 = new SchoolClass("CS2018B");
 
     //create students
-    Student s1 = new Student("Jens", "jens@easv365.com", "", "25%");
-    Student s2 = new Student("birger", "birger@easv365.com", "birger365", "10%"); //current student login
-    Student s3 = new Student("Jørgen", "jørgen@easv365.com", "", "0%");
-    Student s4 = new Student("Per", "per@easv365.com", "", "30%");
-
-    //create teacher
-    Teacher t1 = new Teacher("Peter", "peter@easv365.com", "peter365"); //current teacher login
+//    Student s1 = new Student("Jens", "jens@easv365.com", "", "25%");
+//    Student s2 = new Student("birger", "birger@easv365.com", "birger365", "10%"); //current student login
+//    Student s3 = new Student("Jørgen", "jørgen@easv365.com", "", "0%");
+//    Student s4 = new Student("Per", "per@easv365.com", "", "30%");
+//
+//    //create teacher
+//    Teacher t1 = new Teacher("Peter", "peter@easv365.com", "peter365"); //current teacher login
 
     public MockDAO() {
-    c1.addStudent(s1);
-    c1.addStudent(s2);
-    c2.addStudent(s3);
-    c2.addStudent(s4);
+//    c1.addStudent(s1);
+//    c1.addStudent(s2);
+//    c2.addStudent(s3);
+//    c2.addStudent(s4);
     
 
     }
@@ -45,10 +45,10 @@ public class MockDAO implements AADALInterface {
     public List<Student> getAllStudents() {
         List<Student> students = new ArrayList<>();
 
-        students.add(s1);
-        students.add(s2);
-        students.add(s3);
-        students.add(s4);
+//        students.add(s1);
+//        students.add(s2);
+//        students.add(s3);
+//        students.add(s4);
         return students;
     }
     
@@ -67,7 +67,7 @@ public class MockDAO implements AADALInterface {
     public List<Teacher> getAllTeachers() {
         List<Teacher> teachers = new ArrayList<>();
        
-        teachers.add(t1);
+//        teachers.add(t1);
         return teachers;
     }
     
@@ -78,15 +78,11 @@ public class MockDAO implements AADALInterface {
     }
 
     @Override
-    public Student getStudent(int id)
+    public Student getStudent(Student studentToGet)
     {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+
 }
-//    @Override
-//    public Student getStudent(Student chosenStudent)
-//    {
-//        
-//    }
 

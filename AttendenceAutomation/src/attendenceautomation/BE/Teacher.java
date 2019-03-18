@@ -15,9 +15,9 @@ public class Teacher extends Person
 {
  private ArrayList<SchoolClass> schoolClass;
 
-    public Teacher(String name, String email, String password)
+    public Teacher(int id, String name, String email, String password)
     {
-        super(name, email, password);
+        super(id, name, email, password);
         
     }
 

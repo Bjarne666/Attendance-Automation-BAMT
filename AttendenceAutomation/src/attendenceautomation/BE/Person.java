@@ -16,14 +16,14 @@ public abstract class Person
 {
 
     //currently not in use
-    //private int id;
+    private int id;
     private final StringProperty name;
     private final StringProperty email;
-    private StringProperty password;
+    private final StringProperty password;
     
-    public Person(String name, String email, String password)
+    public Person(int id, String name, String email, String password)
     {
-//        this.id = id;
+        this.id = id;
         this.name = new SimpleStringProperty();
         this.email = new SimpleStringProperty();
         this.name.set(name);
@@ -32,10 +32,11 @@ public abstract class Person
         this.password.set(password);
     }
 
-//    public int getId()
-//    {
-//        return id;
-//    }
+    public int getId()
+    {
+        return id;
+    }
+    
     public String getName()
     {
         return name.get();
@@ -65,10 +66,12 @@ public abstract class Person
     {
         password.set(newPassword);
     }
-//    public void setId(int newId)
-//    {
-//        this.id = id;
-//    }
+    
+    public void setId(int newId)
+    {
+        this.id = id;
+    }
+    
     @Override
     public String toString()
     {

@@ -19,9 +19,9 @@ public class Student extends Person
 
     private List<Attendance> attendance;
 
-    public Student(String name, String email, String password, String absence)
+    public Student(int id, String name, String email, String password, String absence)
     {
-        super(name, email, password);
+        super(id, name, email, password);
         
         attendance = new ArrayList<>();
         

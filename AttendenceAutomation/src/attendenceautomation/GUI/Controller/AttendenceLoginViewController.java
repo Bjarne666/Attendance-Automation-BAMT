@@ -36,16 +36,16 @@ public class AttendenceLoginViewController implements Initializable
     private JFXPasswordField txtPassword;
     
 
-     public AttendenceLoginViewController()
+     public AttendenceLoginViewController() throws IOException
+     {
+
+     }
+     
+     //handles student login
+     private void handleStudentLogin() throws IOException
      {
          
-     }
-
-    @FXML
-    private void handleLogin(ActionEvent event) throws IOException, InterruptedException
-    {
-        //handles student login
-        if(txtUserName.getText().toLowerCase().equals("birger@easv365.com") && txtPassword.getText().toLowerCase().equals("birger365"))
+          if(txtUserName.getText().toLowerCase().equals("birger@easv365.com") && txtPassword.getText().toLowerCase().equals("birger365"))
         {
             AnchorPane pane = FXMLLoader.load(getClass().getResource("/attendenceautomation/GUI/View/RootLayout.fxml"));
             FXMLLoader loader = new FXMLLoader();
@@ -61,41 +61,46 @@ public class AttendenceLoginViewController implements Initializable
             Stage currentWindows = (Stage) btnLogin.getScene().getWindow();
             currentWindows.close();
         }
+        
         if (!txtUserName.getText().toLowerCase().equals("birger@easv365.com") || !txtPassword.getText().toLowerCase().equals("birger365"))
         {
             Alert alert = new Alert(Alert.AlertType.ERROR, "Incorrect user name or password");
                     alert.showAndWait();
-                    return;
         }
-        
-        
-       
+     }
+
+    @FXML
+    private void handleLogin(ActionEvent event) throws IOException, InterruptedException
+    {
+        handleTeacherLogin();
+        handleStudentLogin();
+
     }
     
-     private void handelTeacherLogin() throws IOException
+     private void handleTeacherLogin() throws IOException
         {
         //handles teacher login
-        if(txtUserName.getText().toLowerCase().equals("peter@easv365.com") && txtPassword.getText().toLowerCase().equals("peter365"))
-        {
-            AnchorPane pane = FXMLLoader.load(getClass().getResource("/attendenceautomation/GUI/View/teacherMainView.fxml"));
-            FXMLLoader loader = new FXMLLoader();
-              
-            Stage stage = new Stage();
-            stage.setScene(new Scene(pane));
+            if(txtUserName.getText().toLowerCase().equals("peter@easv365.com") && txtPassword.getText().toLowerCase().equals("peter365"))
+            {
+                AnchorPane pane = FXMLLoader.load(getClass().getResource("/attendenceautomation/GUI/View/teacherMainView.fxml"));
+                FXMLLoader loader = new FXMLLoader();
+
+                Stage stage = new Stage();
+                stage.setScene(new Scene(pane));
+
+                stage.show();
+
+
+                //Close this window
+                Stage currentWindows = (Stage) btnLogin.getScene().getWindow();
+                currentWindows.close();
+            }
             
-            stage.show();
-            
-            
-            //Close this window
-            Stage currentWindows = (Stage) btnLogin.getScene().getWindow();
-            currentWindows.close();
-        }
-        if (!txtUserName.getText().toLowerCase().equals("peter@easv365.com") && !txtPassword.getText().toLowerCase().equals("peter365"))
-        {
-            Alert alert = new Alert(Alert.AlertType.ERROR, "Incorrect user name or password");
-                    alert.showAndWait();
-                    return;
-        }
+            if (!txtUserName.getText().toLowerCase().equals("peter@easv365.com") || !txtPassword.getText().toLowerCase().equals("peter365"))
+            {
+                Alert alert = new Alert(Alert.AlertType.ERROR, "Incorrect user name or password");
+                        alert.showAndWait();
+            }
         }
 
     

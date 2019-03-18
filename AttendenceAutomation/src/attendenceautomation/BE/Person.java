@@ -20,6 +20,7 @@ public abstract class Person
     private final StringProperty name;
     private final StringProperty email;
     private StringProperty password;
+    
     public Person(String name, String email, String password)
     {
 //        this.id = id;

@@ -25,6 +25,13 @@ public interface AttendanceInterface
     
     /**
      *
+     * @param studentToGet
+     * @return
+     */
+    public Student getStudent (Student studentToGet);
+    
+    /**
+     *
      * @return
      */
     public List<SchoolClass> getAllClasses();

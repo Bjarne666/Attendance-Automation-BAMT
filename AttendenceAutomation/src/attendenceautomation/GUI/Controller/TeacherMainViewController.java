@@ -191,10 +191,10 @@ public class TeacherMainViewController implements Initializable
                 {
                     if (event.getClickCount() == 1)
                     {
-                        mainAnchorPane.getChildren().clear();
+//                        mainAnchorPane.getChildren().clear();
 
                         paneStudentView.toFront();
-                        mainAnchorPane.getChildren().add(paneStudentView);
+//                        mainAnchorPane.getChildren().add(paneStudentView);
                     }
                 }
             }
@@ -219,9 +219,9 @@ public class TeacherMainViewController implements Initializable
      */
     private void loadMainView() throws IOException
     {
-        mainAnchorPane.getChildren().clear();
+//        mainAnchorPane.getChildren().clear();
+//        mainAnchorPane.getChildren().add(paneMainView);
         paneMainView.toFront();
-        mainAnchorPane.getChildren().add(paneMainView);
     }
     
     /**
@@ -237,9 +237,9 @@ public class TeacherMainViewController implements Initializable
 
             tbViewStudents.setItems(aaModel.getStudentsInClass(comboClassList.getSelectionModel().getSelectedItem()));
 
-            mainAnchorPane.getChildren().clear();
+//            mainAnchorPane.getChildren().clear();
             paneClassView.toFront();
-            mainAnchorPane.getChildren().add(paneClassView);
+//            mainAnchorPane.getChildren().add(paneClassView);
         }
     }
     

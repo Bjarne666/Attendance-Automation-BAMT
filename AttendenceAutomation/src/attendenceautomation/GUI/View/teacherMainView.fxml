@@ -2,6 +2,7 @@
 
 <?import com.jfoenix.controls.JFXComboBox?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.chart.BarChart?>
 <?import javafx.scene.chart.CategoryAxis?>
 <?import javafx.scene.chart.NumberAxis?>
@@ -25,6 +26,9 @@
                <image>
                   <Image url="@../../Image/easv_logo.png" />
                </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </ImageView>
          </children>
       </AnchorPane>
@@ -38,7 +42,7 @@
       </TableView>
       <AnchorPane fx:id="mainAnchorPane" layoutX="240.0" layoutY="47.0" prefHeight="525.0" prefWidth="522.0" AnchorPane.bottomAnchor="28.0" AnchorPane.leftAnchor="240.0" AnchorPane.rightAnchor="38.0" AnchorPane.topAnchor="47.0">
          <children>
-            <StackPane fx:id="stackAll" prefHeight="525.0" prefWidth="522.0" style="-fx-border-color: red; -fx-border-width: 5;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <StackPane fx:id="stackAll" prefHeight="525.0" prefWidth="522.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
                   <Pane fx:id="paneStudentView" prefHeight="532.0" prefWidth="522.0" style="-fx-background-color: white;">
                      <children>

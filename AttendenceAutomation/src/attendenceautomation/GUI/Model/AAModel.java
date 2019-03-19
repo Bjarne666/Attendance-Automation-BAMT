@@ -30,7 +30,7 @@ public class AAModel
     public AAModel()
     {
        MockDAO mDAO = new MockDAO();
-<<<<<<< HEAD
+
        aManager = new AAManager(mDAO);
        
        studentList = FXCollections.observableArrayList(aManager.getAllStudents());
@@ -38,14 +38,7 @@ public class AAModel
        classList = FXCollections.observableArrayList(aManager.getAllClasses());
        classList.addAll(aManager.getAllClasses());
        teacherList = FXCollections.observableArrayList(aManager.getAllTeachers());
-=======
-       aManager = new AAManager();
-       studentList = FXCollections.observableArrayList(mDAO.getAllStudents());
-       studentList.addAll(mDAO.getAllStudents());
-       classList = FXCollections.observableArrayList(mDAO.getAllClasses());
-       classList.addAll(mDAO.getAllClasses());
-       teacherList = FXCollections.observableArrayList(mDAO.getAllTeachers());
->>>>>>> parent of 84b0b6c... Revert "personDbDAO.. halfway there"
+
     }
     public ObservableList<Student> getAllStudents()
     {

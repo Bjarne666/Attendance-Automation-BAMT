@@ -105,7 +105,7 @@ public class PersonDBDAO
                         String email = rs.getString("email");
                         String password = rs.getString("password");
                         
-                        teacherToGet = new Teacher(firstName, email, password);
+                        teacherToGet = new Teacher(id, firstName, email, password);
                     }
             
         } catch (Exception e)

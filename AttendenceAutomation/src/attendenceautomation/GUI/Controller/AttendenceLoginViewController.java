@@ -43,12 +43,8 @@ public class AttendenceLoginViewController implements Initializable
     //handles student login
     private void handleStudentLogin() throws IOException
     {
-<<<<<<< HEAD
-=======
 
-        if (txtUserName.getText().toLowerCase().equals("birger@easv365.com") && txtPassword.getText().toLowerCase().equals("birger365"))
-        {
->>>>>>> parent of 84b0b6c... Revert "personDbDAO.. halfway there"
+        
             AnchorPane pane = FXMLLoader.load(getClass().getResource("/attendenceautomation/GUI/View/RootLayout.fxml"));
             FXMLLoader loader = new FXMLLoader();
 
@@ -60,48 +56,14 @@ public class AttendenceLoginViewController implements Initializable
             //Close this window
             Stage currentWindows = (Stage) btnLogin.getScene().getWindow();
             currentWindows.close();
-<<<<<<< HEAD
         
-=======
-        }
-
-        if (!txtUserName.getText().toLowerCase().equals("birger@easv365.com") || !txtPassword.getText().toLowerCase().equals("birger365"))
-        {
-            Alert alert = new Alert(Alert.AlertType.ERROR, "Incorrect user name or password");
-            alert.showAndWait();
-        }
     }
 
-    private void handleTeacherLogin() throws IOException
-    {
-        //handles teacher login
-        if (txtUserName.getText().toLowerCase().equals("peter@easv365.com") && txtPassword.getText().toLowerCase().equals("peter365"))
-        {
-            AnchorPane pane = FXMLLoader.load(getClass().getResource("/attendenceautomation/GUI/View/teacherMainView.fxml"));
-            FXMLLoader loader = new FXMLLoader();
-
-            Stage stage = new Stage();
-            stage.setScene(new Scene(pane));
-
-            stage.show();
-
-            //Close this window
-            Stage currentWindows = (Stage) btnLogin.getScene().getWindow();
-            currentWindows.close();
-        }
-
-        if (!txtUserName.getText().toLowerCase().equals("peter@easv365.com") || !txtPassword.getText().toLowerCase().equals("peter365"))
-        {
-            Alert alert = new Alert(Alert.AlertType.ERROR, "Incorrect user name or password");
-            alert.showAndWait();
-        }
->>>>>>> parent of 84b0b6c... Revert "personDbDAO.. halfway there"
-    }
+    
 
     @FXML
     private void handleLogin(ActionEvent event) throws IOException, InterruptedException
     {
-<<<<<<< HEAD
         if (txtUserName.getText().toLowerCase().equals("") && txtPassword.getText().toLowerCase().equals(""))
         {
             handleStudentLogin();
@@ -136,10 +98,9 @@ public class AttendenceLoginViewController implements Initializable
             currentWindows.close();
         
 
-=======
+
         handleTeacherLogin();
         handleStudentLogin();
->>>>>>> parent of 84b0b6c... Revert "personDbDAO.. halfway there"
     }
 
     /**

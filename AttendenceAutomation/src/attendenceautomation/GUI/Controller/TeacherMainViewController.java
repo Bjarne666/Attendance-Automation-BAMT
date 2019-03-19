@@ -72,15 +72,15 @@ public class TeacherMainViewController implements Initializable
     // our instance variables
     private Student chosenStudent;
 
-    AAModel aaModel = new AAModel();
+    AAModel aaModel;
     @FXML
     private StackPane stackAll;
     @FXML
     private Label lblDateTeacher;
 
-    public TeacherMainViewController()
+    public TeacherMainViewController() throws IOException
     {
-        
+    aaModel = new AAModel();
     }
 
     /**

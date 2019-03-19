@@ -10,7 +10,9 @@ import attendenceautomation.BLL.AAManager;
 import attendenceautomation.BE.Student;
 import attendenceautomation.BE.Teacher;
 import attendenceautomation.BLL.AttendanceInterface;
+import attendenceautomation.DAL.AttendanceFacade;
 import attendenceautomation.DAL.MockDAO;
+import java.io.IOException;
 import java.util.List;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -27,11 +29,11 @@ public class AAModel
     private ObservableList<Teacher> teacherList;
     
 
-    public AAModel()
+    public AAModel() throws IOException
     {
-       MockDAO mDAO = new MockDAO();
-
-       aManager = new AAManager(mDAO);
+//       MockDAO mDAO = new MockDAO();
+       AttendanceFacade aFacade = new AttendanceFacade();
+       aManager = new AAManager(aFacade);
        
        studentList = FXCollections.observableArrayList(aManager.getAllStudents());
        studentList.addAll(aManager.getAllStudents());

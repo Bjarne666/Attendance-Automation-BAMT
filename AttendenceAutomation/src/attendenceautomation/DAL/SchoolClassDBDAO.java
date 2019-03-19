@@ -14,8 +14,10 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.sql.PreparedStatement;
+import java.sql.Statement;
+import java.sql.ResultSet;
+
 
 /**
  *
@@ -23,7 +25,7 @@ import java.util.logging.Logger;
  */
 public class SchoolClassDBDAO
 {
-    private final DbConnectionProvider db;
+ DbConnectionProvider ds;
     
     /** 
      * forbindelse til database 
@@ -31,46 +33,88 @@ public class SchoolClassDBDAO
      */
     public SchoolClassDBDAO() throws IOException
     {
-        db = new DbConnectionProvider();    
+        ds = new DbConnectionProvider();    
     }
-    public class SchoolClass
-{
-    private String className;
-    private List<Student> students;
-    private int id;
-
-    public SchoolClass(String className)
+    public List <Student> getAllStudentsInClass() throws SQLException
+            
     {
-//        this.id = id;
-        this.className = className;
-        students = new ArrayList();
-    }
-
-    public String getClassName()
-    {
-        return className;
-    }
-
-    public List<Student> getStudents()
-    {
+        List <Student> students = new ArrayList<>();
+        
+        try (Connection con = ds.getConnection())
+        {
+            Statement statement = con.createStatement();
+            
+            ResultSet rs = statement.executeQuery("SELECT* FROM Student");
+            
+            while (rs.next());
+            {
+                int id = rs.getInt("studentID");
+                String className = rs.getString("className");
+                int classID = rs.getInt("classID");
+                
+                SchoolClass.add(new Schoolclass(id,className,classID));
+            }
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
         return students;
-    }
-    
-    public void addStudent(Student studentToAdd)
-    {
-        students.add(studentToAdd);
-    }
 
-    public int getId()
-    {
-        return id;
-    }
- 
-    @Override
-    public String toString()
-    {
-        return className;
-    }
 }
- 
+    public List <SchoolClass> getAllClasses() throws  SQLException
+            
+    { 
+        List <SchoolClass> SchoolClasses = new ArrayList<>();
+        
+        try (Connection con = ds.getConnection())
+        {
+            Statement statement = con.createStatement();
+            
+            ResultSet rs = statement.executeQuery("SELECT* FROM SchoolClass");
+            
+            while (rs.next());
+            {
+                int id = rs.getInt("studentID");
+                int classID = rs.getInt("classID");
+                String className = rs.getString("className");
+                int teacherid = rs.getInt("teacherID");
+                
+                SchoolClass.add(new SchoolClass(id,className,classID,teacherid));
+                
+            }
+    }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+    return SchoolClasses;
 }
+    
+ public SchoolClass getSchoolClass (int id)
+
+
+{
+SchoolClass schoolclassToGet = null; 
+try (Connection con = ds.getConnection())
+{
+PreparedStatement pstmt = con.prepareStatement("SELECT* FROM SchoolClass WHERE classID = (?)");
+pstmt.setInt(1, id);
+
+ResultSet rs = pstmt.executeQuery();
+
+while (rs.next());
+{
+int classID = rs.getInt("classID");
+
+schoolclassToGet = new SchoolClass(classID);
+}
+}
+catch (Exception e)
+{
+e.printStackTrace();
+}
+return schoolclassToGet;
+}
+}
+

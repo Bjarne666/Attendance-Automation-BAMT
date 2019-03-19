@@ -20,7 +20,7 @@ public class AAManager implements AttendanceInterface
 {
     AADALInterface aDAO;
 
-    public AAManager()
+    public AAManager(AADALInterface dalInterface)
     {
      aDAO = new MockDAO();
     }

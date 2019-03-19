@@ -29,13 +29,14 @@ public class AAModel
 
     public AAModel()
     {
-        MockDAO mDAO = new MockDAO();
-       aManager = new AAManager();
-       studentList = FXCollections.observableArrayList(mDAO.getAllStudents());
-       studentList.addAll(mDAO.getAllStudents());
-       classList = FXCollections.observableArrayList(mDAO.getAllClasses());
-       classList.addAll(mDAO.getAllClasses());
-       teacherList = FXCollections.observableArrayList(mDAO.getAllTeachers());
+       MockDAO mDAO = new MockDAO();
+       aManager = new AAManager(mDAO);
+       
+       studentList = FXCollections.observableArrayList(aManager.getAllStudents());
+       studentList.addAll(aManager.getAllStudents());
+       classList = FXCollections.observableArrayList(aManager.getAllClasses());
+       classList.addAll(aManager.getAllClasses());
+       teacherList = FXCollections.observableArrayList(aManager.getAllTeachers());
     }
     public ObservableList<Student> getAllStudents()
     {

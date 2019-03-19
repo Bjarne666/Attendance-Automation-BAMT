@@ -60,12 +60,12 @@ public class AttendenceLoginViewController implements Initializable
     @FXML
     private void handleLogin(ActionEvent event) throws IOException, InterruptedException
     {
-        if (txtUserName.getText().toLowerCase().equals("birger@easv365.com") && txtPassword.getText().toLowerCase().equals("birger365"))
+        if (txtUserName.getText().toLowerCase().equals("") && txtPassword.getText().toLowerCase().equals(""))
         {
             handleStudentLogin();
             return;
         }
-        if (txtUserName.getText().toLowerCase().equals("peter@easv365.com") && txtPassword.getText().toLowerCase().equals("peter365"))
+        if (txtUserName.getText().toLowerCase().equals(" ") && txtPassword.getText().toLowerCase().equals(""))
         {
             handleTeacherLogin();
             return;

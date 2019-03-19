@@ -6,6 +6,7 @@
 package attendenceautomation.DAL;
 
 import attendenceautomation.BE.Student;
+import attendenceautomation.BE.Teacher;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -85,4 +86,34 @@ public class PersonDBDAO
         
         return studentToGet;
     }
+    public Teacher getTeacher (int id)
+    {
+        Teacher teacherToGet = null;
+        
+        try (Connection con = ds.getConnection())
+        {
+            PreparedStatement pstmt = con.prepareStatement("SELECT * FROM Teacher WHERE teacherID = (?)");
+            pstmt.setInt(1, id);
+            
+            ResultSet rs = pstmt.executeQuery();
+            
+            while (rs.next())
+                    {
+                        id = rs.getInt("teacherID");
+                        String firstName = rs.getString("firstName");
+                        String lastName = rs.getString("lastName");
+                        String email = rs.getString("email");
+                        String password = rs.getString("password");
+                        
+                        teacherToGet = new Teacher(firstName, email, password);
+                    }
+            
+        } catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+        
+        return teacherToGet;
+    }
+    
 }

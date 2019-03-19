@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXComboBox?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.chart.BarChart?>
 <?import javafx.scene.chart.CategoryAxis?>
 <?import javafx.scene.chart.NumberAxis?>
@@ -15,7 +16,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.StackPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #ededed;" stylesheets="@AttendanceStyleSheet.css" xmlns="http://javafx.com/javafx/8.0.181" xmlns:fx="http://javafx.com/fxml/1" fx:controller="attendenceautomation.GUI.Controller.TeacherMainViewController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #ededed;" stylesheets="@AttendanceStyleSheet.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="attendenceautomation.GUI.Controller.TeacherMainViewController">
    <children>
       <AnchorPane layoutX="199.0" layoutY="449.0" prefHeight="56.0" prefWidth="601.0" style="-fx-background-color: #4b4b4b;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="0.0" />
       <AnchorPane layoutX="7.0" prefHeight="85.0" prefWidth="200.0" style="-fx-background-color: #4b4b4b;" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -37,7 +38,7 @@
       </TableView>
       <AnchorPane fx:id="mainAnchorPane" layoutX="240.0" layoutY="47.0" prefHeight="525.0" prefWidth="522.0" AnchorPane.bottomAnchor="28.0" AnchorPane.leftAnchor="240.0" AnchorPane.rightAnchor="38.0" AnchorPane.topAnchor="47.0">
          <children>
-            <StackPane fx:id="stackAll" prefHeight="525.0" prefWidth="522.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <StackPane fx:id="stackAll" prefHeight="525.0" prefWidth="522.0" style="-fx-border-color: red; -fx-border-width: 5;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
                   <Pane fx:id="paneStudentView" prefHeight="532.0" prefWidth="522.0" style="-fx-background-color: white;">
                      <children>
@@ -68,11 +69,14 @@
                         <Label layoutX="22.0" layoutY="14.0" style="-fx-font-size: 32;" text="Class Overview" />
                      </children>
                   </Pane>
-                  <Pane fx:id="paneMainView" prefHeight="525.0" prefWidth="522.0" style="-fx-background-color: white;">
+                  <Pane fx:id="paneMainView" style="-fx-background-color: white;" StackPane.alignment="CENTER">
                      <children>
                         <Label layoutX="29.0" layoutY="22.0" style="-fx-font-size: 32;" text="Teacher Overview" />
                         <Button cancelButton="true" layoutX="443.0" layoutY="480.0" mnemonicParsing="false" onAction="#handleTeacherLogout" prefHeight="31.0" prefWidth="65.0" stylesheets="@AttendanceStyleSheet.css" text="Logout" />
                      </children>
+                     <StackPane.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </StackPane.margin>
                   </Pane>
                </children>
             </StackPane>

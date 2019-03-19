@@ -43,8 +43,6 @@ public class AttendenceLoginViewController implements Initializable
     //handles student login
     private void handleStudentLogin() throws IOException
     {
-
-        
             AnchorPane pane = FXMLLoader.load(getClass().getResource("/attendenceautomation/GUI/View/RootLayout.fxml"));
             FXMLLoader loader = new FXMLLoader();
 
@@ -96,11 +94,6 @@ public class AttendenceLoginViewController implements Initializable
             //Close this window
             Stage currentWindows = (Stage) btnLogin.getScene().getWindow();
             currentWindows.close();
-        
-
-
-        handleTeacherLogin();
-        handleStudentLogin();
     }
 
     /**

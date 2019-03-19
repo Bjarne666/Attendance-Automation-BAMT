@@ -5,6 +5,7 @@
  */
 package attendenceautomation.DAL;
 
+import attendenceautomation.BE.Attendance;
 import attendenceautomation.BE.SchoolClass;
 import attendenceautomation.BE.Student;
 import attendenceautomation.BE.Teacher;
@@ -79,6 +80,18 @@ public class MockDAO implements AADALInterface {
 
     @Override
     public Student getStudent(Student studentToGet)
+    {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public Teacher getTeacher(Teacher teacherToGet)
+    {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<Attendance> getAttendance(Student student)
     {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }

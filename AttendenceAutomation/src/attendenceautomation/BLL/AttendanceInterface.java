@@ -5,6 +5,7 @@
  */
 package attendenceautomation.BLL;
 
+import attendenceautomation.BE.Attendance;
 import attendenceautomation.BE.SchoolClass;
 import attendenceautomation.BE.Student;
 import attendenceautomation.BE.Teacher;
@@ -41,6 +42,13 @@ public interface AttendanceInterface
      * @return
      */
     public List<Teacher> getAllTeachers();
+    
+    /**
+     * 
+     * @param teacherToGet
+     * @return 
+     */
+    public Teacher getTeacher (Teacher teacherToGet);
 
     /**
      *
@@ -50,9 +58,9 @@ public interface AttendanceInterface
     public List<Student> getStudentsInClass (SchoolClass chosenClass);
    
     /**
-     *
-     * @param chosenStudent
-     * @return
+     * 
+     * @param student
+     * @return 
      */
-//    public Student getStudent(Student chosenStudent);
+    public List<Attendance> getAttendance (Student student);
 }

@@ -5,6 +5,7 @@
  */
 package attendenceautomation.BLL;
 
+import attendenceautomation.BE.Attendance;
 import attendenceautomation.BE.SchoolClass;
 import attendenceautomation.BE.Student;
 import attendenceautomation.BE.Teacher;
@@ -54,4 +55,18 @@ public class AAManager implements AttendanceInterface
     {
         return aDAO.getStudent(studentToGet);
     }
+
+    @Override
+    public Teacher getTeacher(Teacher teacherToGet)
+    {
+        return aDAO.getTeacher(teacherToGet);
+    }
+
+    @Override
+    public List<Attendance> getAttendance(Student student)
+    {
+        return aDAO.getAttendance(student);
+    }
+    
+    
 }

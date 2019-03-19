@@ -11,6 +11,7 @@ import attendenceautomation.GUI.Model.AAModel;
 import com.jfoenix.controls.JFXComboBox;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Calendar;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -20,6 +21,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.PieChart;
 import javafx.scene.chart.XYChart;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -73,6 +75,8 @@ public class TeacherMainViewController implements Initializable
     AAModel aaModel = new AAModel();
     @FXML
     private StackPane stackAll;
+    @FXML
+    private Label lblDateTeacher;
 
     public TeacherMainViewController()
     {
@@ -85,6 +89,7 @@ public class TeacherMainViewController implements Initializable
     @Override
     public void initialize(URL url, ResourceBundle rb)
     {
+        showCurrentDate();
 
         comboClassList.setItems(aaModel.getAllClasses());
 
@@ -236,5 +241,15 @@ public class TeacherMainViewController implements Initializable
             paneClassView.toFront();
             mainAnchorPane.getChildren().add(paneClassView);
         }
+    }
+    
+    @FXML
+    private void showCurrentDate()
+    {
+        Calendar currentDate = Calendar.getInstance();
+        int day = currentDate.get(Calendar.DATE);
+        int month = currentDate.get(Calendar.MONTH);
+        int year = currentDate.get(Calendar.YEAR);
+        lblDateTeacher.setText(Integer.toString(day)+ "/" + Integer.toString(month+1) +"-"+Integer.toString(year));
     }
 }

@@ -6,6 +6,8 @@
 package attendenceautomation.GUI.Controller;
 
 import java.net.URL;
+import java.sql.Array;
+import java.util.Calendar;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -49,7 +51,8 @@ public class AttendenceStudentViewController implements Initializable
     public void initialize(URL url, ResourceBundle rb)
     {
         lblUser.setText("Birger");
-        lblDate.setText("22-02-2019");
+        //lblDate.setText("22-02-2019");
+        showCurrentDate();
         lblEducation.setText("Computer Science");
         lblName.setText("Birger");
         lblAttendance.setVisible(false);
@@ -82,5 +85,17 @@ public class AttendenceStudentViewController implements Initializable
         alert.showAndWait();
 
     }
+    
+    @FXML
+    private void showCurrentDate()
+    {
+        Calendar currentDate = Calendar.getInstance();
+        int day = currentDate.get(Calendar.DATE);
+        int month = currentDate.get(Calendar.MONTH);
+        int year = currentDate.get(Calendar.YEAR);
+        lblDate.setText(Integer.toString(day)+ "/" + Integer.toString(month+1) +"-"+Integer.toString(year));
+    
+    }
+
 
 }

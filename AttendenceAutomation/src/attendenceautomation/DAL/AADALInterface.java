@@ -24,10 +24,10 @@ public interface AADALInterface
     
     /**
      *
-     * @param id
+     * @param studentToGet
      * @return
      */
-    public Student getStudent (int id);
+    public Student getStudent (Student studentToGet);
     
     /**
      *

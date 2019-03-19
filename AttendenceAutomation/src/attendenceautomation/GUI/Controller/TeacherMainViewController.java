@@ -17,7 +17,6 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.geometry.Pos;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.PieChart;
 import javafx.scene.chart.XYChart;
@@ -106,7 +105,7 @@ public class TeacherMainViewController implements Initializable
         studentBarChart();
     }
     /**
-     * handles exitting the program while in teacher view
+     * handles exiting the program while in teacher view
      * @param event 
      */
     @FXML

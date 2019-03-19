@@ -47,7 +47,7 @@ public class PersonDBDAO
                         String email = rs.getString("email");
                         String password = rs.getString("password");
                         
-                        students.add(new Student (firstName, lastName, email, password));
+                        students.add(new Student(id, firstName, lastName, email, password));
                     }
             
         } catch (Exception e)
@@ -76,7 +76,7 @@ public class PersonDBDAO
                         String email = rs.getString("email");
                         String password = rs.getString("password");
                         
-                        studentToGet = new Student (firstName, lastName, email, password);
+                        studentToGet = new Student(id, firstName, lastName, email, password);
                     }
             
         } catch (Exception e)

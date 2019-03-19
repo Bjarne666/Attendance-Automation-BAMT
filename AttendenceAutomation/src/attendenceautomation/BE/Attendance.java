@@ -7,6 +7,7 @@ package attendenceautomation.BE;
 
 import attendenceautomation.UTIL.DateConverter;
 import java.util.Calendar;
+import java.util.Date;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -19,12 +20,12 @@ import javafx.beans.property.StringProperty;
 public class Attendance
 {
 
-    private Calendar currentDate;
+    private Date currentDate;
     private BooleanProperty present;
     private StringProperty dateString;
     private DateConverter dC;
 
-    public Attendance(Calendar currentDate, boolean present)
+    public Attendance(Date currentDate, boolean present)
     {
 
         this.dateString = new SimpleStringProperty();
@@ -33,11 +34,11 @@ public class Attendance
         this.present.set(present);
 
         this.currentDate = currentDate;
-        dC = new DateConverter(currentDate);
+//        dC = new DateConverter(currentDate);
         this.dateString.set(dC.convertDate());
     }
 
-    public Calendar getCurrentDate()
+    public Date getCurrentDate()
     {
         return currentDate;
     }

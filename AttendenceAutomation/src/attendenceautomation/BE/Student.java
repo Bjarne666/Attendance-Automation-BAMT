@@ -7,6 +7,7 @@ package attendenceautomation.BE;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -28,7 +29,7 @@ public class Student extends Person
         this.absence = absence;
     }
 
-    public void addAttendance(Calendar currentDate, boolean present)
+    public void addAttendance(Date currentDate, boolean present)
     {
         attendance.add(new Attendance(currentDate, present));
     }

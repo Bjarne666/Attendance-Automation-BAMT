@@ -37,7 +37,7 @@ public class SchoolClassDBDAO
         ds = new DbConnectionProvider();
     }
 
-    public List<Student> getAllStudentsInClass(SchoolClass classToGet) throws SQLException
+    public List<Student> getAllStudentsInClass(SchoolClass classToGet)
 
     {
         List<Student> students = new ArrayList<>();
@@ -63,7 +63,7 @@ public class SchoolClassDBDAO
 
     }
 
-    public List<SchoolClass> getAllClasses() throws SQLException
+    public List<SchoolClass> getAllClasses()
 
     {
         List<SchoolClass> schoolClasses = new ArrayList<>();

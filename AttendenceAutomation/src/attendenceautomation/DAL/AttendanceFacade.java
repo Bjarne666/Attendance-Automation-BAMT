@@ -6,10 +6,13 @@
 package attendenceautomation.DAL;
 
 import attendenceautomation.BE.Attendance;
+import attendenceautomation.BE.Person;
 import attendenceautomation.BE.SchoolClass;
 import attendenceautomation.BE.Student;
 import attendenceautomation.BE.Teacher;
+import com.microsoft.sqlserver.jdbc.SQLServerException;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.List;
 
 /**
@@ -41,7 +44,7 @@ public class AttendanceFacade implements AADALInterface
     @Override
     public List<SchoolClass> getAllClasses()
     {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return sCDbDao.getAllClasses();
     }
 
     @Override
@@ -51,9 +54,9 @@ public class AttendanceFacade implements AADALInterface
     }
 
     @Override
-    public List<Student> getStudentsInClass(SchoolClass chosenClass)
+    public List<Student> getStudentsInClass(SchoolClass chosenClass) 
     {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       return sCDbDao.getAllStudentsInClass(chosenClass);
     }
 
     @Override
@@ -66,6 +69,12 @@ public class AttendanceFacade implements AADALInterface
     public List<Attendance> getAttendance(Student student)
     {
         return pDbDao.getAttendance(student);
+    }
+
+    @Override
+    public Person login(String email, String password) throws SQLServerException, SQLException
+    {
+        return pDbDao.login(email, password);
     }
     
 }

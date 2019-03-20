@@ -1,4 +1,4 @@
- /*
+/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -6,9 +6,12 @@
 package attendenceautomation.DAL;
 
 import attendenceautomation.BE.Attendance;
+import attendenceautomation.BE.Person;
 import attendenceautomation.BE.SchoolClass;
 import attendenceautomation.BE.Student;
 import attendenceautomation.BE.Teacher;
+import com.microsoft.sqlserver.jdbc.SQLServerException;
+import java.sql.SQLException;
 import java.util.List;
 
 /**
@@ -17,25 +20,26 @@ import java.util.List;
  */
 public interface AADALInterface
 {
+
     /**
      *
      * @return
      */
     public List<Student> getAllStudents();
-    
+
     /**
      *
      * @param studentToGet
      * @return
      */
-    public Student getStudent (Student studentToGet);
-    
+    public Student getStudent(Student studentToGet);
+
     /**
      *
      * @return
      */
     public List<SchoolClass> getAllClasses();
-    
+
     /**
      *
      * @return
@@ -43,23 +47,34 @@ public interface AADALInterface
     public List<Teacher> getAllTeachers();
 
     /**
-     * 
+     *
      * @param teacherToGet
-     * @return 
+     * @return
      */
-    public Teacher getTeacher (Teacher teacherToGet);
-    
+    public Teacher getTeacher(Teacher teacherToGet);
+
     /**
      *
      * @param chosenClass
      * @return
      */
-    public List<Student> getStudentsInClass (SchoolClass chosenClass);
-   
+    public List<Student> getStudentsInClass(SchoolClass chosenClass);
+
     /**
-     * 
+     *
      * @param student
-     * @return 
+     * @return
      */
-    public List<Attendance> getAttendance (Student student);
+    public List<Attendance> getAttendance(Student student);
+
+    /**
+     *
+     * @param email
+     * @param password
+     * @return
+     * @throws SQLServerException
+     * @throws SQLException
+     */
+    public Person login(String email, String password) throws SQLServerException, SQLException;
+
 }

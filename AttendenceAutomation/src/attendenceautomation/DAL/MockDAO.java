@@ -6,9 +6,12 @@
 package attendenceautomation.DAL;
 
 import attendenceautomation.BE.Attendance;
+import attendenceautomation.BE.Person;
 import attendenceautomation.BE.SchoolClass;
 import attendenceautomation.BE.Student;
 import attendenceautomation.BE.Teacher;
+import com.microsoft.sqlserver.jdbc.SQLServerException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -92,6 +95,12 @@ public class MockDAO implements AADALInterface {
 
     @Override
     public List<Attendance> getAttendance(Student student)
+    {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public Person login(String email, String password) throws SQLServerException, SQLException
     {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }

@@ -18,103 +18,97 @@ import java.sql.PreparedStatement;
 import java.sql.Statement;
 import java.sql.ResultSet;
 
-
 /**
  *
  * @author Bjarne Helsinghof
  */
 public class SchoolClassDBDAO
 {
- DbConnectionProvider ds;
-    
-    /** 
-     * forbindelse til database 
+
+    DbConnectionProvider ds;
+
+    /**
+     * forbindelse til database
+     *
      * @throws java.io.IOException
      */
     public SchoolClassDBDAO() throws IOException
     {
-        ds = new DbConnectionProvider();    
+        ds = new DbConnectionProvider();
     }
-    public List <Student> getAllStudentsInClass() throws SQLException
-            
+
+    public List<Student> getAllStudentsInClass(SchoolClass classToGet) throws SQLException
+
     {
-        List <Student> students = new ArrayList<>();
-        
+        List<Student> students = new ArrayList<>();
+
         try (Connection con = ds.getConnection())
         {
-            Statement statement = con.createStatement();
-            
-            ResultSet rs = statement.executeQuery("SELECT* FROM Student");
-            
+            PreparedStatement pstmt = con.prepareStatement("SELECT * FROM Student WHERE classID = (?)");
+            pstmt.setInt(1, classToGet.getId());
+
+            ResultSet rs = pstmt.executeQuery();
+
             while (rs.next());
             {
-                int id = rs.getInt("studentID");
                 String className = rs.getString("className");
-                int classID = rs.getInt("classID");
-                
-                SchoolClass.add(new Schoolclass(id,className,classID));
+
+                students.add(new Student(0, className, className, className, className));
             }
-        }
-        catch (Exception e)
+        } catch (Exception e)
         {
             e.printStackTrace();
         }
         return students;
 
-}
-    public List <SchoolClass> getAllClasses() throws  SQLException
-            
-    { 
-        List <SchoolClass> SchoolClasses = new ArrayList<>();
-        
+    }
+
+    public List<SchoolClass> getAllClasses() throws SQLException
+
+    {
+        List<SchoolClass> schoolClasses = new ArrayList<>();
+
         try (Connection con = ds.getConnection())
         {
             Statement statement = con.createStatement();
-            
-            ResultSet rs = statement.executeQuery("SELECT* FROM SchoolClass");
-            
+
+            ResultSet rs = statement.executeQuery("SELECT * FROM SchoolClass");
+
             while (rs.next());
             {
-                int id = rs.getInt("studentID");
-                int classID = rs.getInt("classID");
                 String className = rs.getString("className");
-                int teacherid = rs.getInt("teacherID");
-                
-                SchoolClass.add(new SchoolClass(id,className,classID,teacherid));
-                
+
+                schoolClasses.add(new SchoolClass(className));
+
             }
-    }
-        catch (Exception e)
+        } catch (Exception e)
         {
             e.printStackTrace();
         }
-    return SchoolClasses;
-}
-    
- public SchoolClass getSchoolClass (int id)
+        return schoolClasses;
+    }
 
+    public SchoolClass getSchoolClass(int id)
 
-{
-SchoolClass schoolclassToGet = null; 
-try (Connection con = ds.getConnection())
-{
-PreparedStatement pstmt = con.prepareStatement("SELECT* FROM SchoolClass WHERE classID = (?)");
-pstmt.setInt(1, id);
+    {
+        SchoolClass schoolclassToGet = null;
+        try (Connection con = ds.getConnection())
+        {
+            PreparedStatement pstmt = con.prepareStatement("SELECT * FROM SchoolClass WHERE classID = (?)");
+            pstmt.setInt(1, id);
 
-ResultSet rs = pstmt.executeQuery();
+            ResultSet rs = pstmt.executeQuery();
 
-while (rs.next());
-{
-int classID = rs.getInt("classID");
+            while (rs.next());
+            {
+                String className = rs.getString("className");
 
-schoolclassToGet = new SchoolClass(classID);
+                schoolclassToGet = new SchoolClass(className);
+            }
+        } catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+        return schoolclassToGet;
+    }
 }
-}
-catch (Exception e)
-{
-e.printStackTrace();
-}
-return schoolclassToGet;
-}
-}
-

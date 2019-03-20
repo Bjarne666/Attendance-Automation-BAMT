@@ -89,8 +89,6 @@ public class TeacherMainViewController implements Initializable
     @Override
     public void initialize(URL url, ResourceBundle rb)
     {
-        showCurrentDate();
-
         comboClassList.setItems(aaModel.getAllClasses());
 
         colName.setCellValueFactory(new PropertyValueFactory<>("name"));
@@ -108,6 +106,7 @@ public class TeacherMainViewController implements Initializable
         classPieChart();
         StudentPieChart();
         studentBarChart();
+        showCurrentDate();
     }
     /**
      * handles exiting the program while in teacher view
@@ -147,6 +146,7 @@ public class TeacherMainViewController implements Initializable
                 new PieChart.Data("Absent", 10));
 
         studentPieChart.setData(studentChart);
+        studentPieChart.setLegendVisible(false);
 
         return studentPieChart;
     }
@@ -171,6 +171,7 @@ public class TeacherMainViewController implements Initializable
 
         //add dataset to chart
         barChartAbsence.getData().add(dataSet);
+        barChartAbsence.setLegendVisible(false);
 
         return barChartAbsence;
     }
@@ -194,7 +195,7 @@ public class TeacherMainViewController implements Initializable
 //                        mainAnchorPane.getChildren().clear();
 
                         paneStudentView.toFront();
-//                        mainAnchorPane.getChildren().add(paneStudentView);
+                        mainAnchorPane.getChildren().add(paneStudentView);
                     }
                 }
             }
@@ -220,7 +221,7 @@ public class TeacherMainViewController implements Initializable
     private void loadMainView() throws IOException
     {
 //        mainAnchorPane.getChildren().clear();
-//        mainAnchorPane.getChildren().add(paneMainView);
+        mainAnchorPane.getChildren().add(paneMainView);
         paneMainView.toFront();
     }
     
@@ -239,7 +240,7 @@ public class TeacherMainViewController implements Initializable
 
 //            mainAnchorPane.getChildren().clear();
             paneClassView.toFront();
-//            mainAnchorPane.getChildren().add(paneClassView);
+            mainAnchorPane.getChildren().add(paneClassView);
         }
     }
     

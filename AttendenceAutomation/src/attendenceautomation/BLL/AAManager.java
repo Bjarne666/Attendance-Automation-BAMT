@@ -10,7 +10,9 @@ import attendenceautomation.BE.SchoolClass;
 import attendenceautomation.BE.Student;
 import attendenceautomation.BE.Teacher;
 import attendenceautomation.DAL.AADALInterface;
+import attendenceautomation.DAL.AttendanceFacade;
 import attendenceautomation.DAL.MockDAO;
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -21,8 +23,9 @@ public class AAManager implements AttendanceInterface
 {
     AADALInterface aDAO;
 
-    public AAManager(AADALInterface dalInterface)
+    public AAManager(AADALInterface dalInterface) throws IOException
     {
+//     aDAO = new AttendanceFacade();
      aDAO = new MockDAO();
     }
 

@@ -5,6 +5,8 @@
  */
 package attendenceautomation.GUI.Model;
 
+import attendenceautomation.BE.Attendance;
+import attendenceautomation.BE.Person;
 import attendenceautomation.BE.SchoolClass;
 import attendenceautomation.BLL.AAManager;
 import attendenceautomation.BE.Student;
@@ -13,6 +15,7 @@ import attendenceautomation.BLL.AttendanceInterface;
 import attendenceautomation.DAL.AttendanceFacade;
 import attendenceautomation.DAL.MockDAO;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.List;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -67,4 +70,13 @@ public class AAModel
         return aManager.getStudent(studentToGet);
     }
     
+    public Person login(String email, String password) throws SQLException
+    {
+        return aManager.login(email, password);
+    }
+    
+    public List<Attendance> getAttendance(Student student)
+    {
+        return aManager.getAttendance(student);
+    }
 }

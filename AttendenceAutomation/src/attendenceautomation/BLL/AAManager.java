@@ -6,13 +6,16 @@
 package attendenceautomation.BLL;
 
 import attendenceautomation.BE.Attendance;
+import attendenceautomation.BE.Person;
 import attendenceautomation.BE.SchoolClass;
 import attendenceautomation.BE.Student;
 import attendenceautomation.BE.Teacher;
 import attendenceautomation.DAL.AADALInterface;
 import attendenceautomation.DAL.AttendanceFacade;
 import attendenceautomation.DAL.MockDAO;
+import com.microsoft.sqlserver.jdbc.SQLServerException;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.List;
 
 /**
@@ -69,6 +72,12 @@ public class AAManager implements AttendanceInterface
     public List<Attendance> getAttendance(Student student)
     {
         return aDAO.getAttendance(student);
+    }
+
+    @Override
+    public Person login(String email, String password) throws SQLServerException, SQLException
+    {
+        return aDAO.login(email, password);
     }
     
     

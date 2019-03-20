@@ -6,9 +6,12 @@
 package attendenceautomation.BLL;
 
 import attendenceautomation.BE.Attendance;
+import attendenceautomation.BE.Person;
 import attendenceautomation.BE.SchoolClass;
 import attendenceautomation.BE.Student;
 import attendenceautomation.BE.Teacher;
+import com.microsoft.sqlserver.jdbc.SQLServerException;
+import java.sql.SQLException;
 import java.util.List;
 
 /**
@@ -63,4 +66,13 @@ public interface AttendanceInterface
      * @return 
      */
     public List<Attendance> getAttendance (Student student);
+    
+    /**
+     *
+     * @param email
+     * @param password
+     * @return
+     * @throws com.microsoft.sqlserver.jdbc.SQLServerException
+     */
+    public Person login(String email, String password) throws SQLServerException, SQLException;
 }

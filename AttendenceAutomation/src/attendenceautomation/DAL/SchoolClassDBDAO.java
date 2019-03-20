@@ -17,6 +17,7 @@ import java.util.List;
 import java.sql.PreparedStatement;
 import java.sql.Statement;
 import java.sql.ResultSet;
+import javafx.scene.control.Alert;
 
 /**
  *
@@ -84,6 +85,8 @@ public class SchoolClassDBDAO
         } catch (Exception e)
         {
             e.printStackTrace();
+//            Alert warning = new Alert(Alert.AlertType.ERROR, "There's no classes in the database");
+//            warning.showAndWait();
         }
         return schoolClasses;
     }

@@ -5,9 +5,14 @@
  */
 package attendenceautomation.GUI.Controller;
 
+import attendenceautomation.BE.Person;
+import attendenceautomation.BE.Student;
+import attendenceautomation.BE.Teacher;
+import attendenceautomation.GUI.Model.AAModel;
 import com.jfoenix.controls.JFXPasswordField;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -34,10 +39,12 @@ public class AttendenceLoginViewController implements Initializable
     private Button btnLogin;
     @FXML
     private JFXPasswordField txtPassword;
+    
+    private AAModel aModel;
 
     public AttendenceLoginViewController() throws IOException
     {
-
+    aModel = new AAModel();
     }
 
     //handles student login
@@ -60,14 +67,15 @@ public class AttendenceLoginViewController implements Initializable
     
 
     @FXML
-    private void handleLogin(ActionEvent event) throws IOException, InterruptedException
+    private void handleLogin(ActionEvent event) throws IOException, InterruptedException, SQLException
     {
-        if (txtUserName.getText().toLowerCase().equals("") && txtPassword.getText().toLowerCase().equals(""))
+        Person user = aModel.login(txtUserName.getText(), txtPassword.getText());
+        if (user.IsAStudent())
         {
             handleStudentLogin();
             return;
         }
-        if (txtUserName.getText().toLowerCase().equals(" ") && txtPassword.getText().toLowerCase().equals(""))
+        if (!user.IsAStudent())
         {
             handleTeacherLogin();
             return;
@@ -95,7 +103,7 @@ public class AttendenceLoginViewController implements Initializable
             Stage currentWindows = (Stage) btnLogin.getScene().getWindow();
             currentWindows.close();
     }
-
+    
     /**
      * Initializes the controller class.
      */

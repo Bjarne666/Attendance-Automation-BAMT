@@ -136,7 +136,7 @@ public class PersonDBDAO
 
             Statement statement = con.createStatement();
 
-            ResultSet rs = statement.executeQuery("SELECT firstName + ' ' + lastName AS name, * FROM Person INNER JOIN Student ON Person.id = Teacher.teacherID");
+            ResultSet rs = statement.executeQuery("SELECT firstName + ' ' + lastName AS name, * FROM Person INNER JOIN Teacher ON Person.id = Teacher.teacherID");
 
             while (rs.next())
             {

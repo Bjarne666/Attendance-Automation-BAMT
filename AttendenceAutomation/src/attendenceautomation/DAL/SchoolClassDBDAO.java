@@ -7,17 +7,13 @@ package attendenceautomation.DAL;
 
 import attendenceautomation.BE.SchoolClass;
 import attendenceautomation.BE.Student;
-import com.microsoft.sqlserver.jdbc.SQLServerDataSource;
-import com.microsoft.sqlserver.jdbc.SQLServerException;
 import java.io.IOException;
 import java.sql.Connection;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.sql.PreparedStatement;
 import java.sql.Statement;
 import java.sql.ResultSet;
-import javafx.scene.control.Alert;
 
 /**
  *
@@ -45,16 +41,20 @@ public class SchoolClassDBDAO
 
         try (Connection con = ds.getConnection())
         {
-            PreparedStatement pstmt = con.prepareStatement("SELECT * FROM Student WHERE classID = (?)");
+            PreparedStatement pstmt = con.prepareStatement("SELECT firstName + ' ' + lastName AS name, * FROM Person "
+                    + "INNER JOIN Student a ON Person.id = a.studentID "
+                    + "INNER JOIN Student b ON b.classID = (?)");           // aware that this might not work
             pstmt.setInt(1, classToGet.getId());
 
             ResultSet rs = pstmt.executeQuery();
 
-            while (rs.next());
+            while (rs.next())
             {
-                String className = rs.getString("className");
-
-                students.add(new Student(0, className, className, className, className));
+                String name = rs.getString("name");
+                String email = rs.getString("email");
+                String password = rs.getString("password");
+                int id = rs.getInt("id");
+                students.add(new Student(id, name, email, password));
             }
         } catch (Exception e)
         {
@@ -75,11 +75,11 @@ public class SchoolClassDBDAO
 
             ResultSet rs = statement.executeQuery("SELECT * FROM SchoolClass");
 
-            while (rs.next());
+            while(rs.next())
             {
                 String className = rs.getString("className");
-
-                schoolClasses.add(new SchoolClass(className));
+                int classID = rs.getInt("classID");
+                schoolClasses.add(new SchoolClass(classID, className));
 
             }
         } catch (Exception e)
@@ -102,11 +102,12 @@ public class SchoolClassDBDAO
 
             ResultSet rs = pstmt.executeQuery();
 
-            while (rs.next());
+            while (rs.next())
             {
                 String className = rs.getString("className");
+                int classID = rs.getInt("classID");
 
-                schoolclassToGet = new SchoolClass(className);
+                schoolclassToGet = new SchoolClass(classID, className);
             }
         } catch (Exception e)
         {

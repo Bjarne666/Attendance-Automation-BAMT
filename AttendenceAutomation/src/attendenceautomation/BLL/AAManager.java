@@ -28,8 +28,8 @@ public class AAManager implements AttendanceInterface
 
     public AAManager(AADALInterface dalInterface) throws IOException
     {
-//     aDAO = new AttendanceFacade();
-     aDAO = new MockDAO();
+     aDAO = new AttendanceFacade();
+//     aDAO = new MockDAO();
     }
 
     @Override

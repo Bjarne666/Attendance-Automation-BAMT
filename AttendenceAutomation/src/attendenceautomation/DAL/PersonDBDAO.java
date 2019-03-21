@@ -43,17 +43,19 @@ public class PersonDBDAO
         {
             Statement statement = con.createStatement();
 
-            ResultSet rs = statement.executeQuery("SELECT* FROM Student");
+            ResultSet rs = statement.executeQuery("SELECT firstName +' '+ lastName AS name, * FROM Person"
+                    + " INNER JOIN Student ON Person.id = Student.studentID ");
 
             while (rs.next())
             {
                 int id = rs.getInt("studentID");
-                String firstName = rs.getString("firstName");
-                String lastName = rs.getString("lastName");
+//                String firstName = rs.getString("firstName");
+//                String lastName = rs.getString("lastName");
+                String name = rs.getString("name");
                 String email = rs.getString("email");
                 String password = rs.getString("password");
 
-                students.add(new Student(id, firstName, lastName, email, password));
+                students.add(new Student(id, name, email, password));
             }
 
         } catch (Exception e)
@@ -69,7 +71,7 @@ public class PersonDBDAO
 
         try (Connection con = ds.getConnection())
         {
-            PreparedStatement pstmt = con.prepareStatement("SELECT * FROM Student WHERE StudentID = (?)");
+            PreparedStatement pstmt = con.prepareStatement("SELECT firstName + ' ' + lastName AS name, * FROM Person INNER JOIN ON Person.id = Student.studentID WHERE StudentID = (?)");
             pstmt.setInt(1, id);
 
             ResultSet rs = pstmt.executeQuery();
@@ -77,12 +79,13 @@ public class PersonDBDAO
             while (rs.next())
             {
                 id = rs.getInt("studentID");
-                String firstName = rs.getString("firstName");
-                String lastName = rs.getString("lastName");
+//                String firstName = rs.getString("firstName");
+//                String lastName = rs.getString("lastName");
+                String name = rs.getString("name");
                 String email = rs.getString("email");
                 String password = rs.getString("password");
 
-                studentToGet = new Student(id, firstName, lastName, email, password);
+                studentToGet = new Student(id, name, email, password);
             }
 
         } catch (Exception e)
@@ -99,7 +102,7 @@ public class PersonDBDAO
 
         try (Connection con = ds.getConnection())
         {
-            PreparedStatement pstmt = con.prepareStatement("SELECT * FROM Teacher WHERE teacherID = (?)");
+            PreparedStatement pstmt = con.prepareStatement("SELECT firstName + ' ' + lastName AS name, * FROM Person INNER JOIN ON Person.id = Teaher.teacherID WHERE teacherID = (?)");
             pstmt.setInt(1, id);
 
             ResultSet rs = pstmt.executeQuery();
@@ -107,12 +110,13 @@ public class PersonDBDAO
             while (rs.next())
             {
                 id = rs.getInt("teacherID");
-                String firstName = rs.getString("firstName");
-                String lastName = rs.getString("lastName");
+//                String firstName = rs.getString("firstName");
+//                String lastName = rs.getString("lastName");
+                String name = rs.getString("name");
                 String email = rs.getString("email");
                 String password = rs.getString("password");
 
-                teacherToGet = new Teacher(id, firstName, email, password);
+                teacherToGet = new Teacher(id, name, email, password);
             }
 
         } catch (Exception e)
@@ -122,7 +126,7 @@ public class PersonDBDAO
 
         return teacherToGet;
     }
-
+    
     public List<Teacher> getAllTeachers()
     {
         List<Teacher> teachers = new ArrayList<>();
@@ -132,17 +136,18 @@ public class PersonDBDAO
 
             Statement statement = con.createStatement();
 
-            ResultSet rs = statement.executeQuery("SELECT * FROM Teacher");
+            ResultSet rs = statement.executeQuery("SELECT firstName + ' ' + lastName AS name, * FROM Person INNER JOIN Student ON Person.id = Teacher.teacherID");
 
             while (rs.next())
             {
-                int id = rs.getInt("studentID");
-                String firstName = rs.getString("firstName");
-                String lastName = rs.getString("lastName");
+                int id = rs.getInt("ID");
+//                String firstName = rs.getString("firstName");
+//                String lastName = rs.getString("lastName");
+                String name = rs.getString("name");
                 String email = rs.getString("email");
                 String password = rs.getString("password");
 
-                teachers.add(new Teacher(id, firstName, email, password));
+                teachers.add(new Teacher(id, name, email, password));
             }
 
         } catch (Exception e)
@@ -185,32 +190,37 @@ public class PersonDBDAO
 
         try (Connection con = ds.getConnection())
         {
-            PreparedStatement pstmt = con.prepareStatement("SELECT * FROM Person WHERE email = (?) AND password = (?)");
+            PreparedStatement pstmt = con.prepareStatement("SELECT firstName + ' ' + lastName AS name , * FROM Person WHERE email = (?) AND password = (?)");
             pstmt.setString(1, email);
             pstmt.setString(2, password);
 
             ResultSet rs = pstmt.executeQuery();
             while (rs.next())
             {
+                int id = rs.getInt("id");
+                String name = rs.getString("firstName");
                 email = rs.getString("email");
                 password = rs.getString("password");
                 
-                personToLogin = new Teacher(0, null, email , password);
+                personToLogin = new Teacher(id, name, email , password);
+                
             }
         }
         try (Connection con = ds.getConnection())
         {
-            PreparedStatement pstmt = con.prepareStatement("SELECT * FROM Person WHERE email = (?) AND password = (?)");
+            PreparedStatement pstmt = con.prepareStatement("SELECT firstName + ' ' +lastName AS name, * FROM Person WHERE email = (?) AND password = (?)");
             pstmt.setString(1, email);
             pstmt.setString(2, password);
 
             ResultSet rs = pstmt.executeQuery();
             while (rs.next())
             {
+                int id = rs.getInt("id");
                 email = rs.getString("email");
                 password = rs.getString("password");
+                String name = rs.getString("name");
                 
-                personToLogin = new Student(0, null, email , password, null);
+                personToLogin = new Student(id, name, email , password);
             }
         }
         

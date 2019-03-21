@@ -15,18 +15,20 @@ import java.util.List;
  * @author kokus
  */
 public class Student extends Person
-{
-    private String absence;
+{       
+// as we currently have no way to calculate absence this is only impeding our
+// efforts to make a functioning login.
+//    private String absence;
 
     private List<Attendance> attendance;
 
-    public Student(int id, String name, String email, String password, String absence)
+    public Student(int id, String name, String email, String password)
     {
         super(id, name, email, password);
         
         attendance = new ArrayList<>();
         
-        this.absence = absence;
+//        this.absence = absence;
     }
 
     public void addAttendance(Date currentDate, boolean present)
@@ -39,10 +41,10 @@ public class Student extends Person
         return attendance;
     }
 
-    public String getAbsence()
-    {
-        return absence;
-    }
+//    public String getAbsence()
+//    {
+//        return absence;
+//    }
     
     
     

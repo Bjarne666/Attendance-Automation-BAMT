@@ -17,16 +17,18 @@ import java.util.Date;
 public class DateConverter
 {
 
-    private Calendar currentDate;
+    private Date currentDate;
+    private Calendar currentCalendar;
 
-    public DateConverter(Calendar currentDate)
+    public DateConverter(Date currentDate)
     {
         this.currentDate = currentDate;
+       
     }
     
  public String convertDate()
     {
-        Date date = currentDate.getTime();
+        Date date = currentCalendar.getTime();
         DateFormat dateFormat = new SimpleDateFormat("YYYY-mm-dd");
         String strDate = dateFormat.format(date);
         return strDate;

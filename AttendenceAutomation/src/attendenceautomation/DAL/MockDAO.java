@@ -22,8 +22,8 @@ import java.util.List;
 public class MockDAO implements AADALInterface {
 
     //create school classes
-    SchoolClass c1 = new SchoolClass("CS2018A");
-    SchoolClass c2 = new SchoolClass("CS2018B");
+//    SchoolClass c1 = new SchoolClass("CS2018A");
+//    SchoolClass c2 = new SchoolClass("CS2018B");
 
     //create students
 //    Student s1 = new Student("Jens", "jens@easv365.com", "", "25%");
@@ -61,8 +61,8 @@ public class MockDAO implements AADALInterface {
     public List<SchoolClass> getAllClasses() {
         List<SchoolClass> classes = new ArrayList<>();
         
-        classes.add(c1);
-        classes.add(c2);
+//        classes.add(c1);
+//        classes.add(c2);
         return classes;
     }
     

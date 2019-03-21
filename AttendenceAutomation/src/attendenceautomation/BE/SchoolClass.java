@@ -20,9 +20,9 @@ public class SchoolClass
     private List<Student> students;
     private int id;
 
-    public SchoolClass(String className)
+    public SchoolClass(int id,String className)
     {
-//        this.id = id;
+        this.id = id;
         this.className = className;
         students = new ArrayList();
     }

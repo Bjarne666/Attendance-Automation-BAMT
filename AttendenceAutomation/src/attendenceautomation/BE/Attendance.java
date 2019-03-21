@@ -34,7 +34,7 @@ public class Attendance
         this.present.set(present);
 
         this.currentDate = currentDate;
-//        dC = new DateConverter(currentDate);
+        dC = new DateConverter(currentDate);
         this.dateString.set(dC.convertDate());
     }
 
@@ -43,14 +43,19 @@ public class Attendance
         return currentDate;
     }
 
-    public BooleanProperty getPresent()
+    public boolean getPresent()
     {
-        return present;
+        return present.get();
     }
 
-    public StringProperty getDateString()
+    public String getDateString()
     {
-        return dateString;
+        return dateString.get();
+    }
+    
+    public String toString()
+    {
+        return "At "+ dateString.get() + "your attendance were recorded as: " + present.get();
     }
     
 }

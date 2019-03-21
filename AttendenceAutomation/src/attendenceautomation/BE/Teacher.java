@@ -18,7 +18,7 @@ public class Teacher extends Person
     public Teacher(int id, String name, String email, String password)
     {
         super(id, name, email, password);
-        
+        setIsATeacher();
     }
 
     public ArrayList<SchoolClass> getSchoolClass()
@@ -30,6 +30,12 @@ public class Teacher extends Person
     {
         schoolClass.add(newClass);
     }
+
+    public void setIsATeacher()
+    {
+      super.setIsAStudent(false);
+    }
+    
     
    
 

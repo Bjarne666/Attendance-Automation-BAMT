@@ -190,7 +190,9 @@ public class PersonDBDAO
 
         try (Connection con = ds.getConnection())
         {
-            PreparedStatement pstmt = con.prepareStatement("SELECT firstName + ' ' + lastName AS name , * FROM Person WHERE email = (?) AND password = (?)");
+            PreparedStatement pstmt = con.prepareStatement("SELECT firstName + ' ' + lastName AS name , * FROM Person"
+                    + " INNER JOIN Teacher ON Teacher.TeacherID = Person.id"
+                    + " WHERE email = (?) AND password = (?)");
             pstmt.setString(1, email);
             pstmt.setString(2, password);
 
@@ -208,7 +210,9 @@ public class PersonDBDAO
         }
         try (Connection con = ds.getConnection())
         {
-            PreparedStatement pstmt = con.prepareStatement("SELECT firstName + ' ' +lastName AS name, * FROM Person WHERE email = (?) AND password = (?)");
+            PreparedStatement pstmt = con.prepareStatement("SELECT firstName + ' ' +lastName AS name, * FROM Person "
+                    + " INNER JOIN Student ON Student.studentID = Person.id"
+                    + " WHERE email = (?) AND password = (?)");
             pstmt.setString(1, email);
             pstmt.setString(2, password);
 

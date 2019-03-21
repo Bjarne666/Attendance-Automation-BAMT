@@ -21,14 +21,18 @@ public class Student extends Person
 //    private String absence;
 
     private List<Attendance> attendance;
-
+    
     public Student(int id, String name, String email, String password)
     {
         super(id, name, email, password);
-        
         attendance = new ArrayList<>();
-        
+        setIsAStudent();
 //        this.absence = absence;
+    }
+
+    public void setIsAStudent()
+    {
+        super.setIsAStudent(true);
     }
 
     public void addAttendance(Date currentDate, boolean present)

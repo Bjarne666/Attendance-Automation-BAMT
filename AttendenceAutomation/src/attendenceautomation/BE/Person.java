@@ -20,7 +20,7 @@ public abstract class Person
     private final StringProperty name;
     private final StringProperty email;
     private final StringProperty password;
-    
+    private boolean isAStudent;
     public Person(int id, String name, String email, String password)
     {
         this.id = id;
@@ -69,13 +69,23 @@ public abstract class Person
     
     public void setId(int newId)
     {
-        this.id = id;
+        this.id = newId;
     }
     
     @Override
     public String toString()
     {
         return name + "\t\t " + email;
+    }
+
+    public boolean IsAStudent()
+    {
+        return isAStudent;
+    }
+
+    public void setIsAStudent(boolean isAStudent)
+    {
+        this.isAStudent = isAStudent;
     }
 
 }

@@ -42,8 +42,8 @@ public class SchoolClassDBDAO
         try (Connection con = ds.getConnection())
         {
             PreparedStatement pstmt = con.prepareStatement("SELECT firstName + ' ' + lastName AS name, * FROM Person "
-                    + "INNER JOIN Student a ON Person.id = a.studentID "
-                    + "INNER JOIN Student b ON b.classID = (?)");           // aware that this might not work
+                    + "INNER JOIN Student ON Person.id = studentID "
+                    + "WHERE classID = (?)");           
             pstmt.setInt(1, classToGet.getId());
 
             ResultSet rs = pstmt.executeQuery();

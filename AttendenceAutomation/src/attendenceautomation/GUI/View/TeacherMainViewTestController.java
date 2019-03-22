@@ -223,6 +223,8 @@ public class TeacherMainViewTestController implements Initializable
         loadMainView();
         ancClassView.setVisible(false);
         ancStudentView.setVisible(false);
+        
+        tbViewStudents.getItems().clear();
     }
     
     /**

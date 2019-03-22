@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" stylesheets="@AttendanceStyleSheet.css" xmlns="http://javafx.com/javafx/8.0.181" xmlns:fx="http://javafx.com/fxml/1" fx:controller="attendenceautomation.GUI.View.StudentViewController">
+   <children>
+      <AnchorPane layoutX="10.0" layoutY="10.0" prefHeight="85.0" prefWidth="200.0" style="-fx-background-color: #4b4b4b;" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <ImageView fx:id="imgLogo" fitHeight="85.0" fitWidth="200.0" layoutY="-32.0" onMouseClicked="#clickImage" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="12.0">
+               <image>
+                  <Image url="@../../Image/easv_logo.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="7.0" layoutY="174.0" prefHeight="515.0" prefWidth="200.0" style="-fx-background-color: #263238;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="85.0">
+         <children>
+            <JFXButton fx:id="btnStatistics" layoutY="142.0" onAction="#showStatisticWindow" prefHeight="50.0" prefWidth="200.0" text="Statistics" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="142.0" />
+            <JFXButton fx:id="btnEdit" layoutX="8.0" layoutY="192.0" onAction="#switchToEditWindow" prefHeight="50.0" prefWidth="200.0" text="Edit" AnchorPane.leftAnchor="0.0" />
+            <JFXButton fx:id="btnLogout" cancelButton="true" layoutX="20.0" layoutY="247.0" onAction="#handleStudentLogout" prefHeight="50.0" prefWidth="200.0" text="Logout" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="247.0" />
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="230.0" layoutY="532.0" prefHeight="56.0" prefWidth="600.0" style="-fx-background-color: #4b4b4b;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="0.0" />
+      <AnchorPane fx:id="ancStudentMainView" layoutX="300.0" layoutY="124.0" prefHeight="530.0" prefWidth="522.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="235.0" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="40.0">
+         <children>
+            <Label layoutX="25.0" layoutY="33.0" style="-fx-font-size: 32;" text="Submit attendance" AnchorPane.leftAnchor="24.0" AnchorPane.topAnchor="24.0" />
+            <Label layoutX="34.0" layoutY="130.0" prefHeight="21.0" prefWidth="47.0" text="Dato:" AnchorPane.leftAnchor="24.0">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblDate" layoutX="83.0" layoutY="130.0" text="Label" />
+            <Label layoutX="35.0" layoutY="173.0" text="Name:" AnchorPane.leftAnchor="24.0" />
+            <Label fx:id="lblName" layoutX="87.0" layoutY="173.0" text="Label" />
+            <Label layoutX="35.0" layoutY="222.0" text="Education:" AnchorPane.leftAnchor="24.0" />
+            <Label fx:id="lblEducation" layoutX="115.0" layoutY="222.0" text="Label" />
+            <RadioButton fx:id="rdBtnPresent" layoutX="10.0" layoutY="385.0" mnemonicParsing="false" selected="true" text="Present" AnchorPane.bottomAnchor="90.0" AnchorPane.leftAnchor="24.0">
+               <toggleGroup>
+                  <ToggleGroup fx:id="attendance" />
+               </toggleGroup>
+            </RadioButton>
+            <RadioButton fx:id="rdBtnAbsent" layoutX="126.0" layoutY="385.0" mnemonicParsing="false" text="absent" AnchorPane.bottomAnchor="90.0" AnchorPane.leftAnchor="115.0">
+               <toggleGroup>
+                  <ToggleGroup fx:id="attendance1" />
+               </toggleGroup>
+            </RadioButton>
+            <Label fx:id="lblAttendance" layoutX="90.0" layoutY="424.0" style="-fx-text-fill: #00ff00;" text="Present" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="82.0" />
+            <Label fx:id="lblAbsent" layoutX="85.0" layoutY="468.0" style="-fx-text-fill: #FF0000;" text="Absent" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="82.0" />
+            <Button layoutX="437.0" layoutY="490.0" mnemonicParsing="false" onAction="#handleAttendance" prefHeight="31.0" prefWidth="72.0" text="Confirm" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="14.0" />
+            <AnchorPane fx:id="ancEditView" layoutX="165.0" layoutY="184.0" prefHeight="530.0" prefWidth="522.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <Label style="-fx-font-size: 32;" styleClass="Edit-Header-Label" text="Edit" AnchorPane.leftAnchor="145.0" AnchorPane.topAnchor="56.0">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="145.0" layoutY="257.0" text="To" AnchorPane.leftAnchor="145.0" />
+                  <DatePicker fx:id="dPickerTo" layoutX="145.0" layoutY="277.0" AnchorPane.leftAnchor="145.0" />
+                  <Label layoutX="145.0" layoutY="148.0" text="From" AnchorPane.leftAnchor="145.0" />
+                  <TextField fx:id="txtAReason" layoutX="145.0" layoutY="398.0" prefHeight="37.0" prefWidth="237.0" AnchorPane.leftAnchor="145.0" />
+                  <Label fx:id="lblAReason" layoutX="145.0" layoutY="369.0" text="Reason for absence:" AnchorPane.leftAnchor="145.0" />
+                  <DatePicker fx:id="dPickerFrom" layoutX="137.0" layoutY="184.0" AnchorPane.leftAnchor="145.0" />
+                  <Button mnemonicParsing="false" onAction="#handleEditAttendance" prefHeight="30.0" prefWidth="46.0" text="Save" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="14.0" />
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="ancStatisticView" prefHeight="530.0" prefWidth="522.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <BarChart fx:id="studentBarChart" layoutY="226.0" prefHeight="309.0" prefWidth="410.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="45.0" AnchorPane.rightAnchor="75.0" AnchorPane.topAnchor="226.0">
+                     <xAxis>
+                        <CategoryAxis side="BOTTOM" />
+                     </xAxis>
+                     <yAxis>
+                        <NumberAxis side="LEFT" />
+                     </yAxis>
+                  </BarChart>
+                  <Label layoutX="472.0" layoutY="24.0" text="10%" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="24.0" />
+                  <Label layoutX="361.0" layoutY="24.0" text="Total Absence:" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="24.0" />
+                  <Label style="-fx-font-size: 32;" stylesheets="@AttendanceStyleSheet.css" text="Absence Statistic" AnchorPane.leftAnchor="24.0" AnchorPane.topAnchor="24.0" />
+                  <PieChart fx:id="attendencePieChart" layoutX="324.0" layoutY="48.0" prefHeight="172.0" prefWidth="225.0" styleClass="default-color0" stylesheets="@AttendanceStyleSheet.css" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="48.0" />
+                  <Label layoutX="28.0" layoutY="174.0" text="Day with most absence:" AnchorPane.leftAnchor="24.0" AnchorPane.topAnchor="175.0" />
+                  <Label layoutX="203.0" layoutY="174.0" text="Monday" AnchorPane.leftAnchor="190.0" AnchorPane.topAnchor="175.0" />
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+      <Label layoutX="591.0" layoutY="14.0" text="Logged in as:" AnchorPane.rightAnchor="110.0" AnchorPane.topAnchor="14.0" />
+      <Label layoutX="701.0" layoutY="14.0" text="Peter" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="14.0" />
+   </children>
+</AnchorPane>

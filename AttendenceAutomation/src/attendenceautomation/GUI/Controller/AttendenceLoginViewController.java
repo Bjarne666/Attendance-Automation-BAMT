@@ -50,7 +50,7 @@ public class AttendenceLoginViewController implements Initializable
     //handles student login
     private void handleStudentLogin() throws IOException
     {
-            AnchorPane pane = FXMLLoader.load(getClass().getResource("/attendenceautomation/GUI/View/RootLayout.fxml"));
+            AnchorPane pane = FXMLLoader.load(getClass().getResource("/attendenceautomation/GUI/View/StudentView.fxml"));
             FXMLLoader loader = new FXMLLoader();
 
             Stage stage = new Stage();
@@ -91,7 +91,7 @@ public class AttendenceLoginViewController implements Initializable
     private void handleTeacherLogin() throws IOException
     {
         //handles teacher login
-            AnchorPane pane = FXMLLoader.load(getClass().getResource("/attendenceautomation/GUI/View/teacherMainView.fxml"));
+            AnchorPane pane = FXMLLoader.load(getClass().getResource("/attendenceautomation/GUI/View/teacherMainViewTest.fxml"));
             FXMLLoader loader = new FXMLLoader();
 
             Stage stage = new Stage();

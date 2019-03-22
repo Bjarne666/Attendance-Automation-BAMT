@@ -40,13 +40,13 @@ public class RootLayoutController implements Initializable
     @FXML
     private StackPane stackAll;
     @FXML
-    private AnchorPane anchorTest;
-    @FXML
     private AnchorPane mainAnchor;
     @FXML
     private Button btnStatistics;
     @FXML
     private ImageView imgLogo;
+    @FXML
+    private AnchorPane anchorAll;
     
 
     /**
@@ -72,8 +72,8 @@ public class RootLayoutController implements Initializable
     private void loadMainView() throws IOException
     {
         AnchorPane pane1 = FXMLLoader.load(getClass().getResource("/attendenceautomation/GUI/View/AttendenceStudentView.fxml"));
-        anchorTest.getChildren().clear();
-        anchorTest.getChildren().add(pane1);
+        anchorAll.getChildren().clear();
+        anchorAll.getChildren().add(pane1);
     }         
     
     
@@ -86,14 +86,14 @@ public class RootLayoutController implements Initializable
         if (event.getSource() == btnStatistics)
         {
             AnchorPane pane = FXMLLoader.load(getClass().getResource("/attendenceautomation/GUI/View/AttendanceStatisticsView.fxml"));
-            anchorTest.getChildren().clear();
-            anchorTest.getChildren().add(pane);
+            anchorAll.getChildren().clear();
+            anchorAll.getChildren().add(pane);
         }
          if (event.getSource() == btnEdit)
         {
             AnchorPane pane = FXMLLoader.load(getClass().getResource("/attendenceautomation/GUI/View/AttendanceEditView.fxml"));
-            anchorTest.getChildren().clear();
-            anchorTest.getChildren().add(pane);
+            anchorAll.getChildren().clear();
+            anchorAll.getChildren().add(pane);
         }
 
     }

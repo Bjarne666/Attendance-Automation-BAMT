@@ -43,7 +43,7 @@
          <children>
             <Label fx:id="lblDateTeacher" text="date" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="24.0" />
             <Button mnemonicParsing="false" onAction="#handleTeacherLogout" prefHeight="30.0" prefWidth="65.0" text="Logout" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="14.0" />
-            <Label fx:id="lblTeacherOverview" style="-fx-font-size: 32;" text="Teacher Overview" AnchorPane.leftAnchor="24.0" AnchorPane.topAnchor="24.0" />
+            <Label fx:id="lblTeacherOverview" style="-fx-font-size: 32;" text="Teacher Overview" wrapText="true" AnchorPane.leftAnchor="24.0" AnchorPane.topAnchor="24.0" />
             <AnchorPane fx:id="ancClassView" prefHeight="530.0" prefWidth="522.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
                   <Label layoutX="75.0" layoutY="98.0" text="CS2018A" AnchorPane.leftAnchor="75.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="100.0" />
@@ -51,7 +51,7 @@
                   <Label layoutX="169.0" layoutY="140.0" text="35%" AnchorPane.leftAnchor="170.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="150.0" />
                   <Label layoutX="24.0" layoutY="98.0" prefHeight="21.0" prefWidth="47.0" text="Class:" AnchorPane.leftAnchor="24.0" AnchorPane.topAnchor="100.0" />
                   <PieChart fx:id="classPieChart" layoutX="61.0" layoutY="210.0" prefHeight="292.0" prefWidth="390.0" AnchorPane.bottomAnchor="28.0" AnchorPane.leftAnchor="61.0" AnchorPane.rightAnchor="71.0" AnchorPane.topAnchor="200.0" />
-                  <Label layoutX="24.0" layoutY="14.0" style="-fx-font-size: 32;" text="Class Overview" AnchorPane.leftAnchor="24.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="24.0" />
+                  <Label layoutX="24.0" layoutY="14.0" style="-fx-font-size: 32;" text="Class Overview" wrapText="true" AnchorPane.leftAnchor="24.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="24.0" />
                </children>
             </AnchorPane>
             <AnchorPane fx:id="ancStudentView" prefHeight="530.0" prefWidth="522.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">

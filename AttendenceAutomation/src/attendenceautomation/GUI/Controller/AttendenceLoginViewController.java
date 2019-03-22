@@ -41,6 +41,8 @@ public class AttendenceLoginViewController implements Initializable
     private JFXPasswordField txtPassword;
     
     private AAModel aModel;
+    
+    private Person user;
 
     public AttendenceLoginViewController() throws IOException
     {
@@ -69,8 +71,14 @@ public class AttendenceLoginViewController implements Initializable
     @FXML
     private void handleLogin(ActionEvent event) throws IOException, InterruptedException, SQLException
     {
-        Person user = aModel.login(txtUserName.getText(), txtPassword.getText());
-        if (user.IsAStudent())
+         user = aModel.login(txtUserName.getText(), txtPassword.getText());
+        if (user == null)
+        {
+            Alert alert = new Alert(Alert.AlertType.ERROR, "Incorrect user name or password");
+            alert.showAndWait();
+            return;
+        }
+         if (user.IsAStudent())
         {
             handleStudentLogin();
             return;
@@ -78,14 +86,7 @@ public class AttendenceLoginViewController implements Initializable
         if (!user.IsAStudent())
         {
             handleTeacherLogin();
-            return;
-        }
-        else
-        {
-            
-            Alert alert = new Alert(Alert.AlertType.ERROR, "Incorrect user name or password");
-            alert.showAndWait();
-        }
+        }     
     }
 
     private void handleTeacherLogin() throws IOException

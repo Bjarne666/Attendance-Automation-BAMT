@@ -53,11 +53,7 @@
                   <ToggleGroup fx:id="attendance" />
                </toggleGroup>
             </RadioButton>
-            <RadioButton fx:id="rdBtnAbsent" layoutX="126.0" layoutY="385.0" mnemonicParsing="false" text="absent" AnchorPane.bottomAnchor="90.0" AnchorPane.leftAnchor="115.0">
-               <toggleGroup>
-                  <ToggleGroup fx:id="attendance1" />
-               </toggleGroup>
-            </RadioButton>
+            <RadioButton fx:id="rdBtnAbsent" layoutX="126.0" layoutY="385.0" mnemonicParsing="false" text="absent" toggleGroup="$attendance" AnchorPane.bottomAnchor="90.0" AnchorPane.leftAnchor="115.0" />
             <Label fx:id="lblAttendance" layoutX="90.0" layoutY="424.0" style="-fx-text-fill: #00ff00;" text="Present" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="82.0" />
             <Label fx:id="lblAbsent" layoutX="85.0" layoutY="468.0" style="-fx-text-fill: #FF0000;" text="Absent" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="82.0" />
             <Button layoutX="437.0" layoutY="490.0" mnemonicParsing="false" onAction="#handleAttendance" prefHeight="31.0" prefWidth="72.0" text="Confirm" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="14.0" />

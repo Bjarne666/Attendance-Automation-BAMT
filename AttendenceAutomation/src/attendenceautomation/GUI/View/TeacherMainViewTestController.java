@@ -67,7 +67,7 @@ public class TeacherMainViewTestController implements Initializable
     private Student chosenStudent;
     
     @FXML
-    private TableView<?> tbViewStudents;
+    private TableView<Student> tbViewStudents;
     @FXML
     private ImageView imgLogo;
     @FXML
@@ -186,19 +186,20 @@ public class TeacherMainViewTestController implements Initializable
      * to allow returning to the same class overview.
      * @param event 
      */
+    @FXML
     private void handlePaneSwitch(MouseEvent event)
     {
         {
             if (!tbViewStudents.getSelectionModel().isEmpty())
             {
-//                chosenStudent = tbViewStudents.getSelectionModel().getSelectedItem();
+                chosenStudent = tbViewStudents.getSelectionModel().getSelectedItem();
                 comboClassList.getSelectionModel().clearSelection();
                 if (event.getButton().equals(MouseButton.PRIMARY))
                 {
                     if (event.getClickCount() == 1)
                     {
-//                        mainAnchorPane.getChildren().clear();
-                        ancTeacherView.setVisible(false);
+//                        ancTeacherView.getChildren().clear();
+                        ancClassView.setVisible(false);
 
                         ancStudentView.toFront();
                         ancStudentView.setVisible(true);
@@ -221,6 +222,7 @@ public class TeacherMainViewTestController implements Initializable
         Stage mainStage = (Stage) imgLogo.getScene().getWindow();
         loadMainView();
         ancClassView.setVisible(false);
+        ancStudentView.setVisible(false);
     }
     
     /**
@@ -248,7 +250,7 @@ public class TeacherMainViewTestController implements Initializable
         if (!comboClassList.getSelectionModel().isEmpty())
         {
             System.out.println("clicked");
-//            tbViewStudents.setItems(aaModel.getStudentsInClass(comboClassList.getSelectionModel().getSelectedItem()));
+            tbViewStudents.setItems(aaModel.getStudentsInClass(comboClassList.getSelectionModel().getSelectedItem()));
 
 //            mainAnchorPane.getChildren().clear();
 //            ancTeacherView.setVisible(false);

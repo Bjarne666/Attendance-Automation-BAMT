@@ -207,7 +207,7 @@ ancStatisticView.setVisible(false);
             lblAbsent.setVisible(false);
             return;
         } 
-        else if (attendance1.getSelectedToggle() == rdBtnAbsent)
+        else if (attendance.getSelectedToggle() == rdBtnAbsent)
         {
             lblAbsent.setText("Absent");
             lblAbsent.setVisible(true);

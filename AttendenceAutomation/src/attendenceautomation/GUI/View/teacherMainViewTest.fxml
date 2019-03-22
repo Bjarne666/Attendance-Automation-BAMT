@@ -29,7 +29,7 @@
             </ImageView>
          </children>
       </AnchorPane>
-      <TableView fx:id="tbViewStudents" layoutY="254.0" prefHeight="485.0" prefWidth="200.0" stylesheets="@AttendanceStyleSheet.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="115.0">
+      <TableView fx:id="tbViewStudents" layoutY="254.0" onMouseClicked="#handlePaneSwitch" prefHeight="485.0" prefWidth="200.0" stylesheets="@AttendanceStyleSheet.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="115.0">
         <columns>
           <TableColumn fx:id="colName" prefWidth="75.0" text="Name" />
           <TableColumn fx:id="colEmail" prefWidth="75.0" text="Email" />

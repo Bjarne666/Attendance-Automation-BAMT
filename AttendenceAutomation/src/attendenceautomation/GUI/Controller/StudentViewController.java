@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package attendenceautomation.GUI.View;
+package attendenceautomation.GUI.Controller;
 
 import attendenceautomation.BE.Person;
 import attendenceautomation.BE.Student;

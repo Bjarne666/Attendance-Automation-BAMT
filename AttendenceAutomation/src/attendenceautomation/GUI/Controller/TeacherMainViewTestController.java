@@ -5,6 +5,7 @@
  */
 package attendenceautomation.GUI.Controller;
 
+import attendenceautomation.BE.Person;
 import attendenceautomation.BE.SchoolClass;
 import attendenceautomation.BE.Student;
 import attendenceautomation.GUI.Model.AAModel;
@@ -29,8 +30,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 /**
@@ -38,14 +37,21 @@ import javafx.stage.Stage;
  *
  * @author Asvør
  */
-public class TeacherMainViewController implements Initializable
+public class TeacherMainViewTestController implements Initializable
 {
 
-    // our FXML elements
     @FXML
-    private TableView<Student> tbViewStudents;
+    private AnchorPane ancTeacherView;
     @FXML
-    private JFXComboBox<SchoolClass> comboClassList;
+    private AnchorPane ancStudentView;
+    @FXML
+    private PieChart studentPieChart;
+    @FXML
+    private BarChart<?, ?> studentBarChart;
+    @FXML
+    private AnchorPane ancClassView;
+    @FXML
+    private PieChart classPieChart;
     @FXML
     private TableColumn<Student, String> colName;
     @FXML
@@ -53,36 +59,36 @@ public class TeacherMainViewController implements Initializable
     @FXML
     private TableColumn<Student, String> colAbsence;
     @FXML
-    private PieChart studentPieChart;
+    private JFXComboBox<SchoolClass> comboClassList;
     @FXML
-    private PieChart CollectiveStudentChart;
+    private Label lblDateTeacher;
     @FXML
-    private Pane paneStudentView;
-    @FXML
-    private Pane paneMainView;
-    @FXML
-    private AnchorPane mainAnchorPane;
-    @FXML
-    private Pane paneClassView;
+    private TableView<Student> tbViewStudents;
     @FXML
     private ImageView imgLogo;
     @FXML
-    private BarChart<?, ?> barChartAbsence;
-
-    // our instance variables
-    private Student chosenStudent;
-
+    private Label lblStudentOverview;
+    @FXML
+    private Label lblTeacherOverview;
+    @FXML
+    private Label lblLoggedInUser;
+    @FXML
+    private Label lblClassName;
+    @FXML
+    private Label lblStudentName;
+    
     AAModel aaModel;
-    @FXML
-    private StackPane stackAll;
-    @FXML
-    private Label lblDateTeacher;
+    
+    private Person user;
+    private Student chosenStudent;
+    
 
-    public TeacherMainViewController() throws IOException
+    public TeacherMainViewTestController() throws IOException
     {
-    aaModel = new AAModel();
+        aaModel = new AAModel();
     }
 
+    
     /**
      * Initializes the controller class.
      */
@@ -94,6 +100,11 @@ public class TeacherMainViewController implements Initializable
         colName.setCellValueFactory(new PropertyValueFactory<>("name"));
         colEmail.setCellValueFactory(new PropertyValueFactory<>("Email"));
         colAbsence.setCellValueFactory(new PropertyValueFactory<>("absence"));
+
+        ancClassView.setVisible(false);
+        ancStudentView.setVisible(false);
+
+        
 
         try
         {
@@ -107,7 +118,8 @@ public class TeacherMainViewController implements Initializable
         StudentPieChart();
         studentBarChart();
         showCurrentDate();
-    }
+    }    
+    
     /**
      * handles exiting the program while in teacher view
      * @param event 
@@ -128,10 +140,10 @@ public class TeacherMainViewController implements Initializable
                 new PieChart.Data("Present", 65),
                 new PieChart.Data("Absent", 35));
 
-        CollectiveStudentChart.setData(classChart);
-        CollectiveStudentChart.setLegendVisible(false);
+        classPieChart.setData(classChart);
+        classPieChart.setLegendVisible(false);
 
-        return CollectiveStudentChart;
+        return classPieChart;
 
     }
     
@@ -150,15 +162,16 @@ public class TeacherMainViewController implements Initializable
 
         return studentPieChart;
     }
-    /**
+    
+     /**
      * The number of hours absent any given day for a monthly basis
      * @return 
      */
     public BarChart studentBarChart()
     {
         // Define category axises
-        barChartAbsence.getXAxis().setLabel("Days of absence");
-        barChartAbsence.getYAxis().setLabel("Hours of absence");
+        studentBarChart.getXAxis().setLabel("Days of absence");
+        studentBarChart.getYAxis().setLabel("Hours of absence");
 
         XYChart.Series dataSet = new XYChart.Series();
         dataSet.setName("Absence");
@@ -170,11 +183,12 @@ public class TeacherMainViewController implements Initializable
         dataSet.getData().add(new XYChart.Data("Friday", 20));
 
         //add dataset to chart
-        barChartAbsence.getData().add(dataSet);
-        barChartAbsence.setLegendVisible(false);
+        studentBarChart.getData().add(dataSet);
+        studentBarChart.setLegendVisible(false);
 
-        return barChartAbsence;
+        return studentBarChart;
     }
+    
     /**
      * Changes the stackpane currently shown and clears the combobox selection
      * to allow returning to the same class overview.
@@ -192,10 +206,13 @@ public class TeacherMainViewController implements Initializable
                 {
                     if (event.getClickCount() == 1)
                     {
-//                        mainAnchorPane.getChildren().clear();
-
-                        paneStudentView.toFront();
-                        mainAnchorPane.getChildren().add(paneStudentView);
+                        lblStudentName.setText(chosenStudent.getName());
+//                        ancTeacherView.getChildren().clear();
+                        ancClassView.setVisible(false);
+                        
+                        ancStudentView.toFront();
+                        ancStudentView.setVisible(true);
+//                        ancTeacherView.getChildren().add(ancStudentView);
                     }
                 }
             }
@@ -210,8 +227,13 @@ public class TeacherMainViewController implements Initializable
     @FXML
     private void clickImage(MouseEvent event) throws IOException
     {
+        System.out.println("picture clicked");
         Stage mainStage = (Stage) imgLogo.getScene().getWindow();
         loadMainView();
+        ancClassView.setVisible(false);
+        ancStudentView.setVisible(false);
+        
+        tbViewStudents.getItems().clear();
     }
     
     /**
@@ -221,8 +243,10 @@ public class TeacherMainViewController implements Initializable
     private void loadMainView() throws IOException
     {
 //        mainAnchorPane.getChildren().clear();
-        mainAnchorPane.getChildren().add(paneMainView);
-        paneMainView.toFront();
+//        ancTeacherView.getChildren().add(ancTeacherView);
+        ancTeacherView.setVisible(true);
+        ancTeacherView.toFront();
+
     }
     
     /**
@@ -233,18 +257,23 @@ public class TeacherMainViewController implements Initializable
     @FXML
     private void showClassStatistics(ActionEvent event)
     {
+        
         if (!comboClassList.getSelectionModel().isEmpty())
         {
-
-            tbViewStudents.setItems(aaModel.getStudentsInClass(comboClassList.getSelectionModel().getSelectedItem()));
+            System.out.println("clicked");
+            SchoolClass currentClass = comboClassList.getSelectionModel().getSelectedItem();
+            tbViewStudents.setItems(aaModel.getStudentsInClass(currentClass));
+            lblClassName.setText(currentClass.getClassName());
 
 //            mainAnchorPane.getChildren().clear();
-            paneClassView.toFront();
-            mainAnchorPane.getChildren().add(paneClassView);
+//            ancTeacherView.setVisible(false);
+            ancStudentView.setVisible(false);
+            ancClassView.setVisible(true);
+            ancClassView.toFront();
+//            ancTeacherView.getChildren().add(ancClassView);
         }
     }
     
-    @FXML
     private void showCurrentDate()
     {
         Calendar currentDate = Calendar.getInstance();
@@ -253,4 +282,16 @@ public class TeacherMainViewController implements Initializable
         int year = currentDate.get(Calendar.YEAR);
         lblDateTeacher.setText(Integer.toString(day)+ "/" + Integer.toString(month+1) +"-"+Integer.toString(year));
     }
+
+    public void setUser(Person userToSet)
+    {
+        user = userToSet;
+    }
+
+    public void setLabels()
+    {
+        lblLoggedInUser.setText(user.getName());
+        
+    }
+    
 }

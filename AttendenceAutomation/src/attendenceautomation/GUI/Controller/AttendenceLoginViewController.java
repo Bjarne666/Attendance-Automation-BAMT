@@ -7,8 +7,6 @@ package attendenceautomation.GUI.Controller;
 
 import attendenceautomation.BE.Person;
 import attendenceautomation.GUI.Model.AAModel;
-import attendenceautomation.GUI.View.StudentViewController;
-import attendenceautomation.GUI.View.TeacherMainViewTestController;
 import com.jfoenix.controls.JFXPasswordField;
 import java.io.IOException;
 import java.net.URL;

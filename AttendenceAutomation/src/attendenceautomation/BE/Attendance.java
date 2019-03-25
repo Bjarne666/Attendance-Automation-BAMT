@@ -22,20 +22,15 @@ public class Attendance
 
     private Date currentDate;
     private BooleanProperty present;
-    private StringProperty dateString;
-    private DateConverter dC;
 
     public Attendance(Date currentDate, boolean present)
     {
 
-        this.dateString = new SimpleStringProperty();
         this.present = new SimpleBooleanProperty();
 
         this.present.set(present);
 
         this.currentDate = currentDate;
-        dC = new DateConverter(currentDate);
-        this.dateString.set(dC.convertDate());
     }
 
     public Date getCurrentDate()
@@ -48,14 +43,10 @@ public class Attendance
         return present.get();
     }
 
-    public String getDateString()
-    {
-        return dateString.get();
-    }
     
     public String toString()
     {
-        return "At "+ dateString.get() + "your attendance were recorded as: " + present.get();
+        return "At "+ currentDate + "your attendance were recorded as: " + present.get();
     }
     
 }

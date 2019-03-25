@@ -11,8 +11,9 @@ import java.util.Calendar;
 import java.util.Date;
 
 /**
- *
- * @author kokus
+ * Was going to be used to convert dates to a formatted String.
+ * However, with the change to database this is not needed.
+ * @author Theis
  */
 public class DateConverter
 {

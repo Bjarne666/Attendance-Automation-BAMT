@@ -6,9 +6,9 @@
 package attendenceautomation.GUI.Controller;
 
 import attendenceautomation.BE.Person;
-import attendenceautomation.BE.Student;
-import attendenceautomation.BE.Teacher;
 import attendenceautomation.GUI.Model.AAModel;
+import attendenceautomation.GUI.View.StudentViewController;
+import attendenceautomation.GUI.View.TeacherMainViewTestController;
 import com.jfoenix.controls.JFXPasswordField;
 import java.io.IOException;
 import java.net.URL;
@@ -52,9 +52,14 @@ public class AttendenceLoginViewController implements Initializable
     //handles student login
     private void handleStudentLogin() throws IOException
     {
-            AnchorPane pane = FXMLLoader.load(getClass().getResource("/attendenceautomation/GUI/View/StudentView.fxml"));
-            FXMLLoader loader = new FXMLLoader();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/attendenceautomation/GUI/View/StudentView.fxml"));
+            AnchorPane pane = loader.load();
 
+            
+            StudentViewController sViewController = loader.getController();
+            sViewController.setUser(user);
+            sViewController.setLabels();
+            
             Stage stage = new Stage();
             stage.setScene(new Scene(pane));
 
@@ -92,9 +97,13 @@ public class AttendenceLoginViewController implements Initializable
     private void handleTeacherLogin() throws IOException
     {
         //handles teacher login
-            AnchorPane pane = FXMLLoader.load(getClass().getResource("/attendenceautomation/GUI/View/teacherMainViewTest.fxml"));
-            FXMLLoader loader = new FXMLLoader();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/attendenceautomation/GUI/View/teacherMainViewTest.fxml"));
+            AnchorPane pane = loader.load();
 
+            TeacherMainViewTestController tViewController = loader.getController();
+            tViewController.setUser(user);
+            tViewController.setLabels();
+            
             Stage stage = new Stage();
             stage.setScene(new Scene(pane));
 

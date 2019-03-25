@@ -5,13 +5,12 @@
  */
 package attendenceautomation.GUI.View;
 
+import attendenceautomation.BE.Person;
 import com.jfoenix.controls.JFXButton;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Calendar;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -84,6 +83,8 @@ public class StudentViewController implements Initializable
     @FXML
     private RadioButton rdBtnAbsent;
 
+    private Person user;
+
     /**
      * Initializes the controller class.
      */
@@ -92,14 +93,14 @@ public class StudentViewController implements Initializable
     {
         lblAttendance.setVisible(false);
         lblAbsent.setVisible(false);
-        
+
         lblAReason.setVisible(false);
         txtAReason.setVisible(false);
-        
+
         ancEditView.setVisible(false);
         ancStatisticView.setVisible(false);
         
-        
+
         try
         {
             loadMainView();
@@ -107,55 +108,56 @@ public class StudentViewController implements Initializable
         {
             ex.printStackTrace();
         }
-        
+
         showCurrentDate();
         buildPieChart();
         studentBarChart();
-    }    
-    
-     /**
+    }
+
+    /**
      * Returns to the frontpage of the teacher's view
-     * @throws IOException 
+     *
+     * @throws IOException
      */
     private void loadMainView() throws IOException
     {
         System.out.println("im loading");
 //        mainAnchorPane.getChildren().clear();
-ancEditView.setVisible(false);
-ancStatisticView.setVisible(false);
+        ancEditView.setVisible(false);
+        ancStatisticView.setVisible(false);
         ancStudentMainView.setVisible(true);
         ancStudentMainView.toFront();
-        
+
     }
-    
+
     @FXML
     private void switchToEditWindow(ActionEvent event)
     {
         System.out.println("Edit");
 //        ancStudentMainView.setVisible(false);
         ancStatisticView.setVisible(false);
-        
+
         ancEditView.setVisible(true);
         ancEditView.toFront();
-        
+
     }
-    
+
     @FXML
     private void showStatisticWindow(ActionEvent event)
     {
         System.out.println("statistic");
 //        ancStudentMainView.setVisible(false);
         ancEditView.setVisible(false);
-        
+
         ancStatisticView.setVisible(true);
         ancStatisticView.toFront();
-        
+
     }
 
     @FXML
     private void handleEditAttendance(ActionEvent event)
     {
-        
+
         if (attendance.getSelectedToggle() == rdBtnPresent && dPickerTo.getValue() != null)
         {
             informationAlert("Attendance for the chosen date set to present");
@@ -181,7 +183,7 @@ ancStatisticView.setVisible(false);
             txtAReason.setVisible(true);
         }
     }
-    
+
     /**
      * handles information messages
      *
@@ -206,8 +208,7 @@ ancStatisticView.setVisible(false);
             lblAttendance.setVisible(true);
             lblAbsent.setVisible(false);
             return;
-        } 
-        else if (attendance.getSelectedToggle() == rdBtnAbsent)
+        } else if (attendance.getSelectedToggle() == rdBtnAbsent)
         {
             lblAbsent.setText("Absent");
             lblAbsent.setVisible(true);
@@ -217,17 +218,17 @@ ancStatisticView.setVisible(false);
         Alert alert = new Alert(Alert.AlertType.ERROR, "You have to select either present or absent");
         alert.showAndWait();
     }
-    
+
     private void showCurrentDate()
     {
         Calendar currentDate = Calendar.getInstance();
         int day = currentDate.get(Calendar.DATE);
         int month = currentDate.get(Calendar.MONTH);
         int year = currentDate.get(Calendar.YEAR);
-        lblDate.setText(Integer.toString(day)+ "/" + Integer.toString(month+1) +"-"+Integer.toString(year));
-    
+        lblDate.setText(Integer.toString(day) + "/" + Integer.toString(month + 1) + "-" + Integer.toString(year));
+
     }
-    
+
     /**
      * sets the piechart data
      *
@@ -244,7 +245,7 @@ ancStatisticView.setVisible(false);
 
         return attendencePieChart;
     }
-    
+
     /**
      * defines the barChart and inserts data
      *
@@ -280,7 +281,15 @@ ancStatisticView.setVisible(false);
         loadMainView();
     }
 
-    
+    public void setUser(Person userToSet)
+    {
+        user = userToSet;
+    }
+
+    public void setLabels()
+    {
+        lblName.setText(user.getName());
+    }
 
     @FXML
     private void handleStudentLogout(ActionEvent event)
@@ -288,6 +297,4 @@ ancStatisticView.setVisible(false);
         System.exit(0);
     }
 
-
-    
 }

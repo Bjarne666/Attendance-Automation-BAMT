@@ -30,7 +30,7 @@ public class AAModel
     private ObservableList<Student> studentList;
     private ObservableList<SchoolClass> classList;
     private ObservableList<Teacher> teacherList;
-    
+    private Person user;
 
     public AAModel() throws IOException
     {
@@ -72,11 +72,17 @@ public class AAModel
     
     public Person login(String email, String password) throws SQLException
     {
-        return aManager.login(email, password);
+        user = aManager.login(email, password);
+        return user;
     }
     
     public List<Attendance> getAttendance(Student student)
     {
         return aManager.getAttendance(student);
+    }
+    
+    public Person getUser()
+    {
+        return user;
     }
 }

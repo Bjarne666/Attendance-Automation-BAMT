@@ -14,7 +14,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" styleClass="background" stylesheets="@AttendanceStyleSheet.css" xmlns="http://javafx.com/javafx/8.0.181" xmlns:fx="http://javafx.com/fxml/1" fx:controller="attendenceautomation.GUI.View.TeacherMainViewTestController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" styleClass="background" stylesheets="@AttendanceStyleSheet.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="attendenceautomation.GUI.View.TeacherMainViewTestController">
    <children>
       <AnchorPane layoutX="276.0" layoutY="413.0" prefHeight="56.0" prefWidth="600.0" style="-fx-background-color: #4b4b4b;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="0.0" />
       <AnchorPane layoutX="8.0" layoutY="14.0" prefHeight="85.0" prefWidth="200.0" style="-fx-background-color: #4b4b4b;" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -37,8 +37,8 @@
         </columns>
       </TableView>
       <JFXComboBox fx:id="comboClassList" focusColor="#4b4b4b" layoutY="85.0" onAction="#showClassStatistics" prefHeight="30.0" prefWidth="200.0" promptText="Select Class" styleClass="input" stylesheets="@AttendanceStyleSheet.css" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="85.0" />
-      <Label layoutX="616.0" layoutY="14.0" text="Logged in as:" AnchorPane.rightAnchor="95.0" AnchorPane.topAnchor="14.0" />
-      <Label layoutX="730.0" layoutY="14.0" text="Peter" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="14.0" />
+      <Label layoutX="614.0" layoutY="14.0" text="Logged in as:" AnchorPane.rightAnchor="97.0" AnchorPane.topAnchor="14.0" />
+      <Label fx:id="lblLoggedInUser" layoutX="707.0" layoutY="14.0" prefHeight="21.0" prefWidth="89.0" text="Peter" AnchorPane.rightAnchor="4.0" AnchorPane.topAnchor="14.0" />
       <AnchorPane fx:id="ancTeacherView" layoutX="239.0" layoutY="39.0" prefHeight="530.0" prefWidth="522.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="235.0" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="40.0">
          <children>
             <Label fx:id="lblDateTeacher" text="date" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="24.0" />
@@ -46,7 +46,7 @@
             <Label fx:id="lblTeacherOverview" style="-fx-font-size: 32;" text="Teacher Overview" wrapText="true" AnchorPane.leftAnchor="24.0" AnchorPane.topAnchor="24.0" />
             <AnchorPane fx:id="ancClassView" prefHeight="530.0" prefWidth="522.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <Label layoutX="75.0" layoutY="98.0" text="CS2018A" AnchorPane.leftAnchor="75.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="100.0" />
+                  <Label fx:id="lblClassName" layoutX="75.0" layoutY="98.0" text="CS2018A" AnchorPane.leftAnchor="75.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="100.0" />
                   <Label layoutX="24.0" layoutY="140.0" text="Collective Absence:" AnchorPane.leftAnchor="24.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="150.0" />
                   <Label layoutX="169.0" layoutY="140.0" text="35%" AnchorPane.leftAnchor="170.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="150.0" />
                   <Label layoutX="24.0" layoutY="98.0" prefHeight="21.0" prefWidth="47.0" text="Class:" AnchorPane.leftAnchor="24.0" AnchorPane.topAnchor="100.0" />
@@ -58,12 +58,12 @@
                <children>
                   <Label fx:id="lblStudentOverview" layoutX="35.0" layoutY="30.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" style="-fx-font-size: 32;" text="Student Overview" wrapText="true" AnchorPane.leftAnchor="24.0" AnchorPane.topAnchor="24.0" />
                   <Label layoutX="24.0" layoutY="101.0" text="Student name:" AnchorPane.leftAnchor="24.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="101.0" />
-                  <Label layoutX="140.0" layoutY="101.0" text="Birger" AnchorPane.leftAnchor="140.0" AnchorPane.topAnchor="101.0" />
-                  <Label layoutX="364.0" layoutY="24.0" text="Absence" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="24.0" />
-                  <Label layoutX="456.0" layoutY="24.0" text="10%" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="24.0" />
+                  <Label fx:id="lblStudentName" layoutX="124.0" layoutY="101.0" text="Birger" AnchorPane.leftAnchor="124.0" AnchorPane.topAnchor="101.0" />
+                  <Label layoutX="364.0" layoutY="24.0" text="Absence:" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="24.0" />
+                  <Label layoutX="453.0" layoutY="24.0" text="10%" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="24.0" />
                   <Label layoutX="24.0" layoutY="213.0" text="Day with most absence:" AnchorPane.leftAnchor="24.0" AnchorPane.topAnchor="213.0" />
-                  <Label layoutX="196.0" layoutY="213.0" text="Monday" AnchorPane.leftAnchor="196.0" AnchorPane.topAnchor="213.0" />
-                  <PieChart fx:id="studentPieChart" layoutX="283.0" layoutY="54.0" prefHeight="190.0" prefWidth="235.0" />
+                  <Label layoutX="185.0" layoutY="213.0" text="Monday" AnchorPane.leftAnchor="185.0" AnchorPane.topAnchor="213.0" />
+                  <PieChart fx:id="studentPieChart" layoutX="312.0" layoutY="17.0" prefHeight="190.0" prefWidth="235.0" AnchorPane.rightAnchor="-17.0" AnchorPane.topAnchor="17.0" />
                   <BarChart fx:id="studentBarChart" layoutY="182.0" prefHeight="275.0" prefWidth="522.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="60.0" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="260.0">
                     <xAxis>
                       <CategoryAxis side="BOTTOM" />

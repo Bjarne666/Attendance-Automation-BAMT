@@ -5,6 +5,7 @@
  */
 package attendenceautomation.GUI.View;
 
+import attendenceautomation.BE.Person;
 import attendenceautomation.BE.SchoolClass;
 import attendenceautomation.BE.Student;
 import attendenceautomation.GUI.Model.AAModel;
@@ -61,11 +62,6 @@ public class TeacherMainViewTestController implements Initializable
     private JFXComboBox<SchoolClass> comboClassList;
     @FXML
     private Label lblDateTeacher;
-    
-    AAModel aaModel;
-    
-    private Student chosenStudent;
-    
     @FXML
     private TableView<Student> tbViewStudents;
     @FXML
@@ -74,6 +70,18 @@ public class TeacherMainViewTestController implements Initializable
     private Label lblStudentOverview;
     @FXML
     private Label lblTeacherOverview;
+    @FXML
+    private Label lblLoggedInUser;
+    @FXML
+    private Label lblClassName;
+    @FXML
+    private Label lblStudentName;
+    
+    AAModel aaModel;
+    
+    private Person user;
+    private Student chosenStudent;
+    
 
     public TeacherMainViewTestController() throws IOException
     {
@@ -198,9 +206,10 @@ public class TeacherMainViewTestController implements Initializable
                 {
                     if (event.getClickCount() == 1)
                     {
+                        lblStudentName.setText(chosenStudent.getName());
 //                        ancTeacherView.getChildren().clear();
                         ancClassView.setVisible(false);
-
+                        
                         ancStudentView.toFront();
                         ancStudentView.setVisible(true);
 //                        ancTeacherView.getChildren().add(ancStudentView);
@@ -252,7 +261,9 @@ public class TeacherMainViewTestController implements Initializable
         if (!comboClassList.getSelectionModel().isEmpty())
         {
             System.out.println("clicked");
-            tbViewStudents.setItems(aaModel.getStudentsInClass(comboClassList.getSelectionModel().getSelectedItem()));
+            SchoolClass currentClass = comboClassList.getSelectionModel().getSelectedItem();
+            tbViewStudents.setItems(aaModel.getStudentsInClass(currentClass));
+            lblClassName.setText(currentClass.getClassName());
 
 //            mainAnchorPane.getChildren().clear();
 //            ancTeacherView.setVisible(false);
@@ -270,6 +281,17 @@ public class TeacherMainViewTestController implements Initializable
         int month = currentDate.get(Calendar.MONTH);
         int year = currentDate.get(Calendar.YEAR);
         lblDateTeacher.setText(Integer.toString(day)+ "/" + Integer.toString(month+1) +"-"+Integer.toString(year));
+    }
+
+    public void setUser(Person userToSet)
+    {
+        user = userToSet;
+    }
+
+    public void setLabels()
+    {
+        lblLoggedInUser.setText(user.getName());
+        
     }
     
 }

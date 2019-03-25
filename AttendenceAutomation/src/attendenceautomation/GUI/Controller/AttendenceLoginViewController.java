@@ -95,10 +95,10 @@ public class AttendenceLoginViewController implements Initializable
     private void handleTeacherLogin() throws IOException
     {
         //handles teacher login
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/attendenceautomation/GUI/View/teacherMainViewTest.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/attendenceautomation/GUI/View/TeacherView.fxml"));
             AnchorPane pane = loader.load();
 
-            TeacherMainViewTestController tViewController = loader.getController();
+            TeacherViewController tViewController = loader.getController();
             tViewController.setUser(user);
             tViewController.setLabels();
             

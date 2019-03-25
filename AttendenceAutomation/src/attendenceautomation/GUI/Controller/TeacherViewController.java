@@ -37,7 +37,7 @@ import javafx.stage.Stage;
  *
  * @author Asvør
  */
-public class TeacherMainViewTestController implements Initializable
+public class TeacherViewController implements Initializable
 {
 
     @FXML
@@ -83,7 +83,7 @@ public class TeacherMainViewTestController implements Initializable
     private Student chosenStudent;
     
 
-    public TeacherMainViewTestController() throws IOException
+    public TeacherViewController() throws IOException
     {
         aaModel = new AAModel();
     }

@@ -236,4 +236,35 @@ public class PersonDBDAO
         
         return personToLogin;
     }
+    
+    public List<Attendance> setUpBarChart (Student student)
+    {
+        List<Attendance> attendance = new ArrayList<>();
+        
+        try (Connection con = ds.getConnection())
+        {
+            PreparedStatement pstmt = con.prepareStatement("SELECT date FROM Attendance "
+                    + "INNER JOIN Student on Attendance.studentID = Student.studentID "
+                    + "WHERE studentID = (?) AND isPresent = (?) ");
+                    pstmt.setInt(1, student.getId());
+                    pstmt.setBoolean(2, false);
+            
+            ResultSet rs = pstmt.executeQuery();
+            
+            while (rs.next())
+            {
+                int id = rs.getInt("studentID");
+                Date date = rs.getDate("date");
+                boolean isPresent = rs.getBoolean("isPresent");
+                
+                attendance.add(new Attendance(date, isPresent));
+            }
+        } 
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+        
+        return attendance;
+    }
 }

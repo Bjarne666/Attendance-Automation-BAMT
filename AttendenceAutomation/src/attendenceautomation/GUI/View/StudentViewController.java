@@ -6,11 +6,15 @@
 package attendenceautomation.GUI.View;
 
 import attendenceautomation.BE.Person;
+import attendenceautomation.BE.Student;
+import attendenceautomation.GUI.Model.AAModel;
 import com.jfoenix.controls.JFXButton;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Calendar;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -83,7 +87,10 @@ public class StudentViewController implements Initializable
     @FXML
     private RadioButton rdBtnAbsent;
 
+    private Student student;
     private Person user;
+    
+    AAModel aaModel;
 
     /**
      * Initializes the controller class.
@@ -91,6 +98,13 @@ public class StudentViewController implements Initializable
     @Override
     public void initialize(URL url, ResourceBundle rb)
     {
+        try
+        {
+            aaModel = new  AAModel();
+        } catch (IOException ex)
+        {
+            Logger.getLogger(StudentViewController.class.getName()).log(Level.SEVERE, null, ex);
+        }
         lblAttendance.setVisible(false);
         lblAbsent.setVisible(false);
 
@@ -260,6 +274,7 @@ public class StudentViewController implements Initializable
         XYChart.Series dataSet = new XYChart.Series();
         dataSet.setName("Absence");
 
+//        dataSet.getData().add(new XYChart.Data<>("monday", aaModel.setUpBarChart(student)));
         dataSet.getData().add(new XYChart.Data("Monday", 25));
         dataSet.getData().add(new XYChart.Data("Tuesday", 2));
         dataSet.getData().add(new XYChart.Data("Wednesday", 0));

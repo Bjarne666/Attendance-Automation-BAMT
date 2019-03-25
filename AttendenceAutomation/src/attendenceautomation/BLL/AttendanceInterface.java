@@ -75,4 +75,12 @@ public interface AttendanceInterface
      * @throws com.microsoft.sqlserver.jdbc.SQLServerException
      */
     public Person login(String email, String password) throws SQLServerException, SQLException;
+    
+    /**
+     * 
+     * @param studentAbsence
+     * @param student
+     * @return 
+     */
+    public List<Attendance> setUpBarChart (Student student);
 }

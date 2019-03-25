@@ -5,6 +5,10 @@
  */
 package attendenceautomation.GUI.Controller;
 
+import attendenceautomation.BE.Attendance;
+import attendenceautomation.BE.Student;
+import attendenceautomation.GUI.Model.AAModel;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
@@ -28,6 +32,18 @@ public class AttendanceStatisticsViewController implements Initializable
     @FXML
     private PieChart attendencePieChart;
 
+    AAModel aaModel;
+    
+    Student student;
+    
+    Attendance studentAbsence;
+
+    public AttendanceStatisticsViewController() throws IOException
+    {
+        aaModel = new AAModel();
+    }
+    
+    
     /**
      * sets the piechart data
      *
@@ -71,11 +87,14 @@ public class AttendanceStatisticsViewController implements Initializable
         XYChart.Series dataSet = new XYChart.Series();
         dataSet.setName("Absence");
 
+//        dataSet.getData().add(new XYChart.Data<>("monday", aaModel.setUpBarChart(student)));
         dataSet.getData().add(new XYChart.Data("Monday", 25));
         dataSet.getData().add(new XYChart.Data("Tuesday", 2));
         dataSet.getData().add(new XYChart.Data("Wednesday", 0));
         dataSet.getData().add(new XYChart.Data("Thursday", 0));
         dataSet.getData().add(new XYChart.Data("Friday", 20));
+        
+        
 
         //add dataset to chart
         studentBarChart.getData().add(dataSet);

@@ -12,7 +12,6 @@ import attendenceautomation.BE.Student;
 import attendenceautomation.BE.Teacher;
 import attendenceautomation.DAL.AADALInterface;
 import attendenceautomation.DAL.AttendanceFacade;
-import attendenceautomation.DAL.MockDAO;
 import com.microsoft.sqlserver.jdbc.SQLServerException;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -78,6 +77,12 @@ public class AAManager implements AttendanceInterface
     public Person login(String email, String password) throws SQLServerException, SQLException
     {
         return aDAO.login(email, password);
+    }
+
+    @Override
+    public List<Attendance> setUpBarChart(Student student)
+    {
+       return aDAO.setUpBarChart(student);
     }
     
     

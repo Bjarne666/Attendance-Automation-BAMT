@@ -30,7 +30,9 @@ public class AAModel
     private ObservableList<Student> studentList;
     private ObservableList<SchoolClass> classList;
     private ObservableList<Teacher> teacherList;
+    private ObservableList<Attendance> attendanceList;
     private Person user;
+    private Student student;
 
     public AAModel() throws IOException
     {
@@ -43,6 +45,8 @@ public class AAModel
        classList = FXCollections.observableArrayList(aManager.getAllClasses());
        classList.addAll(aManager.getAllClasses());
        teacherList = FXCollections.observableArrayList(aManager.getAllTeachers());
+//       attendanceList = FXCollections.observableArrayList(aManager.setUpBarChart(student));
+       
 
     }
     public ObservableList<Student> getAllStudents()
@@ -84,5 +88,10 @@ public class AAModel
     public Person getUser()
     {
         return user;
+    }
+    
+    public ObservableList<Attendance> setUpBarChart (Student student)
+    {
+        return FXCollections.observableArrayList(aManager.setUpBarChart(student));
     }
 }

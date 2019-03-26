@@ -106,7 +106,13 @@ public class MockDAO implements AADALInterface {
     }
 
     @Override
-    public List<Attendance> setUpBarChart(Student student)
+    public List<Attendance> setUpBarChart(int id)
+    {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<Attendance> getStudentPieChartData(int id)
     {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }

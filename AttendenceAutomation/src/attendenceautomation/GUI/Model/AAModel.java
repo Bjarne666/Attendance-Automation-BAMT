@@ -45,7 +45,7 @@ public class AAModel
        classList = FXCollections.observableArrayList(aManager.getAllClasses());
        classList.addAll(aManager.getAllClasses());
        teacherList = FXCollections.observableArrayList(aManager.getAllTeachers());
-//       attendanceList = FXCollections.observableArrayList(aManager.setUpBarChart(student));
+//       attendanceList = FXCollections.observableArrayList(aManager.getAbsenceSumById(student));
        
 
     }
@@ -90,8 +90,23 @@ public class AAModel
         return user;
     }
     
-    public ObservableList<Attendance> setUpBarChart (Student student)
+    public int getAbsenceSumById (int id)
     {
-        return FXCollections.observableArrayList(aManager.setUpBarChart(student));
+        ObservableList absences = FXCollections.observableArrayList(aManager.setUpBarChart(id));
+        int absencesum = 0;
+        
+        for (Object absence : absences)
+        {
+            absencesum++;
+        }
+        
+        return absencesum;
+        
+    }
+    
+    public ObservableList<Attendance> getStudentPieChartData(int id)
+    {
+        return FXCollections.observableArrayList(aManager.getStudentPieChartData(id));
+        
     }
 }

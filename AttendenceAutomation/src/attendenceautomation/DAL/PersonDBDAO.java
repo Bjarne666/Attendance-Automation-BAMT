@@ -237,7 +237,7 @@ public class PersonDBDAO
         return personToLogin;
     }
     
-    public List<Attendance> setUpBarChart (Student student)
+    public List<Attendance> setUpBarChart (int id)
     {
         List<Attendance> attendance = new ArrayList<>();
         
@@ -245,15 +245,14 @@ public class PersonDBDAO
         {
             PreparedStatement pstmt = con.prepareStatement("SELECT date FROM Attendance "
                     + "INNER JOIN Student on Attendance.studentID = Student.studentID "
-                    + "WHERE studentID = (?) AND isPresent = (?) ");
-                    pstmt.setInt(1, student.getId());
+                    + "WHERE Student.studentID = (?) AND isPresent = (?) ");
+                    pstmt.setInt(1, id);
                     pstmt.setBoolean(2, false);
             
             ResultSet rs = pstmt.executeQuery();
             
             while (rs.next())
             {
-                int id = rs.getInt("studentID");
                 Date date = rs.getDate("date");
                 boolean isPresent = rs.getBoolean("isPresent");
                 
@@ -266,5 +265,36 @@ public class PersonDBDAO
         }
         
         return attendance;
+    }
+    
+    public List<Attendance> getStudentPieChartData(int id)
+    {
+        List<Attendance> attendance = new ArrayList<>();
+        
+        try (Connection con = ds.getConnection())
+        {
+            PreparedStatement pstmt = con.prepareStatement("SELECT date FROM Attendance "
+                    + "INNER JOIN Student on Attendance.studentID = Student.studentID "
+                    + "WHERE Student.studentID = (?) AND isPresent = (?) ");
+                    pstmt.setInt(1, id);
+                    pstmt.setBoolean(2, false);
+            
+            ResultSet rs = pstmt.executeQuery();
+            
+            while (rs.next())
+            {
+                Date date = rs.getDate("date");
+                boolean isPresent = rs.getBoolean("isPresent");
+                
+                attendance.add(new Attendance(date, isPresent));
+            }
+        } 
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+        
+        return attendance;
+    
     }
 }

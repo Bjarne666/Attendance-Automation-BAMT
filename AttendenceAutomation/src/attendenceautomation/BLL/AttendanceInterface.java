@@ -78,9 +78,17 @@ public interface AttendanceInterface
     
     /**
      * 
-     * @param studentAbsence
-     * @param student
+     * @param id
      * @return 
      */
-    public List<Attendance> setUpBarChart (Student student);
+    public List<Attendance> setUpBarChart (int id);
+    
+    
+    /**
+     * 
+     * @param id
+     * @return 
+     */
+    public List<Attendance> getStudentPieChartData(int id);
+    
 }

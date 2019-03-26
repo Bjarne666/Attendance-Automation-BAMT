@@ -80,9 +80,15 @@ public class AAManager implements AttendanceInterface
     }
 
     @Override
-    public List<Attendance> setUpBarChart(Student student)
+    public List<Attendance> setUpBarChart(int id)
     {
-       return aDAO.setUpBarChart(student);
+       return aDAO.setUpBarChart(id);
+    }
+
+    @Override
+    public List<Attendance> getStudentPieChartData(int id)
+    {
+        return aDAO.getStudentPieChartData(id);
     }
     
     

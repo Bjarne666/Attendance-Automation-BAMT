@@ -116,7 +116,7 @@ public class TeacherViewController implements Initializable
 
         classPieChart();
         StudentPieChart();
-        studentBarChart();
+//        studentBarChart();
         showCurrentDate();
     }    
     
@@ -176,11 +176,16 @@ public class TeacherViewController implements Initializable
         XYChart.Series dataSet = new XYChart.Series();
         dataSet.setName("Absence");
 
-        dataSet.getData().add(new XYChart.Data("Monday", 25));
-        dataSet.getData().add(new XYChart.Data("Tuesday", 2));
-        dataSet.getData().add(new XYChart.Data("Wednesday", 0));
-        dataSet.getData().add(new XYChart.Data("Thursday", 0));
-        dataSet.getData().add(new XYChart.Data("Friday", 20));
+        dataSet.getData().add(new XYChart.Data("Monday", aaModel.getAbsenceSumById(user.getId())));
+        dataSet.getData().add(new XYChart.Data("Tuesday", aaModel.getAbsenceSumById(user.getId())));
+        dataSet.getData().add(new XYChart.Data("Wednesday", aaModel.getAbsenceSumById(user.getId())));
+        dataSet.getData().add(new XYChart.Data("Thursday", aaModel.getAbsenceSumById(user.getId())));
+        dataSet.getData().add(new XYChart.Data("Friday", aaModel.getAbsenceSumById(user.getId())));
+//        dataSet.getData().add(new XYChart.Data("Monday", 25));
+//        dataSet.getData().add(new XYChart.Data("Tuesday", 2));
+//        dataSet.getData().add(new XYChart.Data("Wednesday", 0));
+//        dataSet.getData().add(new XYChart.Data("Thursday", 0));
+//        dataSet.getData().add(new XYChart.Data("Friday", 20));
 
         //add dataset to chart
         studentBarChart.getData().add(dataSet);

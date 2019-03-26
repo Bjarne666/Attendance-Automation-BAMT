@@ -183,6 +183,24 @@ public class PersonDBDAO
 
         return attendance;
     }
+    
+        public void setAttendance(Attendance attendance, int id)
+    {
+       java.sql.Date sqlDate = new java.sql.Date(attendance.getCurrentDate().getTime());
+        try (Connection con = ds.getConnection())
+        {
+            PreparedStatement pstmt = con.prepareStatement("INSERT INTO Attendance VALUES (?,?,?)");
+            pstmt.setInt(1, id);
+            pstmt.setDate(2, sqlDate);
+            pstmt.setBoolean(3, attendance.getPresent());
+            
+            pstmt.execute();
+        } 
+        catch (Exception e)
+        {
+                e.printStackTrace();
+        }    
+    }
 
     public Person login(String email, String password) throws SQLServerException, SQLException
     {

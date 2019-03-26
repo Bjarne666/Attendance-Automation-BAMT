@@ -10,12 +10,12 @@ import javafx.beans.property.StringProperty;
 
 /**
  *
- * @author kokus
+ * @author Theis
  */
 public abstract class Person
 {
 
-    //currently not in use
+ 
     private int id;
     private final StringProperty name;
     private final StringProperty email;
@@ -57,10 +57,6 @@ public abstract class Person
         email.set(newEmail);
     }
     
-    public void getPassword(String password)
-    {
-        this.password.set(password);
-    }
     
     public void setPassword(String newPassword)
     {
@@ -86,6 +82,11 @@ public abstract class Person
     public void setIsAStudent(boolean isAStudent)
     {
         this.isAStudent = isAStudent;
+    }
+
+    public String getPassword()
+    {
+        return password.get();
     }
 
 }

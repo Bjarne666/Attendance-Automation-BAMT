@@ -57,6 +57,7 @@ public class AttendenceLoginViewController implements Initializable
             StudentViewController sViewController = loader.getController();
             sViewController.setUser(user);
             sViewController.setLabels();
+            sViewController.studentBarChart();
             
             Stage stage = new Stage();
             stage.setScene(new Scene(pane));

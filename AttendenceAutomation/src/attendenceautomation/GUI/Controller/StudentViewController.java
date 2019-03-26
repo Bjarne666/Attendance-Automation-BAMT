@@ -124,7 +124,7 @@ public class StudentViewController implements Initializable
 
         showCurrentDate();
         buildPieChart();
-        studentBarChart();
+//        studentBarChart();
     }
 
     /**

@@ -95,9 +95,9 @@ public class AAModel
         ObservableList absences = FXCollections.observableArrayList(aManager.setUpBarChart(id));
         int absencesum = 0;
         
-        for (Object absence : absences)
+        for (int i = 0; i < absences.size(); i++)
         {
-            absencesum++;
+            absencesum ++;
         }
         
         return absencesum;

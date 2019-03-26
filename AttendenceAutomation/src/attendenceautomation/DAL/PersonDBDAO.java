@@ -261,9 +261,9 @@ public class PersonDBDAO
         
         try (Connection con = ds.getConnection())
         {
-            PreparedStatement pstmt = con.prepareStatement("SELECT date FROM Attendance "
+            PreparedStatement pstmt = con.prepareStatement("SELECT * FROM Attendance "
                     + "INNER JOIN Student on Attendance.studentID = Student.studentID "
-                    + "WHERE Student.studentID = (?) AND isPresent = (?) ");
+                    + "WHERE Student.studentID = (?) AND Attendance.isPresent = (?) ");
                     pstmt.setInt(1, id);
                     pstmt.setBoolean(2, false);
             

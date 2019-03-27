@@ -218,7 +218,7 @@ public class PersonDBDAO
             while (rs.next())
             {
                 int id = rs.getInt("id");
-                String name = rs.getString("firstName");
+                String name = rs.getString("name");
                 email = rs.getString("email");
                 password = rs.getString("password");
                 
@@ -291,7 +291,7 @@ public class PersonDBDAO
         
         try (Connection con = ds.getConnection())
         {
-            PreparedStatement pstmt = con.prepareStatement("SELECT date FROM Attendance "
+            PreparedStatement pstmt = con.prepareStatement("SELECT * FROM Attendance "
                     + "INNER JOIN Student on Attendance.studentID = Student.studentID "
                     + "WHERE Student.studentID = (?) AND isPresent = (?) ");
                     pstmt.setInt(1, id);

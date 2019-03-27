@@ -84,6 +84,11 @@ public interface AADALInterface
      */
     public List<Attendance> setUpBarChart (int id);
     
+    /**
+     * 
+     * @param id
+     * @return 
+     */
     public List<Attendance> getStudentPieChartData(int id);
 
 }

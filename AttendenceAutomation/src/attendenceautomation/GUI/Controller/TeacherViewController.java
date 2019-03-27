@@ -173,6 +173,7 @@ public class TeacherViewController implements Initializable
         studentBarChart.getXAxis().setLabel("Days of absence");
         studentBarChart.getYAxis().setLabel("Hours of absence");
 
+        System.out.println("pie chart");
         XYChart.Series dataSet = new XYChart.Series();
         dataSet.setName("Absence");
 
@@ -276,6 +277,7 @@ public class TeacherViewController implements Initializable
             ancClassView.setVisible(true);
             ancClassView.toFront();
 //            ancTeacherView.getChildren().add(ancClassView);
+
         }
     }
     

@@ -102,9 +102,15 @@ public class AttendanceFacade implements AADALInterface
     }
 
     @Override
+<<<<<<< HEAD
     public List<Attendance> getStudentPresentPieChartData(int id)
     {
         return pDbDao.getStudentPresentPieChartData(id);
+=======
+    public void editAttendance(Attendance attenToEdit, int id)
+    {
+      pDbDao.editAttendance(attenToEdit, id);
+>>>>>>> 1b37d25bd75acb41481157f42932e6f9dd8d9dd2
     }
     
 }

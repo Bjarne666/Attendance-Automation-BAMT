@@ -5,13 +5,14 @@
  */
 package attendenceautomation.GUI.Controller;
 
+import attendenceautomation.BE.Attendance;
 import attendenceautomation.BE.Person;
-import attendenceautomation.BE.Student;
 import attendenceautomation.GUI.Model.AAModel;
 import com.jfoenix.controls.JFXButton;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -88,7 +89,7 @@ public class StudentViewController implements Initializable
     private Label lblLoggedInAs;
     
     private Person user;
-
+    private Calendar currentDate;
     AAModel aaModel;
 
     /**
@@ -169,13 +170,21 @@ public class StudentViewController implements Initializable
     @FXML
     private void handleEditAttendance(ActionEvent event)
     {
-
-        if (attendance.getSelectedToggle() == rdBtnPresent && dPickerTo.getValue() != null)
+        Attendance changedAttendance;
+        currentDate = Calendar.getInstance();
+        Date date = java.sql.Date.valueOf(dPickerFrom.getValue());
+        if (attendance.getSelectedToggle() == rdBtnPresent && dPickerFrom.getValue() != null)
         {
+            changedAttendance = new Attendance(date, true);
+            aaModel.editAttendance(changedAttendance, user.getId());
+            System.out.println("preeeesent");
             informationAlert("Attendance for the chosen date set to present");
             return;
-        } else if (attendance.getSelectedToggle() == rdBtnAbsent && dPickerTo.getValue() != null)
+        } else if (attendance.getSelectedToggle() == rdBtnAbsent && dPickerFrom.getValue() != null)
         {
+            changedAttendance = new Attendance(date, false);
+            aaModel.editAttendance(changedAttendance, user.getId());
+
             informationAlert("Attendance for the chosen date set to absent");
             return;
         }
@@ -233,7 +242,7 @@ public class StudentViewController implements Initializable
 
     private void showCurrentDate()
     {
-        Calendar currentDate = Calendar.getInstance();
+        currentDate = Calendar.getInstance();
         int day = currentDate.get(Calendar.DATE);
         int month = currentDate.get(Calendar.MONTH);
         int year = currentDate.get(Calendar.YEAR);

@@ -20,6 +20,13 @@ import java.util.List;
  */
 public interface AttendanceInterface
 {
+    
+    /**
+     *
+     * @param attenToEdit
+     * @param id
+     */
+    public void editAttendance(Attendance attenToEdit, int id);
 
    /**
      *

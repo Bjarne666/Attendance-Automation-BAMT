@@ -23,6 +23,13 @@ public interface AADALInterface
 
     /**
      *
+     * @param attenToEdit
+     * @param id
+     */
+    public void editAttendance(Attendance attenToEdit, int id);
+    
+    /**
+     *
      * @return
      */
     public List<Student> getAllStudents();

@@ -102,4 +102,10 @@ public class AAManager implements AttendanceInterface
     {
         aDAO.setAttendance(attendance, id);
     }
+
+    @Override
+    public List<Attendance> getStudentPresentPieChartData(int id)
+    {
+        return aDAO.getStudentPresentPieChartData(id);
+    }
 }

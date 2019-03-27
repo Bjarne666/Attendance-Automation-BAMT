@@ -92,6 +92,13 @@ public interface AttendanceInterface
     public List<Attendance> getStudentPieChartData(int id);
     
     /**
+     * 
+     * @param id
+     * @return 
+     */
+    public List<Attendance> getStudentPresentPieChartData(int id);
+    
+    /**
      *
      * @param id
      * @return

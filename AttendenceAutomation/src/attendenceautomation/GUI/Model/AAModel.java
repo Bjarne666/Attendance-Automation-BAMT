@@ -30,9 +30,9 @@ public class AAModel
     private ObservableList<Student> studentList;
     private ObservableList<SchoolClass> classList;
     private ObservableList<Teacher> teacherList;
-    private ObservableList<Attendance> attendanceList;
+   
     private Person user;
-    private Student student;
+
 
     public AAModel() throws IOException
     {
@@ -45,7 +45,7 @@ public class AAModel
        classList = FXCollections.observableArrayList(aManager.getAllClasses());
        classList.addAll(aManager.getAllClasses());
        teacherList = FXCollections.observableArrayList(aManager.getAllTeachers());
-//       attendanceList = FXCollections.observableArrayList(aManager.getAbsenceSumById(student));
+
        
 
     }
@@ -108,13 +108,37 @@ public class AAModel
         
     }
     
-    public ObservableList<Attendance> getStudentPieChartData(int id)
+    public int getStudentPieChartData(int id)
     {
-        return FXCollections.observableArrayList(aManager.getStudentPieChartData(id));
+        ObservableList isNotPresentData = FXCollections.observableArrayList(aManager.getStudentPieChartData(id));
         
+        
+        int isAbsenceAvg = 0;
+        
+        for (int i = 0; i < isNotPresentData.size(); i++)
+        {
+            isAbsenceAvg++;
+        }
+        
+        return isAbsenceAvg;
     }
-public void setAttendance(Attendance attendance, int id)
+    
+    public int getStudentPresentPieChartData(int id)
     {
-        aManager.setAttendance(attendance, id);
+        ObservableList isPresentData = FXCollections.observableArrayList(aManager.getStudentPieChartData(id));
+        
+        int isPresentAvg = 0;
+        
+        for (int i = 0; i < isPresentData.size(); i++)
+        {
+            isPresentAvg++;
+        }
+        
+        return isPresentAvg;
     }
+    
+    public void setAttendance(Attendance attendance, int id)
+        {
+            aManager.setAttendance(attendance, id);
+        }
 }

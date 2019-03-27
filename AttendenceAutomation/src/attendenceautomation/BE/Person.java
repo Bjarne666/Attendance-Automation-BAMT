@@ -21,6 +21,7 @@ public abstract class Person
     private final StringProperty email;
     private final StringProperty password;
     private boolean isAStudent;
+    
     public Person(int id, String name, String email, String password)
     {
         this.id = id;

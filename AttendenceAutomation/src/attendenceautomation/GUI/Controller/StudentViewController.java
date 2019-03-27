@@ -84,12 +84,12 @@ public class StudentViewController implements Initializable
     private RadioButton rdBtnPresent;
     @FXML
     private RadioButton rdBtnAbsent;
-
+    @FXML
+    private Label lblLoggedInAs;
+    
     private Person user;
 
     AAModel aaModel;
-    @FXML
-    private Label lblLoggedInAs;
 
     /**
      * Initializes the controller class.
@@ -122,7 +122,7 @@ public class StudentViewController implements Initializable
         }
 
         showCurrentDate();
-        buildPieChart();
+//        buildPieChart();
 //        studentBarChart();
     }
 
@@ -246,11 +246,11 @@ public class StudentViewController implements Initializable
      *
      * @return
      */
-    private PieChart buildPieChart()
+    public PieChart buildPieChart()
     {
         ObservableList<PieChart.Data> classChart = FXCollections.observableArrayList(
-                new PieChart.Data("Present", 90),
-                new PieChart.Data("Absent", 10));
+                new PieChart.Data("Present", aaModel.getStudentPresentPieChartData(user.getId())),
+                new PieChart.Data("Absent", aaModel.getStudentPieChartData(user.getId())));
 
         attendencePieChart.setData(classChart);
         attendencePieChart.setLegendVisible(false);
@@ -278,11 +278,6 @@ public class StudentViewController implements Initializable
         dataSet.getData().add(new XYChart.Data<>("Thursday", aaModel.getAbsenceSumById(user.getId())));
         dataSet.getData().add(new XYChart.Data<>("Friday", aaModel.getAbsenceSumById(user.getId())));
 
-//        dataSet.getData().add(new XYChart.Data("Monday", 25));
-//        dataSet.getData().add(new XYChart.Data("Tuesday", 2));
-//        dataSet.getData().add(new XYChart.Data("Wednesday", 0));
-//        dataSet.getData().add(new XYChart.Data("Thursday", 0));
-//        dataSet.getData().add(new XYChart.Data("Friday", 20));
         //add dataset to chart
         studentBarChart.getData().add(dataSet);
         studentBarChart.setLegendVisible(false);

@@ -302,9 +302,9 @@ public class PersonDBDAO
             while (rs.next())
             {
                 Date date = rs.getDate("date");
-                boolean isPresent = rs.getBoolean("isPresent");
+                boolean isNotPresent = rs.getBoolean("isPresent");
                 
-                attendance.add(new Attendance(date, isPresent));
+                attendance.add(new Attendance(date, isNotPresent));
             }
         } 
         catch (Exception e)
@@ -313,7 +313,36 @@ public class PersonDBDAO
         }
         
         return attendance;
+    }
     
+    public List<Attendance> getStudentPresentPieChartData(int id)
+    {
+        List<Attendance> attendancePresent = new ArrayList<>();
+        
+        try (Connection con = ds.getConnection())
+        {
+            PreparedStatement pstmt = con.prepareStatement("SELECT * FROM Attendance "
+                    + "INNER JOIN Student on Attendance.studentID = Student.studentID "
+                    + "WHERE Student.studentID = (?) AND isPresent = (?) ");
+                    pstmt.setInt(1, id);
+                    pstmt.setBoolean(2, true);
+            
+            ResultSet rs = pstmt.executeQuery();
+            
+            while (rs.next())
+            {
+                Date date = rs.getDate("date");
+                boolean isPresent = rs.getBoolean("isPresent");
+                
+                attendancePresent.add(new Attendance(date, isPresent));
+            }
+        } 
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+        
+        return attendancePresent;
     }
     
     public String getStudentClass(int id)

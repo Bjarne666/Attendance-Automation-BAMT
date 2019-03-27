@@ -91,6 +91,12 @@ public class StudentViewController implements Initializable
     private Person user;
     private Calendar currentDate;
     AAModel aaModel;
+    @FXML
+    private RadioButton editRdBtnAbsent;
+    @FXML
+    private ToggleGroup Editgrp;
+    @FXML
+    private RadioButton editRdBtnPresent;
 
     /**
      * Initializes the controller class.
@@ -173,14 +179,14 @@ public class StudentViewController implements Initializable
         Attendance changedAttendance;
         currentDate = Calendar.getInstance();
         Date date = java.sql.Date.valueOf(dPickerFrom.getValue());
-        if (attendance.getSelectedToggle() == rdBtnPresent && dPickerFrom.getValue() != null)
+        if (Editgrp.getSelectedToggle() == editRdBtnPresent && dPickerFrom.getValue() != null)
         {
             changedAttendance = new Attendance(date, true);
             aaModel.editAttendance(changedAttendance, user.getId());
             System.out.println("preeeesent");
             informationAlert("Attendance for the chosen date set to present");
             return;
-        } else if (attendance.getSelectedToggle() == rdBtnAbsent && dPickerFrom.getValue() != null)
+        } else if (Editgrp.getSelectedToggle() == editRdBtnAbsent && dPickerFrom.getValue() != null)
         {
             changedAttendance = new Attendance(date, false);
             aaModel.editAttendance(changedAttendance, user.getId());
@@ -191,14 +197,15 @@ public class StudentViewController implements Initializable
         Alert newAlert = new Alert(Alert.AlertType.ERROR, "You either did not set a date to change or a state to change to");
         newAlert.showAndWait();
     }
-
+    
+    @FXML
     private void handleAbsenceVisibility(ActionEvent event)
     {
-        if (attendance.getSelectedToggle() != rdBtnAbsent)
+        if (Editgrp.getSelectedToggle() != editRdBtnAbsent)
         {
             lblAReason.setVisible(false);
             txtAReason.setVisible(false);
-        } else if (attendance.getSelectedToggle() == rdBtnAbsent)
+        } else if (Editgrp.getSelectedToggle() == editRdBtnAbsent)
         {
             lblAReason.setVisible(true);
             txtAReason.setVisible(true);

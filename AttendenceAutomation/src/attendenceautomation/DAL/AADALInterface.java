@@ -97,4 +97,13 @@ public interface AADALInterface
      * @return
      */
     public String getStudentClass(int id);
+/** 
+     * 
+     * @param attendance
+     * @param id 
+     */
+    
+    public void setAttendance(Attendance attendance, int id);
+
 }
+

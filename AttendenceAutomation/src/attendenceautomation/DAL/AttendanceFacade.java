@@ -95,4 +95,10 @@ public class AttendanceFacade implements AADALInterface
         return pDbDao.getStudentClass(id);
     }
     
+    @Override
+    public void setAttendance(Attendance attendance, int id)
+    {
+      pDbDao.setAttendance(attendance, id);
+    }
+    
 }

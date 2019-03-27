@@ -113,4 +113,8 @@ public class AAModel
         return FXCollections.observableArrayList(aManager.getStudentPieChartData(id));
         
     }
+public void setAttendance(Attendance attendance, int id)
+    {
+        aManager.setAttendance(attendance, id);
+    }
 }

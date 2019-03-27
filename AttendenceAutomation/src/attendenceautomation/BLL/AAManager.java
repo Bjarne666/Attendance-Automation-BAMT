@@ -97,5 +97,9 @@ public class AAManager implements AttendanceInterface
         return aDAO.getStudentClass(id);
     }
     
-    
+@Override
+    public void setAttendance(Attendance attendance, int id)
+    {
+        aDAO.setAttendance(attendance, id);
+    }
 }

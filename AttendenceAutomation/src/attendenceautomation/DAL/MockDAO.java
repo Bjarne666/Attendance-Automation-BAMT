@@ -123,6 +123,11 @@ public class MockDAO implements AADALInterface {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+@Override
+    public void setAttendance(Attendance attendance, int id)
+    {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 
 }
-

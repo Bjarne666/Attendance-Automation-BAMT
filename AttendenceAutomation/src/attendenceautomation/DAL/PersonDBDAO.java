@@ -315,4 +315,25 @@ public class PersonDBDAO
         return attendance;
     
     }
+    
+    public String getStudentClass(int id)
+    {
+        String nameString = new String();
+        try(Connection con = ds.getConnection())
+        {
+            PreparedStatement pstmt = con.prepareStatement("SELECT className FROM SchoolClass"
+                    + " INNER JOIN Student ON SchoolClass.classID = Student.classID"
+                    + " WHERE Student.studentID = (?)");
+            pstmt.setInt(1, id);
+            
+            ResultSet rs = pstmt.executeQuery();
+            while (rs.next())
+            {                
+                nameString = rs.getString("className");
+            }
+        } catch (Exception e)
+        {
+        }
+        return nameString;
+    }
 }

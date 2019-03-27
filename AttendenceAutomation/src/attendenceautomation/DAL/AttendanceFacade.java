@@ -88,5 +88,11 @@ public class AttendanceFacade implements AADALInterface
     {
         return pDbDao.getStudentPieChartData(id);
     }
+
+    @Override
+    public String getStudentClass(int id)
+    {
+        return pDbDao.getStudentClass(id);
+    }
     
 }

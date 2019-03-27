@@ -49,6 +49,10 @@ public class AAModel
        
 
     }
+    public String getStudentClass(int id)
+    {
+        return aManager.getStudentClass(id);
+    }
     public ObservableList<Student> getAllStudents()
     {
         return FXCollections.observableArrayList(aManager.getAllStudents());

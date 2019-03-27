@@ -102,4 +102,10 @@ public class AAManager implements AttendanceInterface
     {
         aDAO.setAttendance(attendance, id);
     }
+
+    @Override
+    public void editAttendance(Attendance attenToEdit, int id)
+    {
+        aDAO.editAttendance(attenToEdit, id);
+    }
 }

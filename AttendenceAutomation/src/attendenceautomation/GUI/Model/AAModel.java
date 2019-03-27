@@ -49,6 +49,10 @@ public class AAModel
        
 
     }
+    public void editAttendance(Attendance attenToEdit, int id)
+    {
+        aManager.editAttendance(attenToEdit, id);
+    }
     public String getStudentClass(int id)
     {
         return aManager.getStudentClass(id);

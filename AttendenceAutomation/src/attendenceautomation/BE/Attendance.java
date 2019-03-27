@@ -44,9 +44,9 @@ public class Attendance
     }
 
     
-    public String toString()
-    {
-        return "At "+ currentDate + "your attendance were recorded as: " + present.get();
-    }
+//    public String toString()
+//    {
+//        return "At "+ currentDate + "your attendance were recorded as: " + present.get();
+//    }
     
 }

@@ -184,6 +184,23 @@ public class PersonDBDAO
         return attendance;
     }
     
+    public void editAttendance(Attendance attenToEdit, int id)
+    {
+        java.sql.Date sqlDate = new java.sql.Date(attenToEdit.getCurrentDate().getTime());
+        try(Connection con = ds.getConnection())
+        {
+            PreparedStatement pstmt = con.prepareStatement("UPDATE Attendance SET isPresent = (?) WHERE date = (?) AND studentID = (?) ");
+            pstmt.setBoolean(1, attenToEdit.getPresent());
+            pstmt.setDate(2, sqlDate);
+            pstmt.setInt(3, id);
+            
+            pstmt.execute();
+        } catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+    }
+    
         public void setAttendance(Attendance attendance, int id)
     {
        java.sql.Date sqlDate = new java.sql.Date(attendance.getCurrentDate().getTime());

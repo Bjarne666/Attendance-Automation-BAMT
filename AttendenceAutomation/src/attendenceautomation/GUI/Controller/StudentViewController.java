@@ -67,8 +67,6 @@ public class StudentViewController implements Initializable
     @FXML
     private ToggleGroup attendance;
     @FXML
-    private ToggleGroup attendance1;
-    @FXML
     private Label lblAbsent;
     @FXML
     private Label lblAttendance;
@@ -88,8 +86,10 @@ public class StudentViewController implements Initializable
     private RadioButton rdBtnAbsent;
 
     private Person user;
-    
+
     AAModel aaModel;
+    @FXML
+    private Label lblLoggedInAs;
 
     /**
      * Initializes the controller class.
@@ -99,7 +99,7 @@ public class StudentViewController implements Initializable
     {
         try
         {
-            aaModel = new  AAModel();
+            aaModel = new AAModel();
         } catch (IOException ex)
         {
             Logger.getLogger(StudentViewController.class.getName()).log(Level.SEVERE, null, ex);
@@ -112,7 +112,6 @@ public class StudentViewController implements Initializable
 
         ancEditView.setVisible(false);
         ancStatisticView.setVisible(false);
-        
 
         try
         {
@@ -278,13 +277,12 @@ public class StudentViewController implements Initializable
         dataSet.getData().add(new XYChart.Data<>("Wednesday", aaModel.getAbsenceSumById(user.getId())));
         dataSet.getData().add(new XYChart.Data<>("Thursday", aaModel.getAbsenceSumById(user.getId())));
         dataSet.getData().add(new XYChart.Data<>("Friday", aaModel.getAbsenceSumById(user.getId())));
-        
+
 //        dataSet.getData().add(new XYChart.Data("Monday", 25));
 //        dataSet.getData().add(new XYChart.Data("Tuesday", 2));
 //        dataSet.getData().add(new XYChart.Data("Wednesday", 0));
 //        dataSet.getData().add(new XYChart.Data("Thursday", 0));
 //        dataSet.getData().add(new XYChart.Data("Friday", 20));
-
         //add dataset to chart
         studentBarChart.getData().add(dataSet);
         studentBarChart.setLegendVisible(false);
@@ -308,6 +306,7 @@ public class StudentViewController implements Initializable
     public void setLabels()
     {
         lblName.setText(user.getName());
+        lblLoggedInAs.setText(user.getName());
     }
 
     @FXML

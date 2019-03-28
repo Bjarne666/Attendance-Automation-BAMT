@@ -183,7 +183,7 @@ public class StudentViewController implements Initializable
         {
             changedAttendance = new Attendance(date, true);
             aaModel.editAttendance(changedAttendance, user.getId());
-            System.out.println("preeeesent");
+            
             informationAlert("Attendance for the chosen date set to present");
             return;
         } else if (Editgrp.getSelectedToggle() == editRdBtnAbsent && dPickerFrom.getValue() != null)
@@ -230,14 +230,21 @@ public class StudentViewController implements Initializable
     @FXML
     private void handleAttendance(ActionEvent event)
     {
+        Attendance changedAttendance;
+        currentDate = Calendar.getInstance();
+        Date date = currentDate.getTime();
         if (attendance.getSelectedToggle() == rdBtnPresent)
         {
+            changedAttendance = new Attendance(date, true);
+            aaModel.setAttendance(changedAttendance, user.getId());
             lblAttendance.setText("Present");
             lblAttendance.setVisible(true);
             lblAbsent.setVisible(false);
             return;
         } else if (attendance.getSelectedToggle() == rdBtnAbsent)
         {
+            changedAttendance = new Attendance(date, false);
+            aaModel.setAttendance(changedAttendance, user.getId());
             lblAbsent.setText("Absent");
             lblAbsent.setVisible(true);
             lblAttendance.setVisible(false);

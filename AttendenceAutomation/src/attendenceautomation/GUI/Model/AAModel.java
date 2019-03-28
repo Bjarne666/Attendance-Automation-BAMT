@@ -13,9 +13,9 @@ import attendenceautomation.BE.Student;
 import attendenceautomation.BE.Teacher;
 import attendenceautomation.BLL.AttendanceInterface;
 import attendenceautomation.DAL.AttendanceFacade;
-import attendenceautomation.DAL.MockDAO;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.Date;
 import java.util.List;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -99,7 +99,7 @@ public class AAModel
     }
     
     public int getAbsenceSumById (int id)
-    {
+    {       
         ObservableList absences = FXCollections.observableArrayList(aManager.setUpBarChart(id));
         int absencesum = 0;
         

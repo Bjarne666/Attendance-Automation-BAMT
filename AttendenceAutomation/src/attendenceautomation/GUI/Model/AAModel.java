@@ -129,7 +129,7 @@ public class AAModel
     
     public int getStudentPresentPieChartData(int id)
     {
-        ObservableList isPresentData = FXCollections.observableArrayList(aManager.getStudentPieChartData(id));
+        ObservableList isPresentData = FXCollections.observableArrayList(aManager.getStudentPresentPieChartData(id));
         
         int isPresentAvg = 0;
         

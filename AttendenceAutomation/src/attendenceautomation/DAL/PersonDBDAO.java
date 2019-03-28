@@ -206,6 +206,12 @@ public class PersonDBDAO
        java.sql.Date sqlDate = new java.sql.Date(attendance.getCurrentDate().getTime());
         try (Connection con = ds.getConnection())
         {
+            //removes chosen values if they already exist to avoid duplicates
+            PreparedStatement pstmt1 = con.prepareStatement("DELETE FROM Attendance WHERE date = (?) AND studentID = (?)");
+            pstmt1.setDate(1, sqlDate);
+            pstmt1.setInt(2, id);
+            pstmt1.execute();
+            
             PreparedStatement pstmt = con.prepareStatement("INSERT INTO Attendance VALUES (?,?,?)");
             pstmt.setInt(1, id);
             pstmt.setDate(2, sqlDate);

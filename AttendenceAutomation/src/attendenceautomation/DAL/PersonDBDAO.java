@@ -382,4 +382,20 @@ public class PersonDBDAO
         }
         return nameString;
     }
+    
+    public void deleteStudent (Student studentToDelete)
+    {
+        int id = studentToDelete.getId();
+        
+        try (Connection con = ds.getConnection())
+        {
+            PreparedStatement pstmt = con.prepareStatement("DELETE FROM Student WHERE StudentID = (?)");
+            pstmt.setInt(1, id);
+
+        } 
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+    }
 }

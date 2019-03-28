@@ -35,9 +35,4 @@ public class Teacher extends Person
     {
       super.setIsAStudent(false);
     }
-    
-    
-   
-
-   
 }

@@ -118,4 +118,10 @@ public interface AttendanceInterface
      * @param id 
      */
     public void setAttendance(Attendance attendance, int id);
+    
+    /**
+     * 
+     * @param studentToDelete 
+     */
+    public void deleteStudent (Student studentToDelete);
 }

@@ -90,7 +90,8 @@ public class AttendenceLoginViewController implements Initializable
         }
         if (!user.IsAStudent())
         {
-            handleTeacherLogin();
+//            handleTeacherLogin();
+            handleAdminLogin();
         }     
     }
 
@@ -104,6 +105,26 @@ public class AttendenceLoginViewController implements Initializable
             tViewController.setUser(user);
             tViewController.setLabels();
             tViewController.studentBarChart();
+            
+            Stage stage = new Stage();
+            stage.setScene(new Scene(pane));
+
+            stage.show();
+
+            //Close this window
+            Stage currentWindows = (Stage) btnLogin.getScene().getWindow();
+            currentWindows.close();
+    }
+    
+    private void handleAdminLogin() throws IOException
+    {
+        //handles admin login
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/attendenceautomation/GUI/View/AdminView.fxml"));
+            AnchorPane pane = loader.load();
+
+            AdminViewController aViewController = loader.getController();
+            aViewController.setUser(user);
+
             
             Stage stage = new Stage();
             stage.setScene(new Scene(pane));

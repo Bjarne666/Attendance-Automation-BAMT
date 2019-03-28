@@ -118,6 +118,12 @@ public interface AADALInterface
      */
     
     public void setAttendance(Attendance attendance, int id);
+    
+    /**
+     * 
+     * @param studentToDelete 
+     */
+    public void deleteStudent (Student studentToDelete);
 
 }
 

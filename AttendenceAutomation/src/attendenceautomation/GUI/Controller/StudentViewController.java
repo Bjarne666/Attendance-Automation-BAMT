@@ -87,16 +87,18 @@ public class StudentViewController implements Initializable
     private RadioButton rdBtnAbsent;
     @FXML
     private Label lblLoggedInAs;
-    
-    private Person user;
-    private Calendar currentDate;
-    AAModel aaModel;
     @FXML
     private RadioButton editRdBtnAbsent;
     @FXML
     private ToggleGroup Editgrp;
     @FXML
     private RadioButton editRdBtnPresent;
+    
+    private Calendar currentDate;
+    
+    private Person user;
+    
+    AAModel aaModel;
 
     /**
      * Initializes the controller class.

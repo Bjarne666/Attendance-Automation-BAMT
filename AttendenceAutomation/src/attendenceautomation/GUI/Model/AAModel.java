@@ -67,9 +67,9 @@ public class AAModel
         return FXCollections.observableArrayList(aManager.getAllClasses());
     }
 
-    public List<Teacher> getAllTeachers()
+    public ObservableList<Teacher> getAllTeachers()
     {
-        return aManager.getAllTeachers();
+        return FXCollections.observableArrayList(aManager.getAllTeachers());
     }
 
     public ObservableList<Student> getStudentsInClass(SchoolClass chosenClass)

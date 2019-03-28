@@ -112,5 +112,11 @@ public class AttendanceFacade implements AADALInterface
     {
       pDbDao.editAttendance(attenToEdit, id);
     }
+
+    @Override
+    public void deleteStudent(Student studentToDelete)
+    {
+        pDbDao.deleteStudent(studentToDelete);
+    }
     
 }

@@ -394,12 +394,9 @@ public class PersonDBDAO
         
         try (Connection con = ds.getConnection())
         {
-            PreparedStatement pstmt = con.prepareStatement("DELETE FROM Person, Student"
-                    + "INNER JOIN Stundent on Student.studentID = Person.id"
-                    + "INNER JOIN Attendance on Student.studentID = Attendance.studentID"
-                    + "WHERE id = (?)");
+            PreparedStatement pstmt = con.prepareStatement("DELETE FROM Person WHERE ID = (?) ");
             pstmt.setInt(1, studentToDelete.getId());
-
+            pstmt.execute();
         } 
         catch (Exception e)
         {

@@ -145,4 +145,10 @@ public class AAModel
         {
             aManager.setAttendance(attendance, id);
         }
+    
+    public void deleteStudent (Student studentToDelete)
+    {
+        aManager.deleteStudent(studentToDelete);
+        this.studentList.remove(studentToDelete);
+    }
 }

@@ -12,12 +12,15 @@ import attendenceautomation.BE.Teacher;
 import attendenceautomation.GUI.Model.AAModel;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -163,6 +166,20 @@ public class AdminViewController implements Initializable
     @FXML
     private void deleteStudent(ActionEvent event)
     {
+        if (tbViewStudent.getSelectionModel().isEmpty())
+        {
+            Alert alert = new Alert(Alert.AlertType.ERROR, "You have to select a student to delete", ButtonType.OK);
+            alert.showAndWait();
+            return;
+        }
+
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Delete selected student?", ButtonType.YES, ButtonType.NO);
+        Optional<ButtonType> result = alert.showAndWait();
+
+        if (result.get() == ButtonType.YES)
+        {
+            aaModel.deleteStudent(tbViewStudent.getSelectionModel().getSelectedItem());
+        }
     }
 
     @FXML

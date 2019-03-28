@@ -17,7 +17,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -391,12 +390,15 @@ public class PersonDBDAO
     
     public void deleteStudent (Student studentToDelete)
     {
-        int id = studentToDelete.getId();
+//        int id = studentToDelete.getId();
         
         try (Connection con = ds.getConnection())
         {
-            PreparedStatement pstmt = con.prepareStatement("DELETE FROM Student WHERE StudentID = (?)");
-            pstmt.setInt(1, id);
+            PreparedStatement pstmt = con.prepareStatement("DELETE FROM Person, Student"
+                    + "INNER JOIN Stundent on Student.studentID = Person.id"
+                    + "INNER JOIN Attendance on Student.studentID = Attendance.studentID"
+                    + "WHERE id = (?)");
+            pstmt.setInt(1, studentToDelete.getId());
 
         } 
         catch (Exception e)

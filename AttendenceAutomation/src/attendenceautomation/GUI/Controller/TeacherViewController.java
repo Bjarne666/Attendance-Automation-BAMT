@@ -9,9 +9,12 @@ import attendenceautomation.BE.Person;
 import attendenceautomation.BE.SchoolClass;
 import attendenceautomation.BE.Student;
 import attendenceautomation.GUI.Model.AAModel;
+import attendenceautomation.UTIL.DateConverter;
 import com.jfoenix.controls.JFXComboBox;
 import java.io.IOException;
 import java.net.URL;
+import java.time.DayOfWeek;
+import java.time.LocalDate;
 import java.util.Calendar;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
@@ -81,6 +84,8 @@ public class TeacherViewController implements Initializable
     
     private Person user;
     private Student chosenStudent;
+    private DateConverter dConverter;
+    private ObservableList<LocalDate> localDates;
     
 
     public TeacherViewController() throws IOException
@@ -169,24 +174,45 @@ public class TeacherViewController implements Initializable
      */
     public BarChart studentBarChart()
     {
-        // Define category axises
-        studentBarChart.getXAxis().setLabel("Days of absence");
-        studentBarChart.getYAxis().setLabel("Hours of absence");
-
-        System.out.println("pie chart");
+        // Define category axes
+        studentBarChart.getYAxis().setLabel("Days of absence");
         XYChart.Series dataSet = new XYChart.Series();
+        
+         // Converting date to localDate and counting absense for weekdays
+        dConverter = new DateConverter(aaModel.getAbsenceSumById(user.getId()));
+        localDates = dConverter.getDates();
+        int mondayCount = 0;
+        int tuesdayCount = 0;
+        int wednesdayCount = 0;
+        int thursdayCount = 0;
+        int fridayCount = 0;
+        for (LocalDate localDate : localDates)
+        {
+        DayOfWeek dayOfWeek = localDate.getDayOfWeek();
+        switch(dayOfWeek)
+        {
+            case MONDAY: mondayCount++;
+            break;
+            case TUESDAY: tuesdayCount++;   
+            break;
+            case WEDNESDAY: wednesdayCount++; 
+            break;
+            case THURSDAY: thursdayCount++;  
+            break;
+            case FRIDAY: fridayCount++;
+            break;
+            default: System.out.println("Not a weekday");
+            break;
+        }
+        }
+        
         dataSet.setName("Absence");
-
-        dataSet.getData().add(new XYChart.Data("Monday", aaModel.getAbsenceSumById(user.getId())));
-        dataSet.getData().add(new XYChart.Data("Tuesday", aaModel.getAbsenceSumById(user.getId())));
-        dataSet.getData().add(new XYChart.Data("Wednesday", aaModel.getAbsenceSumById(user.getId())));
-        dataSet.getData().add(new XYChart.Data("Thursday", aaModel.getAbsenceSumById(user.getId())));
-        dataSet.getData().add(new XYChart.Data("Friday", aaModel.getAbsenceSumById(user.getId())));
-//        dataSet.getData().add(new XYChart.Data("Monday", 25));
-//        dataSet.getData().add(new XYChart.Data("Tuesday", 2));
-//        dataSet.getData().add(new XYChart.Data("Wednesday", 0));
-//        dataSet.getData().add(new XYChart.Data("Thursday", 0));
-//        dataSet.getData().add(new XYChart.Data("Friday", 20));
+        
+        dataSet.getData().add(new XYChart.Data<>("Monday", mondayCount));
+        dataSet.getData().add(new XYChart.Data<>("Tuesday", tuesdayCount));
+        dataSet.getData().add(new XYChart.Data<>("Wednesday", wednesdayCount));
+        dataSet.getData().add(new XYChart.Data<>("Thursday", thursdayCount));
+        dataSet.getData().add(new XYChart.Data<>("Friday", fridayCount));      
 
         //add dataset to chart
         studentBarChart.getData().add(dataSet);

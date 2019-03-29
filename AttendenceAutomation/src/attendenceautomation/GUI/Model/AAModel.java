@@ -98,17 +98,18 @@ public class AAModel
         return user;
     }
     
-    public int getAbsenceSumById (int id)
+    public ObservableList<Attendance> getAbsenceSumById (int id)
     {       
-        ObservableList absences = FXCollections.observableArrayList(aManager.setUpBarChart(id));
-        int absencesum = 0;
+//        ObservableList absences = FXCollections.observableArrayList(aManager.setUpBarChart(id));
+//        int absencesum = 0;
+//        
+//        for (int i = 0; i < absences.size(); i++)
+//        {
+//            absencesum ++;
+//        }
+//        return absencesum;
         
-        for (int i = 0; i < absences.size(); i++)
-        {
-            absencesum ++;
-        }
-        
-        return absencesum;
+        return FXCollections.observableArrayList(aManager.setUpBarChart(id));
         
     }
     

@@ -370,4 +370,9 @@ public class StudentViewController implements Initializable
         System.exit(0);
     }
 
+    void setModel(AAModel modelToSet)
+    {
+        aaModel = modelToSet;
+    }
+
 }

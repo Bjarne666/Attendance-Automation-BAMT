@@ -470,14 +470,34 @@ public class PersonDBDAO
         
         try (Connection con = ds.getConnection())
         {
-            PreparedStatement pstmt = con.prepareStatement("INSERT INTO Person VALUES (?, ?, ?, ?, ?)");
+            PreparedStatement pstmt = con.prepareStatement("INSERT INTO Person VALUES (?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS);
+            PreparedStatement pstmt1 = con.prepareStatement("INSERT INTO Teacher VALUES (?)");
             pstmt.setInt(1, teacherToAdd.getId());
             
-            pstmt.setString(2, firstName);
-            pstmt.setString(3, lastName);
-            pstmt.setString(4, email);
-            pstmt.setString(5, password);
-        } 
+            
+            pstmt.setString(1, firstName);
+            pstmt.setString(2, lastName);
+            pstmt.setString(3, email);
+            pstmt.setString(4, password);
+            pstmt.execute();
+            
+            try(ResultSet generatedKeys = pstmt.getGeneratedKeys())
+            {
+                if (generatedKeys.next())
+                {
+                    teacherToAdd.setId(generatedKeys.getInt(1));
+                }
+                
+            
+            }
+             catch (Exception e)
+            {
+            }
+            
+            pstmt1.setInt(1, teacherToAdd.getId());
+            pstmt1.execute();
+        }
+        
         catch (Exception e)
         {
             e.printStackTrace();

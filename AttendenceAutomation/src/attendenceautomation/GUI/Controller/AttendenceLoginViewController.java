@@ -91,7 +91,7 @@ public class AttendenceLoginViewController implements Initializable
         }
         if (!user.IsAStudent())
         {
-            handleTeacherLogin();
+//            handleTeacherLogin();
             handleAdminLogin();
         }     
     }

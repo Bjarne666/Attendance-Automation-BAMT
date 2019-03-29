@@ -46,14 +46,14 @@ public class AddTeacherViewController implements Initializable
     @Override
     public void initialize(URL url, ResourceBundle rb)
     {
-        try
-        {
-            aaModel = new AAModel();
-        } catch (IOException ex)
-        {
-            Logger.getLogger(AddTeacherViewController.class.getName()).log(Level.SEVERE, null, ex);
-        }
+       
+        
     }    
+    
+    public void setModel(AAModel aaModel) 
+    {
+        this.aaModel = aaModel;
+    }
 
     @FXML
     private void btnAddTeacher(ActionEvent event)
@@ -69,7 +69,6 @@ public class AddTeacherViewController implements Initializable
         String email = this.txtEmail.getText();
         String password = this.txtPassword.getText();
       
-//        Student newStudent = new Student(0, name, email, password);
         System.out.println("new teacher");
         
         Teacher newTeacher = new Teacher(0, name, email, password);

@@ -74,7 +74,7 @@
                       <TableColumn fx:id="colTeacherEmail" prefWidth="75.0" text="Email" />
                     </columns>
                   </TableView>
-                  <JFXButton layoutX="426.0" layoutY="199.0" onAction="#addTeacher" prefHeight="50.0" prefWidth="200.0" text="Add Teacher" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="199.0" />
+                  <JFXButton fx:id="btnAddTeacher" layoutX="426.0" layoutY="199.0" onAction="#addTeacher" prefHeight="50.0" prefWidth="200.0" text="Add Teacher" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="199.0" />
                   <Button layoutX="426.0" layoutY="345.0" mnemonicParsing="false" onAction="#deleteTeacher" prefHeight="50.0" prefWidth="200.0" text="Delete Teacher" AnchorPane.rightAnchor="100.0" />
                   <Button layoutX="419.0" layoutY="498.0" mnemonicParsing="false" onAction="#editTeacher" prefHeight="50.0" prefWidth="200.0" text="Edit Teacher" AnchorPane.rightAnchor="100.0" />
                </children>

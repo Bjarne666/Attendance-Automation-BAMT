@@ -77,6 +77,8 @@ public class AdminViewController implements Initializable
     private Person user;
 
     AAModel aaModel;
+    @FXML
+    private JFXButton btnAddTeacher;
 
     /**
      * Initializes the controller class.
@@ -208,8 +210,21 @@ public class AdminViewController implements Initializable
     }
 
     @FXML
-    private void addTeacher(ActionEvent event)
+    private void addTeacher(ActionEvent event) throws IOException
     {
+        Stage primeStage = (Stage) btnAddTeacher.getScene().getWindow();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/attendenceautomation/GUI/View/AddTeacherView.fxml"));
+        Parent root = loader.load();
+
+        AddTeacherViewController addTeacherController = loader.getController();
+        addTeacherController.setModel(aaModel);
+
+        Stage stageAddMovie = new Stage();
+        stageAddMovie.setScene(new Scene(root));
+
+        stageAddMovie.initModality(Modality.WINDOW_MODAL);
+        stageAddMovie.initOwner(primeStage);
+        stageAddMovie.show();
     }
 
     @FXML
@@ -243,8 +258,6 @@ public class AdminViewController implements Initializable
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/attendenceautomation/GUI/View/AddClassView.fxml"));
         Parent root = loader.load();
 
-//        AddClassViewController addClassController = loader.getController();
-//        addClassController.setModel(aaModel);
         Stage stageAddMovie = new Stage();
         stageAddMovie.setScene(new Scene(root));
 

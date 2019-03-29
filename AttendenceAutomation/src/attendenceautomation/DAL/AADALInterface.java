@@ -154,6 +154,12 @@ public interface AADALInterface
      * @param classToAdd 
      */
     public void addClass (SchoolClass classToAdd);
+    
+    /**
+     * 
+     * @param teacherToAdd 
+     */
+    public void addTeacher (Teacher teacherToAdd);
 
 }
 

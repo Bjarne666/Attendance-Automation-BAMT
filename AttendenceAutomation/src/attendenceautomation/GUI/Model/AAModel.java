@@ -180,5 +180,10 @@ public class AAModel
     {
         aManager.addClass(classToAdd);
     }
+    
+    public void addTeacher (Teacher teacherToAdd)
+    {
+        aManager.addTeacher(teacherToAdd);
+    }
 
 }

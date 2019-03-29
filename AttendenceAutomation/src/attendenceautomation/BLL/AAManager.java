@@ -149,4 +149,10 @@ public class AAManager implements AttendanceInterface
     {
         aDAO.addClass(classToAdd);
     }
+
+    @Override
+    public void addTeacher(Teacher teacherToAdd)
+    {
+        aDAO.addTeacher(teacherToAdd);
+    }
 }

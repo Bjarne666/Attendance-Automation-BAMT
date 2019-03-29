@@ -441,4 +441,29 @@ public class PersonDBDAO
             e.printStackTrace();
         }
     }
+    
+    public void addTeacher (Teacher teacherToAdd)
+    {
+        String name = teacherToAdd.getName();
+        String[] splitName = name.split(" ");
+        String firstName = splitName[0];
+        String lastName = splitName[1]; 
+        String email = teacherToAdd.getEmail();
+        String password = teacherToAdd.getPassword();
+        
+        try (Connection con = ds.getConnection())
+        {
+            PreparedStatement pstmt = con.prepareStatement("INSERT INTO Person VALUES (?, ?, ?, ?, ?)");
+            pstmt.setInt(1, teacherToAdd.getId());
+            
+            pstmt.setString(2, firstName);
+            pstmt.setString(3, lastName);
+            pstmt.setString(4, email);
+            pstmt.setString(5, password);
+        } 
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+    }
 }

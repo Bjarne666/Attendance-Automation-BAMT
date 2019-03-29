@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="650.0" style="-fx-background-color: #263238;" stylesheets="@AttendanceStyleSheet.css" xmlns="http://javafx.com/javafx/8.0.181" xmlns:fx="http://javafx.com/fxml/1" fx:controller="attendenceautomation.GUI.Controller.AddTeacherViewController">
+   <children>
+      <Label layoutX="83.0" layoutY="57.0" styleClass="label-header" text="Add Teacher" AnchorPane.leftAnchor="95.0" AnchorPane.topAnchor="40.0" />
+      <JFXTextField fx:id="txtName" layoutX="95.0" layoutY="155.0" promptText="First Name" AnchorPane.leftAnchor="95.0" />
+      <JFXTextField fx:id="txtLastName" layoutX="95.0" layoutY="232.0" promptText="Last Name" AnchorPane.leftAnchor="95.0" />
+      <JFXTextField fx:id="txtEmail" layoutX="95.0" layoutY="311.0" promptText="Email" AnchorPane.leftAnchor="95.0" />
+      <JFXPasswordField fx:id="txtPassword" layoutX="95.0" layoutY="394.0" promptText="Password" AnchorPane.leftAnchor="95.0" />
+      <JFXButton layoutX="576.0" layoutY="449.0" onAction="#btnAddTeacher" prefHeight="37.0" prefWidth="60.0" style="-fx-background-color: #4b4b4b;" text="Save" />
+   </children>
+</AnchorPane>

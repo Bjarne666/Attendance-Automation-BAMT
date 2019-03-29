@@ -390,8 +390,6 @@ public class PersonDBDAO
     
     public void deleteStudent (Student studentToDelete)
     {
-//        int id = studentToDelete.getId();
-        
         try (Connection con = ds.getConnection())
         {
             PreparedStatement pstmt = con.prepareStatement("DELETE FROM Person WHERE ID = (?) ");
@@ -403,4 +401,20 @@ public class PersonDBDAO
             e.printStackTrace();
         }
     }
+    
+    public void deleteTeacher (Teacher teacherToDelete)
+    {
+        try (Connection con = ds.getConnection())
+        {
+            PreparedStatement pstmt = con.prepareStatement("DELETE FROM Person WHERE ID = (?) ");
+            pstmt.setInt(1, teacherToDelete.getId());
+            pstmt.execute();
+        } 
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+    }
+    
+    
 }

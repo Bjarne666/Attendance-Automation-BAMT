@@ -115,4 +115,18 @@ public class SchoolClassDBDAO
         }
         return schoolclassToGet;
     }
+    
+    public void deleteClass (SchoolClass classToDelete)
+    {
+        try (Connection con = ds.getConnection())
+        {
+            PreparedStatement pstmt = con.prepareStatement("DELETE FROM SchoolClass WHERE classID = (?) ");
+            pstmt.setInt(1, classToDelete.getId());
+            pstmt.execute();
+        } 
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+    }
 }

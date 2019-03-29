@@ -195,6 +195,20 @@ public class AdminViewController implements Initializable
     @FXML
     private void deleteTeacher(ActionEvent event)
     {
+        if (tbViewTeacher.getSelectionModel().isEmpty())
+        {
+            Alert alert = new Alert(Alert.AlertType.ERROR, "You have to select a teacher to delete", ButtonType.OK);
+            alert.showAndWait();
+            return;
+        }
+
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Delete selected teacher?", ButtonType.YES, ButtonType.NO);
+        Optional<ButtonType> result = alert.showAndWait();
+
+        if (result.get() == ButtonType.YES)
+        {
+            aaModel.deleteTeacher(tbViewTeacher.getSelectionModel().getSelectedItem());
+        }
     }
 
     @FXML
@@ -210,6 +224,20 @@ public class AdminViewController implements Initializable
     @FXML
     private void deleteClass(ActionEvent event)
     {
+        if (tbViewClass.getSelectionModel().isEmpty())
+        {
+            Alert alert = new Alert(Alert.AlertType.ERROR, "You have to select a class to delete", ButtonType.OK);
+            alert.showAndWait();
+            return;
+        }
+
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Delete selected class?", ButtonType.YES, ButtonType.NO);
+        Optional<ButtonType> result = alert.showAndWait();
+
+        if (result.get() == ButtonType.YES)
+        {
+            aaModel.deleteClass(tbViewClass.getSelectionModel().getSelectedItem());
+        }
     }
 
     @FXML

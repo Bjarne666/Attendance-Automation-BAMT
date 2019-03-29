@@ -124,4 +124,17 @@ public interface AttendanceInterface
      * @param studentToDelete 
      */
     public void deleteStudent (Student studentToDelete);
+    
+    /**
+     * 
+     * @param teacherToDelete 
+     */
+    public void deleteTeacher (Teacher teacherToDelete);
+    
+    /**
+     * 
+     * @param classToDelete 
+     */
+    public void deleteClass (SchoolClass classToDelete);
+
 }

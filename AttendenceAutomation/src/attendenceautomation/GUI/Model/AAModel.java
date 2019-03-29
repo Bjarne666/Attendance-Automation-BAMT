@@ -152,4 +152,17 @@ public class AAModel
         aManager.deleteStudent(studentToDelete);
         this.studentList.remove(studentToDelete);
     }
+    
+    public void deleteTeacher (Teacher teacherToDelete)
+    {
+        aManager.deleteTeacher(teacherToDelete);
+        this.teacherList.remove(teacherToDelete);
+    }
+    
+    public void deleteClass (SchoolClass classToDelete)
+    {
+        aManager.deleteClass(classToDelete);
+        this.classList.remove(classToDelete);
+    }
+
 }

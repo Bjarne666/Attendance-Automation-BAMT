@@ -119,4 +119,16 @@ public class AAManager implements AttendanceInterface
     {
         aDAO.deleteStudent(studentToDelete);
     }
+
+    @Override
+    public void deleteTeacher(Teacher teacherToDelete)
+    {
+        aDAO.deleteTeacher(teacherToDelete);
+    }
+
+    @Override
+    public void deleteClass(SchoolClass classToDelete)
+    {
+        aDAO.deleteClass(classToDelete);
+    }
 }

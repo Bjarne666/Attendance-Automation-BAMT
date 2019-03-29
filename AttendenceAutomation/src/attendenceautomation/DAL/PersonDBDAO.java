@@ -7,6 +7,7 @@ package attendenceautomation.DAL;
 
 import attendenceautomation.BE.Attendance;
 import attendenceautomation.BE.Person;
+import attendenceautomation.BE.SchoolClass;
 import attendenceautomation.BE.Student;
 import attendenceautomation.BE.Teacher;
 import com.microsoft.sqlserver.jdbc.SQLServerException;
@@ -417,7 +418,7 @@ public class PersonDBDAO
     }
     
     
-    public void addStudent (Student studentToAdd)
+    public void addStudent (Student studentToAdd, SchoolClass schoolClass)
     {
         String name = studentToAdd.getName();
         String[] splitName = name.split(" ");
@@ -428,13 +429,29 @@ public class PersonDBDAO
         
         try (Connection con = ds.getConnection())
         {
-            PreparedStatement pstmt = con.prepareStatement("INSERT INTO Person VALUES (?, ?, ?, ?)");
+            PreparedStatement pstmt = con.prepareStatement("INSERT INTO Person VALUES (?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS);
+            PreparedStatement pstmt1 = con.prepareStatement("INSERT INTO Student VALUES (?, ?)");
+            
             pstmt.setInt(1, studentToAdd.getId());
             
             pstmt.setString(1, firstName);
             pstmt.setString(2, lastName);
             pstmt.setString(3, email);
             pstmt.setString(4, password);
+            pstmt.execute();
+            
+            try(ResultSet generatedKeys = pstmt.getGeneratedKeys())
+            {
+                if (generatedKeys.next())
+                {
+                    studentToAdd.setId(generatedKeys.getInt(1));
+                }
+            } catch (Exception e)
+            {
+            }
+        pstmt1.setInt(1, studentToAdd.getId());
+        pstmt1.setInt(2, schoolClass.getId());
+        pstmt1.execute();
         } 
         catch (Exception e)
         {

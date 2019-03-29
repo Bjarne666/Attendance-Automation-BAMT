@@ -73,12 +73,11 @@ public class AdminViewController implements Initializable
     private ImageView imgLogo;
     @FXML
     private JFXButton btnAddStudent;
-    
+
     private Person user;
-    
+
     AAModel aaModel;
 
-    
     /**
      * Initializes the controller class.
      */
@@ -87,30 +86,25 @@ public class AdminViewController implements Initializable
     {
         try
         {
-            aaModel = new AAModel();
-            tbViewStudent.setItems(aaModel.getAllStudents());
-            tbViewTeacher.setItems(aaModel.getAllTeachers());
-            tbViewClass.setItems(aaModel.getAllClasses());
+//            aaModel = new AAModel();
             loadMainView();
-        } 
-        catch (IOException ex)
+        } catch (IOException ex)
         {
             Logger.getLogger(attendenceautomation.GUI.Controller.AdminViewController.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        
+
         //Student data for tableview
         colStudentName.setCellValueFactory(new PropertyValueFactory<>("name"));
         colStudentEmail.setCellValueFactory(new PropertyValueFactory<>("Email"));
         colStudentAbsence.setCellValueFactory(new PropertyValueFactory<>("absence"));
-        
+
         //Teacher data for tableview
         colTeacherName.setCellValueFactory(new PropertyValueFactory<>("name"));
         colTeacherEmail.setCellValueFactory(new PropertyValueFactory<>("Email"));
-        
+
         //School Class data for tableview
         colClassName.setCellValueFactory(new PropertyValueFactory<>("className"));
-    }    
+    }
 
     @FXML
     private void clickImage(MouseEvent event) throws IOException
@@ -120,10 +114,10 @@ public class AdminViewController implements Initializable
         loadMainView();
         ancClassView.setVisible(false);
         ancStudentView.setVisible(false);
-        
+
         tbViewStudent.getItems().clear();
     }
-    
+
     private void loadMainView() throws IOException
     {
         ancAdminView.setVisible(false);
@@ -137,6 +131,7 @@ public class AdminViewController implements Initializable
     @FXML
     private void studentOverview(ActionEvent event)
     {
+        tbViewStudent.setItems(aaModel.getAllStudents());
         ancTeacherView.setVisible(false);
         ancClassView.setVisible(false);
         ancStudentView.setVisible(true);
@@ -146,6 +141,7 @@ public class AdminViewController implements Initializable
     @FXML
     private void teacherOverview(ActionEvent event)
     {
+        tbViewTeacher.setItems(aaModel.getAllTeachers());
         ancStudentView.setVisible(false);
         ancClassView.setVisible(false);
         ancTeacherView.setVisible(true);
@@ -155,6 +151,7 @@ public class AdminViewController implements Initializable
     @FXML
     private void classOverview(ActionEvent event)
     {
+        tbViewClass.setItems(aaModel.getAllClasses());
         ancStudentView.setVisible(false);
         ancTeacherView.setVisible(false);
         ancClassView.setVisible(true);
@@ -176,7 +173,7 @@ public class AdminViewController implements Initializable
 
         AddStudentViewController addStudentController = loader.getController();
         addStudentController.setModel(aaModel);
-
+        addStudentController.setComboBox();
         Stage stageAddMovie = new Stage();
         stageAddMovie.setScene(new Scene(root));
 
@@ -207,7 +204,7 @@ public class AdminViewController implements Initializable
     @FXML
     private void editStudent(ActionEvent event)
     {
-        
+
     }
 
     @FXML
@@ -248,7 +245,6 @@ public class AdminViewController implements Initializable
 
 //        AddClassViewController addClassController = loader.getController();
 //        addClassController.setModel(aaModel);
-
         Stage stageAddMovie = new Stage();
         stageAddMovie.setScene(new Scene(root));
 
@@ -281,7 +277,7 @@ public class AdminViewController implements Initializable
     {
         if (!tbViewClass.getSelectionModel().isEmpty())
         {
-            
+
             TextInputDialog dialog = new TextInputDialog();
             dialog.setTitle("Edit Class Name");
             dialog.setContentText("Enter class name");
@@ -302,17 +298,21 @@ public class AdminViewController implements Initializable
                 SchoolClass editClass = new SchoolClass(0, className);
                 aaModel.editSchoolClassName(editClass);
             }
-        
+
+        } else
+        {
+            Alert alert = new Alert(Alert.AlertType.ERROR, "You have to select a class to edit", ButtonType.OK);
+            alert.showAndWait();
         }
-        else
-            {
-                Alert alert = new Alert(Alert.AlertType.ERROR, "You have to select a class to edit", ButtonType.OK);
-                alert.showAndWait();
-            }
     }
-    
+
     public void setUser(Person userToSet)
     {
         user = userToSet;
+    }
+
+    void setModel(AAModel aModel)
+    {
+        aaModel = aModel;
     }
 }

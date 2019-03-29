@@ -165,9 +165,9 @@ public class AAModel
         this.classList.remove(classToDelete);
     }
     
-    public void addStudent (Student studentToAdd)
+    public void addStudent (Student studentToAdd, SchoolClass schoolClass)
     {
-        aManager.addStudent(studentToAdd);
+        aManager.addStudent(studentToAdd, schoolClass);
         studentList.add(studentToAdd);
     }
     

@@ -5,9 +5,11 @@
  */
 package attendenceautomation.GUI.Controller;
 
+import attendenceautomation.BE.SchoolClass;
 import attendenceautomation.BE.Student;
 import attendenceautomation.GUI.Model.AAModel;
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import java.io.IOException;
@@ -43,25 +45,32 @@ public class AddStudentViewController implements Initializable
     AAModel aaModel;
     @FXML
     private JFXButton btnSaveStudent;
+    @FXML
+    private JFXComboBox<SchoolClass> cbClass;
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb)
     {
-        
+       
     }   
     
     public void setModel(AAModel aaModel) 
     {
         this.aaModel = aaModel;
     }
+    
+    public void setComboBox()
+    {
+         cbClass.setItems(aaModel.getAllClasses());
+    }
 
     @FXML
     private void btnAddStudent(ActionEvent event)
     {
 //        Stage primeStage = (Stage) btnAddStudent(event).getScene().getWindow();
-
+        
         if (txtName.getText().length() == 0 || txtLastName.getText().length() == 0 || txtEmail.getText().length() == 0 || txtPassword.getText().length() == 0)
         {
             Alert alert = new Alert (Alert.AlertType.CONFIRMATION, "You have to fill out all fields!", ButtonType.OK);
@@ -74,9 +83,9 @@ public class AddStudentViewController implements Initializable
       
 //        Student newStudent = new Student(0, name, email, password);
         System.out.println("new student");
-        
+        SchoolClass chosenClass = cbClass.getSelectionModel().getSelectedItem();
         Student student = new Student(0, name, email, password);
-        aaModel.addStudent(student);
+        aaModel.addStudent(student, chosenClass);
         aaModel.getAllStudents();
 //        primeStage.close();
     }

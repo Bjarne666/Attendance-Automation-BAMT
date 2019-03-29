@@ -22,6 +22,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import static javafx.scene.AccessibleAttribute.VISIBLE;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.PieChart;
 import javafx.scene.chart.XYChart;
@@ -34,6 +35,7 @@ import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import javax.accessibility.AccessibleState;
 
 /**
  * FXML Controller class
@@ -179,7 +181,7 @@ public class TeacherViewController implements Initializable
         XYChart.Series dataSet = new XYChart.Series();
         
          // Converting date to localDate and counting absense for weekdays
-        dConverter = new DateConverter(aaModel.getAbsenceSumById(user.getId()));
+        dConverter = new DateConverter(aaModel.getAbsenceSumById(chosenStudent.getId()));
         localDates = dConverter.getDates();
         int mondayCount = 0;
         int tuesdayCount = 0;
@@ -236,8 +238,9 @@ public class TeacherViewController implements Initializable
                 comboClassList.getSelectionModel().clearSelection();
                 if (event.getButton().equals(MouseButton.PRIMARY))
                 {
-                    if (event.getClickCount() == 1)
+                    if (event.getClickCount() == 1 && !ancStudentView.isVisible() )
                     {
+                        studentBarChart();
                         lblStudentName.setText(chosenStudent.getName());
 //                        ancTeacherView.getChildren().clear();
                         ancClassView.setVisible(false);
@@ -245,6 +248,14 @@ public class TeacherViewController implements Initializable
                         ancStudentView.toFront();
                         ancStudentView.setVisible(true);
 //                        ancTeacherView.getChildren().add(ancStudentView);
+                    }
+                    else if (event.getClickCount() == 2)
+                    {
+                        tbViewStudents.getSelectionModel().clearSelection();
+                        ancClassView.setVisible(true);
+                        studentBarChart.getData().clear();
+                        ancStudentView.toBack();
+                        ancStudentView.setVisible(false);
                     }
                 }
             }
@@ -325,6 +336,11 @@ public class TeacherViewController implements Initializable
     {
         lblLoggedInUser.setText(user.getName());
         
+    }
+
+    void setModel(AAModel modelToSet)
+    {
+      aaModel = modelToSet;
     }
     
 }

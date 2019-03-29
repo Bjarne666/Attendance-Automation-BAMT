@@ -24,6 +24,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -79,6 +80,12 @@ public class AdminViewController implements Initializable
     AAModel aaModel;
     @FXML
     private JFXButton btnAddTeacher;
+    @FXML
+    private JFXButton btnEditClass;
+    @FXML
+    private JFXButton btnEditStudent;
+    @FXML
+    private Button btnEditTeacher;
 
     /**
      * Initializes the controller class.
@@ -176,12 +183,13 @@ public class AdminViewController implements Initializable
         AddStudentViewController addStudentController = loader.getController();
         addStudentController.setModel(aaModel);
         addStudentController.setComboBox();
-        Stage stageAddMovie = new Stage();
-        stageAddMovie.setScene(new Scene(root));
+        
+        Stage stageAddStudent = new Stage();
+        stageAddStudent.setScene(new Scene(root));
 
-        stageAddMovie.initModality(Modality.WINDOW_MODAL);
-        stageAddMovie.initOwner(primeStage);
-        stageAddMovie.show();
+        stageAddStudent.initModality(Modality.WINDOW_MODAL);
+        stageAddStudent.initOwner(primeStage);
+        stageAddStudent.show();
     }
 
     @FXML
@@ -204,9 +212,18 @@ public class AdminViewController implements Initializable
     }
 
     @FXML
-    private void editStudent(ActionEvent event)
+    private void editStudent(ActionEvent event) throws IOException
     {
+        Stage primeStage = (Stage) btnEditStudent.getScene().getWindow();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/attendenceautomation/GUI/View/EditStudentView.fxml"));
+        Parent root = loader.load();
 
+        Stage stageEditStudent = new Stage();
+        stageEditStudent.setScene(new Scene(root));
+
+        stageEditStudent.initModality(Modality.WINDOW_MODAL);
+        stageEditStudent.initOwner(primeStage);
+        stageEditStudent.show();
     }
 
     @FXML
@@ -219,12 +236,12 @@ public class AdminViewController implements Initializable
         AddTeacherViewController addTeacherController = loader.getController();
         addTeacherController.setModel(aaModel);
 
-        Stage stageAddMovie = new Stage();
-        stageAddMovie.setScene(new Scene(root));
+        Stage stageAddTeacher = new Stage();
+        stageAddTeacher.setScene(new Scene(root));
 
-        stageAddMovie.initModality(Modality.WINDOW_MODAL);
-        stageAddMovie.initOwner(primeStage);
-        stageAddMovie.show();
+        stageAddTeacher.initModality(Modality.WINDOW_MODAL);
+        stageAddTeacher.initOwner(primeStage);
+        stageAddTeacher.show();
     }
 
     @FXML
@@ -247,8 +264,18 @@ public class AdminViewController implements Initializable
     }
 
     @FXML
-    private void editTeacher(ActionEvent event)
+    private void editTeacher(ActionEvent event) throws IOException
     {
+        Stage primeStage = (Stage) btnEditTeacher.getScene().getWindow();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/attendenceautomation/GUI/View/EditTeacherView.fxml"));
+        Parent root = loader.load();
+
+        Stage stageEditTeacher = new Stage();
+        stageEditTeacher.setScene(new Scene(root));
+
+        stageEditTeacher.initModality(Modality.WINDOW_MODAL);
+        stageEditTeacher.initOwner(primeStage);
+        stageEditTeacher.show();
     }
 
     @FXML
@@ -258,12 +285,12 @@ public class AdminViewController implements Initializable
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/attendenceautomation/GUI/View/AddClassView.fxml"));
         Parent root = loader.load();
 
-        Stage stageAddMovie = new Stage();
-        stageAddMovie.setScene(new Scene(root));
+        Stage stageAddClass = new Stage();
+        stageAddClass.setScene(new Scene(root));
 
-        stageAddMovie.initModality(Modality.WINDOW_MODAL);
-        stageAddMovie.initOwner(primeStage);
-        stageAddMovie.show();
+        stageAddClass.initModality(Modality.WINDOW_MODAL);
+        stageAddClass.initOwner(primeStage);
+        stageAddClass.show();
     }
 
     @FXML
@@ -286,37 +313,18 @@ public class AdminViewController implements Initializable
     }
 
     @FXML
-    private void editClass(ActionEvent event)
+    private void editClass(ActionEvent event) throws IOException
     {
-        if (!tbViewClass.getSelectionModel().isEmpty())
-        {
+        Stage primeStage = (Stage) btnEditClass.getScene().getWindow();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/attendenceautomation/GUI/View/EditClassView.fxml"));
+        Parent root = loader.load();
 
-            TextInputDialog dialog = new TextInputDialog();
-            dialog.setTitle("Edit Class Name");
-            dialog.setContentText("Enter class name");
+        Stage stageEditClass = new Stage();
+        stageEditClass.setScene(new Scene(root));
 
-            Optional<String> result = dialog.showAndWait();
-
-            String className = "";
-
-            if (result.isPresent())
-            {
-                if (className.equals("") || className.equals(" "))
-                {
-                    return;
-                }
-                tbViewClass.getSelectionModel().getSelectedItem();
-                className = result.get();
-                System.out.println("new class");
-                SchoolClass editClass = new SchoolClass(0, className);
-                aaModel.editSchoolClassName(editClass);
-            }
-
-        } else
-        {
-            Alert alert = new Alert(Alert.AlertType.ERROR, "You have to select a class to edit", ButtonType.OK);
-            alert.showAndWait();
-        }
+        stageEditClass.initModality(Modality.WINDOW_MODAL);
+        stageEditClass.initOwner(primeStage);
+        stageEditClass.show();
     }
 
     public void setUser(Person userToSet)

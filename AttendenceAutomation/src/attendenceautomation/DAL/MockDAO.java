@@ -165,7 +165,7 @@ public class MockDAO implements AADALInterface {
 //    }
 
     @Override
-    public void editSchoolClassName(SchoolClass classToEdit)
+    public void editSchoolClassName(String className, int id)
     {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }

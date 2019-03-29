@@ -144,13 +144,13 @@ public class SchoolClassDBDAO
         }
     }
     
-    public void editSchoolClassName (SchoolClass classToEdit)
+    public void editSchoolClassName (String className, int id)
     {
         try (Connection con = ds.getConnection())
         {
             PreparedStatement pstmt = con.prepareStatement("UPDATE SchoolClass SET className = (?) WHERE classID = (?)");
-            pstmt.setString(1, classToEdit.getClassName());
-            pstmt.setInt(2, classToEdit.getId());
+            pstmt.setString(1, className);
+            pstmt.setInt(2, id);
             
             pstmt.execute();
             

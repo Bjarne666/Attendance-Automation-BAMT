@@ -5,17 +5,13 @@
  */
 package attendenceautomation.GUI.Controller;
 
-import attendenceautomation.BE.SchoolClass;
-import attendenceautomation.BE.Student;
 import attendenceautomation.BE.Teacher;
 import attendenceautomation.GUI.Model.AAModel;
+import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -40,6 +36,8 @@ public class AddTeacherViewController implements Initializable
     private JFXPasswordField txtPassword;
 
     AAModel aaModel;
+    @FXML
+    private JFXButton btnSaveTeacher;
     /**
      * Initializes the controller class.
      */

@@ -146,9 +146,10 @@ public interface AttendanceInterface
     
     /**
      * 
-     * @param classToEdit 
+     * @param className
+     * @param id
      */
-    public void editSchoolClassName (SchoolClass classToEdit);
+    public void editSchoolClassName (String className, int id);
 
     /**
      * 

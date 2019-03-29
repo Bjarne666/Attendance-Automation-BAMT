@@ -146,9 +146,9 @@ public interface AADALInterface
     
     /**
      * 
-     * @param classToEdit 
+     * @param className
      */
-    public void editSchoolClassName (SchoolClass classToEdit);
+    public void editSchoolClassName (String className, int id);
     
     /**
      * 

@@ -138,9 +138,9 @@ public class AttendanceFacade implements AADALInterface
     }
 
     @Override
-    public void editSchoolClassName(SchoolClass classToEdit)
+    public void editSchoolClassName(String className, int id)
     {
-        sCDbDao.editSchoolClassName(classToEdit);
+        sCDbDao.editSchoolClassName(className, id);
     }
 
     @Override

@@ -41,7 +41,7 @@
                   </TableView>
                   <JFXButton layoutX="426.0" layoutY="199.0" onAction="#addClass" prefHeight="50.0" prefWidth="200.0" text="Add Class" />
                   <JFXButton layoutX="426.0" layoutY="345.0" onAction="#deleteClass" prefHeight="50.0" prefWidth="200.0" text="Delete Class" />
-                  <JFXButton layoutX="426.0" layoutY="498.0" onAction="#editClass" prefHeight="50.0" prefWidth="200.0" text="Edit Class" />
+                  <JFXButton fx:id="btnEditClass" layoutX="426.0" layoutY="498.0" onAction="#editClass" prefHeight="50.0" prefWidth="200.0" text="Edit Class" />
                </children>
             </AnchorPane>
             <AnchorPane fx:id="ancAdminView" prefHeight="249.0" prefWidth="341.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -62,7 +62,7 @@
                   <Label layoutX="47.0" layoutY="40.0" style="-fx-font-size: 32;" text="Student Overview" AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="25.0" />
                   <JFXButton fx:id="btnAddStudent" layoutX="426.0" layoutY="199.0" onAction="#addStudent" prefHeight="50.0" prefWidth="200.0" text="Add Student" AnchorPane.rightAnchor="100.0" />
                   <JFXButton layoutX="426.0" layoutY="345.0" onAction="#deleteStudent" prefHeight="50.0" prefWidth="200.0" text="Delete Student" AnchorPane.rightAnchor="100.0" />
-                  <JFXButton layoutX="426.0" layoutY="498.0" onAction="#editStudent" prefHeight="50.0" prefWidth="200.0" text="Edit Student" AnchorPane.rightAnchor="100.0" />
+                  <JFXButton fx:id="btnEditStudent" layoutX="426.0" layoutY="498.0" onAction="#editStudent" prefHeight="50.0" prefWidth="200.0" text="Edit Student" AnchorPane.rightAnchor="100.0" />
                </children>
             </AnchorPane>
             <AnchorPane fx:id="ancTeacherView" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -76,7 +76,7 @@
                   </TableView>
                   <JFXButton fx:id="btnAddTeacher" layoutX="426.0" layoutY="199.0" onAction="#addTeacher" prefHeight="50.0" prefWidth="200.0" text="Add Teacher" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="199.0" />
                   <Button layoutX="426.0" layoutY="345.0" mnemonicParsing="false" onAction="#deleteTeacher" prefHeight="50.0" prefWidth="200.0" text="Delete Teacher" AnchorPane.rightAnchor="100.0" />
-                  <Button layoutX="419.0" layoutY="498.0" mnemonicParsing="false" onAction="#editTeacher" prefHeight="50.0" prefWidth="200.0" text="Edit Teacher" AnchorPane.rightAnchor="100.0" />
+                  <Button fx:id="btnEditTeacher" layoutX="419.0" layoutY="498.0" mnemonicParsing="false" onAction="#editTeacher" prefHeight="50.0" prefWidth="200.0" text="Edit Teacher" AnchorPane.rightAnchor="100.0" />
                </children>
             </AnchorPane>
          </children>

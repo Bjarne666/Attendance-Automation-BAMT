@@ -183,10 +183,9 @@ public class AAModel
         studentList.add(studentToAdd);
     }
     
-    public void editSchoolClassName (SchoolClass classToEdit)
+    public void editSchoolClassName (String className, int id)
     {
-        aManager.editSchoolClassName(classToEdit);
-        classList.add(classToEdit);
+        aManager.editSchoolClassName(className, id);
     }
     
     public void addClass (SchoolClass classToAdd)

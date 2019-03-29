@@ -13,6 +13,6 @@
       <JFXTextField fx:id="txtLastName" layoutX="95.0" layoutY="232.0" promptText="Last Name" AnchorPane.leftAnchor="95.0" />
       <JFXTextField fx:id="txtEmail" layoutX="95.0" layoutY="311.0" promptText="Email" AnchorPane.leftAnchor="95.0" />
       <JFXPasswordField fx:id="txtPassword" layoutX="95.0" layoutY="394.0" promptText="Password" AnchorPane.leftAnchor="95.0" />
-      <JFXButton layoutX="576.0" layoutY="449.0" onAction="#btnAddTeacher" prefHeight="37.0" prefWidth="60.0" style="-fx-background-color: #4b4b4b;" text="Save" />
+      <JFXButton fx:id="btnSaveTeacher" layoutX="576.0" layoutY="449.0" onAction="#btnAddTeacher" prefHeight="37.0" prefWidth="60.0" style="-fx-background-color: #4b4b4b;" text="Save" />
    </children>
 </AnchorPane>

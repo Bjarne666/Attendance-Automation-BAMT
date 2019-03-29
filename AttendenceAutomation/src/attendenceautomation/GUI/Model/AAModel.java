@@ -59,17 +59,29 @@ public class AAModel
     }
     public ObservableList<Student> getAllStudents()
     {
-        return FXCollections.observableArrayList(aManager.getAllStudents());
+        List<Student> tempStudentList = aManager.getAllStudents();
+        studentList.clear();
+        studentList.addAll(tempStudentList);
+        
+        return studentList;
     }
 
     public ObservableList<SchoolClass> getAllClasses()
     {
-        return FXCollections.observableArrayList(aManager.getAllClasses());
+        List<SchoolClass> tempClassList = aManager.getAllClasses();
+        classList.clear();
+        classList.addAll(tempClassList);
+        
+        return classList;
     }
 
     public ObservableList<Teacher> getAllTeachers()
     {
-        return FXCollections.observableArrayList(aManager.getAllTeachers());
+        List<Teacher> tempTeacherList = aManager.getAllTeachers();
+        teacherList.clear();
+        teacherList.addAll(tempTeacherList);
+        
+        return teacherList;
     }
 
     public ObservableList<Student> getStudentsInClass(SchoolClass chosenClass)
@@ -174,16 +186,19 @@ public class AAModel
     public void editSchoolClassName (SchoolClass classToEdit)
     {
         aManager.editSchoolClassName(classToEdit);
+        classList.add(classToEdit);
     }
     
     public void addClass (SchoolClass classToAdd)
     {
         aManager.addClass(classToAdd);
+        classList.add(classToAdd);
     }
     
     public void addTeacher (Teacher teacherToAdd)
     {
         aManager.addTeacher(teacherToAdd);
+        teacherList.add(teacherToAdd);
     }
 
 }

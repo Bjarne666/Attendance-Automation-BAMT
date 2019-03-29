@@ -133,9 +133,9 @@ public class AAManager implements AttendanceInterface
     }
 
     @Override
-    public void addStudent(Student studentToAdd)
+    public void addStudent (Student studentToAdd, SchoolClass schoolClass)
     {
-        aDAO.addStudent(studentToAdd);
+        aDAO.addStudent(studentToAdd, schoolClass);
     }
 
     @Override

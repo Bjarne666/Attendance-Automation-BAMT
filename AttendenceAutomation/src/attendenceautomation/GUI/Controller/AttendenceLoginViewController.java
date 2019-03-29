@@ -59,6 +59,7 @@ public class AttendenceLoginViewController implements Initializable
             sViewController.setLabels();
             sViewController.studentBarChart();
             sViewController.buildPieChart();
+            sViewController.setModel(aModel);
             
             Stage stage = new Stage();
             stage.setScene(new Scene(pane));
@@ -90,7 +91,7 @@ public class AttendenceLoginViewController implements Initializable
         }
         if (!user.IsAStudent())
         {
-//            handleTeacherLogin();
+            handleTeacherLogin();
             handleAdminLogin();
         }     
     }
@@ -104,8 +105,8 @@ public class AttendenceLoginViewController implements Initializable
             TeacherViewController tViewController = loader.getController();
             tViewController.setUser(user);
             tViewController.setLabels();
-            tViewController.studentBarChart();
-            
+//            tViewController.studentBarChart();
+            tViewController.setModel(aModel);
             Stage stage = new Stage();
             stage.setScene(new Scene(pane));
 
@@ -124,7 +125,7 @@ public class AttendenceLoginViewController implements Initializable
 
             AdminViewController aViewController = loader.getController();
             aViewController.setUser(user);
-
+            aViewController.setModel(aModel);
             
             Stage stage = new Stage();
             stage.setScene(new Scene(pane));

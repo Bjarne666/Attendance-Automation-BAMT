@@ -132,9 +132,9 @@ public class AttendanceFacade implements AADALInterface
     }
 
     @Override
-    public void addStudent(Student studentToAdd)
+    public void addStudent (Student studentToAdd, SchoolClass schoolClass)
     {
-       pDbDao.addStudent(studentToAdd);
+       pDbDao.addStudent(studentToAdd, schoolClass);
     }
 
     @Override

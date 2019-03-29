@@ -140,8 +140,9 @@ public interface AADALInterface
     /**
      * 
      * @param studentToAdd 
+     * @param schoolClass 
      */
-    public void addStudent (Student studentToAdd);
+    public void addStudent (Student studentToAdd, SchoolClass schoolClass);
     
     /**
      * 

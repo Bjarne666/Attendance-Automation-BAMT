@@ -10,6 +10,7 @@ import attendenceautomation.BE.SchoolClass;
 import attendenceautomation.BE.Student;
 import attendenceautomation.BE.Teacher;
 import attendenceautomation.GUI.Model.AAModel;
+import com.jfoenix.controls.JFXButton;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Optional;
@@ -18,7 +19,10 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
@@ -27,6 +31,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 /**
@@ -65,10 +70,13 @@ public class AdminViewController implements Initializable
     private AnchorPane ancTeacherView;
     @FXML
     private ImageView imgLogo;
+    @FXML
+    private JFXButton btnAddStudent;
     
     private Person user;
     
     AAModel aaModel;
+
     
     /**
      * Initializes the controller class.
@@ -159,8 +167,21 @@ public class AdminViewController implements Initializable
     }
 
     @FXML
-    private void addStudent(ActionEvent event)
+    private void addStudent(ActionEvent event) throws IOException
     {
+        Stage primeStage = (Stage) btnAddStudent.getScene().getWindow();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/attendenceautomation/GUI/View/addStudentView.fxml"));
+        Parent root = loader.load();
+
+        AddStudentViewController addStudentController = loader.getController();
+        addStudentController.setModel(aaModel);
+
+        Stage stageAddMovie = new Stage();
+        stageAddMovie.setScene(new Scene(root));
+
+        stageAddMovie.initModality(Modality.WINDOW_MODAL);
+        stageAddMovie.initOwner(primeStage);
+        stageAddMovie.show();
     }
 
     @FXML

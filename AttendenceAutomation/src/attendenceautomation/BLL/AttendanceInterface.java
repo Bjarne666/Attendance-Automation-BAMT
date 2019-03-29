@@ -136,5 +136,11 @@ public interface AttendanceInterface
      * @param classToDelete 
      */
     public void deleteClass (SchoolClass classToDelete);
+    
+    /**
+     * 
+     * @param studentToAdd 
+     */
+    public void addStudent (Student studentToAdd);
 
 }

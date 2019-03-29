@@ -164,5 +164,11 @@ public class AAModel
         aManager.deleteClass(classToDelete);
         this.classList.remove(classToDelete);
     }
+    
+    public void addStudent (Student studentToAdd)
+    {
+        aManager.addStudent(studentToAdd);
+        studentList.add(studentToAdd);
+    }
 
 }

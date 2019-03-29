@@ -417,4 +417,28 @@ public class PersonDBDAO
     }
     
     
+    public void addStudent (Student studentToAdd)
+    {
+        String name = studentToAdd.getName();
+        String lastName = studentToAdd.getName();
+        String email = studentToAdd.getEmail();
+        String password = studentToAdd.getPassword();
+        
+        try (Connection con = ds.getConnection())
+        {
+            PreparedStatement pstmt = con.prepareStatement("INSERT INTO Person VALUES (?, ?, ?, ?)");
+            pstmt.setInt(1, studentToAdd.getId());
+            
+            pstmt.setString(1, name);
+            pstmt.setString(2, lastName);
+            pstmt.setString(3, email);
+            pstmt.setString(4, password);
+            
+            pstmt.execute();
+        } 
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+    }
 }

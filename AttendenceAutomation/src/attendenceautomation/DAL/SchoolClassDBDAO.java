@@ -129,4 +129,35 @@ public class SchoolClassDBDAO
             e.printStackTrace();
         }
     }
+    
+    public void addClass (SchoolClass classToAdd)
+    {
+        try (Connection con = ds.getConnection())
+        {
+            PreparedStatement pstmt = con.prepareStatement("INSERT INTO SchoolClass VALUES (?)");
+            pstmt.setString(1, classToAdd.getClassName());
+            pstmt.execute();
+        } 
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+    }
+    
+    public void editSchoolClassName (SchoolClass classToEdit)
+    {
+        try (Connection con = ds.getConnection())
+        {
+            PreparedStatement pstmt = con.prepareStatement("UPDATE SchoolClass SET className = (?) WHERE classID = (?)");
+            pstmt.setString(1, classToEdit.getClassName());
+            pstmt.setInt(2, classToEdit.getId());
+            
+            pstmt.execute();
+            
+        } 
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+    }
 }

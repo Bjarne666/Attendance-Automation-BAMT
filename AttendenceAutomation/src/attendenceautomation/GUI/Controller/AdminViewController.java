@@ -27,6 +27,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextInputDialog;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -206,6 +207,7 @@ public class AdminViewController implements Initializable
     @FXML
     private void editStudent(ActionEvent event)
     {
+        
     }
 
     @FXML
@@ -238,8 +240,21 @@ public class AdminViewController implements Initializable
     }
 
     @FXML
-    private void addClass(ActionEvent event)
+    private void addClass(ActionEvent event) throws IOException
     {
+        Stage primeStage = (Stage) btnAddStudent.getScene().getWindow();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/attendenceautomation/GUI/View/AddClassView.fxml"));
+        Parent root = loader.load();
+
+//        AddClassViewController addClassController = loader.getController();
+//        addClassController.setModel(aaModel);
+
+        Stage stageAddMovie = new Stage();
+        stageAddMovie.setScene(new Scene(root));
+
+        stageAddMovie.initModality(Modality.WINDOW_MODAL);
+        stageAddMovie.initOwner(primeStage);
+        stageAddMovie.show();
     }
 
     @FXML
@@ -264,6 +279,36 @@ public class AdminViewController implements Initializable
     @FXML
     private void editClass(ActionEvent event)
     {
+        if (!tbViewClass.getSelectionModel().isEmpty())
+        {
+            
+            TextInputDialog dialog = new TextInputDialog();
+            dialog.setTitle("Edit Class Name");
+            dialog.setContentText("Enter class name");
+
+            Optional<String> result = dialog.showAndWait();
+
+            String className = "";
+
+            if (result.isPresent())
+            {
+                if (className.equals("") || className.equals(" "))
+                {
+                    return;
+                }
+                tbViewClass.getSelectionModel().getSelectedItem();
+                className = result.get();
+                System.out.println("new class");
+                SchoolClass editClass = new SchoolClass(0, className);
+                aaModel.editSchoolClassName(editClass);
+            }
+        
+        }
+        else
+            {
+                Alert alert = new Alert(Alert.AlertType.ERROR, "You have to select a class to edit", ButtonType.OK);
+                alert.showAndWait();
+            }
     }
     
     public void setUser(Person userToSet)

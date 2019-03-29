@@ -170,5 +170,15 @@ public class AAModel
         aManager.addStudent(studentToAdd);
         studentList.add(studentToAdd);
     }
+    
+    public void editSchoolClassName (SchoolClass classToEdit)
+    {
+        aManager.editSchoolClassName(classToEdit);
+    }
+    
+    public void addClass (SchoolClass classToAdd)
+    {
+        aManager.addClass(classToAdd);
+    }
 
 }

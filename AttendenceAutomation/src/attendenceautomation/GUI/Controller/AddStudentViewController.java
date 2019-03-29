@@ -60,7 +60,7 @@ public class AddStudentViewController implements Initializable
     @FXML
     private void btnAddStudent(ActionEvent event)
     {
-        Stage primeStage = (Stage) btnAddStudent(event).getScene().getWindow();
+//        Stage primeStage = (Stage) btnAddStudent(event).getScene().getWindow();
 
         if (txtName.getText().length() == 0 || txtLastName.getText().length() == 0 || txtEmail.getText().length() == 0 || txtPassword.getText().length() == 0)
         {
@@ -68,19 +68,17 @@ public class AddStudentViewController implements Initializable
             alert.showAndWait();
             return;
         }
-        String name = this.txtName.getText();
-        String lastName = this.txtLastName.getText();
+        String name = this.txtName.getText() + " " + this.txtLastName.getText();
         String email = this.txtEmail.getText();
         String password = this.txtPassword.getText();
       
-        Student newStudent = new Student(0, name, email, password);
+//        Student newStudent = new Student(0, name, email, password);
         System.out.println("new student");
         
         Student student = new Student(0, name, email, password);
         aaModel.addStudent(student);
         aaModel.getAllStudents();
-        
-        primeStage.close();
+//        primeStage.close();
     }
     
 }

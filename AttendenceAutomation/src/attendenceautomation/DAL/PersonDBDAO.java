@@ -420,7 +420,9 @@ public class PersonDBDAO
     public void addStudent (Student studentToAdd)
     {
         String name = studentToAdd.getName();
-        String lastName = studentToAdd.getName();
+        String[] splitName = name.split(" ");
+        String firstName = splitName[0];
+        String lastName = splitName[1]; 
         String email = studentToAdd.getEmail();
         String password = studentToAdd.getPassword();
         
@@ -429,12 +431,10 @@ public class PersonDBDAO
             PreparedStatement pstmt = con.prepareStatement("INSERT INTO Person VALUES (?, ?, ?, ?)");
             pstmt.setInt(1, studentToAdd.getId());
             
-            pstmt.setString(1, name);
+            pstmt.setString(1, firstName);
             pstmt.setString(2, lastName);
             pstmt.setString(3, email);
             pstmt.setString(4, password);
-            
-            pstmt.execute();
         } 
         catch (Exception e)
         {

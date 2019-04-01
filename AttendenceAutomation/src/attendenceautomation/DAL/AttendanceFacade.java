@@ -160,4 +160,10 @@ public class AttendanceFacade implements AADALInterface
     {
         pDbDao.editPerson(fName, lName, email, id);
     }
+
+    @Override
+    public void moveStudentToNewClass(SchoolClass chosenClass, Student studentToMove)
+    {
+        pDbDao.moveStudentToNewClass(chosenClass, studentToMove);
+    }
 }

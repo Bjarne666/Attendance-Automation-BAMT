@@ -501,9 +501,7 @@ public class PersonDBDAO
         catch (Exception e)
         {
             e.printStackTrace();
-        }
-        
-        
+        } 
     }
     
     public void editPerson(String fName, String lName, String email, int id)
@@ -521,7 +519,30 @@ public class PersonDBDAO
         catch (Exception e)
         {
             e.printStackTrace();
+        }      
+    }
+    
+    public void moveStudentToNewClass(SchoolClass chosenClass, Student studentToMove)
+    {
+        try (Connection con = ds.getConnection())
+        {
+            PreparedStatement pstmt = con.prepareStatement("INSERT INTO SchoolClass WHERE classID = (?) "
+                    + "SELECT studentID FROM Student WHERE studentID = (?)");
+//                    + "DELETE FROM SchoolClass WHERE StudentID = (?)");
+                    pstmt.setInt(1, chosenClass.getId());
+                    pstmt.setInt(2, studentToMove.getId());
+                    pstmt.execute();
+                    
+            PreparedStatement pstmt1 = con.prepareStatement("DELETE FROM SchoolClass WHERE StudentID = (?)");
+            pstmt1.setInt(1, chosenClass.getId());
+            pstmt1.setInt(2, studentToMove.getId());
+//            
+            pstmt1.execute();
+        } 
+        catch (Exception e)
+        {
+            e.printStackTrace();
         }
-               
+         
     }
 }

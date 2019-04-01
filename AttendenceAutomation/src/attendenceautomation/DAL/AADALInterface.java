@@ -147,6 +147,7 @@ public interface AADALInterface
     /**
      * 
      * @param className
+     * @param id
      */
     public void editSchoolClassName (String className, int id);
     
@@ -170,5 +171,13 @@ public interface AADALInterface
      * @param email 
      */
     public void editPerson(String fName, String lName, String email, int id);
+    
+    /**
+     * 
+     * @param chosenClass
+     * @param studentToMove 
+     */
+    public void moveStudentToNewClass(SchoolClass chosenClass, Student studentToMove);
+    
 }
 

@@ -11,6 +11,7 @@ import attendenceautomation.BE.Student;
 import attendenceautomation.BE.Teacher;
 import attendenceautomation.GUI.Model.AAModel;
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXComboBox;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Optional;
@@ -85,6 +86,8 @@ public class AdminViewController implements Initializable
     private Person user;
 
     AAModel aaModel;
+    @FXML
+    private JFXComboBox<?> comboSwitchStudentClass;
 
     /**
      * Initializes the controller class.
@@ -346,5 +349,10 @@ public class AdminViewController implements Initializable
     void setModel(AAModel aModel)
     {
         aaModel = aModel;
+    }
+
+    @FXML
+    private void addStudentToNewClass(ActionEvent event)
+    {
     }
 }

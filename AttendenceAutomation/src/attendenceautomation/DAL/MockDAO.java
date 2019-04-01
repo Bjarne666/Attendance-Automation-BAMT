@@ -194,5 +194,11 @@ public class MockDAO implements AADALInterface {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    @Override
+    public void moveStudentToNewClass(SchoolClass chosenClass, Student studentToMove)
+    {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 
 }

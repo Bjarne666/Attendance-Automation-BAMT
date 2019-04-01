@@ -171,4 +171,11 @@ public interface AttendanceInterface
      * @param email 
      */
     public void editPerson(String fName, String lName, String email, int id);
+    
+    /**
+     * 
+     * @param chosenClass
+     * @param studentToMove 
+     */
+    public void moveStudentToNewClass(SchoolClass chosenClass, Student studentToMove);
 }

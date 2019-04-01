@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
@@ -31,38 +32,10 @@
       </AnchorPane>
       <AnchorPane layoutX="248.0" layoutY="57.0" prefHeight="740.0" prefWidth="718.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="235.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="35.0">
          <children>
-            <AnchorPane fx:id="ancClassView" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-               <children>
-                  <Label layoutX="38.0" layoutY="44.0" style="-fx-font-size: 32;" text="Class Overview" AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="25.0" />
-                  <TableView fx:id="tbViewClass" layoutX="44.0" layoutY="170.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="35.0" AnchorPane.rightAnchor="380.0" AnchorPane.topAnchor="95.0">
-                    <columns>
-                      <TableColumn fx:id="colClassName" prefWidth="271.0" text="Class Name" />
-                    </columns>
-                  </TableView>
-                  <JFXButton layoutX="426.0" layoutY="199.0" onAction="#addClass" prefHeight="50.0" prefWidth="200.0" text="Add Class" />
-                  <JFXButton layoutX="426.0" layoutY="345.0" onAction="#deleteClass" prefHeight="50.0" prefWidth="200.0" text="Delete Class" />
-                  <JFXButton fx:id="btnEditClass" layoutX="426.0" layoutY="498.0" onAction="#editClass" prefHeight="50.0" prefWidth="200.0" text="Edit Class" />
-               </children>
-            </AnchorPane>
             <AnchorPane fx:id="ancAdminView" prefHeight="249.0" prefWidth="341.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
                   <Label layoutX="44.0" layoutY="45.0" style="-fx-font-size: 32;" text="Admin Overview" />
                   <Label layoutX="44.0" layoutY="237.0" text="Date" />
-               </children>
-            </AnchorPane>
-            <AnchorPane fx:id="ancStudentView" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-               <children>
-                  <TableView fx:id="tbViewStudent" layoutX="35.0" layoutY="96.0" prefHeight="620.0" prefWidth="310.0" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="35.0" AnchorPane.rightAnchor="380.0" AnchorPane.topAnchor="96.0">
-                    <columns>
-                      <TableColumn fx:id="colStudentName" prefWidth="75.0" text="Name" />
-                      <TableColumn fx:id="colStudentEmail" prefWidth="99.0" text="Email" />
-                        <TableColumn fx:id="colStudentAbsence" prefWidth="79.0" text="Absence" />
-                    </columns>
-                  </TableView>
-                  <Label layoutX="47.0" layoutY="40.0" style="-fx-font-size: 32;" text="Student Overview" AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="25.0" />
-                  <JFXButton fx:id="btnAddStudent" layoutX="426.0" layoutY="199.0" onAction="#addStudent" prefHeight="50.0" prefWidth="200.0" text="Add Student" AnchorPane.rightAnchor="100.0" />
-                  <JFXButton layoutX="426.0" layoutY="345.0" onAction="#deleteStudent" prefHeight="50.0" prefWidth="200.0" text="Delete Student" AnchorPane.rightAnchor="100.0" />
-                  <JFXButton fx:id="btnEditStudent" layoutX="426.0" layoutY="498.0" onAction="#editStudent" prefHeight="50.0" prefWidth="200.0" text="Edit Student" AnchorPane.rightAnchor="100.0" />
                </children>
             </AnchorPane>
             <AnchorPane fx:id="ancTeacherView" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -77,6 +50,35 @@
                   <JFXButton fx:id="btnAddTeacher" layoutX="426.0" layoutY="199.0" onAction="#addTeacher" prefHeight="50.0" prefWidth="200.0" text="Add Teacher" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="199.0" />
                   <Button layoutX="426.0" layoutY="345.0" mnemonicParsing="false" onAction="#deleteTeacher" prefHeight="50.0" prefWidth="200.0" text="Delete Teacher" AnchorPane.rightAnchor="100.0" />
                   <Button fx:id="btnEditTeacher" layoutX="419.0" layoutY="498.0" mnemonicParsing="false" onAction="#editTeacher" prefHeight="50.0" prefWidth="200.0" text="Edit Teacher" AnchorPane.rightAnchor="100.0" />
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="ancClassView" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <Label layoutX="38.0" layoutY="44.0" style="-fx-font-size: 32;" text="Class Overview" AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="25.0" />
+                  <TableView fx:id="tbViewClass" layoutX="44.0" layoutY="170.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="35.0" AnchorPane.rightAnchor="380.0" AnchorPane.topAnchor="95.0">
+                    <columns>
+                      <TableColumn fx:id="colClassName" prefWidth="271.0" text="Class Name" />
+                    </columns>
+                  </TableView>
+                  <JFXButton layoutX="426.0" layoutY="199.0" onAction="#addClass" prefHeight="50.0" prefWidth="200.0" text="Add Class" />
+                  <JFXButton layoutX="426.0" layoutY="345.0" onAction="#deleteClass" prefHeight="50.0" prefWidth="200.0" text="Delete Class" />
+                  <JFXButton fx:id="btnEditClass" layoutX="426.0" layoutY="498.0" onAction="#editClass" prefHeight="50.0" prefWidth="200.0" text="Edit Class" />
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="ancStudentView" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <TableView fx:id="tbViewStudent" layoutX="35.0" layoutY="96.0" prefHeight="620.0" prefWidth="310.0" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="35.0" AnchorPane.rightAnchor="380.0" AnchorPane.topAnchor="96.0">
+                    <columns>
+                      <TableColumn fx:id="colStudentName" prefWidth="116.0" text="Name" />
+                      <TableColumn fx:id="colStudentEmail" prefWidth="97.0" text="Email" />
+                        <TableColumn fx:id="colStudentAbsence" prefWidth="81.0" text="Absence" />
+                    </columns>
+                  </TableView>
+                  <Label layoutX="47.0" layoutY="40.0" style="-fx-font-size: 32;" text="Student Overview" AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="25.0" />
+                  <JFXButton fx:id="btnAddStudent" layoutX="426.0" layoutY="199.0" onAction="#addStudent" prefHeight="50.0" prefWidth="200.0" text="Add Student" AnchorPane.rightAnchor="100.0" />
+                  <JFXButton layoutX="426.0" layoutY="345.0" onAction="#deleteStudent" prefHeight="50.0" prefWidth="200.0" text="Delete Student" AnchorPane.rightAnchor="100.0" />
+                  <JFXButton fx:id="btnEditStudent" layoutX="426.0" layoutY="498.0" onAction="#editStudent" prefHeight="50.0" prefWidth="200.0" text="Edit Student" AnchorPane.rightAnchor="100.0" />
+                  <JFXComboBox fx:id="comboSwitchStudentClass" focusColor="#4d4d4d" layoutX="35.0" layoutY="65.0" onAction="#addStudentToNewClass" prefHeight="31.0" prefWidth="310.0" promptText="Select Class To Add Student To" AnchorPane.leftAnchor="35.0" AnchorPane.rightAnchor="380.0" AnchorPane.topAnchor="65.0" />
                </children>
             </AnchorPane>
          </children>

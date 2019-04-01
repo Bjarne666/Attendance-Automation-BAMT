@@ -202,4 +202,9 @@ public class AAModel
     {
         aManager.editPerson(fName, lName, email, id);
     }
+    
+    public void moveStudentToNewClass(SchoolClass chosenClass, Student studentToMove)
+    {
+        aManager.moveStudentToNewClass(chosenClass, studentToMove);
+    }
 }

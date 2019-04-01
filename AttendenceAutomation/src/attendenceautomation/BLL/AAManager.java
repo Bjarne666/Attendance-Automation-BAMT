@@ -161,4 +161,10 @@ public class AAManager implements AttendanceInterface
     {
         aDAO.editPerson(fName, lName, email, id);
     }
+
+    @Override
+    public void moveStudentToNewClass(SchoolClass chosenClass, Student studentToMove)
+    {
+        aDAO.moveStudentToNewClass(chosenClass, studentToMove);
+    }
 }

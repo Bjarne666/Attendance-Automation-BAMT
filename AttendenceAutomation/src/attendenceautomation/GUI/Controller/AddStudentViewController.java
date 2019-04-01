@@ -12,18 +12,13 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
-import java.io.IOException;
 import java.net.URL;
-import java.util.Date;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
-import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -41,12 +36,12 @@ public class AddStudentViewController implements Initializable
     private JFXTextField txtEmail;
     @FXML
     private JFXPasswordField txtPassword;
-
-    AAModel aaModel;
     @FXML
     private JFXButton btnSaveStudent;
     @FXML
     private JFXComboBox<SchoolClass> cbClass;
+    
+    AAModel aaModel;
     /**
      * Initializes the controller class.
      */

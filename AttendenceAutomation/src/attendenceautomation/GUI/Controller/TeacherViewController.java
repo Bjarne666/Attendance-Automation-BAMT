@@ -88,6 +88,8 @@ public class TeacherViewController implements Initializable
     private Student chosenStudent;
     private DateConverter dConverter;
     private ObservableList<LocalDate> localDates;
+    @FXML
+    private Label lblTotalAbsence;
     
 
     public TeacherViewController() throws IOException

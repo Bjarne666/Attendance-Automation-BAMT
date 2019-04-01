@@ -104,6 +104,8 @@ public class StudentViewController implements Initializable
     private AAModel aaModel;
     private DateConverter dConverter;
     private ObservableList<LocalDate> localDates;
+    @FXML
+    private Label lblTotalAbsence;
    
     /**
      * Initializes the controller class.
@@ -282,7 +284,7 @@ public class StudentViewController implements Initializable
         ObservableList<PieChart.Data> classChart = FXCollections.observableArrayList(
                 new PieChart.Data("Present", aaModel.getStudentPresentPieChartData(user.getId())),
                 new PieChart.Data("Absent", aaModel.getStudentPieChartData(user.getId())));
-
+    
         attendencePieChart.setData(classChart);
         attendencePieChart.setLegendVisible(false);
 

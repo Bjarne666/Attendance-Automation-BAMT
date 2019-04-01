@@ -89,7 +89,7 @@
                         <NumberAxis side="LEFT" />
                      </yAxis>
                   </BarChart>
-                  <Label layoutX="472.0" layoutY="24.0" text="10%" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="24.0" />
+                  <Label fx:id="lblTotalAbsence" layoutX="472.0" layoutY="24.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="24.0" />
                   <Label layoutX="361.0" layoutY="24.0" text="Total Absence:" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="24.0" />
                   <Label style="-fx-font-size: 32;" stylesheets="@AttendanceStyleSheet.css" text="Absence Statistic" AnchorPane.leftAnchor="24.0" AnchorPane.topAnchor="24.0" />
                   <PieChart fx:id="attendencePieChart" layoutX="324.0" layoutY="48.0" prefHeight="172.0" prefWidth="225.0" styleClass="default-color0" stylesheets="@AttendanceStyleSheet.css" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="48.0" />

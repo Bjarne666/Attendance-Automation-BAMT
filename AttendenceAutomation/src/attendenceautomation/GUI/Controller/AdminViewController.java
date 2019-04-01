@@ -358,4 +358,9 @@ public class AdminViewController implements Initializable
     private void addStudentToClass(ActionEvent event)
     {
     }
+    
+    public void setComboBoxItems()
+    {
+        comboSwitchStudentClass.setItems(aaModel.getAllClasses());
+    }
 }

@@ -59,6 +59,7 @@ public class EditClassViewController implements Initializable
       
         aaModel.editSchoolClassName(className,chosenClass.getId() );
     }
+    
     public void setChosenClass(SchoolClass chosenClass)
     {
      this.chosenClass = chosenClass;   

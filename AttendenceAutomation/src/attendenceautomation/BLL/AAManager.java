@@ -155,4 +155,10 @@ public class AAManager implements AttendanceInterface
     {
         aDAO.addTeacher(teacherToAdd);
     }
+
+    @Override
+    public void editPerson(String fName, String lName, String email, int id)
+    {
+        aDAO.editPerson(fName, lName, email, id);
+    }
 }

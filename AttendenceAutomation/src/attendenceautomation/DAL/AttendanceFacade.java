@@ -154,5 +154,10 @@ public class AttendanceFacade implements AADALInterface
     {
         pDbDao.addTeacher(teacherToAdd);
     }
-    
+
+    @Override
+    public void editPerson(String fName, String lName, String email, int id)
+    {
+        pDbDao.editPerson(fName, lName, email, id);
+    }
 }

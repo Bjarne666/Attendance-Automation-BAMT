@@ -502,5 +502,26 @@ public class PersonDBDAO
         {
             e.printStackTrace();
         }
+        
+        
+    }
+    
+    public void editPerson(String fName, String lName, String email, int id)
+    {
+        try(Connection con = ds.getConnection())
+        {
+            PreparedStatement pstmt = con.prepareStatement("UPDATE Person set firstName = (?), lastName = (?), email = (?) WHERE id = (?)");
+            pstmt.setString(1, fName);
+            pstmt.setString(2, lName);
+            pstmt.setString(3, email);
+            pstmt.setInt(4, id);
+            
+            pstmt.execute();
+        } 
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+               
     }
 }

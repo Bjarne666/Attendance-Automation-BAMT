@@ -28,7 +28,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.TextInputDialog;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -74,10 +73,6 @@ public class AdminViewController implements Initializable
     private ImageView imgLogo;
     @FXML
     private JFXButton btnAddStudent;
-
-    private Person user;
-
-    AAModel aaModel;
     @FXML
     private JFXButton btnAddTeacher;
     @FXML
@@ -86,6 +81,10 @@ public class AdminViewController implements Initializable
     private JFXButton btnEditStudent;
     @FXML
     private Button btnEditTeacher;
+    
+    private Person user;
+
+    AAModel aaModel;
 
     /**
      * Initializes the controller class.
@@ -218,6 +217,9 @@ public class AdminViewController implements Initializable
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/attendenceautomation/GUI/View/EditStudentView.fxml"));
         Parent root = loader.load();
 
+        EditStudentViewController editStudentController = loader.getController();
+        editStudentController.setModel(aaModel);
+        editStudentController.setChosenStudent(tbViewStudent.getSelectionModel().getSelectedItem());
         Stage stageEditStudent = new Stage();
         stageEditStudent.setScene(new Scene(root));
 
@@ -270,6 +272,10 @@ public class AdminViewController implements Initializable
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/attendenceautomation/GUI/View/EditTeacherView.fxml"));
         Parent root = loader.load();
 
+        EditTeacherViewController editTeacherController = loader.getController();
+        editTeacherController.setAaModel(aaModel);
+        editTeacherController.setChosenTeacher(tbViewTeacher.getSelectionModel().getSelectedItem());
+        
         Stage stageEditTeacher = new Stage();
         stageEditTeacher.setScene(new Scene(root));
 

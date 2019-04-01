@@ -45,10 +45,8 @@ public class AAModel
        classList = FXCollections.observableArrayList(aManager.getAllClasses());
        classList.addAll(aManager.getAllClasses());
        teacherList = FXCollections.observableArrayList(aManager.getAllTeachers());
-
-       
-
     }
+    
     public void editAttendance(Attendance attenToEdit, int id)
     {
         aManager.editAttendance(attenToEdit, id);
@@ -200,4 +198,8 @@ public class AAModel
         teacherList.add(teacherToAdd);
     }
 
+    public void editPerson(String fName, String lName, String email, int id)
+    {
+        aManager.editPerson(fName, lName, email, id);
+    }
 }

@@ -162,5 +162,13 @@ public interface AADALInterface
      */
     public void addTeacher (Teacher teacherToAdd);
 
+    /**
+     * 
+     * @param id
+     * @param fName
+     * @param lName
+     * @param email 
+     */
+    public void editPerson(String fName, String lName, String email, int id);
 }
 

@@ -27,6 +27,7 @@ public class EditClassViewController implements Initializable
     @FXML
     private JFXTextField txtClassName;
     
+    private SchoolClass chosenClass;
     AAModel aaModel;
 
     /**
@@ -62,5 +63,8 @@ public class EditClassViewController implements Initializable
         editClass.getId();
         aaModel.editSchoolClassName(className, editClass.getId());
     }
-    
+    public void setChosenClass(SchoolClass chosenClass)
+    {
+     this.chosenClass = chosenClass;   
+    }
 }

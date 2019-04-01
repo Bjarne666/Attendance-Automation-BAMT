@@ -318,9 +318,13 @@ public class AdminViewController implements Initializable
         Stage primeStage = (Stage) btnEditClass.getScene().getWindow();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/attendenceautomation/GUI/View/EditClassView.fxml"));
         Parent root = loader.load();
-
+        
+        EditClassViewController editController = loader.getController();
+        editController.setChosenClass(tbViewClass.getSelectionModel().getSelectedItem());
+        
         Stage stageEditClass = new Stage();
         stageEditClass.setScene(new Scene(root));
+        
 
         stageEditClass.initModality(Modality.WINDOW_MODAL);
         stageEditClass.initOwner(primeStage);

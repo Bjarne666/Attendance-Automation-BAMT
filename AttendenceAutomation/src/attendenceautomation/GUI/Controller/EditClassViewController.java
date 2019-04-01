@@ -57,11 +57,7 @@ public class EditClassViewController implements Initializable
  
         String className = this.txtClassName.getText();
       
-        System.out.println("edit class");
-        
-        SchoolClass editClass = new SchoolClass(0, className);
-        editClass.getId();
-        aaModel.editSchoolClassName(className, editClass.getId());
+        aaModel.editSchoolClassName(className,chosenClass.getId() );
     }
     public void setChosenClass(SchoolClass chosenClass)
     {

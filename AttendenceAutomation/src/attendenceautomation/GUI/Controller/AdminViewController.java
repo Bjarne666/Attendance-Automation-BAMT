@@ -320,6 +320,7 @@ public class AdminViewController implements Initializable
         Parent root = loader.load();
         
         EditClassViewController editController = loader.getController();
+        editController.setModel(aaModel);
         editController.setChosenClass(tbViewClass.getSelectionModel().getSelectedItem());
         
         Stage stageEditClass = new Stage();

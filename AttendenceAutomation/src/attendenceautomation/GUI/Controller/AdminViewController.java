@@ -83,11 +83,13 @@ public class AdminViewController implements Initializable
     @FXML
     private Button btnEditTeacher;
     
+    @FXML
+    private JFXComboBox<SchoolClass> comboSwitchStudentClass;
+    
     private Person user;
 
     AAModel aaModel;
-    @FXML
-    private JFXComboBox<?> comboSwitchStudentClass;
+    
 
     /**
      * Initializes the controller class.
@@ -351,8 +353,9 @@ public class AdminViewController implements Initializable
         aaModel = aModel;
     }
 
+
     @FXML
-    private void addStudentToNewClass(ActionEvent event)
+    private void addStudentToClass(ActionEvent event)
     {
     }
 }

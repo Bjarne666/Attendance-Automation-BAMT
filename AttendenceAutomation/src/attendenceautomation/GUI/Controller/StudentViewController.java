@@ -10,6 +10,7 @@ import attendenceautomation.BE.Person;
 import attendenceautomation.GUI.Model.AAModel;
 import attendenceautomation.UTIL.DateConverter;
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXToggleButton;
 import java.io.IOException;
 import java.net.URL;
 import java.time.DayOfWeek;
@@ -106,6 +107,10 @@ public class StudentViewController implements Initializable
     private ObservableList<LocalDate> localDates;
     @FXML
     private Label lblTotalAbsence;
+    @FXML
+    private JFXToggleButton btnToggleMultiple;
+    @FXML
+    private Label lblTo;
    
     /**
      * Initializes the controller class.
@@ -129,6 +134,9 @@ public class StudentViewController implements Initializable
 
         ancEditView.setVisible(false);
         ancStatisticView.setVisible(false);
+        
+        lblTo.setVisible(false);
+        dPickerTo.setVisible(false);
 
         try
         {
@@ -220,6 +228,17 @@ public class StudentViewController implements Initializable
             lblAReason.setVisible(true);
             txtAReason.setVisible(true);
         }
+        if (btnToggleMultiple.isSelected())
+        {
+            lblTo.setVisible(true);
+            dPickerTo.setVisible(true);
+        } else if(!btnToggleMultiple.isSelected())
+        {
+            lblTo.setVisible(false);
+            dPickerTo.setVisible(false);
+            
+        }
+        
     }
 
     /**

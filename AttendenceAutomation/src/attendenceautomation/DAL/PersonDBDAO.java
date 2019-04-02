@@ -526,17 +526,10 @@ public class PersonDBDAO
     {
         try (Connection con = ds.getConnection())
         {
-            PreparedStatement pstmt = con.prepareStatement("INSERT INTO SchoolClass WHERE classID = (?) "
-                    + "SELECT studentID FROM Student WHERE studentID = (?)");
+            PreparedStatement pstmt = con.prepareStatement("UPDATE Student SET classID = (?) WHERE studentID = (?)");
                     pstmt.setInt(1, chosenClass.getId());
                     pstmt.setInt(2, studentToMove.getId());
-                    pstmt.execute();
-                    
-            PreparedStatement pstmt1 = con.prepareStatement("DELETE FROM SchoolClass WHERE StudentID = (?)");
-            pstmt1.setInt(1, chosenClass.getId());
-            pstmt1.setInt(2, studentToMove.getId());
-          
-            pstmt1.execute();
+                pstmt.execute();
         } 
         catch (Exception e)
         {

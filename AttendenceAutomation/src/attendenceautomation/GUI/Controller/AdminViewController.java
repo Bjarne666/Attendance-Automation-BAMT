@@ -90,6 +90,7 @@ public class AdminViewController implements Initializable
 
     AAModel aaModel;
     
+    
 
     /**
      * Initializes the controller class.
@@ -117,6 +118,8 @@ public class AdminViewController implements Initializable
 
         //School Class data for tableview
         colClassName.setCellValueFactory(new PropertyValueFactory<>("className"));
+        
+        
     }
 
     @FXML
@@ -357,6 +360,23 @@ public class AdminViewController implements Initializable
     @FXML
     private void addStudentToClass(ActionEvent event)
     {
+        if (tbViewStudent.getSelectionModel().getSelectedItem() == null || comboSwitchStudentClass.getItems() == null)
+        {
+            Alert alert = new Alert (Alert.AlertType.CONFIRMATION, "You have to choose a class to add student to!", ButtonType.OK);
+            alert.showAndWait();
+            return;
+        }
+        
+        Alert alert = new Alert (Alert.AlertType.CONFIRMATION, "You have to choose a class to add student to!", ButtonType.OK);
+        alert.showAndWait();
+        
+        if (ButtonType.OK == ButtonType.OK)
+        {
+            SchoolClass chosenClass = comboSwitchStudentClass.getSelectionModel().getSelectedItem();
+            Student studentToMove = tbViewStudent.getSelectionModel().getSelectedItem();
+            aaModel.moveStudentToNewClass(chosenClass, studentToMove);
+        }
+        
     }
     
     public void setComboBoxItems()

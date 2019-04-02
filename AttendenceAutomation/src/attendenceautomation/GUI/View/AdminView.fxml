@@ -14,7 +14,7 @@
    <children>
       <AnchorPane layoutX="6.0" prefHeight="85.0" prefWidth="200.0" style="-fx-background-color: #4b4b4b;" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <ImageView fx:id="imgLogo" fitHeight="85.0" fitWidth="200.0" layoutY="-32.0" onMouseClicked="#clickImage" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="12.0">
+            <ImageView fx:id="imgLogo" fitHeight="124.0" fitWidth="200.0" layoutY="-32.0" onMouseClicked="#clickImage" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="12.0">
                <image>
                   <Image url="@../../Image/easv_logo.png" />
                </image>
@@ -74,7 +74,7 @@
                         <TableColumn fx:id="colStudentAbsence" prefWidth="81.0" text="Absence" />
                     </columns>
                   </TableView>
-                  <Label layoutX="47.0" layoutY="40.0" style="-fx-font-size: 32;" text="Student Overview" AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="25.0" />
+                  <Label layoutX="35.0" layoutY="14.0" style="-fx-font-size: 32;" text="Student Overview" AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="14.0" />
                   <JFXButton fx:id="btnAddStudent" layoutX="425.0" layoutY="243.0" onAction="#addStudent" prefHeight="50.0" prefWidth="200.0" text="Add Student" AnchorPane.rightAnchor="100.0" />
                   <JFXButton layoutX="425.0" layoutY="406.0" onAction="#deleteStudent" prefHeight="50.0" prefWidth="200.0" text="Delete Student" AnchorPane.rightAnchor="100.0" />
                   <JFXButton fx:id="btnEditStudent" layoutX="425.0" layoutY="570.0" onAction="#editStudent" prefHeight="50.0" prefWidth="200.0" text="Edit Student" AnchorPane.rightAnchor="100.0" />
@@ -84,7 +84,7 @@
             </AnchorPane>
          </children>
       </AnchorPane>
-      <Label layoutX="767.0" layoutY="14.0" text="Logged in as:" />
-      <Label layoutX="884.0" layoutY="14.0" text="someone" />
+      <Label layoutX="767.0" layoutY="14.0" text="Logged in as:" AnchorPane.rightAnchor="150.0" AnchorPane.topAnchor="14.0" />
+      <Label layoutX="884.0" layoutY="14.0" text="someone" AnchorPane.rightAnchor="55.0" AnchorPane.topAnchor="14.0" />
    </children>
 </AnchorPane>

@@ -35,7 +35,7 @@
             <AnchorPane fx:id="ancAdminView" prefHeight="249.0" prefWidth="341.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
                   <Label layoutX="44.0" layoutY="45.0" style="-fx-font-size: 32;" text="Admin Overview" />
-                  <Label layoutX="44.0" layoutY="237.0" text="Date" />
+                  <Label fx:id="lblDateAdmin" layoutX="44.0" layoutY="237.0" text="Date" />
                </children>
             </AnchorPane>
             <AnchorPane fx:id="ancTeacherView" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -85,6 +85,6 @@
          </children>
       </AnchorPane>
       <Label layoutX="767.0" layoutY="14.0" text="Logged in as:" AnchorPane.rightAnchor="150.0" AnchorPane.topAnchor="14.0" />
-      <Label layoutX="884.0" layoutY="14.0" text="someone" AnchorPane.rightAnchor="55.0" AnchorPane.topAnchor="14.0" />
+      <Label fx:id="lblLoggedInUser" layoutX="884.0" layoutY="14.0" text="someone" AnchorPane.rightAnchor="55.0" AnchorPane.topAnchor="14.0" />
    </children>
 </AnchorPane>

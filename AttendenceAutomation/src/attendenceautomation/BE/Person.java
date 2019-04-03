@@ -80,9 +80,9 @@ public abstract class Person
         return isAUser;
     }
 
-    public void setIsAUser(int isAStudent)
+    public void setIsAUser(int isAUser)
     {
-        this.isAUser = isAStudent;
+        this.isAUser = isAUser;
     }
 
     public String getPassword()

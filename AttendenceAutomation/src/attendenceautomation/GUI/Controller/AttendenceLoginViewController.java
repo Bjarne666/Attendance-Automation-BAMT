@@ -128,6 +128,7 @@ public class AttendenceLoginViewController implements Initializable
 
             AdminViewController aViewController = loader.getController();
             aViewController.setUser(user);
+            aViewController.setLabels();
             aViewController.setModel(aModel);
             aViewController.setComboBoxItems();
             

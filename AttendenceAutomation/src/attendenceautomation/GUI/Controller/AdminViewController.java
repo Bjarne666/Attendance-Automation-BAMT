@@ -10,14 +10,18 @@ import attendenceautomation.BE.SchoolClass;
 import attendenceautomation.BE.Student;
 import attendenceautomation.BE.Teacher;
 import attendenceautomation.GUI.Model.AAModel;
+import attendenceautomation.UTIL.DateConverter;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
+import java.util.Calendar;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -27,6 +31,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -82,13 +87,20 @@ public class AdminViewController implements Initializable
     private JFXButton btnEditStudent;
     @FXML
     private Button btnEditTeacher;
-    
+    @FXML
+    private Label lblLoggedInUser;
     @FXML
     private JFXComboBox<SchoolClass> comboSwitchStudentClass;
     
     private Person user;
 
+    private DateConverter dConverter;
+    
+    private ObservableList<LocalDate> localDates;
+    
     AAModel aaModel;
+    @FXML
+    private Label lblDateAdmin;
     
     
 
@@ -119,7 +131,7 @@ public class AdminViewController implements Initializable
         //School Class data for tableview
         colClassName.setCellValueFactory(new PropertyValueFactory<>("className"));
         
-        
+        showCurrentDate();
     }
 
     @FXML
@@ -381,5 +393,19 @@ public class AdminViewController implements Initializable
     public void setComboBoxItems()
     {
         comboSwitchStudentClass.setItems(aaModel.getAllClasses());
+    }
+    
+    public void setLabels()
+    {
+        lblLoggedInUser.setText(user.getName());
+    }
+    
+    private void showCurrentDate()
+    {
+        Calendar currentDate = Calendar.getInstance();
+        int day = currentDate.get(Calendar.DATE);
+        int month = currentDate.get(Calendar.MONTH);
+        int year = currentDate.get(Calendar.YEAR);
+        lblDateAdmin.setText(Integer.toString(day)+ "/" + Integer.toString(month+1) +"-"+Integer.toString(year));
     }
 }

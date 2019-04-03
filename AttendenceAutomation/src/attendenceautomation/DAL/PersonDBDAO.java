@@ -5,6 +5,7 @@
  */
 package attendenceautomation.DAL;
 
+import attendenceautomation.BE.Administrator;
 import attendenceautomation.BE.Attendance;
 import attendenceautomation.BE.Person;
 import attendenceautomation.BE.SchoolClass;
@@ -266,6 +267,25 @@ public class PersonDBDAO
                 String name = rs.getString("name");
                 
                 personToLogin = new Student(id, name, email , password);
+            }
+        }
+        try (Connection con = ds.getConnection())
+        {
+            PreparedStatement pstmt = con.prepareStatement("SELECT firstName + ' ' +lastName AS name, * FROM Person "
+                    + " INNER JOIN Admin ON Admin.adminID = Person.id"
+                    + " WHERE email = (?) AND password = (?)");
+            pstmt.setString(1, email);
+            pstmt.setString(2, password);
+
+            ResultSet rs = pstmt.executeQuery();
+            while (rs.next())
+            {
+                int id = rs.getInt("id");
+                email = rs.getString("email");
+                password = rs.getString("password");
+                String name = rs.getString("name");
+                
+                personToLogin = new Administrator(id, name, email , password);
             }
         }
         

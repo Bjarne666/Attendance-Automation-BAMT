@@ -20,7 +20,7 @@ public abstract class Person
     private final StringProperty name;
     private final StringProperty email;
     private final StringProperty password;
-    private boolean isAStudent;
+    private int isAUser;
     
     public Person(int id, String name, String email, String password)
     {
@@ -75,14 +75,14 @@ public abstract class Person
         return name + "\t\t " + email;
     }
 
-    public boolean IsAStudent()
+    public int isAUser()
     {
-        return isAStudent;
+        return isAUser;
     }
 
-    public void setIsAStudent(boolean isAStudent)
+    public void setIsAUser(int isAStudent)
     {
-        this.isAStudent = isAStudent;
+        this.isAUser = isAStudent;
     }
 
     public String getPassword()

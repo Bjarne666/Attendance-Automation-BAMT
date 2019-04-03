@@ -84,16 +84,19 @@ public class AttendenceLoginViewController implements Initializable
             alert.showAndWait();
             return;
         }
-         if (user.IsAStudent())
+         if (user.isAUser() == 1)
         {
             handleStudentLogin();
             return;
         }
-        if (!user.IsAStudent())
+        if (user.isAUser() == 2)
         {
-//            handleTeacherLogin();
+            handleTeacherLogin();
+        }   
+        if (user.isAUser() == 3)
+        {
             handleAdminLogin();
-        }     
+        }   
     }
 
     private void handleTeacherLogin() throws IOException

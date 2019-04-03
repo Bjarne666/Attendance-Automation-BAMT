@@ -367,7 +367,7 @@ public class AdminViewController implements Initializable
             return;
         }
         
-        Alert alert = new Alert (Alert.AlertType.CONFIRMATION, "You have to choose a class to add student to!", ButtonType.OK);
+        Alert alert = new Alert (Alert.AlertType.CONFIRMATION, "Are you sure you want to move student?", ButtonType.OK);
         alert.showAndWait();
         
         if (ButtonType.OK == ButtonType.OK)
@@ -376,7 +376,6 @@ public class AdminViewController implements Initializable
             Student studentToMove = tbViewStudent.getSelectionModel().getSelectedItem();
             aaModel.moveStudentToNewClass(chosenClass, studentToMove);
         }
-        
     }
     
     public void setComboBoxItems()

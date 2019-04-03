@@ -33,6 +33,6 @@ public class Teacher extends Person
 
     public void setIsATeacher()
     {
-      super.setIsAStudent(false);
+      super.setIsAUser(2);
     }
 }

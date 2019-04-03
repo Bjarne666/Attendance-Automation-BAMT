@@ -32,7 +32,7 @@ public class Student extends Person
 
     public void setIsAStudent()
     {
-        super.setIsAStudent(true);
+        super.setIsAUser(1);
     }
 
     public void addAttendance(Date currentDate, boolean present)

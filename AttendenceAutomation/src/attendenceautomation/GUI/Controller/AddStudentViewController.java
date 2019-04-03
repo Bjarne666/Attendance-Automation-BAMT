@@ -77,11 +77,22 @@ public class AddStudentViewController implements Initializable
         String password = this.txtPassword.getText();
       
 //        Student newStudent = new Student(0, name, email, password);
-        System.out.println("new student");
-        SchoolClass chosenClass = cbClass.getSelectionModel().getSelectedItem();
-        Student student = new Student(0, name, email, password);
-        aaModel.addStudent(student, chosenClass);
-        aaModel.getAllStudents();
+        
+        
+        if (cbClass.getSelectionModel().getSelectedItem() == null)
+        {
+            Alert alert = new Alert (Alert.AlertType.CONFIRMATION, "You have choose a class!", ButtonType.OK);
+            alert.showAndWait();
+        }
+        
+        if(cbClass.getSelectionModel().getSelectedItem() != null)
+        {
+            System.out.println("new student");
+            SchoolClass chosenClass = cbClass.getSelectionModel().getSelectedItem();
+            Student student = new Student(0, name, email, password);
+            aaModel.addStudent(student, chosenClass);
+            aaModel.getAllStudents();
+        }
 //        primeStage.close();
     }
     

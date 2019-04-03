@@ -316,7 +316,6 @@ public class TeacherViewController implements Initializable
             ancClassView.setVisible(true);
             ancClassView.toFront();
 //            ancTeacherView.getChildren().add(ancClassView);
-
         }
     }
     
@@ -337,7 +336,6 @@ public class TeacherViewController implements Initializable
     public void setLabels()
     {
         lblLoggedInUser.setText(user.getName());
-        
     }
 
     void setModel(AAModel modelToSet)

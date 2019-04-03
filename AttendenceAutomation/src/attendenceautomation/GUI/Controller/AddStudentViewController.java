@@ -66,19 +66,17 @@ public class AddStudentViewController implements Initializable
     {
 //        Stage primeStage = (Stage) btnAddStudent(event).getScene().getWindow();
         
+        String name = this.txtName.getText() + " " + this.txtLastName.getText();
+        String email = this.txtEmail.getText();
+        String password = this.txtPassword.getText();
+        
         if (txtName.getText().length() == 0 || txtLastName.getText().length() == 0 || txtEmail.getText().length() == 0 || txtPassword.getText().length() == 0)
         {
             Alert alert = new Alert (Alert.AlertType.CONFIRMATION, "You have to fill out all fields!", ButtonType.OK);
             alert.showAndWait();
             return;
         }
-        String name = this.txtName.getText() + " " + this.txtLastName.getText();
-        String email = this.txtEmail.getText();
-        String password = this.txtPassword.getText();
-      
-//        Student newStudent = new Student(0, name, email, password);
-        
-        
+
         if (cbClass.getSelectionModel().getSelectedItem() == null)
         {
             Alert alert = new Alert (Alert.AlertType.CONFIRMATION, "You have choose a class!", ButtonType.OK);

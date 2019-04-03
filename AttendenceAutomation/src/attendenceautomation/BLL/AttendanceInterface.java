@@ -178,4 +178,11 @@ public interface AttendanceInterface
      * @param studentToMove 
      */
     public void moveStudentToNewClass(SchoolClass chosenClass, Student studentToMove);
+
+    /**
+     *
+     * @param id
+     * @return
+     */
+    public List<Attendance> getStudentPieChartAbsenceData(int id);
 }

@@ -383,6 +383,7 @@ public class StudentViewController implements Initializable
         lblName.setText(user.getName());
         lblLoggedInAs.setText(user.getName());
         lblEducation.setText(aaModel.getStudentClass(user.getId()));
+        lblTotalAbsence.setText(Integer.toString(aaModel.getStudentPieChartAbsenceData(user.getId())));
     }
 
     @FXML

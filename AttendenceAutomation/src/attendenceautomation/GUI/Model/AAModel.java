@@ -207,4 +207,19 @@ public class AAModel
     {
         aManager.moveStudentToNewClass(chosenClass, studentToMove);
     }
+    
+    public int getStudentPieChartAbsenceData(int id)
+    {
+        ObservableList isNotPresentData = FXCollections.observableArrayList(aManager.getStudentPieChartData(id));
+        
+        
+        int isAbsenceAvg = 0;
+        
+        for (int i = 0; i < isNotPresentData.size(); i++)
+        {
+            isAbsenceAvg++;
+        }
+        
+        return isAbsenceAvg;
+    }
 }

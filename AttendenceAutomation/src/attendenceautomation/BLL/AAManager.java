@@ -167,4 +167,10 @@ public class AAManager implements AttendanceInterface
     {
         aDAO.moveStudentToNewClass(chosenClass, studentToMove);
     }
+
+    @Override
+    public List<Attendance> getStudentPieChartAbsenceData(int id) 
+    {
+        return aDAO.getStudentPieChartData(id);
+    }
 }

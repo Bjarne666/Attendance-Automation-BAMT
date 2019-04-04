@@ -29,6 +29,7 @@ import javafx.scene.control.Alert;
  */
 public class PersonDBDAO
 {
+
     DbConnectionProvider ds;
 
     public PersonDBDAO() throws IOException
@@ -36,6 +37,10 @@ public class PersonDBDAO
         ds = new DbConnectionProvider();
     }
 
+    /**
+     * Returns a list of all students
+     * @return 
+     */
     public List<Student> getAllStudents()
     {
         List<Student> students = new ArrayList<>();
@@ -57,14 +62,18 @@ public class PersonDBDAO
                 students.add(new Student(id, name, email, password));
             }
 
-        } 
-        catch (Exception e)
+        } catch (Exception e)
         {
         }
-        
+
         return students;
     }
-
+    
+    /**
+     * Gets a specific student
+     * @param id
+     * @return 
+     */
     public Student getStudent(int id)
     {
         Student studentToGet = null;
@@ -73,7 +82,7 @@ public class PersonDBDAO
         {
             PreparedStatement pstmt = con.prepareStatement("SELECT firstName + ' ' + lastName AS name, * FROM Person "
                     + "INNER JOIN ON Person.id = Student.studentID WHERE StudentID = (?)");
-                pstmt.setInt(1, id);
+            pstmt.setInt(1, id);
 
             ResultSet rs = pstmt.executeQuery();
 
@@ -87,14 +96,18 @@ public class PersonDBDAO
                 studentToGet = new Student(id, name, email, password);
             }
 
-        } 
-        catch (Exception e)
+        } catch (Exception e)
         {
         }
 
         return studentToGet;
     }
-
+    
+    /**
+     * Gets a specific teacher
+     * @param id
+     * @return 
+     */
     public Teacher getTeacher(int id)
     {
         Teacher teacherToGet = null;
@@ -103,7 +116,7 @@ public class PersonDBDAO
         {
             PreparedStatement pstmt = con.prepareStatement("SELECT firstName + ' ' + lastName AS name, * FROM Person"
                     + "INNER JOIN ON Person.id = Teaher.teacherID WHERE teacherID = (?)");
-                pstmt.setInt(1, id);
+            pstmt.setInt(1, id);
 
             ResultSet rs = pstmt.executeQuery();
 
@@ -117,14 +130,17 @@ public class PersonDBDAO
                 teacherToGet = new Teacher(id, name, email, password);
             }
 
-        } 
-        catch (Exception e)
+        } catch (Exception e)
         {
         }
 
         return teacherToGet;
     }
-
+    
+    /**
+     * Gets all teachers
+     * @return 
+     */
     public List<Teacher> getAllTeachers()
     {
         List<Teacher> teachers = new ArrayList<>();
@@ -145,14 +161,18 @@ public class PersonDBDAO
                 teachers.add(new Teacher(id, name, email, password));
             }
 
-        } 
-        catch (Exception e)
+        } catch (Exception e)
         {
         }
 
         return teachers;
     }
-
+    
+    /**
+     * Gets all tuples from the database where the studentID matches the input
+     * @param student
+     * @return 
+     */
     public List<Attendance> getAttendance(Student student)
     {
         List<Attendance> attendance = new ArrayList<>();
@@ -171,17 +191,24 @@ public class PersonDBDAO
 
                 attendance.add(new Attendance(date, present));
             }
-        } 
-        catch (Exception e)
+        } catch (Exception e)
         {
         }
 
         return attendance;
     }
-
+    
+    /**
+     * This is a helper method for editAttendance that checks whether there is already
+     * data in the database for the choosen date and student
+     * @param id
+     * @param sqlDate
+     * @param con
+     * @return 
+     */
     public boolean checkIfExistingEntry(int id, java.sql.Date sqlDate, Connection con)
     {
-        try 
+        try
         {
             PreparedStatement pstmt = con.prepareStatement("SELECT * FROM Attendance WHERE date = (?) AND studentID = (?)");
             pstmt.setDate(1, sqlDate);
@@ -191,16 +218,20 @@ public class PersonDBDAO
             if (rs.next())
             {
                 return true;
-                
+
             }
-        } 
-        catch (Exception e)
+        } catch (Exception e)
         {
         }
         return false;
     }
     
-
+    /**
+     * Inserts a the date and state to the datebase if one does not already exists 
+     * and updates if it already exists
+     * @param id
+     * @param attenToEdit 
+     */
     public void editAttendance(int id, Attendance... attenToEdit)
     {
         try (Connection con = ds.getConnection())
@@ -236,11 +267,16 @@ public class PersonDBDAO
             con.commit();
         } catch (Exception e)
         {
-           Alert error = new Alert(Alert.AlertType.ERROR, "Something went wrong in the database");
-           error.showAndWait();
+            Alert error = new Alert(Alert.AlertType.ERROR, "Something went wrong in the database");
+            error.showAndWait();
         }
     }
-
+    
+    /**
+     * Sets the attendance for the current day, for the given student
+     * @param attendance
+     * @param id 
+     */
     public void setAttendance(Attendance attendance, int id)
     {
         java.sql.Date sqlDate = new java.sql.Date(attendance.getCurrentDate().getTime());
@@ -258,13 +294,20 @@ public class PersonDBDAO
             pstmt.setBoolean(3, attendance.getPresent());
 
             pstmt.execute();
-        } 
-        catch (Exception e)
+        } catch (Exception e)
         {
             e.printStackTrace();
         }
     }
-
+    
+    /**
+     * Checks the login input and chooses the appropriate class to return
+     * @param email
+     * @param password
+     * @return
+     * @throws SQLServerException
+     * @throws SQLException 
+     */
     public Person login(String email, String password) throws SQLServerException, SQLException
     {
         Person personToLogin = null;
@@ -278,7 +321,7 @@ public class PersonDBDAO
             pstmt.setString(2, password);
 
             ResultSet rs = pstmt.executeQuery();
-            
+
             while (rs.next())
             {
                 int id = rs.getInt("id");
@@ -326,15 +369,19 @@ public class PersonDBDAO
 
                 personToLogin = new Administrator(id, name, email, password);
             }
-        } 
-        catch (Exception e)
+        } catch (Exception e)
         {
             e.printStackTrace();
         }
 
         return personToLogin;
     }
-
+    
+    /**
+     * Gets the dates for which the chosen student is present
+     * @param id
+     * @return 
+     */
     public List<Attendance> setUpBarChart(int id)
     {
         List<Attendance> attendance = new ArrayList<>();
@@ -356,16 +403,19 @@ public class PersonDBDAO
 
                 attendance.add(new Attendance(date, isPresent));
             }
-        } 
-        catch (Exception e)
+        } catch (Exception e)
         {
             e.printStackTrace();
         }
 
         return attendance;
     }
-
-   
+    
+    /**
+     * Gets a list of all dates on which the given student is marked as present
+     * @param id
+     * @return 
+     */
     public List<Attendance> getStudentPresentPieChartData(int id)
     {
         List<Attendance> attendancePresent = new ArrayList<>();
@@ -387,15 +437,19 @@ public class PersonDBDAO
 
                 attendancePresent.add(new Attendance(date, isPresent));
             }
-        } 
-        catch (Exception e)
+        } catch (Exception e)
         {
             e.printStackTrace();
         }
 
         return attendancePresent;
     }
-
+    
+    /**
+     * Gets which school class the given student is in
+     * @param id
+     * @return 
+     */
     public String getStudentClass(int id)
     {
         String nameString = new String();
@@ -407,18 +461,21 @@ public class PersonDBDAO
             pstmt.setInt(1, id);
 
             ResultSet rs = pstmt.executeQuery();
-            
+
             while (rs.next())
             {
                 nameString = rs.getString("className");
             }
-        } 
-        catch (Exception e)
+        } catch (Exception e)
         {
         }
         return nameString;
     }
-
+    
+    /**
+     * Deletes a student
+     * @param studentToDelete 
+     */
     public void deleteStudent(Student studentToDelete)
     {
         try (Connection con = ds.getConnection())
@@ -426,12 +483,15 @@ public class PersonDBDAO
             PreparedStatement pstmt = con.prepareStatement("DELETE FROM Person WHERE ID = (?) ");
             pstmt.setInt(1, studentToDelete.getId());
             pstmt.execute();
-        } 
-        catch (Exception e)
+        } catch (Exception e)
         {
         }
     }
-
+    
+    /**
+     * Deletes a teacher
+     * @param teacherToDelete 
+     */
     public void deleteTeacher(Teacher teacherToDelete)
     {
         try (Connection con = ds.getConnection())
@@ -439,12 +499,16 @@ public class PersonDBDAO
             PreparedStatement pstmt = con.prepareStatement("DELETE FROM Person WHERE ID = (?) ");
             pstmt.setInt(1, teacherToDelete.getId());
             pstmt.execute();
-        } 
-        catch (Exception e)
+        } catch (Exception e)
         {
         }
     }
-
+    
+    /**
+     * Adds a student
+     * @param studentToAdd
+     * @param schoolClass 
+     */
     public void addStudent(Student studentToAdd, SchoolClass schoolClass)
     {
         String name = studentToAdd.getName();
@@ -473,19 +537,21 @@ public class PersonDBDAO
                 {
                     studentToAdd.setId(generatedKeys.getInt(1));
                 }
-            } 
-            catch (Exception e)
+            } catch (Exception e)
             {
             }
             pstmt1.setInt(1, studentToAdd.getId());
             pstmt1.setInt(2, schoolClass.getId());
             pstmt1.execute();
-        } 
-        catch (Exception e)
+        } catch (Exception e)
         {
         }
     }
-
+    
+    /**
+     * Adds a teacher
+     * @param teacherToAdd 
+     */
     public void addTeacher(Teacher teacherToAdd)
     {
         String name = teacherToAdd.getName();
@@ -514,19 +580,24 @@ public class PersonDBDAO
                     teacherToAdd.setId(generatedKeys.getInt(1));
                 }
 
-            } 
-            catch (Exception e)
+            } catch (Exception e)
             {
             }
 
             pstmt1.setInt(1, teacherToAdd.getId());
             pstmt1.execute();
-        } 
-        catch (Exception e)
+        } catch (Exception e)
         {
         }
     }
-
+    
+    /**
+     * Changes the given person's information based on the user's input 
+     * @param fName
+     * @param lName
+     * @param email
+     * @param id 
+     */
     public void editPerson(String fName, String lName, String email, int id)
     {
         try (Connection con = ds.getConnection())
@@ -538,13 +609,17 @@ public class PersonDBDAO
             pstmt.setInt(4, id);
 
             pstmt.execute();
-        } 
-        catch (Exception e)
+        } catch (Exception e)
         {
 
         }
     }
-
+    
+    /**
+     * Moves the given student to the given school class
+     * @param chosenClass
+     * @param studentToMove 
+     */
     public void moveStudentToNewClass(SchoolClass chosenClass, Student studentToMove)
     {
         try (Connection con = ds.getConnection())
@@ -553,17 +628,21 @@ public class PersonDBDAO
             pstmt.setInt(1, chosenClass.getId());
             pstmt.setInt(2, studentToMove.getId());
             pstmt.execute();
-        } 
-        catch (Exception e)
+        } catch (Exception e)
         {
         }
 
     }
     
-    public  List<Attendance> getTotalClassAbsence(int id)
+    /**
+     * Gets the total absence of the students in the given School Class
+     * @param id
+     * @return 
+     */
+    public List<Attendance> getTotalClassAbsence(int id)
     {
         List<Attendance> attendanceAbsence = new ArrayList<>();
-        
+
         try (Connection con = ds.getConnection())
         {
             PreparedStatement pstmt = con.prepareStatement("SELECT isPresent, date FROM Attendance "
@@ -574,26 +653,30 @@ public class PersonDBDAO
             pstmt.setBoolean(2, false);
 
             ResultSet rs = pstmt.executeQuery();
-            
+
             while (rs.next())
             {
                 Date date = rs.getDate("date");
                 boolean isNotPresent = rs.getBoolean("isPresent");
-                
+
                 attendanceAbsence.add(new Attendance(date, isNotPresent));
             }
-        }
-        catch (Exception e)
+        } catch (Exception e)
         {
         }
-        
+
         return attendanceAbsence;
     }
     
+    /**
+     * Gets the total presence from all students of the given School Class
+     * @param id
+     * @return 
+     */
     public List<Attendance> getTotalClassPresence(int id)
     {
         List<Attendance> attendancePresence = new ArrayList<>();
-        
+
         try (Connection con = ds.getConnection())
         {
             PreparedStatement pstmt = con.prepareStatement("SELECT isPresent, date FROM Attendance "
@@ -604,22 +687,26 @@ public class PersonDBDAO
             pstmt.setBoolean(2, true);
 
             ResultSet rs = pstmt.executeQuery();
-            
+
             while (rs.next())
             {
                 Date date = rs.getDate("date");
                 boolean isNotPresent = rs.getBoolean("isPresent");
-                
+
                 attendancePresence.add(new Attendance(date, isNotPresent));
             }
-        }
-        catch (Exception e)
+        } catch (Exception e)
         {
         }
-        
+
         return attendancePresence;
     }
-
+    
+    /**
+     * Gets all absences for the given student from the database
+     * @param id
+     * @return 
+     */
     public List<Attendance> getStudentPieChartAbsenceData(int id)
     {
         List<Attendance> attendanceAbsence = new ArrayList<>();
@@ -637,51 +724,50 @@ public class PersonDBDAO
             {
                 Date date = rs.getDate("date");
                 boolean isNotPresent = rs.getBoolean("isPresent");
-                
+
                 attendanceAbsence.add(new Attendance(date, isNotPresent));
             }
-        } 
-        catch (Exception e)
+        } catch (Exception e)
         {
         }
-        
+
         return attendanceAbsence;
     }
-    
+
+    /**
+     * Calculates the total percentage of absence the chosen student has
+     *
+     * @param id the chosen student's id
+     * @return
+     */
     public double calculateTotalAbsence(int id)
     {
-            double absence = 0;
-            double total = 0;
-        try(Connection con = ds.getConnection())
+        double absence = 0;
+        double total = 0;
+        try (Connection con = ds.getConnection())
         {
             PreparedStatement pstmt = con.prepareStatement("SELECT COUNT(isPresent) AS total FROM Attendance WHERE studentID = (?)");
             PreparedStatement pstmt2 = con.prepareStatement("SELECT isPresent FROM Attendance WHERE studentID = (?) AND isPresent = (?)");
             pstmt.setInt(1, id);
-            
+
             pstmt2.setInt(1, id);
             pstmt2.setBoolean(2, false);
-            
-            
-            ResultSet rs = pstmt.executeQuery();           
+
+            ResultSet rs = pstmt.executeQuery();
             while (rs.next())
             {
-              total = rs.getInt("total");
+                total = rs.getInt("total");
             }
-            
+
             ResultSet rs2 = pstmt2.executeQuery();
             while (rs2.next())
-            {                
-              absence++;
+            {
+                absence++;
             }
-            
-        }
-        catch (Exception e)
+
+        } catch (Exception e)
         {
         }
-        return (absence/total)*100;
+        return (absence / total) * 100;
     }
 }
-
-
-
-

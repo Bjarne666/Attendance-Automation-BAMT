@@ -321,7 +321,6 @@ public class TeacherViewController implements Initializable
     @FXML
     private void showClassStatistics(ActionEvent event)
     {
-
         if (!comboClassList.getSelectionModel().isEmpty())
         {
             System.out.println("clicked");
@@ -338,10 +337,12 @@ public class TeacherViewController implements Initializable
             ancStudentView.setVisible(false);
             ancClassView.setVisible(true);
             ancClassView.toFront();
-
         }
     }
-
+    
+    /**
+     * Gets the current date and sets it to the appropriate label
+     */
     private void showCurrentDate()
     {
         Calendar currentDate = Calendar.getInstance();
@@ -350,32 +351,55 @@ public class TeacherViewController implements Initializable
         int year = currentDate.get(Calendar.YEAR);
         lblDateTeacher.setText(Integer.toString(day) + "/" + Integer.toString(month + 1) + "-" + Integer.toString(year));
     }
-
+    
+    /**
+     * Populates the combobox holding class objects
+     */
     public void setClassCombo()
     {
         comboClassList.setItems(aaModel.getAllClasses());
     }
-
+    
+    /**
+     * Sets the current user
+     * @param userToSet 
+     */
     public void setUser(Person userToSet)
     {
         user = userToSet;
     }
-
+    
+    /**
+     * Sets the labels 
+     */
     public void setLabels()
     {
         lblLoggedInUser.setText(user.getName());
     }
-
+    
+    /**
+     * 
+     * @param modelToSet 
+     */
     void setModel(AAModel modelToSet)
     {
         aaModel = modelToSet;
     }
     
+    /**
+     * 
+     * @param classToChoose 
+     */
     public void setChosenClass(SchoolClass classToChoose)
     {
         chosenClass = classToChoose;
     }
-
+    
+    /**
+     * Opens a window that lets the teacher edit a student's attendance
+     * @param event
+     * @throws IOException 
+     */
     @FXML
     private void editAttendance(ActionEvent event) throws IOException
     {
@@ -395,7 +419,10 @@ public class TeacherViewController implements Initializable
         stageEditAtt.initOwner(primeStage);
         stageEditAtt.show();
     }
-
+    
+    /**
+     * Calculates total absence for the chosen student
+     */
     public void showTotalAbsence()
     {
         double absence = aaModel.getStudentPieChartAbsenceData(chosenStudent.getId());

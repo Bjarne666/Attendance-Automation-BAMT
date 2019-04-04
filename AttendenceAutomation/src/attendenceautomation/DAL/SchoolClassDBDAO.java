@@ -33,9 +33,13 @@ public class SchoolClassDBDAO
     {
         ds = new DbConnectionProvider();
     }
-
+    
+    /**
+     * Gets all students in the chosen School class
+     * @param classToGet
+     * @return 
+     */
     public List<Student> getAllStudentsInClass(SchoolClass classToGet)
-
     {
         List<Student> students = new ArrayList<>();
 
@@ -43,7 +47,7 @@ public class SchoolClassDBDAO
         {
             PreparedStatement pstmt = con.prepareStatement("SELECT firstName + ' ' + lastName AS name, * FROM Person "
                     + "INNER JOIN Student ON Person.id = studentID "
-                    + "WHERE classID = (?)");           
+                    + "WHERE classID = (?)");
             pstmt.setInt(1, classToGet.getId());
 
             ResultSet rs = pstmt.executeQuery();
@@ -56,14 +60,17 @@ public class SchoolClassDBDAO
                 int id = rs.getInt("id");
                 students.add(new Student(id, name, email, password));
             }
-        }
-        catch (Exception e)
+        } catch (Exception e)
         {
         }
         return students;
 
     }
-
+    
+    /**
+     * Gets a list of all schoolClasses
+     * @return 
+     */
     public List<SchoolClass> getAllClasses()
 
     {
@@ -75,22 +82,25 @@ public class SchoolClassDBDAO
 
             ResultSet rs = statement.executeQuery("SELECT * FROM SchoolClass");
 
-            while(rs.next())
+            while (rs.next())
             {
                 String className = rs.getString("className");
                 int classID = rs.getInt("classID");
                 schoolClasses.add(new SchoolClass(classID, className));
 
             }
-        } 
-        catch (Exception e)
+        } catch (Exception e)
         {
         }
         return schoolClasses;
     }
-
+    
+    /**
+     * 
+     * @param id
+     * @return 
+     */
     public SchoolClass getSchoolClass(int id)
-
     {
         SchoolClass schoolclassToGet = null;
         try (Connection con = ds.getConnection())
@@ -107,51 +117,63 @@ public class SchoolClassDBDAO
 
                 schoolclassToGet = new SchoolClass(classID, className);
             }
-        } 
-        catch (Exception e)
+        } catch (Exception e)
         {
         }
         return schoolclassToGet;
     }
-    
-    public void deleteClass (SchoolClass classToDelete)
+
+    /**
+     * Deletes a class
+     *
+     * @param classToDelete
+     */
+    public void deleteClass(SchoolClass classToDelete)
     {
         try (Connection con = ds.getConnection())
         {
             PreparedStatement pstmt = con.prepareStatement("DELETE FROM SchoolClass WHERE classID = (?) ");
             pstmt.setInt(1, classToDelete.getId());
             pstmt.execute();
-        } 
-        catch (Exception e)
+        } catch (Exception e)
         {
         }
     }
-    
-    public void addClass (SchoolClass classToAdd)
+
+    /**
+     * Adds a schoolClass
+     *
+     * @param classToAdd
+     */
+    public void addClass(SchoolClass classToAdd)
     {
         try (Connection con = ds.getConnection())
         {
             PreparedStatement pstmt = con.prepareStatement("INSERT INTO SchoolClass VALUES (?)");
             pstmt.setString(1, classToAdd.getClassName());
             pstmt.execute();
-        } 
-        catch (Exception e)
+        } catch (Exception e)
         {
         }
     }
-    
-    public void editSchoolClassName (String className, int id)
+
+    /**
+     * Changes the name of the schoolClass with the matching id
+     *
+     * @param className
+     * @param id
+     */
+    public void editSchoolClassName(String className, int id)
     {
         try (Connection con = ds.getConnection())
         {
             PreparedStatement pstmt = con.prepareStatement("UPDATE SchoolClass SET className = (?) WHERE classID = (?)");
             pstmt.setString(1, className);
             pstmt.setInt(2, id);
-            
+
             pstmt.execute();
-            
-        } 
-        catch (Exception e)
+
+        } catch (Exception e)
         {
         }
     }

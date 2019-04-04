@@ -120,7 +120,7 @@ public class TeacherViewController implements Initializable
         }
 
         classPieChart();
-        StudentPieChart();
+        
 //        studentBarChart();
         showCurrentDate();
     }
@@ -162,8 +162,8 @@ public class TeacherViewController implements Initializable
     public PieChart StudentPieChart()
     {
         ObservableList<PieChart.Data> studentChart = FXCollections.observableArrayList(
-                new PieChart.Data("Present", 90),
-                new PieChart.Data("Absent", 10));
+                new PieChart.Data("Present", aaModel.getStudentPresentPieChartData(chosenStudent.getId())),
+                new PieChart.Data("Absent", aaModel.getStudentPieChartAbsenceData(chosenStudent.getId())));
 
         studentPieChart.setData(studentChart);
         studentPieChart.setLegendVisible(false);
@@ -251,6 +251,7 @@ public class TeacherViewController implements Initializable
                     {
                         studentBarChart.getData().clear();
                         studentBarChart();
+                        StudentPieChart();
                         showTotalAbsence();
                         lblStudentName.setText(chosenStudent.getName());
                         ancClassView.setVisible(false);

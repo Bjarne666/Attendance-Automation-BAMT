@@ -147,7 +147,7 @@ public class TeacherViewController implements Initializable
     }
 
     /**
-     * The piechart showing overall class attendance
+     * The pie chart showing overall class attendance
      *
      * @return
      */
@@ -165,7 +165,7 @@ public class TeacherViewController implements Initializable
 
 
     /**
-     * The piechart showing student attendance
+     * The pie chart showing student attendance
      *
      * @return
      */
@@ -268,8 +268,6 @@ public class TeacherViewController implements Initializable
 
                         ancStudentView.toFront();
                         ancStudentView.setVisible(true);
-
-//                        ancTeacherView.getChildren().add(ancStudentView);
                     } 
                     
                     else if (event.getClickCount() == 2)
@@ -310,11 +308,8 @@ public class TeacherViewController implements Initializable
      */
     private void loadMainView() throws IOException
     {
-//        mainAnchorPane.getChildren().clear();
-//        ancTeacherView.getChildren().add(ancTeacherView);
         ancTeacherView.setVisible(true);
         ancTeacherView.toFront();
-
     }
 
     /**

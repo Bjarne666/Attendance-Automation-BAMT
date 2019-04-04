@@ -127,7 +127,7 @@ public class PersonDBDAO
 
         return teacherToGet;
     }
-    
+
     public List<Teacher> getAllTeachers()
     {
         List<Teacher> teachers = new ArrayList<>();
@@ -184,27 +184,60 @@ public class PersonDBDAO
 
         return attendance;
     }
-    
-    public void editAttendance(Attendance attenToEdit, int id)
+
+    public void editAttendance(int id, Attendance... attenToEdit)
     {
-        java.sql.Date sqlDate = new java.sql.Date(attenToEdit.getCurrentDate().getTime());
-        try(Connection con = ds.getConnection())
+        try (Connection con = ds.getConnection())
         {
-            PreparedStatement pstmt = con.prepareStatement("UPDATE Attendance SET isPresent = (?) WHERE date = (?) AND studentID = (?) ");
-            pstmt.setBoolean(1, attenToEdit.getPresent());
-            pstmt.setDate(2, sqlDate);
-            pstmt.setInt(3, id);
-            
-            pstmt.execute();
+            PreparedStatement pstmt = con.prepareStatement("INSERT INTO Attendance VALUES (?,?,?)");
+            PreparedStatement pstmt1 = con.prepareStatement("SELECT * FROM Attendance WHERE date = (?) AND studentID = (?)");
+            PreparedStatement pstmt2 = con.prepareStatement("UPDATE Attendance SET isPresent = (?) WHERE date = (?) AND studentID = (?) ");
+            con.setAutoCommit(false);
+            for (Attendance attendance : attenToEdit)
+            {
+                //Search statement
+                java.sql.Date sqlDate = new java.sql.Date(attendance.getCurrentDate().getTime());
+                pstmt1.setDate(1, sqlDate);
+                pstmt1.setInt(2, id);
+
+                //Insert statement in case the chosen entry does not exist
+                pstmt.setInt(1, id);
+                pstmt.setDate(2, sqlDate);
+                pstmt.setBoolean(3, attendance.getPresent());
+
+                //Update statement in case the chosen entry does exist
+                pstmt2.setBoolean(1, attendance.getPresent());
+                pstmt2.setDate(2, sqlDate);
+                pstmt2.setInt(3, id);
+
+                //executes search statement
+                ResultSet rs = pstmt1.executeQuery();
+                if (!rs.next())
+                {
+                    pstmt.execute();    //executes insert statement
+
+                    System.out.println("yay");
+                }
+                if (rs.next())
+                {
+                    pstmt2.execute(); //executes update statement
+                    System.out.println("meh");
+
+                }
+                con.commit();
+
+            }
+
+//            con.commit();
         } catch (Exception e)
         {
             e.printStackTrace();
         }
     }
-    
-        public void setAttendance(Attendance attendance, int id)
+
+    public void setAttendance(Attendance attendance, int id)
     {
-       java.sql.Date sqlDate = new java.sql.Date(attendance.getCurrentDate().getTime());
+        java.sql.Date sqlDate = new java.sql.Date(attendance.getCurrentDate().getTime());
         try (Connection con = ds.getConnection())
         {
             //removes chosen values if they already exist to avoid duplicates
@@ -212,18 +245,17 @@ public class PersonDBDAO
             pstmt1.setDate(1, sqlDate);
             pstmt1.setInt(2, id);
             pstmt1.execute();
-            
+
             PreparedStatement pstmt = con.prepareStatement("INSERT INTO Attendance VALUES (?,?,?)");
             pstmt.setInt(1, id);
             pstmt.setDate(2, sqlDate);
             pstmt.setBoolean(3, attendance.getPresent());
-            
+
             pstmt.execute();
-        } 
-        catch (Exception e)
+        } catch (Exception e)
         {
-                e.printStackTrace();
-        }    
+            e.printStackTrace();
+        }
     }
 
     public Person login(String email, String password) throws SQLServerException, SQLException
@@ -245,9 +277,9 @@ public class PersonDBDAO
                 String name = rs.getString("name");
                 email = rs.getString("email");
                 password = rs.getString("password");
-                
-                personToLogin = new Teacher(id, name, email , password);
-                
+
+                personToLogin = new Teacher(id, name, email, password);
+
             }
         }
         try (Connection con = ds.getConnection())
@@ -265,8 +297,8 @@ public class PersonDBDAO
                 email = rs.getString("email");
                 password = rs.getString("password");
                 String name = rs.getString("name");
-                
-                personToLogin = new Student(id, name, email , password);
+
+                personToLogin = new Student(id, name, email, password);
             }
         }
         try (Connection con = ds.getConnection())
@@ -284,123 +316,117 @@ public class PersonDBDAO
                 email = rs.getString("email");
                 password = rs.getString("password");
                 String name = rs.getString("name");
-                
-                personToLogin = new Administrator(id, name, email , password);
+
+                personToLogin = new Administrator(id, name, email, password);
             }
-        }
-        
-        
-        catch (Exception e)
+        } catch (Exception e)
         {
             e.printStackTrace();
         }
-        
+
         return personToLogin;
     }
-    
-    public List<Attendance> setUpBarChart (int id)
+
+    public List<Attendance> setUpBarChart(int id)
     {
         List<Attendance> attendance = new ArrayList<>();
-        
+
         try (Connection con = ds.getConnection())
         {
             PreparedStatement pstmt = con.prepareStatement("SELECT * FROM Attendance "
                     + "INNER JOIN Student on Attendance.studentID = Student.studentID "
                     + "WHERE Student.studentID = (?) AND Attendance.isPresent = (?) ");
-                    pstmt.setInt(1, id);
-                    pstmt.setBoolean(2, false);
-            
+            pstmt.setInt(1, id);
+            pstmt.setBoolean(2, false);
+
             ResultSet rs = pstmt.executeQuery();
-            
+
             while (rs.next())
             {
                 Date date = rs.getDate("date");
                 boolean isPresent = rs.getBoolean("isPresent");
-                
+
                 attendance.add(new Attendance(date, isPresent));
             }
-        } 
-        catch (Exception e)
+        } catch (Exception e)
         {
             e.printStackTrace();
         }
-        
+
         return attendance;
     }
-    
+
     public List<Attendance> getStudentPieChartData(int id)
     {
         List<Attendance> attendance = new ArrayList<>();
-        
+
         try (Connection con = ds.getConnection())
         {
             PreparedStatement pstmt = con.prepareStatement("SELECT * FROM Attendance "
                     + "INNER JOIN Student on Attendance.studentID = Student.studentID "
                     + "WHERE Student.studentID = (?) AND isPresent = (?) ");
-                    pstmt.setInt(1, id);
-                    pstmt.setBoolean(2, false);
-            
+            pstmt.setInt(1, id);
+            pstmt.setBoolean(2, false);
+
             ResultSet rs = pstmt.executeQuery();
-            
+
             while (rs.next())
             {
                 Date date = rs.getDate("date");
                 boolean isNotPresent = rs.getBoolean("isPresent");
-                
+
                 attendance.add(new Attendance(date, isNotPresent));
             }
-        } 
-        catch (Exception e)
+        } catch (Exception e)
         {
             e.printStackTrace();
         }
-        
+
         return attendance;
     }
-    
+
     public List<Attendance> getStudentPresentPieChartData(int id)
     {
         List<Attendance> attendancePresent = new ArrayList<>();
-        
+
         try (Connection con = ds.getConnection())
         {
             PreparedStatement pstmt = con.prepareStatement("SELECT * FROM Attendance "
                     + "INNER JOIN Student on Attendance.studentID = Student.studentID "
                     + "WHERE Student.studentID = (?) AND isPresent = (?) ");
-                    pstmt.setInt(1, id);
-                    pstmt.setBoolean(2, true);
-            
+            pstmt.setInt(1, id);
+            pstmt.setBoolean(2, true);
+
             ResultSet rs = pstmt.executeQuery();
-            
+
             while (rs.next())
             {
                 Date date = rs.getDate("date");
                 boolean isPresent = rs.getBoolean("isPresent");
-                
+
                 attendancePresent.add(new Attendance(date, isPresent));
             }
-        } 
-        catch (Exception e)
+        } catch (Exception e)
         {
             e.printStackTrace();
         }
-        
+
         return attendancePresent;
     }
-    
+
     public String getStudentClass(int id)
     {
         String nameString = new String();
-        try(Connection con = ds.getConnection())
+        try (Connection con = ds.getConnection())
         {
             PreparedStatement pstmt = con.prepareStatement("SELECT className FROM SchoolClass"
                     + " INNER JOIN Student ON SchoolClass.classID = Student.classID"
                     + " WHERE Student.studentID = (?)");
             pstmt.setInt(1, id);
-            
+
             ResultSet rs = pstmt.executeQuery();
             while (rs.next())
-            {                
+            {
                 nameString = rs.getString("className");
             }
         } catch (Exception e)
@@ -408,59 +434,56 @@ public class PersonDBDAO
         }
         return nameString;
     }
-    
-    public void deleteStudent (Student studentToDelete)
+
+    public void deleteStudent(Student studentToDelete)
     {
         try (Connection con = ds.getConnection())
         {
             PreparedStatement pstmt = con.prepareStatement("DELETE FROM Person WHERE ID = (?) ");
             pstmt.setInt(1, studentToDelete.getId());
             pstmt.execute();
-        } 
-        catch (Exception e)
+        } catch (Exception e)
         {
             e.printStackTrace();
         }
     }
-    
-    public void deleteTeacher (Teacher teacherToDelete)
+
+    public void deleteTeacher(Teacher teacherToDelete)
     {
         try (Connection con = ds.getConnection())
         {
             PreparedStatement pstmt = con.prepareStatement("DELETE FROM Person WHERE ID = (?) ");
             pstmt.setInt(1, teacherToDelete.getId());
             pstmt.execute();
-        } 
-        catch (Exception e)
+        } catch (Exception e)
         {
             e.printStackTrace();
         }
     }
-    
-    
-    public void addStudent (Student studentToAdd, SchoolClass schoolClass)
+
+    public void addStudent(Student studentToAdd, SchoolClass schoolClass)
     {
         String name = studentToAdd.getName();
         String[] splitName = name.split(" ");
         String firstName = splitName[0];
-        String lastName = splitName[1]; 
+        String lastName = splitName[1];
         String email = studentToAdd.getEmail();
         String password = studentToAdd.getPassword();
-        
+
         try (Connection con = ds.getConnection())
         {
             PreparedStatement pstmt = con.prepareStatement("INSERT INTO Person VALUES (?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS);
             PreparedStatement pstmt1 = con.prepareStatement("INSERT INTO Student VALUES (?, ?)");
-            
+
             pstmt.setInt(1, studentToAdd.getId());
-            
+
             pstmt.setString(1, firstName);
             pstmt.setString(2, lastName);
             pstmt.setString(3, email);
             pstmt.setString(4, password);
             pstmt.execute();
-            
-            try(ResultSet generatedKeys = pstmt.getGeneratedKeys())
+
+            try (ResultSet generatedKeys = pstmt.getGeneratedKeys())
             {
                 if (generatedKeys.next())
                 {
@@ -469,122 +492,113 @@ public class PersonDBDAO
             } catch (Exception e)
             {
             }
-        pstmt1.setInt(1, studentToAdd.getId());
-        pstmt1.setInt(2, schoolClass.getId());
-        pstmt1.execute();
-        } 
-        catch (Exception e)
+            pstmt1.setInt(1, studentToAdd.getId());
+            pstmt1.setInt(2, schoolClass.getId());
+            pstmt1.execute();
+        } catch (Exception e)
         {
             e.printStackTrace();
         }
     }
-    
-    public void addTeacher (Teacher teacherToAdd)
+
+    public void addTeacher(Teacher teacherToAdd)
     {
         String name = teacherToAdd.getName();
         String[] splitName = name.split(" ");
         String firstName = splitName[0];
-        String lastName = splitName[1]; 
+        String lastName = splitName[1];
         String email = teacherToAdd.getEmail();
         String password = teacherToAdd.getPassword();
-        
+
         try (Connection con = ds.getConnection())
         {
             PreparedStatement pstmt = con.prepareStatement("INSERT INTO Person VALUES (?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS);
             PreparedStatement pstmt1 = con.prepareStatement("INSERT INTO Teacher VALUES (?)");
             pstmt.setInt(1, teacherToAdd.getId());
-            
-            
+
             pstmt.setString(1, firstName);
             pstmt.setString(2, lastName);
             pstmt.setString(3, email);
             pstmt.setString(4, password);
             pstmt.execute();
-            
-            try(ResultSet generatedKeys = pstmt.getGeneratedKeys())
+
+            try (ResultSet generatedKeys = pstmt.getGeneratedKeys())
             {
                 if (generatedKeys.next())
                 {
                     teacherToAdd.setId(generatedKeys.getInt(1));
                 }
-                
-            
-            }
-             catch (Exception e)
+
+            } catch (Exception e)
             {
             }
-            
+
             pstmt1.setInt(1, teacherToAdd.getId());
             pstmt1.execute();
-        }
-        
-        catch (Exception e)
+        } catch (Exception e)
         {
             e.printStackTrace();
-        } 
+        }
     }
-    
+
     public void editPerson(String fName, String lName, String email, int id)
     {
-        try(Connection con = ds.getConnection())
+        try (Connection con = ds.getConnection())
         {
             PreparedStatement pstmt = con.prepareStatement("UPDATE Person set firstName = (?), lastName = (?), email = (?) WHERE id = (?)");
             pstmt.setString(1, fName);
             pstmt.setString(2, lName);
             pstmt.setString(3, email);
             pstmt.setInt(4, id);
-            
+
             pstmt.execute();
-        } 
-        catch (Exception e)
+        } catch (Exception e)
         {
             e.printStackTrace();
-        }      
+        }
     }
-    
+
     public void moveStudentToNewClass(SchoolClass chosenClass, Student studentToMove)
     {
         try (Connection con = ds.getConnection())
         {
             PreparedStatement pstmt = con.prepareStatement("UPDATE Student SET classID = (?) WHERE studentID = (?)");
-                    pstmt.setInt(1, chosenClass.getId());
-                    pstmt.setInt(2, studentToMove.getId());
-                pstmt.execute();
-        } 
-        catch (Exception e)
+            pstmt.setInt(1, chosenClass.getId());
+            pstmt.setInt(2, studentToMove.getId());
+            pstmt.execute();
+        } catch (Exception e)
         {
             e.printStackTrace();
         }
-         
+
     }
 
     public List<Attendance> getStudentPieChartAbsenceData(int id)
     {
         List<Attendance> attendance = new ArrayList<>();
-        
+
         try (Connection con = ds.getConnection())
         {
             PreparedStatement pstmt = con.prepareStatement("SELECT * FROM Attendance "
                     + "INNER JOIN Student on Attendance.studentID = Student.studentID "
                     + "WHERE Student.studentID = (?) AND isPresent = (?) ");
-                    pstmt.setInt(1, id);
-                    pstmt.setBoolean(2, false);
-            
+            pstmt.setInt(1, id);
+            pstmt.setBoolean(2, false);
+
             ResultSet rs = pstmt.executeQuery();
-            
+
             while (rs.next())
             {
                 Date date = rs.getDate("date");
                 boolean isNotPresent = rs.getBoolean("isPresent");
-                
+
                 attendance.add(new Attendance(date, isNotPresent));
             }
-        } 
-        catch (Exception e)
+        } catch (Exception e)
         {
             e.printStackTrace();
         }
-        
+
         return attendance;
     }
 }

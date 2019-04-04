@@ -47,9 +47,9 @@ public class AAModel
        teacherList = FXCollections.observableArrayList(aManager.getAllTeachers());
     }
     
-    public void editAttendance(Attendance attenToEdit, int id)
+    public void editAttendance(int id, Attendance... attenToEdit)
     {
-        aManager.editAttendance(attenToEdit, id);
+        aManager.editAttendance(id, attenToEdit);
     }
     public String getStudentClass(int id)
     {

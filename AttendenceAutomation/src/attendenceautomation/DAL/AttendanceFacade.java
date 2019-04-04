@@ -108,9 +108,9 @@ public class AttendanceFacade implements AADALInterface
     }
     
     @Override
-    public void editAttendance(Attendance attenToEdit, int id)
+    public void editAttendance(int id, Attendance... attenToEdit)
     {
-      pDbDao.editAttendance(attenToEdit, id);
+      pDbDao.editAttendance(id, attenToEdit);
     }
 
     @Override

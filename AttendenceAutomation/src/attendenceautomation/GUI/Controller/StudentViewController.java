@@ -200,14 +200,14 @@ public class StudentViewController implements Initializable
         if (Editgrp.getSelectedToggle() == editRdBtnPresent && dPickerFrom.getValue() != null)
         {
             changedAttendance = new Attendance(date, true);
-            aaModel.editAttendance(changedAttendance, user.getId());
+            aaModel.editAttendance( user.getId(), changedAttendance);
             
             informationAlert("Attendance for the chosen date set to present");
             return;
         } else if (Editgrp.getSelectedToggle() == editRdBtnAbsent && dPickerFrom.getValue() != null)
         {
             changedAttendance = new Attendance(date, false);
-            aaModel.editAttendance(changedAttendance, user.getId());
+            aaModel.editAttendance( user.getId(), changedAttendance);
 
             informationAlert("Attendance for the chosen date set to absent");
             return;

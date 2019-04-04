@@ -55,11 +55,11 @@ public class AttendenceLoginViewController implements Initializable
 
             
             StudentViewController sViewController = loader.getController();
+            sViewController.setModel(aModel);
             sViewController.setUser(user);
             sViewController.setLabels();
             sViewController.studentBarChart();
             sViewController.buildPieChart();
-            sViewController.setModel(aModel);
             
             Stage stage = new Stage();
             stage.setScene(new Scene(pane));
@@ -106,10 +106,9 @@ public class AttendenceLoginViewController implements Initializable
             AnchorPane pane = loader.load();
 
             TeacherViewController tViewController = loader.getController();
+            tViewController.setModel(aModel);
             tViewController.setUser(user);
             tViewController.setLabels();
-//            tViewController.studentBarChart();
-            tViewController.setModel(aModel);
             Stage stage = new Stage();
             stage.setScene(new Scene(pane));
 
@@ -127,9 +126,9 @@ public class AttendenceLoginViewController implements Initializable
             AnchorPane pane = loader.load();
 
             AdminViewController aViewController = loader.getController();
+            aViewController.setModel(aModel);
             aViewController.setUser(user);
             aViewController.setLabels();
-            aViewController.setModel(aModel);
             aViewController.setComboBoxItems();
             
             Stage stage = new Stage();

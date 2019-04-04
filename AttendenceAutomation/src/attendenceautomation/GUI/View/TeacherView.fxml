@@ -15,7 +15,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" styleClass="background" stylesheets="@AttendanceStyleSheet.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="attendenceautomation.GUI.Controller.TeacherViewController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" styleClass="background" stylesheets="@AttendanceStyleSheet.css" xmlns="http://javafx.com/javafx/8.0.181" xmlns:fx="http://javafx.com/fxml/1" fx:controller="attendenceautomation.GUI.Controller.TeacherViewController">
    <children>
       <AnchorPane layoutX="276.0" layoutY="413.0" prefHeight="56.0" prefWidth="600.0" style="-fx-background-color: #4b4b4b;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="0.0" />
       <AnchorPane layoutX="8.0" layoutY="14.0" prefHeight="85.0" prefWidth="200.0" style="-fx-background-color: #4b4b4b;" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -44,7 +44,7 @@
          <children>
             <Label fx:id="lblDateTeacher" text="date" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="24.0" />
             <Button mnemonicParsing="false" onAction="#handleTeacherLogout" prefHeight="30.0" prefWidth="65.0" text="Logout" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="14.0" />
-            <Label fx:id="lblTeacherOverview" style="-fx-font-size: 32;" text="Teacher Overview" wrapText="true" AnchorPane.leftAnchor="24.0" AnchorPane.topAnchor="24.0" />
+            <Label style="-fx-font-size: 32;" text="Teacher Overview" wrapText="true" AnchorPane.leftAnchor="24.0" AnchorPane.topAnchor="24.0" />
             <AnchorPane fx:id="ancClassView" prefHeight="530.0" prefWidth="522.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
                   <Label fx:id="lblClassName" layoutX="75.0" layoutY="98.0" text="CS2018A" AnchorPane.leftAnchor="75.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="100.0" />
@@ -57,13 +57,13 @@
             </AnchorPane>
             <AnchorPane fx:id="ancStudentView" prefHeight="530.0" prefWidth="522.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <Label fx:id="lblStudentOverview" layoutX="35.0" layoutY="30.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" style="-fx-font-size: 32;" text="Student Overview" wrapText="true" AnchorPane.leftAnchor="24.0" AnchorPane.topAnchor="24.0" />
+                  <Label layoutX="35.0" layoutY="30.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" style="-fx-font-size: 32;" text="Student Overview" wrapText="true" AnchorPane.leftAnchor="24.0" AnchorPane.topAnchor="24.0" />
                   <Label layoutX="24.0" layoutY="101.0" text="Student name:" AnchorPane.leftAnchor="24.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="101.0" />
                   <Label fx:id="lblStudentName" layoutX="124.0" layoutY="101.0" text="Birger" AnchorPane.leftAnchor="124.0" AnchorPane.topAnchor="101.0" />
                   <Label layoutX="341.0" layoutY="24.0" text="Absence:" AnchorPane.rightAnchor="129.0" AnchorPane.topAnchor="24.0" />
                   <Label fx:id="lblTotalAbsence" layoutX="453.0" layoutY="24.0" prefHeight="21.0" prefWidth="60.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="24.0" />
                   <Label layoutX="24.0" layoutY="186.0" text="Day with most absence:" AnchorPane.leftAnchor="24.0" AnchorPane.topAnchor="186.0" />
-                  <Label fx:id="lblMostAbsentDay" layoutX="193.0" layoutY="186.0" text="Monday" AnchorPane.leftAnchor="193.0" AnchorPane.topAnchor="186.0" />
+                  <Label layoutX="193.0" layoutY="186.0" text="Monday" AnchorPane.leftAnchor="193.0" AnchorPane.topAnchor="186.0" />
                   <PieChart fx:id="studentPieChart" layoutX="284.0" layoutY="17.0" prefHeight="190.0" prefWidth="235.0" AnchorPane.rightAnchor="11.0" AnchorPane.topAnchor="17.0" />
                   <BarChart fx:id="studentBarChart" layoutX="24.0" layoutY="227.0" prefHeight="275.0" prefWidth="522.0" AnchorPane.bottomAnchor="33.0" AnchorPane.leftAnchor="24.0" AnchorPane.rightAnchor="96.0" AnchorPane.topAnchor="227.0">
                     <xAxis>

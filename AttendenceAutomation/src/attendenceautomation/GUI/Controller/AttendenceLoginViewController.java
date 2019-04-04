@@ -44,7 +44,7 @@ public class AttendenceLoginViewController implements Initializable
 
     public AttendenceLoginViewController() throws IOException
     {
-    aModel = new AAModel();
+        aModel = new AAModel();
     }
 
     //handles student login
@@ -53,7 +53,6 @@ public class AttendenceLoginViewController implements Initializable
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/attendenceautomation/GUI/View/StudentView.fxml"));
             AnchorPane pane = loader.load();
 
-            
             StudentViewController sViewController = loader.getController();
             sViewController.setModel(aModel);
             sViewController.setUser(user);
@@ -69,7 +68,6 @@ public class AttendenceLoginViewController implements Initializable
             //Close this window
             Stage currentWindows = (Stage) btnLogin.getScene().getWindow();
             currentWindows.close();
-        
     }
 
     
@@ -77,7 +75,8 @@ public class AttendenceLoginViewController implements Initializable
     @FXML
     private void handleLogin(ActionEvent event) throws IOException, InterruptedException, SQLException
     {
-         user = aModel.login(txtUserName.getText(), txtPassword.getText());
+        user = aModel.login(txtUserName.getText(), txtPassword.getText());
+        
         if (user == null)
         {
             Alert alert = new Alert(Alert.AlertType.ERROR, "Incorrect user name or password");
@@ -124,7 +123,7 @@ public class AttendenceLoginViewController implements Initializable
     
     private void handleAdminLogin() throws IOException
     {
-        //handles admin login
+            //handles admin login
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/attendenceautomation/GUI/View/AdminView.fxml"));
             AnchorPane pane = loader.load();
 
@@ -146,6 +145,8 @@ public class AttendenceLoginViewController implements Initializable
     
     /**
      * Initializes the controller class.
+     * @param url
+     * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb)

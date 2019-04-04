@@ -9,11 +9,8 @@ import attendenceautomation.BE.SchoolClass;
 import attendenceautomation.GUI.Model.AAModel;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -28,28 +25,28 @@ import javafx.stage.Stage;
  */
 public class AddClassViewController implements Initializable
 {
-
     @FXML
     private JFXTextField txtClassName;
-    
-    AAModel aaModel;
     @FXML
     private JFXButton btnSaveClass;
+    
+    AAModel aaModel;
 
     /**
      * Initializes the controller class.
+     * @param url
+     * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb)
     {
-        try
-        {
-            aaModel = new AAModel();
-        } catch (IOException ex)
-        {
-            Logger.getLogger(AddClassViewController.class.getName()).log(Level.SEVERE, null, ex);
-        }
+
     }    
+    
+    public void setModel(AAModel aaModel) 
+    {
+        this.aaModel = aaModel;
+    }
 
     @FXML
     private void btnAddClass(ActionEvent event)

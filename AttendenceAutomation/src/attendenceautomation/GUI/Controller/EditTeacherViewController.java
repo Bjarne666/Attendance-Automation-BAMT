@@ -32,19 +32,22 @@ public class EditTeacherViewController implements Initializable
     private JFXTextField txtLastName;
     @FXML
     private JFXTextField txtEmail;
+    @FXML
+    private JFXButton btnSaveEdit;
 
     private Teacher chosenTeacher;
     
     AAModel aaModel;
-    @FXML
-    private JFXButton btnSaveEdit;
+    
     /**
      * Initializes the controller class.
+     * @param url
+     * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb)
     {
-        // TODO
+        
     }    
 
     public void setAaModel(AAModel aaModel)
@@ -64,20 +67,17 @@ public class EditTeacherViewController implements Initializable
             return;
         }
 
-         String fName = this.txtFirstName.getText();
-         String lName = this.txtLastName.getText();
-         String email = this.txtEmail.getText();
+        String fName = this.txtFirstName.getText();
+        String lName = this.txtLastName.getText();
+        String email = this.txtEmail.getText();
          
-         aaModel.editPerson(fName, lName, email, chosenTeacher.getId());
+        aaModel.editPerson(fName, lName, email, chosenTeacher.getId());
          
-         primeStage.close();
+        primeStage.close();
     }
 
     public void setChosenTeacher(Teacher chosenTeacher)
     {
         this.chosenTeacher = chosenTeacher;
     }
-    
-    
-    
 }

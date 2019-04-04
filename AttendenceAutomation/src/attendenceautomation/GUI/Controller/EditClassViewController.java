@@ -23,20 +23,22 @@ import javafx.scene.control.ButtonType;
  */
 public class EditClassViewController implements Initializable
 {
-
     @FXML
     private JFXTextField txtClassName;
     
     private SchoolClass chosenClass;
+    
     AAModel aaModel;
 
     /**
      * Initializes the controller class.
+     * @param url
+     * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb)
     {
-        // TODO
+
     }    
     
     public void setModel(AAModel aaModel) 
@@ -62,6 +64,6 @@ public class EditClassViewController implements Initializable
     
     public void setChosenClass(SchoolClass chosenClass)
     {
-     this.chosenClass = chosenClass;   
+        this.chosenClass = chosenClass;   
     }
 }

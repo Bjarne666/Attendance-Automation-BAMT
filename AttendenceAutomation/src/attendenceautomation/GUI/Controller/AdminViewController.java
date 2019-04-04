@@ -88,6 +88,8 @@ public class AdminViewController implements Initializable
     @FXML
     private Label lblLoggedInUser;
     @FXML
+    private Label lblDateAdmin;
+    @FXML
     private JFXComboBox<SchoolClass> comboSwitchStudentClass;
     
     private Person user;
@@ -97,22 +99,20 @@ public class AdminViewController implements Initializable
     private ObservableList<LocalDate> localDates;
     
     AAModel aaModel;
-    @FXML
-    private Label lblDateAdmin;
-    
-    
 
     /**
      * Initializes the controller class.
+     * @param url
+     * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb)
     {
         try
         {
-//            aaModel = new AAModel();
             loadMainView();
-        } catch (IOException ex)
+        } 
+        catch (IOException ex)
         {
             Logger.getLogger(attendenceautomation.GUI.Controller.AdminViewController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -134,12 +134,11 @@ public class AdminViewController implements Initializable
     @FXML
     private void clickImage(MouseEvent event) throws IOException
     {
-        System.out.println("picture clicked");
         Stage mainStage = (Stage) imgLogo.getScene().getWindow();
         loadMainView();
+        
         ancClassView.setVisible(false);
         ancStudentView.setVisible(false);
-
         tbViewStudent.getItems().clear();
     }
 
@@ -150,7 +149,6 @@ public class AdminViewController implements Initializable
         ancStudentView.setVisible(false);
         ancAdminView.setVisible(true);
         ancAdminView.toFront();
-
     }
 
     @FXML
@@ -365,7 +363,6 @@ public class AdminViewController implements Initializable
         aaModel = aModel;
     }
 
-
     @FXML
     private void addStudentToClass(ActionEvent event)
     {
@@ -377,9 +374,10 @@ public class AdminViewController implements Initializable
         }
         
         Alert alert = new Alert (Alert.AlertType.CONFIRMATION, "Are you sure you want to move student?", ButtonType.OK);
-        alert.showAndWait();
+        Optional<ButtonType> result = alert.showAndWait();
         
-        if (ButtonType.OK == ButtonType.OK)
+        
+        if (result.get() == ButtonType.OK)
         {
             SchoolClass chosenClass = comboSwitchStudentClass.getSelectionModel().getSelectedItem();
             Student studentToMove = tbViewStudent.getSelectionModel().getSelectedItem();

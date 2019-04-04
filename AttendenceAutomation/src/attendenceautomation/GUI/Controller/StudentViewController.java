@@ -7,6 +7,7 @@ package attendenceautomation.GUI.Controller;
 
 import attendenceautomation.BE.Attendance;
 import attendenceautomation.BE.Person;
+import attendenceautomation.BE.Student;
 import attendenceautomation.GUI.Model.AAModel;
 import attendenceautomation.UTIL.DateConverter;
 import com.jfoenix.controls.JFXButton;
@@ -14,14 +15,11 @@ import com.jfoenix.controls.JFXToggleButton;
 import java.io.IOException;
 import java.net.URL;
 import java.text.DecimalFormat;
-import java.text.NumberFormat;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -48,13 +46,12 @@ import javafx.stage.Stage;
  */
 public class StudentViewController implements Initializable
 {
-
     @FXML
     private ImageView imgLogo;
     @FXML
     private JFXButton btnStatistics, btnEdit, btnLogout;
     @FXML
-    private BarChart<?, ?> studentBarChart;
+    private BarChart<Student, String> studentBarChart;
     @FXML
     private TextField txtAReason;
     @FXML
@@ -71,14 +68,6 @@ public class StudentViewController implements Initializable
     private RadioButton rdBtnPresent, rdBtnAbsent, editRdBtnAbsent, editRdBtnPresent;
     @FXML
     private Label lblLoggedInAs;
-
-    private Calendar currentDate;
-
-    private Person user;
-
-    private AAModel aaModel;
-    private DateConverter dConverter;
-    private ObservableList<LocalDate> localDates;
     @FXML
     private Label lblTotalAbsence;
     @FXML
@@ -86,13 +75,25 @@ public class StudentViewController implements Initializable
     @FXML
     private Label lblTo;
 
+    private Calendar currentDate;
+
+    private Person user;
+
+    private AAModel aaModel;
+    
+    private DateConverter dConverter;
+    
+    private ObservableList<LocalDate> localDates;
+    
+
     /**
      * Initializes the controller class.
+     * @param url
+     * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb)
     {
-
         localDates = FXCollections.observableArrayList();
 
         lblAttendance.setVisible(false);
@@ -110,7 +111,8 @@ public class StudentViewController implements Initializable
         try
         {
             loadMainView();
-        } catch (IOException ex)
+        } 
+        catch (IOException ex)
         {
             informationAlert("Something went wrong loading the main view");
         }
@@ -119,7 +121,7 @@ public class StudentViewController implements Initializable
     }
 
     /**
-     * Returns to the frontpage of the teacher's view
+     * Returns to the front page of the teacher's view
      *
      * @throws IOException
      */
@@ -129,7 +131,6 @@ public class StudentViewController implements Initializable
         ancStatisticView.setVisible(false);
         ancStudentMainView.setVisible(true);
         ancStudentMainView.toFront();
-
     }
 
     //Shows the edit window
@@ -137,10 +138,8 @@ public class StudentViewController implements Initializable
     private void switchToEditWindow(ActionEvent event)
     {
         ancStatisticView.setVisible(false);
-
         ancEditView.setVisible(true);
         ancEditView.toFront();
-
     }
 
     //Shows the statistic window
@@ -148,10 +147,8 @@ public class StudentViewController implements Initializable
     private void showStatisticWindow(ActionEvent event)
     {
         ancEditView.setVisible(false);
-
         ancStatisticView.setVisible(true);
         ancStatisticView.toFront();
-
     }
 
     //Manages the edit functions
@@ -167,7 +164,8 @@ public class StudentViewController implements Initializable
 
             informationAlert("Attendance for the chosen date set to present");
             return;
-        } else if (Editgrp.getSelectedToggle() == editRdBtnAbsent && dPickerFrom.getValue() != null)
+        } 
+        else if (Editgrp.getSelectedToggle() == editRdBtnAbsent && dPickerFrom.getValue() != null)
         {
             changedAttendance = new Attendance(date, false);
             aaModel.editAttendance(user.getId(), changedAttendance);
@@ -187,7 +185,8 @@ public class StudentViewController implements Initializable
         {
             lblAReason.setVisible(false);
             txtAReason.setVisible(false);
-        } else if (Editgrp.getSelectedToggle() == editRdBtnAbsent)
+        } 
+        else if (Editgrp.getSelectedToggle() == editRdBtnAbsent)
         {
             lblAReason.setVisible(true);
             txtAReason.setVisible(true);
@@ -196,13 +195,12 @@ public class StudentViewController implements Initializable
         {
             lblTo.setVisible(true);
             dPickerTo.setVisible(true);
-        } else if (!btnToggleMultiple.isSelected())
+        } 
+        else if (!btnToggleMultiple.isSelected())
         {
             lblTo.setVisible(false);
             dPickerTo.setVisible(false);
-
         }
-
     }
 
     /**
@@ -216,7 +214,6 @@ public class StudentViewController implements Initializable
         alert.setTitle("Information Dialog");
         alert.setHeaderText(null);
         alert.setContentText(message);
-
         alert.showAndWait();
     }
 
@@ -227,6 +224,7 @@ public class StudentViewController implements Initializable
         Attendance changedAttendance;
         currentDate = Calendar.getInstance();
         Date date = currentDate.getTime();
+        
         if (attendance.getSelectedToggle() == rdBtnPresent)
         {
             changedAttendance = new Attendance(date, true);
@@ -235,7 +233,8 @@ public class StudentViewController implements Initializable
             lblAttendance.setVisible(true);
             lblAbsent.setVisible(false);
             return;
-        } else if (attendance.getSelectedToggle() == rdBtnAbsent)
+        } 
+        else if (attendance.getSelectedToggle() == rdBtnAbsent)
         {
             changedAttendance = new Attendance(date, false);
             aaModel.setAttendance(changedAttendance, user.getId());
@@ -244,6 +243,7 @@ public class StudentViewController implements Initializable
             lblAttendance.setVisible(false);
             return;
         }
+        
         Alert alert = new Alert(Alert.AlertType.ERROR, "You have to select either present or absent");
         alert.showAndWait();
     }
@@ -255,11 +255,10 @@ public class StudentViewController implements Initializable
         int month = currentDate.get(Calendar.MONTH);
         int year = currentDate.get(Calendar.YEAR);
         lblDate.setText(Integer.toString(day) + "/" + Integer.toString(month + 1) + "-" + Integer.toString(year));
-
     }
 
     /**
-     * sets the piechart data
+     * sets the pie chart data
      *
      * @return
      */
@@ -383,5 +382,4 @@ public class StudentViewController implements Initializable
         String formatProcent = df.format(absenceProcent);
         lblTotalAbsence.setText(formatProcent + "%");
     }
-
 }

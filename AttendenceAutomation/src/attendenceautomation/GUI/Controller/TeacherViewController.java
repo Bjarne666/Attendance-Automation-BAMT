@@ -5,11 +5,9 @@
  */
 package attendenceautomation.GUI.Controller;
 
-import attendenceautomation.BE.Attendance;
 import attendenceautomation.BE.Person;
 import attendenceautomation.BE.SchoolClass;
 import attendenceautomation.BE.Student;
-import attendenceautomation.DAL.PersonDBDAO;
 import attendenceautomation.GUI.Model.AAModel;
 import attendenceautomation.UTIL.DateConverter;
 import com.jfoenix.controls.JFXButton;
@@ -20,10 +18,7 @@ import java.text.DecimalFormat;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.util.Calendar;
-import java.util.List;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -53,7 +48,6 @@ import javafx.stage.Stage;
  */
 public class TeacherViewController implements Initializable
 {
-
     @FXML
     private AnchorPane ancTeacherView;
     @FXML
@@ -61,7 +55,7 @@ public class TeacherViewController implements Initializable
     @FXML
     private PieChart studentPieChart;
     @FXML
-    private BarChart<?, ?> studentBarChart;
+    private BarChart<Student, String> studentBarChart;
     @FXML
     private AnchorPane ancClassView;
     @FXML
@@ -81,10 +75,6 @@ public class TeacherViewController implements Initializable
     @FXML
     private ImageView imgLogo;
     @FXML
-    private Label lblStudentOverview;
-    @FXML
-    private Label lblTeacherOverview;
-    @FXML
     private Label lblLoggedInUser;
     @FXML
     private Label lblClassName;
@@ -93,6 +83,7 @@ public class TeacherViewController implements Initializable
     @FXML
     private Label lblTotalAbsence;
     @FXML
+    
     private JFXButton btnEditAttendance;
 
     private Person user;
@@ -116,7 +107,6 @@ public class TeacherViewController implements Initializable
     @Override
     public void initialize(URL url, ResourceBundle rb)
     {
-    
         colName.setCellValueFactory(new PropertyValueFactory<>("name"));
         colEmail.setCellValueFactory(new PropertyValueFactory<>("Email"));
         colAbsence.setCellValueFactory(new PropertyValueFactory<>("absence"));
@@ -127,11 +117,12 @@ public class TeacherViewController implements Initializable
         try
         {
             loadMainView();
-        } catch (IOException ex)
+        } 
+        catch (IOException ex)
         {
-            ex.printStackTrace();
+            
         }
-
+        
         showCurrentDate();
     }
 
@@ -162,7 +153,6 @@ public class TeacherViewController implements Initializable
 
         return classPieChart;
     }
-
 
     /**
      * The pie chart showing student attendance
@@ -292,17 +282,16 @@ public class TeacherViewController implements Initializable
     @FXML
     private void clickImage(MouseEvent event) throws IOException
     {
-        System.out.println("picture clicked");
         Stage mainStage = (Stage) imgLogo.getScene().getWindow();
         loadMainView();
+        
         ancClassView.setVisible(false);
         ancStudentView.setVisible(false);
-
         tbViewStudents.getItems().clear();
     }
 
     /**
-     * Returns to the frontpage of the teacher's view
+     * Returns to the front page of the teacher's view
      *
      * @throws IOException
      */
@@ -324,12 +313,9 @@ public class TeacherViewController implements Initializable
 
         if (!comboClassList.getSelectionModel().isEmpty())
         {
-            System.out.println("clicked");
             SchoolClass currentClass = comboClassList.getSelectionModel().getSelectedItem();
             chosenClass = comboClassList.getSelectionModel().getSelectedItem();
-            tbViewStudents.setItems(aaModel.getStudentsInClass(currentClass));
-            lblClassName.setText(currentClass.getClassName());
-
+            
             tbViewStudents.setItems(aaModel.getStudentsInClass(currentClass));
             lblClassName.setText(currentClass.getClassName());
             
@@ -338,7 +324,6 @@ public class TeacherViewController implements Initializable
             ancStudentView.setVisible(false);
             ancClassView.setVisible(true);
             ancClassView.toFront();
-
         }
     }
 

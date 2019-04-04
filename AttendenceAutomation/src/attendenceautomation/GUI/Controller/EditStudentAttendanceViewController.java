@@ -6,10 +6,8 @@
 package attendenceautomation.GUI.Controller;
 
 import attendenceautomation.BE.Attendance;
-import attendenceautomation.BE.Person;
 import attendenceautomation.BE.Student;
 import attendenceautomation.GUI.Model.AAModel;
-import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXRadioButton;
 import java.net.URL;
 import java.util.Calendar;
@@ -24,7 +22,6 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -45,14 +42,15 @@ public class EditStudentAttendanceViewController implements Initializable
     private TableColumn<Attendance, String> colAttendance;
     @FXML
     private TableColumn<Attendance, Date> colDate;
+    @FXML
+    private Button btnSaveAtt;
     
     private Calendar currentDate;
     
     private Student chosenStudent;
     
     AAModel aaModel;
-    @FXML
-    private Button btnSaveAtt;
+    
 
     /**
      * Initializes the controller class.
@@ -109,6 +107,7 @@ public class EditStudentAttendanceViewController implements Initializable
             alert.showAndWait();
             return;
         }
+        
         Alert alert = new Alert(Alert.AlertType.ERROR, "You have to select either present or absent");
         alert.showAndWait();
     }

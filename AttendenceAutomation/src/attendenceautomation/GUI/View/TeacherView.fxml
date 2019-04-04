@@ -15,7 +15,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" styleClass="background" stylesheets="@AttendanceStyleSheet.css" xmlns="http://javafx.com/javafx/8.0.181" xmlns:fx="http://javafx.com/fxml/1" fx:controller="attendenceautomation.GUI.Controller.TeacherViewController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" styleClass="background" stylesheets="@AttendanceStyleSheet.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="attendenceautomation.GUI.Controller.TeacherViewController">
    <children>
       <AnchorPane layoutX="276.0" layoutY="413.0" prefHeight="56.0" prefWidth="600.0" style="-fx-background-color: #4b4b4b;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="0.0" />
       <AnchorPane layoutX="8.0" layoutY="14.0" prefHeight="85.0" prefWidth="200.0" style="-fx-background-color: #4b4b4b;" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -63,7 +63,7 @@
                   <Label layoutX="341.0" layoutY="24.0" text="Absence:" AnchorPane.rightAnchor="129.0" AnchorPane.topAnchor="24.0" />
                   <Label fx:id="lblTotalAbsence" layoutX="453.0" layoutY="24.0" prefHeight="21.0" prefWidth="60.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="24.0" />
                   <Label layoutX="24.0" layoutY="186.0" text="Day with most absence:" AnchorPane.leftAnchor="24.0" AnchorPane.topAnchor="186.0" />
-                  <Label layoutX="193.0" layoutY="186.0" text="Monday" AnchorPane.leftAnchor="193.0" AnchorPane.topAnchor="186.0" />
+                  <Label fx:id="lblMostAbsentDay" layoutX="193.0" layoutY="186.0" text="Monday" AnchorPane.leftAnchor="193.0" AnchorPane.topAnchor="186.0" />
                   <PieChart fx:id="studentPieChart" layoutX="284.0" layoutY="17.0" prefHeight="190.0" prefWidth="235.0" AnchorPane.rightAnchor="11.0" AnchorPane.topAnchor="17.0" />
                   <BarChart fx:id="studentBarChart" layoutX="24.0" layoutY="227.0" prefHeight="275.0" prefWidth="522.0" AnchorPane.bottomAnchor="33.0" AnchorPane.leftAnchor="24.0" AnchorPane.rightAnchor="96.0" AnchorPane.topAnchor="227.0">
                     <xAxis>

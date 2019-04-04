@@ -168,4 +168,10 @@ public class AAManager implements AttendanceInterface
         aDAO.moveStudentToNewClass(chosenClass, studentToMove);
     }
 
+    @Override
+    public double calculateTotalAbsence(int id)
+    {
+       return aDAO.calculateTotalAbsence(id);
+    }
+
 }

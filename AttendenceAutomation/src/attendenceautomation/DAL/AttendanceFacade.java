@@ -166,4 +166,10 @@ public class AttendanceFacade implements AADALInterface
     {
         pDbDao.moveStudentToNewClass(chosenClass, studentToMove);
     }
+
+    @Override
+    public double calculateTotalAbsence(int id)
+    {
+        return pDbDao.calculateTotalAbsence(id);
+    }
 }

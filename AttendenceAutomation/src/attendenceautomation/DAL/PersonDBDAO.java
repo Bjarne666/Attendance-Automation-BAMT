@@ -584,4 +584,40 @@ public class PersonDBDAO
         
         return attendanceAbsence;
     }
+    
+    public double calculateTotalAbsence(int id)
+    {
+            double absence = 0;
+            double total = 0;
+        try(Connection con = ds.getConnection())
+        {
+            PreparedStatement pstmt = con.prepareStatement("SELECT COUNT(isPresent) AS total FROM Attendance WHERE studentID = (?)");
+            PreparedStatement pstmt2 = con.prepareStatement("SELECT isPresent FROM Attendance WHERE studentID = (?) AND isPresent = (?)");
+            pstmt.setInt(1, id);
+            
+            pstmt2.setInt(1, id);
+            pstmt2.setBoolean(2, false);
+            
+            
+            ResultSet rs = pstmt.executeQuery();           
+            while (rs.next())
+            {
+              total = rs.getInt("total");
+            }
+            
+            ResultSet rs2 = pstmt2.executeQuery();
+            while (rs2.next())
+            {                
+              absence++;
+            }
+            
+        } catch (Exception e)
+        {
+        }
+            return (absence/total)*100;
+    }
 }
+
+
+
+

@@ -111,7 +111,7 @@ public class AttendenceLoginViewController implements Initializable
             tViewController.setUser(user);
             tViewController.setLabels();
             tViewController.setClassCombo();
-            
+    
             Stage stage = new Stage();
             stage.setScene(new Scene(pane));
 

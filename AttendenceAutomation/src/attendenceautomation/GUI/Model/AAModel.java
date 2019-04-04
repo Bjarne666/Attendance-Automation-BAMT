@@ -85,7 +85,12 @@ public class AAModel
 
     public ObservableList<Student> getStudentsInClass(SchoolClass chosenClass)
     {
-        return FXCollections.observableArrayList(aManager.getStudentsInClass(chosenClass));
+        ObservableList<Student> studentsInClass = FXCollections.observableArrayList(aManager.getStudentsInClass(chosenClass));
+        for (Student studentsInClas : studentsInClass)
+        {
+            studentsInClas.setAbsence(Double.toString(aManager.calculateTotalAbsence(studentsInClas.getId())));
+        }
+        return studentsInClass;
     }
     
     public Student getStudent(Student studentToGet)

@@ -103,6 +103,13 @@ public interface AttendanceInterface
      * @param id
      * @return
      */
+    public double calculateTotalAbsence(int id);
+    
+    /**
+     *
+     * @param id
+     * @return
+     */
     public String getStudentClass(int id);
     
     /** 

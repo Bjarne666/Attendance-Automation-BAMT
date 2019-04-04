@@ -5,9 +5,11 @@
  */
 package attendenceautomation.GUI.Controller;
 
+import attendenceautomation.BE.Attendance;
 import attendenceautomation.BE.Person;
 import attendenceautomation.BE.SchoolClass;
 import attendenceautomation.BE.Student;
+import attendenceautomation.DAL.PersonDBDAO;
 import attendenceautomation.GUI.Model.AAModel;
 import attendenceautomation.UTIL.DateConverter;
 import com.jfoenix.controls.JFXButton;
@@ -18,7 +20,10 @@ import java.text.DecimalFormat;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.util.Calendar;
+import java.util.List;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -103,7 +108,7 @@ public class TeacherViewController implements Initializable
     @Override
     public void initialize(URL url, ResourceBundle rb)
     {
-
+    
         colName.setCellValueFactory(new PropertyValueFactory<>("name"));
         colEmail.setCellValueFactory(new PropertyValueFactory<>("Email"));
         colAbsence.setCellValueFactory(new PropertyValueFactory<>("absence"));
@@ -227,7 +232,7 @@ public class TeacherViewController implements Initializable
         //add dataset to chart
         studentBarChart.getData().add(dataSet);
         studentBarChart.setLegendVisible(false);
-
+        
         return studentBarChart;
     }
 

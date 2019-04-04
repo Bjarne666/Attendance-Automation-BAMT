@@ -69,6 +69,12 @@ public interface AADALInterface
 
     /**
      *
+     * @param id
+     * @return
+     */
+    public double calculateTotalAbsence(int id);
+    /**
+     *
      * @param student
      * @return
      */

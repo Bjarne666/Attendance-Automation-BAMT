@@ -205,5 +205,11 @@ public class MockDAO implements AADALInterface {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
+    @Override
+    public double calculateTotalAbsence(int id)
+    {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
 
 }

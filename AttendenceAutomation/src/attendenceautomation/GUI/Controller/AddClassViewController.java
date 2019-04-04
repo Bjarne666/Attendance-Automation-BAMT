@@ -6,8 +6,8 @@
 package attendenceautomation.GUI.Controller;
 
 import attendenceautomation.BE.SchoolClass;
-import attendenceautomation.BE.Student;
 import attendenceautomation.GUI.Model.AAModel;
+import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import java.io.IOException;
 import java.net.URL;
@@ -33,6 +33,8 @@ public class AddClassViewController implements Initializable
     private JFXTextField txtClassName;
     
     AAModel aaModel;
+    @FXML
+    private JFXButton btnSaveClass;
 
     /**
      * Initializes the controller class.
@@ -52,6 +54,8 @@ public class AddClassViewController implements Initializable
     @FXML
     private void btnAddClass(ActionEvent event)
     {
+        Stage primeStage = (Stage) btnSaveClass.getScene().getWindow();
+        
         if (txtClassName.getText().length() == 0)
         {
             Alert alert = new Alert (Alert.AlertType.CONFIRMATION, "You have to fill out the name field!", ButtonType.OK);
@@ -66,7 +70,7 @@ public class AddClassViewController implements Initializable
         SchoolClass newClass= new SchoolClass(0, className);
         aaModel.addClass(newClass);
         
-        
+        primeStage.close();
     }
     
 }

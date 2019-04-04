@@ -69,8 +69,8 @@
                <children>
                   <TableView fx:id="tbViewStudent" layoutX="35.0" layoutY="105.0" prefHeight="610.0" prefWidth="310.0" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="35.0" AnchorPane.rightAnchor="380.0" AnchorPane.topAnchor="105.0">
                     <columns>
-                      <TableColumn fx:id="colStudentName" prefWidth="153.0" text="Name" />
-                      <TableColumn fx:id="colStudentEmail" prefWidth="140.0" text="Email" />
+                      <TableColumn fx:id="colStudentName" prefWidth="163.0" text="Name" />
+                      <TableColumn fx:id="colStudentEmail" prefWidth="130.0" text="Email" />
                     </columns>
                   </TableView>
                   <Label layoutX="35.0" layoutY="14.0" style="-fx-font-size: 32;" text="Student Overview" AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="14.0" />

@@ -7,6 +7,7 @@ package attendenceautomation.GUI.Controller;
 
 import attendenceautomation.BE.Student;
 import attendenceautomation.GUI.Model.AAModel;
+import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -15,6 +16,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -34,6 +36,8 @@ public class EditStudentViewController implements Initializable
     private Student chosenStudent;
     
     AAModel aaModel;
+    @FXML
+    private JFXButton btnSaveEdit;
     
     
     /**
@@ -53,6 +57,8 @@ public class EditStudentViewController implements Initializable
     @FXML
     private void btnEditStudent(ActionEvent event)
     {
+        Stage primeStage = (Stage) btnSaveEdit.getScene().getWindow();
+        
         if (txtFirstName.getText().length() == 0 || txtLastName.getText().length() == 0 || txtEmail.getText().length() == 0)
         {
             Alert alert = new Alert (Alert.AlertType.CONFIRMATION, "You have to fill out nall fields!", ButtonType.OK);
@@ -65,6 +71,8 @@ public class EditStudentViewController implements Initializable
          String email = this.txtEmail.getText();
          
          aaModel.editPerson(fName, lName, email, chosenStudent.getId());
+         
+         primeStage.close();
     }
 
     public void setChosenStudent(Student chosenStudent)

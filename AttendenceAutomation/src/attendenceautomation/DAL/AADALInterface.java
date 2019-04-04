@@ -26,7 +26,7 @@ public interface AADALInterface
      * @param attenToEdit
      * @param id
      */
-    public void editAttendance(Attendance attenToEdit, int id);
+    public void editAttendance(int id, Attendance... attenToEdit);
     
     /**
      *

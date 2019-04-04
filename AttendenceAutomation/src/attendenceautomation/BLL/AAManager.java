@@ -109,9 +109,9 @@ public class AAManager implements AttendanceInterface
         return aDAO.getStudentPresentPieChartData(id);
     }
     @Override
-    public void editAttendance(Attendance attenToEdit, int id)
+    public void editAttendance(int id, Attendance... attenToEdit)
     {
-        aDAO.editAttendance(attenToEdit, id);
+        aDAO.editAttendance(id, attenToEdit);
     }
 
     @Override

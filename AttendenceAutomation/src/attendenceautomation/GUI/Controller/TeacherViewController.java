@@ -84,9 +84,9 @@ public class TeacherViewController implements Initializable
     private Label lblClassName;
     @FXML
     private Label lblStudentName;
-    
+
     AAModel aaModel;
-    
+
     private Person user;
     private Student chosenStudent;
     private DateConverter dConverter;
@@ -95,30 +95,20 @@ public class TeacherViewController implements Initializable
     private Label lblTotalAbsence;
     @FXML
     private JFXButton btnEditAttendance;
-    
 
-    public TeacherViewController() throws IOException
-    {
-        aaModel = new AAModel();
-    }
-
-    
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb)
     {
-        comboClassList.setItems(aaModel.getAllClasses());
 
         colName.setCellValueFactory(new PropertyValueFactory<>("name"));
         colEmail.setCellValueFactory(new PropertyValueFactory<>("Email"));
         colAbsence.setCellValueFactory(new PropertyValueFactory<>("absence"));
-        
+
         ancClassView.setVisible(false);
         ancStudentView.setVisible(false);
-
-        
 
         try
         {
@@ -132,21 +122,23 @@ public class TeacherViewController implements Initializable
         StudentPieChart();
 //        studentBarChart();
         showCurrentDate();
-    }    
-    
+    }
+
     /**
      * handles exiting the program while in teacher view
-     * @param event 
+     *
+     * @param event
      */
     @FXML
     private void handleTeacherLogout(ActionEvent event)
     {
         System.exit(0);
     }
-    
+
     /**
      * The piechart showing overall class attendance
-     * @return 
+     *
+     * @return
      */
     public PieChart classPieChart()
     {
@@ -160,10 +152,11 @@ public class TeacherViewController implements Initializable
         return classPieChart;
 
     }
-    
+
     /**
      * The piechart showing student attendance
-     * @return 
+     *
+     * @return
      */
     public PieChart StudentPieChart()
     {
@@ -176,18 +169,19 @@ public class TeacherViewController implements Initializable
 
         return studentPieChart;
     }
-    
-     /**
+
+    /**
      * The number of hours absent any given day for a monthly basis
-     * @return 
+     *
+     * @return
      */
     public BarChart studentBarChart()
     {
         // Define category axes
         studentBarChart.getYAxis().setLabel("Days of absence");
         XYChart.Series dataSet = new XYChart.Series();
-        
-         // Converting date to localDate and counting absense for weekdays
+
+        // Converting date to localDate and counting absense for weekdays
         dConverter = new DateConverter(aaModel.getAbsenceSumById(chosenStudent.getId()));
         localDates = dConverter.getDates();
         int mondayCount = 0;
@@ -197,43 +191,50 @@ public class TeacherViewController implements Initializable
         int fridayCount = 0;
         for (LocalDate localDate : localDates)
         {
-        DayOfWeek dayOfWeek = localDate.getDayOfWeek();
-        switch(dayOfWeek)
-        {
-            case MONDAY: mondayCount++;
-            break;
-            case TUESDAY: tuesdayCount++;   
-            break;
-            case WEDNESDAY: wednesdayCount++; 
-            break;
-            case THURSDAY: thursdayCount++;  
-            break;
-            case FRIDAY: fridayCount++;
-            break;
-            default: System.out.println("Not a weekday");
-            break;
+            DayOfWeek dayOfWeek = localDate.getDayOfWeek();
+            switch (dayOfWeek)
+            {
+                case MONDAY:
+                    mondayCount++;
+                    break;
+                case TUESDAY:
+                    tuesdayCount++;
+                    break;
+                case WEDNESDAY:
+                    wednesdayCount++;
+                    break;
+                case THURSDAY:
+                    thursdayCount++;
+                    break;
+                case FRIDAY:
+                    fridayCount++;
+                    break;
+                default:
+                    System.out.println("Not a weekday");
+                    break;
+            }
         }
-        }
-        
+
         dataSet.setName("Absence");
-        
+
         dataSet.getData().add(new XYChart.Data<>("Monday", mondayCount));
         dataSet.getData().add(new XYChart.Data<>("Tuesday", tuesdayCount));
         dataSet.getData().add(new XYChart.Data<>("Wednesday", wednesdayCount));
         dataSet.getData().add(new XYChart.Data<>("Thursday", thursdayCount));
-        dataSet.getData().add(new XYChart.Data<>("Friday", fridayCount));      
-        
+        dataSet.getData().add(new XYChart.Data<>("Friday", fridayCount));
+
         //add dataset to chart
         studentBarChart.getData().add(dataSet);
         studentBarChart.setLegendVisible(false);
 
         return studentBarChart;
     }
-    
+
     /**
      * Changes the stackpane currently shown and clears the combobox selection
      * to allow returning to the same class overview.
-     * @param event 
+     *
+     * @param event
      */
     @FXML
     private void handlePaneSwitch(MouseEvent event)
@@ -245,7 +246,7 @@ public class TeacherViewController implements Initializable
                 comboClassList.getSelectionModel().clearSelection();
                 if (event.getButton().equals(MouseButton.PRIMARY))
                 {
-                    if (event.getClickCount() == 1  )
+                    if (event.getClickCount() == 1)
                     {
                         tbViewStudents.getSelectionModel().clearSelection();
                         studentBarChart.getData().clear();
@@ -253,12 +254,11 @@ public class TeacherViewController implements Initializable
                         lblStudentName.setText(chosenStudent.getName());
 //                        ancTeacherView.getChildren().clear();
                         ancClassView.setVisible(false);
-                        
+
                         ancStudentView.toFront();
                         ancStudentView.setVisible(true);
 //                        ancTeacherView.getChildren().add(ancStudentView);
-                    }
-                    else if (event.getClickCount() == 2)
+                    } else if (event.getClickCount() == 2)
                     {
                         tbViewStudents.getSelectionModel().clearSelection();
                         ancClassView.setVisible(true);
@@ -270,11 +270,12 @@ public class TeacherViewController implements Initializable
             }
         }
     }
-    
+
     /**
      * Gets the image and does a method call when said image is clicked
+     *
      * @param event
-     * @throws IOException 
+     * @throws IOException
      */
     @FXML
     private void clickImage(MouseEvent event) throws IOException
@@ -284,13 +285,14 @@ public class TeacherViewController implements Initializable
         loadMainView();
         ancClassView.setVisible(false);
         ancStudentView.setVisible(false);
-        
+
         tbViewStudents.getItems().clear();
     }
-    
+
     /**
      * Returns to the frontpage of the teacher's view
-     * @throws IOException 
+     *
+     * @throws IOException
      */
     private void loadMainView() throws IOException
     {
@@ -300,16 +302,17 @@ public class TeacherViewController implements Initializable
         ancTeacherView.toFront();
 
     }
-    
+
     /**
-     * Chooses which class to show
-     * and shows the students currently associated with the selected class
-     * @param event 
+     * Chooses which class to show and shows the students currently associated
+     * with the selected class
+     *
+     * @param event
      */
     @FXML
     private void showClassStatistics(ActionEvent event)
     {
-        
+
         if (!comboClassList.getSelectionModel().isEmpty())
         {
             System.out.println("clicked");
@@ -325,14 +328,19 @@ public class TeacherViewController implements Initializable
 //            ancTeacherView.getChildren().add(ancClassView);
         }
     }
-    
+
     private void showCurrentDate()
     {
         Calendar currentDate = Calendar.getInstance();
         int day = currentDate.get(Calendar.DATE);
         int month = currentDate.get(Calendar.MONTH);
         int year = currentDate.get(Calendar.YEAR);
-        lblDateTeacher.setText(Integer.toString(day)+ "/" + Integer.toString(month+1) +"-"+Integer.toString(year));
+        lblDateTeacher.setText(Integer.toString(day) + "/" + Integer.toString(month + 1) + "-" + Integer.toString(year));
+    }
+
+    public void setClassCombo()
+    {
+        comboClassList.setItems(aaModel.getAllClasses());
     }
 
     public void setUser(Person userToSet)
@@ -347,7 +355,7 @@ public class TeacherViewController implements Initializable
 
     void setModel(AAModel modelToSet)
     {
-      aaModel = modelToSet;
+        aaModel = modelToSet;
     }
 
     @FXML
@@ -356,13 +364,13 @@ public class TeacherViewController implements Initializable
         Stage primeStage = (Stage) btnEditAttendance.getScene().getWindow();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/attendenceautomation/GUI/View/editStudentAttendanceView.fxml"));
         Parent root = loader.load();
-        
+
         EditStudentAttendanceViewController editAttController = loader.getController();
         editAttController.setModel(aaModel);
         editAttController.setUser(user);
         editAttController.setStudent(chosenStudent);
         editAttController.populateTableView();
-        
+
         Stage stageEditAtt = new Stage();
         stageEditAtt.setScene(new Scene(root));
 
@@ -370,5 +378,5 @@ public class TeacherViewController implements Initializable
         stageEditAtt.initOwner(primeStage);
         stageEditAtt.show();
     }
-    
+
 }

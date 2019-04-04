@@ -104,11 +104,14 @@ public class AttendenceLoginViewController implements Initializable
         //handles teacher login
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/attendenceautomation/GUI/View/TeacherView.fxml"));
             AnchorPane pane = loader.load();
-
+            
+            //sets up the view
             TeacherViewController tViewController = loader.getController();
             tViewController.setModel(aModel);
             tViewController.setUser(user);
             tViewController.setLabels();
+            tViewController.setClassCombo();
+            
             Stage stage = new Stage();
             stage.setScene(new Scene(pane));
 

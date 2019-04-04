@@ -157,7 +157,6 @@ public class StudentViewController implements Initializable
     private void handleEditAttendance(ActionEvent event)
     {
         Attendance changedAttendance;
-        currentDate = Calendar.getInstance();
         Date date = java.sql.Date.valueOf(dPickerFrom.getValue());
         if (Editgrp.getSelectedToggle() == editRdBtnPresent && dPickerFrom.getValue() != null)
         {

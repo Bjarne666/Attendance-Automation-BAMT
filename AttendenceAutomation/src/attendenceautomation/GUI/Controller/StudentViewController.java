@@ -50,53 +50,25 @@ public class StudentViewController implements Initializable
     @FXML
     private ImageView imgLogo;
     @FXML
-    private JFXButton btnStatistics;
-    @FXML
-    private JFXButton btnEdit;
-    @FXML
-    private JFXButton btnLogout;
+    private JFXButton btnStatistics, btnEdit, btnLogout;
     @FXML
     private BarChart<?, ?> studentBarChart;
     @FXML
     private TextField txtAReason;
     @FXML
-    private Label lblAReason;
+    private Label lblAReason, lblDate, lblName, lblEducation, lblAbsent, lblAttendance;
     @FXML
-    private DatePicker dPickerFrom;
+    private DatePicker dPickerFrom, dPickerTo;
     @FXML
-    private Label lblDate;
-    @FXML
-    private Label lblName;
-    @FXML
-    private Label lblEducation;
-    @FXML
-    private ToggleGroup attendance;
-    @FXML
-    private Label lblAbsent;
-    @FXML
-    private Label lblAttendance;
+    private ToggleGroup attendance, Editgrp;
     @FXML
     private PieChart attendencePieChart;
     @FXML
-    private AnchorPane ancStatisticView;
+    private AnchorPane ancStatisticView, ancEditView, ancStudentMainView;
     @FXML
-    private AnchorPane ancEditView;
-    @FXML
-    private AnchorPane ancStudentMainView;
-    @FXML
-    private DatePicker dPickerTo;
-    @FXML
-    private RadioButton rdBtnPresent;
-    @FXML
-    private RadioButton rdBtnAbsent;
+    private RadioButton rdBtnPresent, rdBtnAbsent, editRdBtnAbsent, editRdBtnPresent;
     @FXML
     private Label lblLoggedInAs;
-    @FXML
-    private RadioButton editRdBtnAbsent;
-    @FXML
-    private ToggleGroup Editgrp;
-    @FXML
-    private RadioButton editRdBtnPresent;
 
     private Calendar currentDate;
 
@@ -118,14 +90,9 @@ public class StudentViewController implements Initializable
     @Override
     public void initialize(URL url, ResourceBundle rb)
     {
-        try
-        {
-            aaModel = new AAModel();
-            localDates = FXCollections.observableArrayList();
-        } catch (IOException ex)
-        {
-            Logger.getLogger(StudentViewController.class.getName()).log(Level.SEVERE, null, ex);
-        }
+
+        localDates = FXCollections.observableArrayList();
+
         lblAttendance.setVisible(false);
         lblAbsent.setVisible(false);
 
@@ -143,12 +110,10 @@ public class StudentViewController implements Initializable
             loadMainView();
         } catch (IOException ex)
         {
-            ex.printStackTrace();
+            informationAlert("Something went wrong loading the main view");
         }
 
         showCurrentDate();
-//        buildPieChart();
-//        studentBarChart();
     }
 
     /**
@@ -158,8 +123,6 @@ public class StudentViewController implements Initializable
      */
     private void loadMainView() throws IOException
     {
-        System.out.println("im loading");
-//        mainAnchorPane.getChildren().clear();
         ancEditView.setVisible(false);
         ancStatisticView.setVisible(false);
         ancStudentMainView.setVisible(true);
@@ -167,11 +130,10 @@ public class StudentViewController implements Initializable
 
     }
 
+    //Shows the edit window
     @FXML
     private void switchToEditWindow(ActionEvent event)
     {
-        System.out.println("Edit");
-//        ancStudentMainView.setVisible(false);
         ancStatisticView.setVisible(false);
 
         ancEditView.setVisible(true);
@@ -179,11 +141,10 @@ public class StudentViewController implements Initializable
 
     }
 
+    //Shows the statistic window
     @FXML
     private void showStatisticWindow(ActionEvent event)
     {
-        System.out.println("statistic");
-//        ancStudentMainView.setVisible(false);
         ancEditView.setVisible(false);
 
         ancStatisticView.setVisible(true);
@@ -191,6 +152,7 @@ public class StudentViewController implements Initializable
 
     }
 
+    //Manages the edit functions
     @FXML
     private void handleEditAttendance(ActionEvent event)
     {
@@ -216,6 +178,7 @@ public class StudentViewController implements Initializable
         newAlert.showAndWait();
     }
 
+    //Handles visibility of the textfields and labels in the edit window
     @FXML
     private void handleAbsenceVisibility(ActionEvent event)
     {
@@ -256,6 +219,7 @@ public class StudentViewController implements Initializable
         alert.showAndWait();
     }
 
+    //Sets the attendance for the current student
     @FXML
     private void handleAttendance(ActionEvent event)
     {
@@ -385,7 +349,7 @@ public class StudentViewController implements Initializable
     {
         user = userToSet;
     }
-    
+
     // sets the labels to match the current user
     public void setLabels()
     {
@@ -394,13 +358,13 @@ public class StudentViewController implements Initializable
         lblEducation.setText(aaModel.getStudentClass(user.getId()));
         lblTotalAbsence.setText(Integer.toString(aaModel.getStudentPieChartAbsenceData(user.getId())));
     }
-    
+
     @FXML
     private void handleStudentLogout(ActionEvent event)
     {
         System.exit(0);
     }
-    
+
     // sets the model to be used
     void setModel(AAModel modelToSet)
     {

@@ -14,6 +14,7 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import java.io.IOException;
 import java.net.URL;
+import java.text.DecimalFormat;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.util.Calendar;
@@ -250,6 +251,7 @@ public class TeacherViewController implements Initializable
                     {
                         studentBarChart.getData().clear();
                         studentBarChart();
+                        showTotalAbsence();
                         lblStudentName.setText(chosenStudent.getName());
                         ancClassView.setVisible(false);
 
@@ -379,4 +381,14 @@ public class TeacherViewController implements Initializable
         stageEditAtt.show();
     }
 
+    public void showTotalAbsence()
+    {
+        double absence = aaModel.getStudentPieChartAbsenceData(chosenStudent.getId());
+        double pressent = aaModel.getStudentPresentPieChartData(chosenStudent.getId());
+        double totaldays = (absence + pressent); 
+        double absenceProcent =(absence/totaldays)*100;
+        DecimalFormat df = new DecimalFormat(".00");
+        String formatProcent = df.format(absenceProcent);
+        lblTotalAbsence.setText(formatProcent + "%");
+    }
 }

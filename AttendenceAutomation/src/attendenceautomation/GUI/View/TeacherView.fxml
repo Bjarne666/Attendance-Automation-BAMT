@@ -60,11 +60,11 @@
                   <Label fx:id="lblStudentOverview" layoutX="35.0" layoutY="30.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" style="-fx-font-size: 32;" text="Student Overview" wrapText="true" AnchorPane.leftAnchor="24.0" AnchorPane.topAnchor="24.0" />
                   <Label layoutX="24.0" layoutY="101.0" text="Student name:" AnchorPane.leftAnchor="24.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="101.0" />
                   <Label fx:id="lblStudentName" layoutX="124.0" layoutY="101.0" text="Birger" AnchorPane.leftAnchor="124.0" AnchorPane.topAnchor="101.0" />
-                  <Label layoutX="364.0" layoutY="24.0" text="Absence:" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="24.0" />
-                  <Label fx:id="lblTotalAbsence" layoutX="453.0" layoutY="24.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="24.0" />
+                  <Label layoutX="341.0" layoutY="24.0" text="Absence:" AnchorPane.rightAnchor="129.0" AnchorPane.topAnchor="24.0" />
+                  <Label fx:id="lblTotalAbsence" layoutX="453.0" layoutY="24.0" prefHeight="21.0" prefWidth="60.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="24.0" />
                   <Label layoutX="24.0" layoutY="186.0" text="Day with most absence:" AnchorPane.leftAnchor="24.0" AnchorPane.topAnchor="186.0" />
                   <Label layoutX="193.0" layoutY="186.0" text="Monday" AnchorPane.leftAnchor="193.0" AnchorPane.topAnchor="186.0" />
-                  <PieChart fx:id="studentPieChart" layoutX="312.0" layoutY="17.0" prefHeight="190.0" prefWidth="235.0" AnchorPane.rightAnchor="-17.0" AnchorPane.topAnchor="17.0" />
+                  <PieChart fx:id="studentPieChart" layoutX="284.0" layoutY="17.0" prefHeight="190.0" prefWidth="235.0" AnchorPane.rightAnchor="11.0" AnchorPane.topAnchor="17.0" />
                   <BarChart fx:id="studentBarChart" layoutX="24.0" layoutY="227.0" prefHeight="275.0" prefWidth="522.0" AnchorPane.bottomAnchor="33.0" AnchorPane.leftAnchor="24.0" AnchorPane.rightAnchor="96.0" AnchorPane.topAnchor="227.0">
                     <xAxis>
                       <CategoryAxis side="BOTTOM" />

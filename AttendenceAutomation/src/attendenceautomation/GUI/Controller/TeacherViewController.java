@@ -10,6 +10,7 @@ import attendenceautomation.BE.SchoolClass;
 import attendenceautomation.BE.Student;
 import attendenceautomation.GUI.Model.AAModel;
 import attendenceautomation.UTIL.DateConverter;
+import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import java.io.IOException;
 import java.net.URL;
@@ -21,8 +22,11 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import static javafx.scene.AccessibleAttribute.VISIBLE;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.PieChart;
 import javafx.scene.chart.XYChart;
@@ -34,6 +38,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javax.accessibility.AccessibleState;
 
@@ -90,6 +95,8 @@ public class TeacherViewController implements Initializable
     private ObservableList<LocalDate> localDates;
     @FXML
     private Label lblTotalAbsence;
+    @FXML
+    private JFXButton btnEditAttendance;
     
 
     public TeacherViewController() throws IOException
@@ -242,6 +249,8 @@ public class TeacherViewController implements Initializable
                 {
                     if (event.getClickCount() == 1 && !ancStudentView.isVisible() )
                     {
+                        tbViewStudents.getSelectionModel().clearSelection();
+                        studentBarChart.getData().clear();
                         studentBarChart();
                         lblStudentName.setText(chosenStudent.getName());
 //                        ancTeacherView.getChildren().clear();
@@ -341,6 +350,24 @@ public class TeacherViewController implements Initializable
     void setModel(AAModel modelToSet)
     {
       aaModel = modelToSet;
+    }
+
+    @FXML
+    private void editAttendance(ActionEvent event) throws IOException
+    {
+        Stage primeStage = (Stage) btnEditAttendance.getScene().getWindow();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/attendenceautomation/GUI/View/editStudentAttendanceView.fxml"));
+        Parent root = loader.load();
+
+        EditStudentAttendanceViewController editAttController = loader.getController();
+        editAttController.setModel(aaModel);
+        
+        Stage stageEditAtt = new Stage();
+        stageEditAtt.setScene(new Scene(root));
+
+        stageEditAtt.initModality(Modality.WINDOW_MODAL);
+        stageEditAtt.initOwner(primeStage);
+        stageEditAtt.show();
     }
     
 }

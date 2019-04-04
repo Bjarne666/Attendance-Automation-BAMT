@@ -114,7 +114,7 @@ public class TeacherViewController implements Initializable
         colName.setCellValueFactory(new PropertyValueFactory<>("name"));
         colEmail.setCellValueFactory(new PropertyValueFactory<>("Email"));
         colAbsence.setCellValueFactory(new PropertyValueFactory<>("absence"));
-
+        
         ancClassView.setVisible(false);
         ancStudentView.setVisible(false);
 
@@ -222,7 +222,7 @@ public class TeacherViewController implements Initializable
         dataSet.getData().add(new XYChart.Data<>("Wednesday", wednesdayCount));
         dataSet.getData().add(new XYChart.Data<>("Thursday", thursdayCount));
         dataSet.getData().add(new XYChart.Data<>("Friday", fridayCount));      
-
+        
         //add dataset to chart
         studentBarChart.getData().add(dataSet);
         studentBarChart.setLegendVisible(false);
@@ -245,7 +245,7 @@ public class TeacherViewController implements Initializable
                 comboClassList.getSelectionModel().clearSelection();
                 if (event.getButton().equals(MouseButton.PRIMARY))
                 {
-                    if (event.getClickCount() == 1 && !ancStudentView.isVisible() )
+                    if (event.getClickCount() == 1  )
                     {
                         tbViewStudents.getSelectionModel().clearSelection();
                         studentBarChart.getData().clear();

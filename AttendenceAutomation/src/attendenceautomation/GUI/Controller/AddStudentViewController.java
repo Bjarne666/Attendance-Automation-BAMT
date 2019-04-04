@@ -19,6 +19,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -64,7 +65,7 @@ public class AddStudentViewController implements Initializable
     @FXML
     private void btnAddStudent(ActionEvent event)
     {
-//        Stage primeStage = (Stage) btnAddStudent(event).getScene().getWindow();
+        Stage primeStage = (Stage) btnSaveStudent.getScene().getWindow();
         
         String name = this.txtName.getText() + " " + this.txtLastName.getText();
         String email = this.txtEmail.getText();
@@ -91,7 +92,7 @@ public class AddStudentViewController implements Initializable
             aaModel.addStudent(student, chosenClass);
             aaModel.getAllStudents();
         }
-//        primeStage.close();
+        primeStage.close();
     }
     
 }

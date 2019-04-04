@@ -258,6 +258,7 @@ public class TeacherViewController implements Initializable
 
 //                        ancTeacherView.getChildren().add(ancStudentView);
                     } 
+                    
                     else if (event.getClickCount() == 2)
                     {
                         tbViewStudents.getSelectionModel().clearSelection();

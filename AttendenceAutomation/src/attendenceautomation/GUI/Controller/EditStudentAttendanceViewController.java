@@ -19,10 +19,12 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -31,8 +33,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
  */
 public class EditStudentAttendanceViewController implements Initializable
 {
-
-    private JFXDatePicker attDateChooser;
     @FXML
     private ToggleGroup editAttGrp;
     @FXML
@@ -42,25 +42,28 @@ public class EditStudentAttendanceViewController implements Initializable
     @FXML
     private TableView<Attendance> tbViewAttendance;
     @FXML
-    private TableColumn<Student, String> colAttendance;
+    private TableColumn<Attendance, String> colAttendance;
+    @FXML
+    private TableColumn<Attendance, Date> colDate;
     
     private Calendar currentDate;
-    
-    private Person user;
     
     private Student chosenStudent;
     
     AAModel aaModel;
-    
-    
-    
+    @FXML
+    private Button btnSaveAtt;
+
     /**
      * Initializes the controller class.
+     * @param url
+     * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb)
     {
-        colAttendance.setCellValueFactory(new PropertyValueFactory<>("absence"));
+        colAttendance.setCellValueFactory(new PropertyValueFactory<>("present"));
+        colDate.setCellValueFactory(new PropertyValueFactory<>("currentDate"));
     }    
     
     public void populateTableView()
@@ -73,11 +76,6 @@ public class EditStudentAttendanceViewController implements Initializable
         this.aaModel = aaModel;
     }
     
-    public void setUser(Person userToSet)
-    {
-        user = userToSet;
-    }
-    
     public void setStudent (Student studentToGet)
     {
         chosenStudent = studentToGet;
@@ -86,20 +84,29 @@ public class EditStudentAttendanceViewController implements Initializable
     @FXML
     private void saveAttendance(ActionEvent event)
     {
+
         Attendance changedAttendance;
         currentDate = Calendar.getInstance();
-        Date date = currentDate.getTime();
-        if (editAttGrp.getSelectedToggle() == rdBtnPresent && attDateChooser.getValue() != null)
+        Date date = tbViewAttendance.getSelectionModel().getSelectedItem().getCurrentDate();
+        
+        if (editAttGrp.getSelectedToggle() == rdBtnPresent && tbViewAttendance.getSelectionModel().getSelectedItem() != null)
         {
             changedAttendance = new Attendance(date, true);
-            aaModel.setAttendance(changedAttendance, user.getId());
+            aaModel.editAttendance(chosenStudent.getId(), changedAttendance);
 
+            Alert alert = new Alert(Alert.AlertType.ERROR, "Attendance for the chosen date set to present");
+            alert.showAndWait();
             return;
         } 
-        else if (editAttGrp.getSelectedToggle() == rdBtnAbsent&& attDateChooser.getValue() != null)
+        else if (editAttGrp.getSelectedToggle() == rdBtnAbsent && tbViewAttendance.getSelectionModel().getSelectedItem() != null)
         {
+            tbViewAttendance.getSelectionModel().getSelectedItem();
             changedAttendance = new Attendance(date, false);
-            aaModel.setAttendance(changedAttendance, user.getId());
+            aaModel.setAttendance(changedAttendance, chosenStudent.getId());
+            
+            
+            Alert alert = new Alert(Alert.AlertType.ERROR, "Attendance for the chosen date set to absent");
+            alert.showAndWait();
             return;
         }
         Alert alert = new Alert(Alert.AlertType.ERROR, "You have to select either present or absent");

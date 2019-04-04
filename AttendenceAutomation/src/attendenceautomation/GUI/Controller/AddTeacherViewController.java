@@ -17,6 +17,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -34,10 +35,11 @@ public class AddTeacherViewController implements Initializable
     private JFXTextField txtEmail;
     @FXML
     private JFXPasswordField txtPassword;
-
-    AAModel aaModel;
     @FXML
     private JFXButton btnSaveTeacher;
+
+    AAModel aaModel;
+    
     /**
      * Initializes the controller class.
      */
@@ -56,6 +58,7 @@ public class AddTeacherViewController implements Initializable
     @FXML
     private void btnAddTeacher(ActionEvent event)
     {
+        Stage primeStage = (Stage) btnSaveTeacher.getScene().getWindow();
         if (txtName.getText().length() == 0 || txtLastName.getText().length() == 0 || txtEmail.getText().length() == 0 || txtPassword.getText().length() == 0)
         {
             Alert alert = new Alert (Alert.AlertType.CONFIRMATION, "You have to fill out all fields!", ButtonType.OK);
@@ -72,6 +75,7 @@ public class AddTeacherViewController implements Initializable
         Teacher newTeacher = new Teacher(0, name, email, password);
         aaModel.addTeacher(newTeacher);
 
+        primeStage.close();
     }
     
 }

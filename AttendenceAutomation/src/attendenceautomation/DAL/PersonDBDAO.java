@@ -21,6 +21,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import javafx.scene.control.Alert;
 
 /**
  *
@@ -185,25 +186,42 @@ public class PersonDBDAO
         return attendance;
     }
 
+    public boolean checkIfExistingEntry(int id, java.sql.Date sqlDate, Connection con)
+    {
+        try 
+        {
+            PreparedStatement pstmt = con.prepareStatement("SELECT * FROM Attendance WHERE date = (?) AND studentID = (?)");
+            pstmt.setDate(1, sqlDate);
+            pstmt.setInt(2, id);
+
+            ResultSet rs = pstmt.executeQuery();
+            if (rs.next())
+            {
+                return true;
+                
+            }
+        } catch (Exception e)
+        {
+        }
+        return false;
+    }
+    
+
     public void editAttendance(int id, Attendance... attenToEdit)
     {
         try (Connection con = ds.getConnection())
         {
-            PreparedStatement pstmt = con.prepareStatement("INSERT INTO Attendance VALUES (?,?,?)");
-            PreparedStatement pstmt1 = con.prepareStatement("SELECT * FROM Attendance WHERE date = (?) AND studentID = (?)");
+            PreparedStatement pstmt1 = con.prepareStatement("INSERT INTO Attendance VALUES (?,?,?)");
             PreparedStatement pstmt2 = con.prepareStatement("UPDATE Attendance SET isPresent = (?) WHERE date = (?) AND studentID = (?) ");
             con.setAutoCommit(false);
             for (Attendance attendance : attenToEdit)
             {
-                //Search statement
                 java.sql.Date sqlDate = new java.sql.Date(attendance.getCurrentDate().getTime());
-                pstmt1.setDate(1, sqlDate);
-                pstmt1.setInt(2, id);
 
                 //Insert statement in case the chosen entry does not exist
-                pstmt.setInt(1, id);
-                pstmt.setDate(2, sqlDate);
-                pstmt.setBoolean(3, attendance.getPresent());
+                pstmt1.setInt(1, id);
+                pstmt1.setDate(2, sqlDate);
+                pstmt1.setBoolean(3, attendance.getPresent());
 
                 //Update statement in case the chosen entry does exist
                 pstmt2.setBoolean(1, attendance.getPresent());
@@ -211,27 +229,21 @@ public class PersonDBDAO
                 pstmt2.setInt(3, id);
 
                 //executes search statement
-                ResultSet rs = pstmt1.executeQuery();
-                if (!rs.next())
+                if (!checkIfExistingEntry(id, sqlDate, con))
                 {
-                    pstmt.execute();    //executes insert statement
-
-                    System.out.println("yay");
+                    pstmt1.execute();    //executes insert statement
                 }
-                if (rs.next())
+                if (checkIfExistingEntry(id, sqlDate, con))
                 {
                     pstmt2.execute(); //executes update statement
-                    System.out.println("meh");
-
                 }
-                con.commit();
-
             }
 
-//            con.commit();
+            con.commit();
         } catch (Exception e)
         {
-            e.printStackTrace();
+           Alert error = new Alert(Alert.AlertType.ERROR, "Something went wrong in the database");
+           error.showAndWait();
         }
     }
 

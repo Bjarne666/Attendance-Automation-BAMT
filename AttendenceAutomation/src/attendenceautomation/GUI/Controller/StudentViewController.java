@@ -97,11 +97,11 @@ public class StudentViewController implements Initializable
     private ToggleGroup Editgrp;
     @FXML
     private RadioButton editRdBtnPresent;
-    
+
     private Calendar currentDate;
-    
+
     private Person user;
-    
+
     private AAModel aaModel;
     private DateConverter dConverter;
     private ObservableList<LocalDate> localDates;
@@ -111,7 +111,7 @@ public class StudentViewController implements Initializable
     private JFXToggleButton btnToggleMultiple;
     @FXML
     private Label lblTo;
-   
+
     /**
      * Initializes the controller class.
      */
@@ -134,7 +134,7 @@ public class StudentViewController implements Initializable
 
         ancEditView.setVisible(false);
         ancStatisticView.setVisible(false);
-        
+
         lblTo.setVisible(false);
         dPickerTo.setVisible(false);
 
@@ -200,14 +200,14 @@ public class StudentViewController implements Initializable
         if (Editgrp.getSelectedToggle() == editRdBtnPresent && dPickerFrom.getValue() != null)
         {
             changedAttendance = new Attendance(date, true);
-            aaModel.editAttendance( user.getId(), changedAttendance);
-            
+            aaModel.editAttendance(user.getId(), changedAttendance);
+
             informationAlert("Attendance for the chosen date set to present");
             return;
         } else if (Editgrp.getSelectedToggle() == editRdBtnAbsent && dPickerFrom.getValue() != null)
         {
             changedAttendance = new Attendance(date, false);
-            aaModel.editAttendance( user.getId(), changedAttendance);
+            aaModel.editAttendance(user.getId(), changedAttendance);
 
             informationAlert("Attendance for the chosen date set to absent");
             return;
@@ -215,7 +215,7 @@ public class StudentViewController implements Initializable
         Alert newAlert = new Alert(Alert.AlertType.ERROR, "You either did not set a date to change or a state to change to");
         newAlert.showAndWait();
     }
-    
+
     @FXML
     private void handleAbsenceVisibility(ActionEvent event)
     {
@@ -232,13 +232,13 @@ public class StudentViewController implements Initializable
         {
             lblTo.setVisible(true);
             dPickerTo.setVisible(true);
-        } else if(!btnToggleMultiple.isSelected())
+        } else if (!btnToggleMultiple.isSelected())
         {
             lblTo.setVisible(false);
             dPickerTo.setVisible(false);
-            
+
         }
-        
+
     }
 
     /**
@@ -303,13 +303,13 @@ public class StudentViewController implements Initializable
         ObservableList<PieChart.Data> classChart = FXCollections.observableArrayList(
                 new PieChart.Data("Present", aaModel.getStudentPresentPieChartData(user.getId())),
                 new PieChart.Data("Absent", aaModel.getStudentPieChartData(user.getId())));
-    
+
         attendencePieChart.setData(classChart);
         attendencePieChart.setLegendVisible(false);
 
         return attendencePieChart;
     }
-   
+
     /**
      * defines the barChart and inserts data
      *
@@ -321,7 +321,7 @@ public class StudentViewController implements Initializable
         studentBarChart.getYAxis().setLabel("Days of absence");
         studentBarChart.setTitle("Overview of days absent (monthly)");
         XYChart.Series dataSet = new XYChart.Series();
-        
+
         // Converting date to localDate and counting absense for weekdays
         dConverter = new DateConverter(aaModel.getAbsenceSumById(user.getId()));
         localDates = dConverter.getDates();
@@ -332,24 +332,30 @@ public class StudentViewController implements Initializable
         int fridayCount = 0;
         for (LocalDate localDate : localDates)
         {
-        DayOfWeek dayOfWeek = localDate.getDayOfWeek();
-        switch(dayOfWeek)
-        {
-            case MONDAY: mondayCount++;
-            break;
-            case TUESDAY: tuesdayCount++;   
-            break;
-            case WEDNESDAY: wednesdayCount++; 
-            break;
-            case THURSDAY: thursdayCount++;  
-            break;
-            case FRIDAY: fridayCount++;
-            break;
-            default: System.out.println("Not a weekday");
-            break;
+            DayOfWeek dayOfWeek = localDate.getDayOfWeek();
+            switch (dayOfWeek)
+            {
+                case MONDAY:
+                    mondayCount++;
+                    break;
+                case TUESDAY:
+                    tuesdayCount++;
+                    break;
+                case WEDNESDAY:
+                    wednesdayCount++;
+                    break;
+                case THURSDAY:
+                    thursdayCount++;
+                    break;
+                case FRIDAY:
+                    fridayCount++;
+                    break;
+                default:
+                    System.out.println("Not a weekday");
+                    break;
+            }
         }
-        }
-        
+
         dataSet.setName("Absence");
 
         dataSet.getData().add(new XYChart.Data<>("Monday", mondayCount));
@@ -365,6 +371,7 @@ public class StudentViewController implements Initializable
 
     }
 
+    // returns to the main view
     @FXML
     private void clickImage(MouseEvent event) throws IOException
     {
@@ -373,11 +380,13 @@ public class StudentViewController implements Initializable
         loadMainView();
     }
 
+    // sets the current user
     public void setUser(Person userToSet)
     {
         user = userToSet;
     }
-
+    
+    // sets the labels to match the current user
     public void setLabels()
     {
         lblName.setText(user.getName());
@@ -385,13 +394,14 @@ public class StudentViewController implements Initializable
         lblEducation.setText(aaModel.getStudentClass(user.getId()));
         lblTotalAbsence.setText(Integer.toString(aaModel.getStudentPieChartAbsenceData(user.getId())));
     }
-
+    
     @FXML
     private void handleStudentLogout(ActionEvent event)
     {
         System.exit(0);
     }
-
+    
+    // sets the model to be used
     void setModel(AAModel modelToSet)
     {
         aaModel = modelToSet;

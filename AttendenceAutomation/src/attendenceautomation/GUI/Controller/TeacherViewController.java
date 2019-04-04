@@ -247,16 +247,13 @@ public class TeacherViewController implements Initializable
                 {
                     if (event.getClickCount() == 1  )
                     {
-                        tbViewStudents.getSelectionModel().clearSelection();
                         studentBarChart.getData().clear();
                         studentBarChart();
                         lblStudentName.setText(chosenStudent.getName());
-//                        ancTeacherView.getChildren().clear();
                         ancClassView.setVisible(false);
                         
                         ancStudentView.toFront();
                         ancStudentView.setVisible(true);
-//                        ancTeacherView.getChildren().add(ancStudentView);
                     }
                     else if (event.getClickCount() == 2)
                     {
@@ -359,8 +356,7 @@ public class TeacherViewController implements Initializable
         
         EditStudentAttendanceViewController editAttController = loader.getController();
         editAttController.setModel(aaModel);
-        editAttController.setUser(user);
-        editAttController.setStudent(chosenStudent);
+        editAttController.setStudent(tbViewStudents.getSelectionModel().getSelectedItem());
         editAttController.populateTableView();
         
         Stage stageEditAtt = new Stage();

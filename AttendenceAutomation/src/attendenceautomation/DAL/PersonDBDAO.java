@@ -368,7 +368,35 @@ public class PersonDBDAO
         return attendance;
     }
 
-   
+    public List<Attendance> getStudentPieChartData(int id)
+    {
+        List<Attendance> attendance = new ArrayList<>();
+
+        try (Connection con = ds.getConnection())
+        {
+            PreparedStatement pstmt = con.prepareStatement("SELECT * FROM Attendance "
+                    + "INNER JOIN Student on Attendance.studentID = Student.studentID "
+                    + "WHERE Student.studentID = (?) AND isPresent = (?) ");
+            pstmt.setInt(1, id);
+            pstmt.setBoolean(2, false);
+
+            ResultSet rs = pstmt.executeQuery();
+
+            while (rs.next())
+            {
+                Date date = rs.getDate("date");
+                boolean isNotPresent = rs.getBoolean("isPresent");
+
+                attendance.add(new Attendance(date, isNotPresent));
+            }
+        } catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+
+        return attendance;
+    }
+
     public List<Attendance> getStudentPresentPieChartData(int id)
     {
         List<Attendance> attendancePresent = new ArrayList<>();
@@ -583,5 +611,15 @@ public class PersonDBDAO
         }
         
         return attendanceAbsence;
+    }
+    
+    public List<Attendance> getCollectiveAbsence(int id)
+    {
+        List<Attendance> attendanceAbsence = new ArrayList<>();
+        try (Connection con = ds.getConnection())
+        {
+            preparedStatement pstmt = con.prepareStatement("SELECT * FROM Attendance " 
+                    + "INNER JOIN SchoolClass on  ");
+        }
     }
 }

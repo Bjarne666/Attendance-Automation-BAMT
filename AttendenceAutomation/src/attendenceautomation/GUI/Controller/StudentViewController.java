@@ -13,6 +13,8 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXToggleButton;
 import java.io.IOException;
 import java.net.URL;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.util.Calendar;
@@ -356,15 +358,14 @@ public class StudentViewController implements Initializable
         lblLoggedInAs.setText(user.getName());
         lblEducation.setText(aaModel.getStudentClass(user.getId()));
         //lblTotalAbsence.setText(Integer.toString((aaModel.getStudentPieChartAbsenceData(user.getId())) + aaModel.getStudentPresentPieChartData(user.getId())));
-    
-        double absence = aaModel.getStudentPieChartAbsenceData(user.getId());
-        double pressent = aaModel.getStudentPresentPieChartData(user.getId());
-        double totaldays = (absence + pressent); 
-        double totaldaysdividedby100 = totaldays/100;
-        double absenceProcent = totaldays*absence;
-        //double absenceProcent =(totaldays/100*absence);
-        
-        lblTotalAbsence.setText(Double.toString(absenceProcent));
+        showTotalAbsence();
+//        double absence = aaModel.getStudentPieChartAbsenceData(user.getId());
+//        double pressent = aaModel.getStudentPresentPieChartData(user.getId());
+//        double totaldays = (absence + pressent); 
+//        double absenceProcent =(absence/totaldays)*100;
+//        DecimalFormat df = new DecimalFormat(".00");
+//        String formatProcent = df.format(absenceProcent);
+//        lblTotalAbsence.setText(formatProcent + "%");
     
     }
 
@@ -380,14 +381,15 @@ public class StudentViewController implements Initializable
         aaModel = modelToSet;
     }
     
-    public void showBarChartAbsence()
+    public void showTotalAbsence()
     {
-        double ab = aaModel.getStudentPieChartAbsenceData(user.getId());
-        double pr = aaModel.getStudentPresentPieChartData(user.getId());
-        double tdays = (ab + pr); 
-        double absenceProcent =((tdays/100)*ab);
-        
-        lblTotalAbsence.setText(Integer.toString((int) absenceProcent));
+        double absence = aaModel.getStudentPieChartAbsenceData(user.getId());
+        double pressent = aaModel.getStudentPresentPieChartData(user.getId());
+        double totaldays = (absence + pressent); 
+        double absenceProcent =(absence/totaldays)*100;
+        DecimalFormat df = new DecimalFormat(".00");
+        String formatProcent = df.format(absenceProcent);
+        lblTotalAbsence.setText(formatProcent + "%");
     }
 
 }

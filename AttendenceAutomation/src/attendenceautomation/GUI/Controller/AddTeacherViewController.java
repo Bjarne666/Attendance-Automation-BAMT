@@ -59,6 +59,7 @@ public class AddTeacherViewController implements Initializable
     private void btnAddTeacher(ActionEvent event)
     {
         Stage primeStage = (Stage) btnSaveTeacher.getScene().getWindow();
+        
         if (txtName.getText().length() == 0 || txtLastName.getText().length() == 0 || txtEmail.getText().length() == 0 || txtPassword.getText().length() == 0)
         {
             Alert alert = new Alert (Alert.AlertType.CONFIRMATION, "You have to fill out all fields!", ButtonType.OK);

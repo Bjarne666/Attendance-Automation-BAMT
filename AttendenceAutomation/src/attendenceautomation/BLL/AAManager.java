@@ -28,7 +28,6 @@ public class AAManager implements AttendanceInterface
     public AAManager(AADALInterface dalInterface) throws IOException
     {
      aDAO = new AttendanceFacade();
-//     aDAO = new MockDAO();
     }
 
     @Override
@@ -97,7 +96,7 @@ public class AAManager implements AttendanceInterface
         return aDAO.getStudentClass(id);
     }
     
-@Override
+    @Override
     public void setAttendance(Attendance attendance, int id)
     {
         aDAO.setAttendance(attendance, id);

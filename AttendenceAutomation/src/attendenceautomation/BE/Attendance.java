@@ -21,7 +21,6 @@ public class Attendance
 
     public Attendance(Date currentDate, boolean present)
     {
-
         this.present = new SimpleBooleanProperty();
 
         this.present.set(present);
@@ -38,11 +37,4 @@ public class Attendance
     {
         return present.get();
     }
-
-    
-//    public String toString()
-//    {
-//        return "At "+ currentDate + "your attendance were recorded as: " + present.get();
-//    }
-    
 }

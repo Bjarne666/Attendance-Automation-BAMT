@@ -29,7 +29,6 @@ import javafx.scene.control.Alert;
  */
 public class PersonDBDAO
 {
-
     DbConnectionProvider ds;
 
     public PersonDBDAO() throws IOException
@@ -51,8 +50,6 @@ public class PersonDBDAO
             while (rs.next())
             {
                 int id = rs.getInt("studentID");
-//                String firstName = rs.getString("firstName");
-//                String lastName = rs.getString("lastName");
                 String name = rs.getString("name");
                 String email = rs.getString("email");
                 String password = rs.getString("password");
@@ -60,10 +57,11 @@ public class PersonDBDAO
                 students.add(new Student(id, name, email, password));
             }
 
-        } catch (Exception e)
+        } 
+        catch (Exception e)
         {
-            e.printStackTrace();
         }
+        
         return students;
     }
 
@@ -73,16 +71,15 @@ public class PersonDBDAO
 
         try (Connection con = ds.getConnection())
         {
-            PreparedStatement pstmt = con.prepareStatement("SELECT firstName + ' ' + lastName AS name, * FROM Person INNER JOIN ON Person.id = Student.studentID WHERE StudentID = (?)");
-            pstmt.setInt(1, id);
+            PreparedStatement pstmt = con.prepareStatement("SELECT firstName + ' ' + lastName AS name, * FROM Person "
+                    + "INNER JOIN ON Person.id = Student.studentID WHERE StudentID = (?)");
+                pstmt.setInt(1, id);
 
             ResultSet rs = pstmt.executeQuery();
 
             while (rs.next())
             {
                 id = rs.getInt("studentID");
-//                String firstName = rs.getString("firstName");
-//                String lastName = rs.getString("lastName");
                 String name = rs.getString("name");
                 String email = rs.getString("email");
                 String password = rs.getString("password");
@@ -90,9 +87,9 @@ public class PersonDBDAO
                 studentToGet = new Student(id, name, email, password);
             }
 
-        } catch (Exception e)
+        } 
+        catch (Exception e)
         {
-            e.printStackTrace();
         }
 
         return studentToGet;
@@ -104,16 +101,15 @@ public class PersonDBDAO
 
         try (Connection con = ds.getConnection())
         {
-            PreparedStatement pstmt = con.prepareStatement("SELECT firstName + ' ' + lastName AS name, * FROM Person INNER JOIN ON Person.id = Teaher.teacherID WHERE teacherID = (?)");
-            pstmt.setInt(1, id);
+            PreparedStatement pstmt = con.prepareStatement("SELECT firstName + ' ' + lastName AS name, * FROM Person"
+                    + "INNER JOIN ON Person.id = Teaher.teacherID WHERE teacherID = (?)");
+                pstmt.setInt(1, id);
 
             ResultSet rs = pstmt.executeQuery();
 
             while (rs.next())
             {
                 id = rs.getInt("teacherID");
-//                String firstName = rs.getString("firstName");
-//                String lastName = rs.getString("lastName");
                 String name = rs.getString("name");
                 String email = rs.getString("email");
                 String password = rs.getString("password");
@@ -121,9 +117,9 @@ public class PersonDBDAO
                 teacherToGet = new Teacher(id, name, email, password);
             }
 
-        } catch (Exception e)
+        } 
+        catch (Exception e)
         {
-            e.printStackTrace();
         }
 
         return teacherToGet;
@@ -135,7 +131,6 @@ public class PersonDBDAO
 
         try (Connection con = ds.getConnection())
         {
-
             Statement statement = con.createStatement();
 
             ResultSet rs = statement.executeQuery("SELECT firstName + ' ' + lastName AS name, * FROM Person INNER JOIN Teacher ON Person.id = Teacher.teacherID");
@@ -143,8 +138,6 @@ public class PersonDBDAO
             while (rs.next())
             {
                 int id = rs.getInt("ID");
-//                String firstName = rs.getString("firstName");
-//                String lastName = rs.getString("lastName");
                 String name = rs.getString("name");
                 String email = rs.getString("email");
                 String password = rs.getString("password");
@@ -152,9 +145,9 @@ public class PersonDBDAO
                 teachers.add(new Teacher(id, name, email, password));
             }
 
-        } catch (Exception e)
+        } 
+        catch (Exception e)
         {
-            e.printStackTrace();
         }
 
         return teachers;
@@ -178,9 +171,9 @@ public class PersonDBDAO
 
                 attendance.add(new Attendance(date, present));
             }
-        } catch (Exception e)
+        } 
+        catch (Exception e)
         {
-            e.printStackTrace();
         }
 
         return attendance;
@@ -200,7 +193,8 @@ public class PersonDBDAO
                 return true;
                 
             }
-        } catch (Exception e)
+        } 
+        catch (Exception e)
         {
         }
         return false;
@@ -264,7 +258,8 @@ public class PersonDBDAO
             pstmt.setBoolean(3, attendance.getPresent());
 
             pstmt.execute();
-        } catch (Exception e)
+        } 
+        catch (Exception e)
         {
             e.printStackTrace();
         }
@@ -283,6 +278,7 @@ public class PersonDBDAO
             pstmt.setString(2, password);
 
             ResultSet rs = pstmt.executeQuery();
+            
             while (rs.next())
             {
                 int id = rs.getInt("id");
@@ -291,7 +287,6 @@ public class PersonDBDAO
                 password = rs.getString("password");
 
                 personToLogin = new Teacher(id, name, email, password);
-
             }
         }
         try (Connection con = ds.getConnection())
@@ -331,7 +326,8 @@ public class PersonDBDAO
 
                 personToLogin = new Administrator(id, name, email, password);
             }
-        } catch (Exception e)
+        } 
+        catch (Exception e)
         {
             e.printStackTrace();
         }
@@ -360,7 +356,8 @@ public class PersonDBDAO
 
                 attendance.add(new Attendance(date, isPresent));
             }
-        } catch (Exception e)
+        } 
+        catch (Exception e)
         {
             e.printStackTrace();
         }
@@ -390,7 +387,8 @@ public class PersonDBDAO
 
                 attendancePresent.add(new Attendance(date, isPresent));
             }
-        } catch (Exception e)
+        } 
+        catch (Exception e)
         {
             e.printStackTrace();
         }
@@ -409,11 +407,13 @@ public class PersonDBDAO
             pstmt.setInt(1, id);
 
             ResultSet rs = pstmt.executeQuery();
+            
             while (rs.next())
             {
                 nameString = rs.getString("className");
             }
-        } catch (Exception e)
+        } 
+        catch (Exception e)
         {
         }
         return nameString;
@@ -426,9 +426,9 @@ public class PersonDBDAO
             PreparedStatement pstmt = con.prepareStatement("DELETE FROM Person WHERE ID = (?) ");
             pstmt.setInt(1, studentToDelete.getId());
             pstmt.execute();
-        } catch (Exception e)
+        } 
+        catch (Exception e)
         {
-            e.printStackTrace();
         }
     }
 
@@ -439,9 +439,9 @@ public class PersonDBDAO
             PreparedStatement pstmt = con.prepareStatement("DELETE FROM Person WHERE ID = (?) ");
             pstmt.setInt(1, teacherToDelete.getId());
             pstmt.execute();
-        } catch (Exception e)
+        } 
+        catch (Exception e)
         {
-            e.printStackTrace();
         }
     }
 
@@ -473,15 +473,16 @@ public class PersonDBDAO
                 {
                     studentToAdd.setId(generatedKeys.getInt(1));
                 }
-            } catch (Exception e)
+            } 
+            catch (Exception e)
             {
             }
             pstmt1.setInt(1, studentToAdd.getId());
             pstmt1.setInt(2, schoolClass.getId());
             pstmt1.execute();
-        } catch (Exception e)
+        } 
+        catch (Exception e)
         {
-            e.printStackTrace();
         }
     }
 
@@ -513,15 +514,16 @@ public class PersonDBDAO
                     teacherToAdd.setId(generatedKeys.getInt(1));
                 }
 
-            } catch (Exception e)
+            } 
+            catch (Exception e)
             {
             }
 
             pstmt1.setInt(1, teacherToAdd.getId());
             pstmt1.execute();
-        } catch (Exception e)
+        } 
+        catch (Exception e)
         {
-            e.printStackTrace();
         }
     }
 
@@ -536,9 +538,10 @@ public class PersonDBDAO
             pstmt.setInt(4, id);
 
             pstmt.execute();
-        } catch (Exception e)
+        } 
+        catch (Exception e)
         {
-            e.printStackTrace();
+
         }
     }
 
@@ -550,9 +553,9 @@ public class PersonDBDAO
             pstmt.setInt(1, chosenClass.getId());
             pstmt.setInt(2, studentToMove.getId());
             pstmt.execute();
-        } catch (Exception e)
+        } 
+        catch (Exception e)
         {
-            e.printStackTrace();
         }
 
     }
@@ -582,7 +585,6 @@ public class PersonDBDAO
         }
         catch (Exception e)
         {
-            e.printStackTrace();
         }
         
         return attendanceAbsence;
@@ -613,7 +615,6 @@ public class PersonDBDAO
         }
         catch (Exception e)
         {
-            e.printStackTrace();
         }
         
         return attendancePresence;
@@ -639,9 +640,9 @@ public class PersonDBDAO
                 
                 attendanceAbsence.add(new Attendance(date, isNotPresent));
             }
-        } catch (Exception e)
+        } 
+        catch (Exception e)
         {
-            e.printStackTrace();
         }
         
         return attendanceAbsence;
@@ -673,10 +674,11 @@ public class PersonDBDAO
               absence++;
             }
             
-        } catch (Exception e)
+        }
+        catch (Exception e)
         {
         }
-            return (absence/total)*100;
+        return (absence/total)*100;
     }
 }
 

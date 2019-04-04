@@ -20,7 +20,6 @@ import java.util.List;
  */
 public interface AttendanceInterface
 {
-    
     /**
      *
      * @param attenToEdit
@@ -90,7 +89,6 @@ public interface AttendanceInterface
      */
     public List<Attendance> setUpBarChart (int id);
     
-   
     /**
      * 
      * @param id

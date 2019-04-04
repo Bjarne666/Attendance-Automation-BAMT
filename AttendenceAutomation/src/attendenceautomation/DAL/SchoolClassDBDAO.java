@@ -56,9 +56,9 @@ public class SchoolClassDBDAO
                 int id = rs.getInt("id");
                 students.add(new Student(id, name, email, password));
             }
-        } catch (Exception e)
+        }
+        catch (Exception e)
         {
-            e.printStackTrace();
         }
         return students;
 
@@ -82,11 +82,9 @@ public class SchoolClassDBDAO
                 schoolClasses.add(new SchoolClass(classID, className));
 
             }
-        } catch (Exception e)
+        } 
+        catch (Exception e)
         {
-            e.printStackTrace();
-//            Alert warning = new Alert(Alert.AlertType.ERROR, "There's no classes in the database");
-//            warning.showAndWait();
         }
         return schoolClasses;
     }
@@ -109,9 +107,9 @@ public class SchoolClassDBDAO
 
                 schoolclassToGet = new SchoolClass(classID, className);
             }
-        } catch (Exception e)
+        } 
+        catch (Exception e)
         {
-            e.printStackTrace();
         }
         return schoolclassToGet;
     }
@@ -126,7 +124,6 @@ public class SchoolClassDBDAO
         } 
         catch (Exception e)
         {
-            e.printStackTrace();
         }
     }
     
@@ -140,7 +137,6 @@ public class SchoolClassDBDAO
         } 
         catch (Exception e)
         {
-            e.printStackTrace();
         }
     }
     
@@ -157,7 +153,6 @@ public class SchoolClassDBDAO
         } 
         catch (Exception e)
         {
-            e.printStackTrace();
         }
     }
 }

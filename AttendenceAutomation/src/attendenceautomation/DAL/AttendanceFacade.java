@@ -23,6 +23,7 @@ public class AttendanceFacade implements AADALInterface
 {
     SchoolClassDBDAO sCDbDao;
     PersonDBDAO pDbDao;
+    
     public AttendanceFacade() throws IOException
     {
         sCDbDao = new SchoolClassDBDAO();

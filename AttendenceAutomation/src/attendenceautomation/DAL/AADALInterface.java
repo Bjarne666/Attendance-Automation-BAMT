@@ -20,7 +20,6 @@ import java.util.List;
  */
 public interface AADALInterface
 {
-
     /**
      *
      * @param attenToEdit
@@ -73,6 +72,7 @@ public interface AADALInterface
      * @return
      */
     public double calculateTotalAbsence(int id);
+    
     /**
      *
      * @param student
@@ -117,7 +117,8 @@ public interface AADALInterface
      * @return
      */
     public String getStudentClass(int id);
-/** 
+    
+    /** 
      * 
      * @param attendance
      * @param id 

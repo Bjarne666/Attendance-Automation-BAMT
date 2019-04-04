@@ -14,8 +14,6 @@ import javafx.beans.property.StringProperty;
  */
 public abstract class Person
 {
-
- 
     private int id;
     private final StringProperty name;
     private final StringProperty email;

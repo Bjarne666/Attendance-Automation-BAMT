@@ -560,7 +560,7 @@ public class PersonDBDAO
 
     public List<Attendance> getStudentPieChartAbsenceData(int id)
     {
-        List<Attendance> attendance = new ArrayList<>();
+        List<Attendance> attendanceAbsence = new ArrayList<>();
         
         try (Connection con = ds.getConnection())
         {
@@ -577,7 +577,7 @@ public class PersonDBDAO
                 Date date = rs.getDate("date");
                 boolean isNotPresent = rs.getBoolean("isPresent");
                 
-                attendance.add(new Attendance(date, isNotPresent));
+                attendanceAbsence.add(new Attendance(date, isNotPresent));
             }
         } 
         catch (Exception e)
@@ -585,6 +585,6 @@ public class PersonDBDAO
             e.printStackTrace();
         }
         
-        return attendance;
+        return attendanceAbsence;
     }
 }

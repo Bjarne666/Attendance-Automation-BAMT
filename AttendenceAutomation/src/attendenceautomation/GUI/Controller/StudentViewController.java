@@ -383,7 +383,17 @@ public class StudentViewController implements Initializable
         lblName.setText(user.getName());
         lblLoggedInAs.setText(user.getName());
         lblEducation.setText(aaModel.getStudentClass(user.getId()));
-        lblTotalAbsence.setText(Integer.toString(aaModel.getStudentPieChartAbsenceData(user.getId())));
+        //lblTotalAbsence.setText(Integer.toString((aaModel.getStudentPieChartAbsenceData(user.getId())) + aaModel.getStudentPresentPieChartData(user.getId())));
+    
+        double absence = aaModel.getStudentPieChartAbsenceData(user.getId());
+        double pressent = aaModel.getStudentPresentPieChartData(user.getId());
+        double totaldays = (absence + pressent); 
+        double totaldaysdividedby100 = totaldays/100;
+        double absenceProcent = totaldays*absence;
+        //double absenceProcent =(totaldays/100*absence);
+        
+        lblTotalAbsence.setText(Double.toString(absenceProcent));
+    
     }
 
     @FXML
@@ -395,6 +405,16 @@ public class StudentViewController implements Initializable
     void setModel(AAModel modelToSet)
     {
         aaModel = modelToSet;
+    }
+    
+    public void showBarChartAbsence()
+    {
+        double ab = aaModel.getStudentPieChartAbsenceData(user.getId());
+        double pr = aaModel.getStudentPresentPieChartData(user.getId());
+        double tdays = (ab + pr); 
+        double absenceProcent =((tdays/100)*ab);
+        
+        lblTotalAbsence.setText(Integer.toString((int) absenceProcent));
     }
 
 }

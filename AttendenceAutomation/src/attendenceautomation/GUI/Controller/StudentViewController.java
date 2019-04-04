@@ -267,7 +267,7 @@ public class StudentViewController implements Initializable
     {
         ObservableList<PieChart.Data> classChart = FXCollections.observableArrayList(
                 new PieChart.Data("Present", aaModel.getStudentPresentPieChartData(user.getId())),
-                new PieChart.Data("Absent", aaModel.getStudentPieChartData(user.getId())));
+                new PieChart.Data("Absent", aaModel.getStudentPieChartAbsenceData(user.getId())));
 
         attendencePieChart.setData(classChart);
         attendencePieChart.setLegendVisible(false);
@@ -357,16 +357,8 @@ public class StudentViewController implements Initializable
         lblName.setText(user.getName());
         lblLoggedInAs.setText(user.getName());
         lblEducation.setText(aaModel.getStudentClass(user.getId()));
-        //lblTotalAbsence.setText(Integer.toString((aaModel.getStudentPieChartAbsenceData(user.getId())) + aaModel.getStudentPresentPieChartData(user.getId())));
-        showTotalAbsence();
-//        double absence = aaModel.getStudentPieChartAbsenceData(user.getId());
-//        double pressent = aaModel.getStudentPresentPieChartData(user.getId());
-//        double totaldays = (absence + pressent); 
-//        double absenceProcent =(absence/totaldays)*100;
-//        DecimalFormat df = new DecimalFormat(".00");
-//        String formatProcent = df.format(absenceProcent);
-//        lblTotalAbsence.setText(formatProcent + "%");
-    
+
+        showTotalAbsence();    
     }
 
     @FXML

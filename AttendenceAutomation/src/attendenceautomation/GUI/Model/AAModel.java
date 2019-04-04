@@ -111,22 +111,13 @@ public class AAModel
     
     public ObservableList<Attendance> getAbsenceSumById (int id)
     {       
-//        ObservableList absences = FXCollections.observableArrayList(aManager.setUpBarChart(id));
-//        int absencesum = 0;
-//        
-//        for (int i = 0; i < absences.size(); i++)
-//        {
-//            absencesum ++;
-//        }
-//        return absencesum;
-        
         return FXCollections.observableArrayList(aManager.setUpBarChart(id));
         
     }
     
-    public int getStudentPieChartData(int id)
+    public int getStudentPieChartAbsenceData(int id)
     {
-        ObservableList isNotPresentData = FXCollections.observableArrayList(aManager.getStudentPieChartData(id));
+        ObservableList isNotPresentData = FXCollections.observableArrayList(aManager.getStudentPieChartAbsenceData(id));
         
         
         int isAbsenceAvg = 0;
@@ -209,18 +200,5 @@ public class AAModel
         aManager.moveStudentToNewClass(chosenClass, studentToMove);
     }
     
-    public int getStudentPieChartAbsenceData(int id)
-    {
-        ObservableList isNotPresentData = FXCollections.observableArrayList(aManager.getStudentPieChartData(id));
-        
-        
-        int isAbsenceAvg = 0;
-        
-        for (int i = 0; i < isNotPresentData.size(); i++)
-        {
-            isAbsenceAvg++;
-        }
-        
-        return isAbsenceAvg;
-    }
+   
 }

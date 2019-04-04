@@ -86,9 +86,9 @@ public class AAManager implements AttendanceInterface
     }
 
     @Override
-    public List<Attendance> getStudentPieChartData(int id)
+    public List<Attendance> getStudentPieChartAbsenceData(int id)
     {
-        return aDAO.getStudentPieChartData(id);
+        return aDAO.getStudentPieChartAbsenceData(id);
     }
 
     @Override
@@ -168,9 +168,4 @@ public class AAManager implements AttendanceInterface
         aDAO.moveStudentToNewClass(chosenClass, studentToMove);
     }
 
-    @Override
-    public List<Attendance> getStudentPieChartAbsenceData(int id) 
-    {
-        return aDAO.getStudentPieChartData(id);
-    }
 }

@@ -96,7 +96,7 @@ public interface AADALInterface
      * @param id
      * @return 
      */
-    public List<Attendance> getStudentPieChartData(int id);
+    public List<Attendance> getStudentPieChartAbsenceData(int id);
     
     /**
      * 

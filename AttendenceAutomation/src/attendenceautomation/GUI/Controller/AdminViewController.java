@@ -56,8 +56,6 @@ public class AdminViewController implements Initializable
     @FXML
     private TableColumn<Student, String> colStudentEmail;
     @FXML
-    private TableColumn<Student, String> colStudentAbsence;
-    @FXML
     private TableView<Teacher> tbViewTeacher;
     @FXML
     private TableColumn<Teacher, String> colTeacherName;
@@ -122,7 +120,6 @@ public class AdminViewController implements Initializable
         //Student data for tableview
         colStudentName.setCellValueFactory(new PropertyValueFactory<>("name"));
         colStudentEmail.setCellValueFactory(new PropertyValueFactory<>("Email"));
-        colStudentAbsence.setCellValueFactory(new PropertyValueFactory<>("absence"));
 
         //Teacher data for tableview
         colTeacherName.setCellValueFactory(new PropertyValueFactory<>("name"));

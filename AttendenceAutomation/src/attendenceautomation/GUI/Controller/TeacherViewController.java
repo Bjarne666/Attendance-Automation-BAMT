@@ -24,7 +24,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import static javafx.scene.AccessibleAttribute.VISIBLE;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.chart.BarChart;
@@ -40,7 +39,6 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import javax.accessibility.AccessibleState;
 
 /**
  * FXML Controller class
@@ -116,7 +114,7 @@ public class TeacherViewController implements Initializable
         colName.setCellValueFactory(new PropertyValueFactory<>("name"));
         colEmail.setCellValueFactory(new PropertyValueFactory<>("Email"));
         colAbsence.setCellValueFactory(new PropertyValueFactory<>("absence"));
-
+        
         ancClassView.setVisible(false);
         ancStudentView.setVisible(false);
 
@@ -224,7 +222,7 @@ public class TeacherViewController implements Initializable
         dataSet.getData().add(new XYChart.Data<>("Wednesday", wednesdayCount));
         dataSet.getData().add(new XYChart.Data<>("Thursday", thursdayCount));
         dataSet.getData().add(new XYChart.Data<>("Friday", fridayCount));      
-
+        
         //add dataset to chart
         studentBarChart.getData().add(dataSet);
         studentBarChart.setLegendVisible(false);
@@ -247,7 +245,7 @@ public class TeacherViewController implements Initializable
                 comboClassList.getSelectionModel().clearSelection();
                 if (event.getButton().equals(MouseButton.PRIMARY))
                 {
-                    if (event.getClickCount() == 1 && !ancStudentView.isVisible() )
+                    if (event.getClickCount() == 1  )
                     {
                         tbViewStudents.getSelectionModel().clearSelection();
                         studentBarChart.getData().clear();
@@ -358,9 +356,12 @@ public class TeacherViewController implements Initializable
         Stage primeStage = (Stage) btnEditAttendance.getScene().getWindow();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/attendenceautomation/GUI/View/editStudentAttendanceView.fxml"));
         Parent root = loader.load();
-
+        
         EditStudentAttendanceViewController editAttController = loader.getController();
         editAttController.setModel(aaModel);
+        editAttController.setUser(user);
+        editAttController.setStudent(chosenStudent);
+        editAttController.populateTableView();
         
         Stage stageEditAtt = new Stage();
         stageEditAtt.setScene(new Scene(root));

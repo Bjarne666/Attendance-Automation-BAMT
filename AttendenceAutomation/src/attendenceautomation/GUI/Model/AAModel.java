@@ -15,9 +15,7 @@ import attendenceautomation.BLL.AttendanceInterface;
 import attendenceautomation.DAL.AttendanceFacade;
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.Date;
 import java.util.List;
-import java.util.Observable;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -28,34 +26,38 @@ import javafx.collections.ObservableList;
 public class AAModel
 {
     private final AttendanceInterface aManager;
-    private ObservableList<Student> studentList;
-    private ObservableList<SchoolClass> classList;
-    private ObservableList<Teacher> teacherList;
+    private final ObservableList<Student> studentList;
+    private final ObservableList<SchoolClass> classList;
+    private final ObservableList<Teacher> teacherList;
    
     private Person user;
 
 
     public AAModel() throws IOException
     {
-//       MockDAO mDAO = new MockDAO();
        AttendanceFacade aFacade = new AttendanceFacade();
        aManager = new AAManager(aFacade);
        
        studentList = FXCollections.observableArrayList(aManager.getAllStudents());
        studentList.addAll(aManager.getAllStudents());
+       
        classList = FXCollections.observableArrayList(aManager.getAllClasses());
        classList.addAll(aManager.getAllClasses());
+       
        teacherList = FXCollections.observableArrayList(aManager.getAllTeachers());
+       teacherList.addAll(aManager.getAllTeachers());
     }
     
     public void editAttendance(int id, Attendance... attenToEdit)
     {
         aManager.editAttendance(id, attenToEdit);
     }
+    
     public String getStudentClass(int id)
     {
         return aManager.getStudentClass(id);
     }
+    
     public ObservableList<Student> getAllStudents()
     {
         List<Student> tempStudentList = aManager.getAllStudents();
@@ -86,6 +88,7 @@ public class AAModel
     public ObservableList<Student> getStudentsInClass(SchoolClass chosenClass)
     {
         ObservableList<Student> studentsInClass = FXCollections.observableArrayList(aManager.getStudentsInClass(chosenClass));
+        
         for (Student studentsInClas : studentsInClass)
         {
             studentsInClas.setAbsence(Double.toString(aManager.calculateTotalAbsence(studentsInClas.getId())));
@@ -117,7 +120,6 @@ public class AAModel
     public ObservableList<Attendance> getAbsenceSumById (int id)
     {       
         return FXCollections.observableArrayList(aManager.setUpBarChart(id));
-        
     }
     
     public int getStudentPieChartAbsenceData(int id)
@@ -150,9 +152,9 @@ public class AAModel
     }
     
     public void setAttendance(Attendance attendance, int id)
-        {
-            aManager.setAttendance(attendance, id);
-        }
+    {
+        aManager.setAttendance(attendance, id);
+    }
     
     public void deleteStudent (Student studentToDelete)
     {

@@ -205,5 +205,31 @@ public class AAModel
         aManager.moveStudentToNewClass(chosenClass, studentToMove);
     }
     
-   
+    public int getTotalClassPresence(int id)
+    {
+        ObservableList isPresentData = FXCollections.observableArrayList(aManager.getTotalClassPresence(id));
+        
+        int isPresent = 0;
+        
+        for (int i = 0; i < isPresentData.size(); i++)
+        {
+            isPresent++;
+        }
+        
+        return isPresent;
+    }
+    
+    public  int getTotalClassAbsence(int id)
+    {
+        ObservableList isAbsentData = FXCollections.observableArrayList(aManager.getTotalClassAbsence(id));
+        
+        int isAbsent = 0;
+        
+        for (int i = 0; i < isAbsentData.size(); i++)
+        {
+            isAbsent++;
+        }
+        
+        return isAbsent;
+    }
 }

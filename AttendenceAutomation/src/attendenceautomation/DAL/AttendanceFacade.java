@@ -172,4 +172,16 @@ public class AttendanceFacade implements AADALInterface
     {
         return pDbDao.calculateTotalAbsence(id);
     }
+
+    @Override
+    public List<Attendance> getTotalClassPresence(int id)
+    {
+        return pDbDao.getTotalClassPresence(id);
+    }
+
+    @Override
+    public List<Attendance> getTotalClassAbsence(int id)
+    {
+        return pDbDao.getTotalClassAbsence(id);
+    }
 }

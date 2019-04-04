@@ -90,20 +90,28 @@ public class TeacherViewController implements Initializable
     private Label lblClassName;
     @FXML
     private Label lblStudentName;
-
-    AAModel aaModel;
-
-    private Person user;
-    private Student chosenStudent;
-    private DateConverter dConverter;
-    private ObservableList<LocalDate> localDates;
     @FXML
     private Label lblTotalAbsence;
     @FXML
     private JFXButton btnEditAttendance;
 
+    private Person user;
+    
+    private Student chosenStudent;
+    
+    private DateConverter dConverter;
+    
+    private ObservableList<LocalDate> localDates;
+    
+    SchoolClass chosenClass;
+    
+    AAModel aaModel;
+    
+
     /**
      * Initializes the controller class.
+     * @param url
+     * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb)
@@ -124,9 +132,6 @@ public class TeacherViewController implements Initializable
             ex.printStackTrace();
         }
 
-        classPieChart();
-        
-//        studentBarChart();
         showCurrentDate();
     }
 
@@ -149,15 +154,15 @@ public class TeacherViewController implements Initializable
     public PieChart classPieChart()
     {
         ObservableList<PieChart.Data> classChart = FXCollections.observableArrayList(
-                new PieChart.Data("Present", 65),
-                new PieChart.Data("Absent", 35));
+                new PieChart.Data("Present", aaModel.getTotalClassPresence(chosenClass.getId())),
+                new PieChart.Data("Absent", aaModel.getTotalClassAbsence(chosenClass.getId())));
 
         classPieChart.setData(classChart);
         classPieChart.setLegendVisible(false);
 
         return classPieChart;
-
     }
+
 
     /**
      * The piechart showing student attendance
@@ -326,15 +331,19 @@ public class TeacherViewController implements Initializable
         {
             System.out.println("clicked");
             SchoolClass currentClass = comboClassList.getSelectionModel().getSelectedItem();
+            chosenClass = comboClassList.getSelectionModel().getSelectedItem();
             tbViewStudents.setItems(aaModel.getStudentsInClass(currentClass));
             lblClassName.setText(currentClass.getClassName());
 
-//            mainAnchorPane.getChildren().clear();
-//            ancTeacherView.setVisible(false);
+            tbViewStudents.setItems(aaModel.getStudentsInClass(currentClass));
+            lblClassName.setText(currentClass.getClassName());
+            
+            classPieChart();
+
             ancStudentView.setVisible(false);
             ancClassView.setVisible(true);
             ancClassView.toFront();
-//            ancTeacherView.getChildren().add(ancClassView);
+
         }
     }
 
@@ -365,6 +374,11 @@ public class TeacherViewController implements Initializable
     void setModel(AAModel modelToSet)
     {
         aaModel = modelToSet;
+    }
+    
+    public void setChosenClass(SchoolClass classToChoose)
+    {
+        chosenClass = classToChoose;
     }
 
     @FXML

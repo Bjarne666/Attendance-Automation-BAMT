@@ -185,5 +185,18 @@ public interface AADALInterface
      */
     public void moveStudentToNewClass(SchoolClass chosenClass, Student studentToMove);
     
+    /**
+     * 
+     * @param id
+     * @return 
+     */
+    public List<Attendance> getTotalClassPresence(int id);
+    
+    /**
+     * 
+     * @param id
+     * @return 
+     */
+    public  List<Attendance> getTotalClassAbsence(int id);
 }
 

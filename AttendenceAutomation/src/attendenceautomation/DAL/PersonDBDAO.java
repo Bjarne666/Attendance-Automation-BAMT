@@ -556,6 +556,68 @@ public class PersonDBDAO
         }
 
     }
+    
+    public  List<Attendance> getTotalClassAbsence(int id)
+    {
+        List<Attendance> attendanceAbsence = new ArrayList<>();
+        
+        try (Connection con = ds.getConnection())
+        {
+            PreparedStatement pstmt = con.prepareStatement("SELECT isPresent, date FROM Attendance "
+                    + "INNER JOIN Student ON Attendance.studentID = Student.studentID "
+                    + "INNER JOIN SchoolClass ON SchoolClass.classID = Student.classID "
+                    + "WHERE SchoolClass.classID = (?) AND isPresent = (?)");
+            pstmt.setInt(1, id);
+            pstmt.setBoolean(2, false);
+
+            ResultSet rs = pstmt.executeQuery();
+            
+            while (rs.next())
+            {
+                Date date = rs.getDate("date");
+                boolean isNotPresent = rs.getBoolean("isPresent");
+                
+                attendanceAbsence.add(new Attendance(date, isNotPresent));
+            }
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+        
+        return attendanceAbsence;
+    }
+    
+    public List<Attendance> getTotalClassPresence(int id)
+    {
+        List<Attendance> attendancePresence = new ArrayList<>();
+        
+        try (Connection con = ds.getConnection())
+        {
+            PreparedStatement pstmt = con.prepareStatement("SELECT isPresent, date FROM Attendance "
+                    + "INNER JOIN Student ON Attendance.studentID = Student.studentID "
+                    + "INNER JOIN SchoolClass ON SchoolClass.classID = Student.classID "
+                    + "WHERE SchoolClass.classID = (?) AND isPresent = (?)");
+            pstmt.setInt(1, id);
+            pstmt.setBoolean(2, true);
+
+            ResultSet rs = pstmt.executeQuery();
+            
+            while (rs.next())
+            {
+                Date date = rs.getDate("date");
+                boolean isNotPresent = rs.getBoolean("isPresent");
+                
+                attendancePresence.add(new Attendance(date, isNotPresent));
+            }
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+        
+        return attendancePresence;
+    }
 
     public List<Attendance> getStudentPieChartAbsenceData(int id)
     {

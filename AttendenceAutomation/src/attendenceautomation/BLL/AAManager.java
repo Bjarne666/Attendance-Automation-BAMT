@@ -174,4 +174,16 @@ public class AAManager implements AttendanceInterface
        return aDAO.calculateTotalAbsence(id);
     }
 
+    @Override
+    public List<Attendance> getTotalClassPresence(int id)
+    {
+        return aDAO.getTotalClassPresence(id);
+    }
+
+    @Override
+    public List<Attendance> getTotalClassAbsence(int id)
+    {
+        return aDAO.getTotalClassAbsence(id);
+    }
+
 }

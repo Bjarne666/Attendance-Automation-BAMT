@@ -52,11 +52,20 @@ public class AddTeacherViewController implements Initializable
         
     }    
     
+    /**
+     * Sets the model
+     * @param aaModel 
+     */
     public void setModel(AAModel aaModel) 
     {
         this.aaModel = aaModel;
     }
-
+    
+     /**
+     * Takes the user input from the textfields
+     * and uses that to add a new teacher 
+     * @param event 
+     */
     @FXML
     private void btnAddTeacher(ActionEvent event)
     {

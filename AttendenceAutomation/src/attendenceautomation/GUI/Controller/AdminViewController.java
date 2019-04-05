@@ -130,7 +130,13 @@ public class AdminViewController implements Initializable
         
         showCurrentDate();
     }
-
+    
+    /**
+     * Handles a click event on the logo that returns the administrator to the
+     * main admin view
+     * @param event
+     * @throws IOException 
+     */
     @FXML
     private void clickImage(MouseEvent event) throws IOException
     {
@@ -141,7 +147,10 @@ public class AdminViewController implements Initializable
         ancStudentView.setVisible(false);
         tbViewStudent.getItems().clear();
     }
-
+    /**
+     * Handles visibility of the main admin view
+     * @throws IOException 
+     */
     private void loadMainView() throws IOException
     {
         ancAdminView.setVisible(false);
@@ -150,7 +159,11 @@ public class AdminViewController implements Initializable
         ancAdminView.setVisible(true);
         ancAdminView.toFront();
     }
-
+    
+    /**
+     * Handles visibility for the student section of the admin view
+     * @param event 
+     */
     @FXML
     private void studentOverview(ActionEvent event)
     {
@@ -160,7 +173,11 @@ public class AdminViewController implements Initializable
         ancStudentView.setVisible(true);
         ancStudentView.toFront();
     }
-
+    
+    /**
+     * Handles visibility for the teacher section of the admin view
+     * @param event 
+     */
     @FXML
     private void teacherOverview(ActionEvent event)
     {
@@ -170,7 +187,11 @@ public class AdminViewController implements Initializable
         ancTeacherView.setVisible(true);
         ancTeacherView.toFront();
     }
-
+    
+    /**
+     * Handles visibility for the class section of the admin view
+     * @param event 
+     */
     @FXML
     private void classOverview(ActionEvent event)
     {
@@ -180,13 +201,22 @@ public class AdminViewController implements Initializable
         ancClassView.setVisible(true);
         ancClassView.toFront();
     }
-
+    
+    /**
+     * Handles logout
+     * @param event 
+     */
     @FXML
     private void adminLogout(ActionEvent event)
     {
         System.exit(0);
     }
-
+    
+    /**
+     * Handles opening a window for adding students
+     * @param event
+     * @throws IOException 
+     */
     @FXML
     private void addStudent(ActionEvent event) throws IOException
     {
@@ -205,7 +235,11 @@ public class AdminViewController implements Initializable
         stageAddStudent.initOwner(primeStage);
         stageAddStudent.show();
     }
-
+    
+    /**
+     * Deletes a student
+     * @param event 
+     */
     @FXML
     private void deleteStudent(ActionEvent event)
     {
@@ -224,7 +258,12 @@ public class AdminViewController implements Initializable
             aaModel.deleteStudent(tbViewStudent.getSelectionModel().getSelectedItem());
         }
     }
-
+    
+    /**
+     * Handles opening a window for editting students
+     * @param event
+     * @throws IOException 
+     */
     @FXML
     private void editStudent(ActionEvent event) throws IOException
     {
@@ -242,7 +281,12 @@ public class AdminViewController implements Initializable
         stageEditStudent.initOwner(primeStage);
         stageEditStudent.show();
     }
-
+    
+    /**
+     * Handles opening a window that allows adding teachers
+     * @param event
+     * @throws IOException 
+     */
     @FXML
     private void addTeacher(ActionEvent event) throws IOException
     {
@@ -260,7 +304,11 @@ public class AdminViewController implements Initializable
         stageAddTeacher.initOwner(primeStage);
         stageAddTeacher.show();
     }
-
+    
+    /**
+     * Deletes a teacher
+     * @param event 
+     */
     @FXML
     private void deleteTeacher(ActionEvent event)
     {
@@ -279,7 +327,12 @@ public class AdminViewController implements Initializable
             aaModel.deleteTeacher(tbViewTeacher.getSelectionModel().getSelectedItem());
         }
     }
-
+    
+    /**
+     * Handles openening the window for editting a teacher
+     * @param event
+     * @throws IOException 
+     */
     @FXML
     private void editTeacher(ActionEvent event) throws IOException
     {
@@ -288,7 +341,7 @@ public class AdminViewController implements Initializable
         Parent root = loader.load();
 
         EditTeacherViewController editTeacherController = loader.getController();
-        editTeacherController.setAaModel(aaModel);
+        editTeacherController.setModel(aaModel);
         editTeacherController.setChosenTeacher(tbViewTeacher.getSelectionModel().getSelectedItem());
         
         Stage stageEditTeacher = new Stage();
@@ -298,7 +351,12 @@ public class AdminViewController implements Initializable
         stageEditTeacher.initOwner(primeStage);
         stageEditTeacher.show();
     }
-
+    
+    /**
+     * Adds a school class
+     * @param event
+     * @throws IOException 
+     */
     @FXML
     private void addClass(ActionEvent event) throws IOException
     {
@@ -313,7 +371,11 @@ public class AdminViewController implements Initializable
         stageAddClass.initOwner(primeStage);
         stageAddClass.show();
     }
-
+    
+    /**
+     * Deletes a school class 
+     * @param event 
+     */
     @FXML
     private void deleteClass(ActionEvent event)
     {
@@ -332,7 +394,12 @@ public class AdminViewController implements Initializable
             aaModel.deleteClass(tbViewClass.getSelectionModel().getSelectedItem());
         }
     }
-
+    
+    /**
+     * Handles opening the window for editting a class
+     * @param event
+     * @throws IOException 
+     */
     @FXML
     private void editClass(ActionEvent event) throws IOException
     {
@@ -352,17 +419,29 @@ public class AdminViewController implements Initializable
         stageEditClass.initOwner(primeStage);
         stageEditClass.show();
     }
-
+    
+    /**
+     * Sets the user to be used by this window
+     * @param userToSet 
+     */
     public void setUser(Person userToSet)
     {
         user = userToSet;
     }
-
+    
+    /**
+     * Sets the model to be used by this window
+     * @param aModel 
+     */
     void setModel(AAModel aModel)
     {
         aaModel = aModel;
     }
-
+    
+    /**
+     * Adds a student to a different school class 
+     * @param event 
+     */
     @FXML
     private void addStudentToClass(ActionEvent event)
     {
@@ -385,16 +464,25 @@ public class AdminViewController implements Initializable
         }
     }
     
+    /**
+     * Fills the combobox with school class objects
+     */
     public void setComboBoxItems()
     {
         comboSwitchStudentClass.setItems(aaModel.getAllClasses());
     }
     
+    /**
+     * Handles the labels that need to be set when creating the window
+     */
     public void setLabels()
     {
         lblLoggedInUser.setText(user.getName());
     }
     
+    /**
+     * Sets the current day to the appropriate label
+     */
     private void showCurrentDate()
     {
         Calendar currentDate = Calendar.getInstance();

@@ -43,11 +43,20 @@ public class AddClassViewController implements Initializable
 
     }    
     
+    /**
+     * Sets the model
+     * @param aaModel 
+     */
     public void setModel(AAModel aaModel) 
     {
         this.aaModel = aaModel;
     }
-
+    
+     /**
+     * Takes the user input from the textfield
+     * and uses that to add a new school class 
+     * @param event 
+     */
     @FXML
     private void btnAddClass(ActionEvent event)
     {

@@ -247,7 +247,10 @@ public class StudentViewController implements Initializable
         Alert alert = new Alert(Alert.AlertType.ERROR, "You have to select either present or absent");
         alert.showAndWait();
     }
-
+    
+    /**
+     * This gets the current date as a string and sets it to the date label
+     */
     private void showCurrentDate()
     {
         currentDate = Calendar.getInstance();
@@ -359,7 +362,11 @@ public class StudentViewController implements Initializable
 
         showTotalAbsence();    
     }
-
+    
+    /**
+     * Handles logout
+     * @param event 
+     */
     @FXML
     private void handleStudentLogout(ActionEvent event)
     {
@@ -372,6 +379,9 @@ public class StudentViewController implements Initializable
         aaModel = modelToSet;
     }
     
+    /**
+     * Calculates total absence and sets it to the appropriate label
+     */
     public void showTotalAbsence()
     {
         double absence = aaModel.getStudentPieChartAbsenceData(user.getId());

@@ -41,7 +41,13 @@ public class AttendenceLoginViewController implements Initializable
     private AAModel aModel;
     
     private Person user;
-
+    
+    /**
+     * Constructor for controller.
+     * Makes a new instance of the model
+     * which is then used throughout the application
+     * @throws IOException 
+     */
     public AttendenceLoginViewController() throws IOException
     {
         aModel = new AAModel();
@@ -71,7 +77,13 @@ public class AttendenceLoginViewController implements Initializable
     }
 
     
-
+    /**
+     * Handles login and chooses a view to open depending on the type of user
+     * @param event
+     * @throws IOException
+     * @throws InterruptedException
+     * @throws SQLException 
+     */
     @FXML
     private void handleLogin(ActionEvent event) throws IOException, InterruptedException, SQLException
     {
@@ -97,7 +109,11 @@ public class AttendenceLoginViewController implements Initializable
             handleAdminLogin();
         }   
     }
-
+    
+    /**
+     * Handles the teacher part of login
+     * @throws IOException 
+     */
     private void handleTeacherLogin() throws IOException
     {
         //handles teacher login
@@ -121,6 +137,10 @@ public class AttendenceLoginViewController implements Initializable
             currentWindows.close();
     }
     
+    /**
+     * Handles login for an admin
+     * @throws IOException 
+     */
     private void handleAdminLogin() throws IOException
     {
             //handles admin login

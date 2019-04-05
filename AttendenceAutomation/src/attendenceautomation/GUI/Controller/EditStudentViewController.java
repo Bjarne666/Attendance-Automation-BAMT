@@ -50,11 +50,20 @@ public class EditStudentViewController implements Initializable
         
     }    
     
+    /**
+     * Sets the model
+     * @param aaModel 
+     */
     public void setModel(AAModel aaModel) 
     {
         this.aaModel = aaModel;
     }
 
+     /**
+     * Takes the user input from the textfields
+     * and uses that to edit the chosen student
+     * @param event 
+     */
     @FXML
     private void btnEditStudent(ActionEvent event)
     {
@@ -75,7 +84,11 @@ public class EditStudentViewController implements Initializable
          
         primeStage.close();
     }
-
+    
+    /**
+     * Sets the student to be editted
+     * @param chosenStudent 
+     */
     public void setChosenStudent(Student chosenStudent)
     {
         this.chosenStudent = chosenStudent;

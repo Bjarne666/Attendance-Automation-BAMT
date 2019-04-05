@@ -49,12 +49,21 @@ public class EditTeacherViewController implements Initializable
     {
         
     }    
-
-    public void setAaModel(AAModel aaModel)
+    
+    /**
+     * Sets the model
+     * @param aaModel 
+     */
+    public void setModel(AAModel aaModel)
     {
         this.aaModel = aaModel;
     }
-
+    
+    /**
+     * Takes the user input from the textfields
+     * and uses that to edit the chosen teacher
+     * @param event 
+     */
     @FXML
     private void btnEditTeacher(ActionEvent event)
     {
@@ -75,7 +84,11 @@ public class EditTeacherViewController implements Initializable
          
         primeStage.close();
     }
-
+    
+    /**
+     * Sets the teacher that will be editted
+     * @param chosenTeacher 
+     */
     public void setChosenTeacher(Teacher chosenTeacher)
     {
         this.chosenTeacher = chosenTeacher;

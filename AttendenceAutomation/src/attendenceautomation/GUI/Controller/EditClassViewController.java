@@ -45,7 +45,12 @@ public class EditClassViewController implements Initializable
     {
         this.aaModel = aaModel;
     }
-
+    
+     /**
+     * Takes the user input from the textfield
+     * and uses that to edit the chosen school class
+     * @param event 
+     */
     @FXML
     private void btnEditClass(ActionEvent event)
     {
@@ -62,6 +67,10 @@ public class EditClassViewController implements Initializable
         aaModel.editSchoolClassName(className,chosenClass.getId() );
     }
     
+    /**
+     * Sets the school class to be editted
+     * @param chosenClass 
+     */
     public void setChosenClass(SchoolClass chosenClass)
     {
         this.chosenClass = chosenClass;   

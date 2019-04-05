@@ -54,16 +54,30 @@ public class AddStudentViewController implements Initializable
        
     }   
     
+    /**
+     * Sets the model
+     * @param aaModel 
+     */
     public void setModel(AAModel aaModel) 
     {
         this.aaModel = aaModel;
     }
     
+    /**
+     * Fills the combobox with a list of all classes
+     */
     public void setComboBox()
     {
          cbClass.setItems(aaModel.getAllClasses());
     }
-
+    
+    
+     /**
+     * Takes the user input from the textfields
+     * and uses that to add a new student.
+     * Furthermore, the student is added to the chosen school class
+     * @param event 
+     */
     @FXML
     private void btnAddStudent(ActionEvent event)
     {

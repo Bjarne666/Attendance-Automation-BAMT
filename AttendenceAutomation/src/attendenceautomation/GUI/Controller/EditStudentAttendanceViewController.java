@@ -8,6 +8,7 @@ package attendenceautomation.GUI.Controller;
 import attendenceautomation.BE.Attendance;
 import attendenceautomation.BE.Student;
 import attendenceautomation.GUI.Model.AAModel;
+import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXRadioButton;
 import java.net.URL;
 import java.util.Calendar;
@@ -50,6 +51,8 @@ public class EditStudentAttendanceViewController implements Initializable
     private Student chosenStudent;
     
     AAModel aaModel;
+    @FXML
+    private JFXDatePicker dpNewDate;
     
 
     /**
@@ -79,12 +82,10 @@ public class EditStudentAttendanceViewController implements Initializable
         chosenStudent = studentToGet;
     }
     
-    @FXML
-    private void saveAttendance(ActionEvent event)
+    public void saveEditAttendance()
     {
-
         Attendance changedAttendance;
-        currentDate = Calendar.getInstance();
+        
         Date date = tbViewAttendance.getSelectionModel().getSelectedItem().getCurrentDate();
         
         if (editAttGrp.getSelectedToggle() == rdBtnPresent && tbViewAttendance.getSelectionModel().getSelectedItem() != null)
@@ -92,8 +93,6 @@ public class EditStudentAttendanceViewController implements Initializable
             changedAttendance = new Attendance(date, true);
             aaModel.editAttendance(chosenStudent.getId(), changedAttendance);
 
-            Alert alert = new Alert(Alert.AlertType.INFORMATION, "Attendance for the chosen date set to present");
-            alert.showAndWait();
             return;
         } 
         else if (editAttGrp.getSelectedToggle() == rdBtnAbsent && tbViewAttendance.getSelectionModel().getSelectedItem() != null)
@@ -101,14 +100,69 @@ public class EditStudentAttendanceViewController implements Initializable
             tbViewAttendance.getSelectionModel().getSelectedItem();
             changedAttendance = new Attendance(date, false);
             aaModel.setAttendance(changedAttendance, chosenStudent.getId());
+ 
+            return;
+        }
+    }
+    
+    @FXML
+    private void saveAttendance(ActionEvent event)
+    {
+
+        if (editAttGrp.getSelectedToggle() == rdBtnPresent && tbViewAttendance.getSelectionModel().getSelectedItem() != null && dpNewDate.getValue() == null)
+        {
+            saveEditAttendance();
             
+            Alert alert = new Alert(Alert.AlertType.INFORMATION, "Attendance for the chosen date set to present");
+            alert.showAndWait();
+            return;
+        } 
+        if (editAttGrp.getSelectedToggle() == rdBtnAbsent && tbViewAttendance.getSelectionModel().getSelectedItem() != null && dpNewDate.getValue() == null)
+        {
+            saveEditAttendance();
             
             Alert alert = new Alert(Alert.AlertType.INFORMATION, "Attendance for the chosen date set to absent");
             alert.showAndWait();
             return;
         }
+        if (dpNewDate.getValue() != null && editAttGrp.getSelectedToggle() == rdBtnPresent && tbViewAttendance.getSelectionModel().getSelectedItem() == null)
+        {
+            saveNewAttendance();
+            
+            Alert alert = new Alert(Alert.AlertType.INFORMATION, "Attendance for the chosen date set to present");
+            alert.showAndWait();
+        }
+        if (editAttGrp.getSelectedToggle() == rdBtnAbsent && tbViewAttendance.getSelectionModel().getSelectedItem() == null && dpNewDate.getValue() != null)
+        {
+            saveNewAttendance();
+            
+            Alert alert = new Alert(Alert.AlertType.INFORMATION, "Attendance for the chosen date set to absent");
+            alert.showAndWait();
+        }
+        else
+        {
+            Alert alert = new Alert(Alert.AlertType.ERROR, "You have to select either present or absent");
+            alert.showAndWait();
+        }
+
         
-        Alert alert = new Alert(Alert.AlertType.ERROR, "You have to select either present or absent");
-        alert.showAndWait();
+    }
+    
+    public void saveNewAttendance()
+    {
+        Attendance newAttendance;
+        
+        Date datePicker = java.sql.Date.valueOf(dpNewDate.getValue());
+                
+        if (dpNewDate.getValue() != null && editAttGrp.getSelectedToggle() == rdBtnPresent)
+        {
+            newAttendance = new Attendance(datePicker, true);
+            aaModel.setAttendance(newAttendance, chosenStudent.getId());
+        }     
+        else if (dpNewDate.getValue() != null && editAttGrp.getSelectedToggle() == rdBtnAbsent)
+        {
+            newAttendance = new Attendance(datePicker, false);
+            aaModel.setAttendance(newAttendance, chosenStudent.getId());
+        }  
     }
 }

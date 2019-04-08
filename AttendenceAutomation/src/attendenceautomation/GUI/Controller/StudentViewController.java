@@ -157,6 +157,7 @@ public class StudentViewController implements Initializable
     {
         Attendance changedAttendance;
         Date date = java.sql.Date.valueOf(dPickerFrom.getValue());
+        
         if (Editgrp.getSelectedToggle() == editRdBtnPresent && dPickerFrom.getValue() != null)
         {
             changedAttendance = new Attendance(date, true);

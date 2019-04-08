@@ -390,7 +390,7 @@ public class TeacherViewController implements Initializable
     private void editAttendance(ActionEvent event) throws IOException
     {
         Stage primeStage = (Stage) btnEditAttendance.getScene().getWindow();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/attendenceautomation/GUI/View/editStudentAttendanceView.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/attendenceautomation/GUI/View/EditStudentAttendanceView.fxml"));
         Parent root = loader.load();
 
         EditStudentAttendanceViewController editAttController = loader.getController();

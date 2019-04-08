@@ -119,6 +119,7 @@ public class EditStudentAttendanceViewController implements Initializable
         }
         if (dpNewDate.getValue() != null)
         {
+            tbViewAttendance.getSelectionModel().clearSelection();
             saveNewAttendance();
         }
         else
@@ -156,12 +157,12 @@ public class EditStudentAttendanceViewController implements Initializable
     @FXML
     private void pressTbViewToHideOrShowDPick(MouseEvent event)
     {
+        dpNewDate.setVisible(false);
+        
         if (event.getClickCount() == 2)
         {
             tbViewAttendance.getSelectionModel().clearSelection();
             dpNewDate.setVisible(true);
         }
-
-        dpNewDate.setVisible(false);
     }
 }

@@ -89,6 +89,7 @@ public class AAModel
     {
         ObservableList<Student> studentsInClass = FXCollections.observableArrayList(aManager.getStudentsInClass(chosenClass));
         
+        //Sets the students' absence variable and makes it so tableview can show it.
         for (Student studentsInClas : studentsInClass)
         {
             studentsInClas.setAbsence(Double.toString(aManager.calculateTotalAbsence(studentsInClas.getId())));
@@ -124,31 +125,12 @@ public class AAModel
     
     public int getStudentPieChartAbsenceData(int id)
     {
-        ObservableList isNotPresentData = FXCollections.observableArrayList(aManager.getStudentPieChartAbsenceData(id));
-        
-        
-        int isAbsenceAvg = 0;
-        
-        for (int i = 0; i < isNotPresentData.size(); i++)
-        {
-            isAbsenceAvg++;
-        }
-        
-        return isAbsenceAvg;
+        return aManager.getStudentPieChartAbsenceData(id);
     }
     
     public int getStudentPresentPieChartData(int id)
     {
-        ObservableList isPresentData = FXCollections.observableArrayList(aManager.getStudentPresentPieChartData(id));
-        
-        int isPresentAvg = 0;
-        
-        for (int i = 0; i < isPresentData.size(); i++)
-        {
-            isPresentAvg++;
-        }
-        
-        return isPresentAvg;
+        return aManager.getStudentPresentPieChartData(id);
     }
     
     public void setAttendance(Attendance attendance, int id)
@@ -209,29 +191,11 @@ public class AAModel
     
     public int getTotalClassPresence(int id)
     {
-        ObservableList isPresentData = FXCollections.observableArrayList(aManager.getTotalClassPresence(id));
-        
-        int isPresent = 0;
-        
-        for (int i = 0; i < isPresentData.size(); i++)
-        {
-            isPresent++;
-        }
-        
-        return isPresent;
+        return aManager.getTotalClassPresence(id);
     }
     
     public  int getTotalClassAbsence(int id)
     {
-        ObservableList isAbsentData = FXCollections.observableArrayList(aManager.getTotalClassAbsence(id));
-        
-        int isAbsent = 0;
-        
-        for (int i = 0; i < isAbsentData.size(); i++)
-        {
-            isAbsent++;
-        }
-        
-        return isAbsent;
+        return aManager.getTotalClassAbsence(id);
     }
 }

@@ -83,13 +83,7 @@ public class AAManager implements AttendanceInterface
     {
        return aDAO.setUpBarChart(id);
     }
-
-    @Override
-    public List<Attendance> getStudentPieChartAbsenceData(int id)
-    {
-        return aDAO.getStudentPieChartAbsenceData(id);
-    }
-
+    
     @Override
     public String getStudentClass(int id)
     {
@@ -102,11 +96,7 @@ public class AAManager implements AttendanceInterface
         aDAO.setAttendance(attendance, id);
     }
 
-    @Override
-    public List<Attendance> getStudentPresentPieChartData(int id)
-    {
-        return aDAO.getStudentPresentPieChartData(id);
-    }
+    
     @Override
     public void editAttendance(int id, Attendance... attenToEdit)
     {
@@ -172,17 +162,78 @@ public class AAManager implements AttendanceInterface
     {
        return aDAO.calculateTotalAbsence(id);
     }
-
+    
+    /**
+     * takes a list of class absence, counts and returns it
+     * @param id
+     * @return 
+     */
     @Override
-    public List<Attendance> getTotalClassPresence(int id)
+    public int getTotalClassPresence(int id)
     {
-        return aDAO.getTotalClassPresence(id);
+        
+        List<Attendance> tempList = aDAO.getTotalClassPresence(id);
+        int classPresence = 0;
+        for (Attendance attendance : tempList)
+        {
+            classPresence++;
+        }
+        return classPresence;
+    }
+    
+    
+    /**
+     * takes a list of class absence, counts and returns it
+     * @param id
+     * @return 
+     */
+    @Override
+    public int getTotalClassAbsence(int id)
+    {
+        List<Attendance> tempList = aDAO.getTotalClassAbsence(id);
+        int classAbsence = 0;
+        for (Attendance attendance : tempList)
+        {
+            classAbsence++;
+        }
+        return classAbsence;
     }
 
+    
+    /**
+     * Takes a list of dates with presence, counts and returns it
+     * @param id
+     * @return 
+     */
     @Override
-    public List<Attendance> getTotalClassAbsence(int id)
+    public int getStudentPresentPieChartData(int id)
     {
-        return aDAO.getTotalClassAbsence(id);
+        List<Attendance> temp = aDAO.getStudentPresentPieChartData(id);
+        int presence = 0;
+        for (Attendance attendance : temp)
+        {
+            presence++;
+        }
+        return presence;
+    }
+    
+    
+    /**
+     * Takes a list of dates with absences, counts and returns it
+     * @param id
+     * @return 
+     */
+    @Override
+    public int getStudentPieChartAbsenceData(int id)
+    {
+        List<Attendance> tempList = aDAO.getStudentPieChartAbsenceData(id);
+        int absence = 0;
+        
+        for (Attendance attendance : tempList)
+        {
+        absence++;    
+        }
+        return absence;
     }
 
 }

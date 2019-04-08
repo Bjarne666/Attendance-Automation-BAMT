@@ -147,7 +147,7 @@ public class TeacherViewController implements Initializable
         ObservableList<PieChart.Data> classChart = FXCollections.observableArrayList(
                 new PieChart.Data("Present", aaModel.getTotalClassPresence(chosenClass.getId())),
                 new PieChart.Data("Absent", aaModel.getTotalClassAbsence(chosenClass.getId())));
-
+        
         classPieChart.setData(classChart);
         classPieChart.setLegendVisible(false);
 

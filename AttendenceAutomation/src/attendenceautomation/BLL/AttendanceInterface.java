@@ -94,7 +94,7 @@ public interface AttendanceInterface
      * @param id
      * @return 
      */
-    public List<Attendance> getStudentPresentPieChartData(int id);
+    public int getStudentPresentPieChartData(int id);
     
     /**
      *
@@ -182,19 +182,19 @@ public interface AttendanceInterface
      * @param id
      * @return
      */
-    public List<Attendance> getStudentPieChartAbsenceData(int id);
+    public int getStudentPieChartAbsenceData(int id);
     
     /**
      * 
      * @param id
      * @return 
      */
-    public List<Attendance> getTotalClassPresence(int id);
+    public int getTotalClassPresence(int id);
     
     /**
      * 
      * @param id
      * @return 
      */
-    public  List<Attendance> getTotalClassAbsence(int id);
+    public  int getTotalClassAbsence(int id);
 }

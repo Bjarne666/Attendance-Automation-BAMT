@@ -23,6 +23,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 
 /**
  * FXML Controller class
@@ -88,11 +89,7 @@ public class EditStudentAttendanceViewController implements Initializable
         
         Date date = tbViewAttendance.getSelectionModel().getSelectedItem().getCurrentDate();
         
-        if (tbViewAttendance.getSelectionModel().getSelectedItem() != null)
-            {
-                dpNewDate.setVisible(false);
-                
-                if (editAttGrp.getSelectedToggle() == rdBtnPresent && tbViewAttendance.getSelectionModel().getSelectedItem() != null)
+        if (editAttGrp.getSelectedToggle() == rdBtnPresent && tbViewAttendance.getSelectionModel().getSelectedItem() != null)
         {
             changedAttendance = new Attendance(date, true);
             aaModel.editAttendance(chosenStudent.getId(), changedAttendance);
@@ -106,32 +103,23 @@ public class EditStudentAttendanceViewController implements Initializable
             changedAttendance = new Attendance(date, false);
             aaModel.setAttendance(changedAttendance, chosenStudent.getId());
             
-            dpNewDate.setVisible(false);
-            
             Alert alert = new Alert(Alert.AlertType.INFORMATION, "Attendance for the chosen date set to absent");
             alert.showAndWait();
         }
-            }
-        
-        
     }
     
     @FXML
     private void saveAttendance(ActionEvent event)
     {
-        if (tbViewAttendance.getSelectionModel().getSelectedItem() != null && dpNewDate.getValue() == null)
+        if (tbViewAttendance.getSelectionModel().getSelectedItem() != null)
         {
             saveEditAttendance();
-            
-            
-            
+
             return;
-        } 
-        if (dpNewDate.getValue() != null && tbViewAttendance.getSelectionModel().getSelectedItem() == null)
+        }
+        if (dpNewDate.getValue() != null)
         {
             saveNewAttendance();
-            
-            
         }
         else
         {
@@ -162,5 +150,18 @@ public class EditStudentAttendanceViewController implements Initializable
             Alert alert = new Alert(Alert.AlertType.INFORMATION, "Attendance for the chosen date set to absent");
             alert.showAndWait();
         }  
+        
+    }
+
+    @FXML
+    private void pressTbViewToHideOrShowDPick(MouseEvent event)
+    {
+        if (event.getClickCount() == 2)
+        {
+            tbViewAttendance.getSelectionModel().clearSelection();
+            dpNewDate.setVisible(true);
+        }
+
+        dpNewDate.setVisible(false);
     }
 }

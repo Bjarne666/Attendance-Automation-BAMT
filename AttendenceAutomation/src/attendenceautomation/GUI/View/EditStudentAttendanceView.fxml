@@ -19,7 +19,7 @@
          </toggleGroup>
       </JFXRadioButton>
       <JFXRadioButton fx:id="rdBtnAbsent" layoutX="495.0" layoutY="322.0" style="-jfx-selected-color: #088bff;" stylesheets="@AttendanceStyleSheet.css" text="Absent" toggleGroup="$editAttGrp" AnchorPane.leftAnchor="495.0" />
-      <TableView fx:id="tbViewAttendance" layoutX="41.0" layoutY="101.0" prefHeight="472.0" prefWidth="308.0" style="-fx-border-color: #088bff;;" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="100.0">
+      <TableView fx:id="tbViewAttendance" layoutX="41.0" layoutY="101.0" onMouseClicked="#pressTbViewToHideOrShowDPick" prefHeight="472.0" prefWidth="308.0" style="-fx-border-color: #088bff;;" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="100.0">
         <columns>
             <TableColumn fx:id="colDate" prefWidth="144.0" text="Date" />
             <TableColumn fx:id="colAttendance" prefWidth="158.0" text="Attendance" />

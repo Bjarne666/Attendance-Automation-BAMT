@@ -23,9 +23,10 @@ public class AttendanceFacade implements AADALInterface
 {
     SchoolClassDBDAO sCDbDao;
     PersonDBDAO pDbDao;
-    
+    AttendanceDBDAO aDbDao;
     public AttendanceFacade() throws IOException
     {
+        aDbDao = new AttendanceDBDAO();
         sCDbDao = new SchoolClassDBDAO();
         pDbDao = new PersonDBDAO();
     }
@@ -69,7 +70,7 @@ public class AttendanceFacade implements AADALInterface
     @Override
     public List<Attendance> getAttendance(Student student)
     {
-        return pDbDao.getAttendance(student);
+        return aDbDao.getAttendance(student);
     }
 
     @Override
@@ -99,7 +100,7 @@ public class AttendanceFacade implements AADALInterface
     @Override
     public void setAttendance(Attendance attendance, int id)
     {
-      pDbDao.setAttendance(attendance, id);
+      aDbDao.setAttendance(attendance, id);
     }
 
     @Override
@@ -111,7 +112,7 @@ public class AttendanceFacade implements AADALInterface
     @Override
     public void editAttendance(int id, Attendance... attenToEdit)
     {
-      pDbDao.editAttendance(id, attenToEdit);
+      aDbDao.editAttendance(id, attenToEdit);
     }
 
     @Override
@@ -171,18 +172,18 @@ public class AttendanceFacade implements AADALInterface
     @Override
     public double calculateTotalAbsence(int id)
     {
-        return pDbDao.calculateTotalAbsence(id);
+        return aDbDao.calculateTotalAbsence(id);
     }
 
     @Override
     public List<Attendance> getTotalClassPresence(int id)
     {
-        return pDbDao.getTotalClassPresence(id);
+        return aDbDao.getTotalClassPresence(id);
     }
 
     @Override
     public List<Attendance> getTotalClassAbsence(int id)
     {
-        return pDbDao.getTotalClassAbsence(id);
+        return aDbDao.getTotalClassAbsence(id);
     }
 }

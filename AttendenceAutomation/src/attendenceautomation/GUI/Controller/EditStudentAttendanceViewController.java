@@ -92,7 +92,7 @@ public class EditStudentAttendanceViewController implements Initializable
             changedAttendance = new Attendance(date, true);
             aaModel.editAttendance(chosenStudent.getId(), changedAttendance);
 
-            Alert alert = new Alert(Alert.AlertType.ERROR, "Attendance for the chosen date set to present");
+            Alert alert = new Alert(Alert.AlertType.INFORMATION, "Attendance for the chosen date set to present");
             alert.showAndWait();
             return;
         } 
@@ -103,7 +103,7 @@ public class EditStudentAttendanceViewController implements Initializable
             aaModel.setAttendance(changedAttendance, chosenStudent.getId());
             
             
-            Alert alert = new Alert(Alert.AlertType.ERROR, "Attendance for the chosen date set to absent");
+            Alert alert = new Alert(Alert.AlertType.INFORMATION, "Attendance for the chosen date set to absent");
             alert.showAndWait();
             return;
         }

@@ -88,6 +88,9 @@ public class AttendenceLoginViewController implements Initializable
     private void handleLogin(ActionEvent event) throws IOException, InterruptedException, SQLException
     {
         user = aModel.login(txtUserName.getText(), txtPassword.getText());
+        int student = 1;
+        int teacher = 2;
+        int admin = 3;
         
         if (user == null)
         {
@@ -95,16 +98,15 @@ public class AttendenceLoginViewController implements Initializable
             alert.showAndWait();
             return;
         }
-         if (user.isAUser() == 1)
+         if (user.isAUser() == student)
         {
             handleStudentLogin();
-            return;
         }
-        if (user.isAUser() == 2)
+        if (user.isAUser() == teacher)
         {
             handleTeacherLogin();
         }   
-        if (user.isAUser() == 3)
+        if (user.isAUser() == admin)
         {
             handleAdminLogin();
         }   

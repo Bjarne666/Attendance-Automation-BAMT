@@ -6,11 +6,7 @@
 package attendenceautomation.UTIL;
 
 import attendenceautomation.BE.Attendance;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.time.ZoneId;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.sql.Date;
 import java.util.List;
@@ -18,8 +14,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 /**
- * Was going to be used to convert dates to a formatted String.
- * However, with the change to database this is not needed.
+ * 
  * @author Theis
  */
 public class DateConverter
@@ -42,20 +37,11 @@ public class DateConverter
         for (Attendance attendance : attendances)
         {
             Date date = new Date(attendance.getCurrentDate().getTime());
-            LocalDate localDate = date.toLocalDate();
-//                    atZone(ZoneId.systemDefault()).toLocalDate();            
+            LocalDate localDate = date.toLocalDate();                               
             dates.add(localDate);
         }
     }
     
-// @Deprecated   
-// public String convertDate()
-//    {
-//        Date date = currentCalendar.getTime();
-//        DateFormat dateFormat = new SimpleDateFormat("YYYY-mm-dd");
-//        String strDate = dateFormat.format(date);
-//        return strDate;
-//    }   
 
     public ObservableList<LocalDate> getDates()
     {

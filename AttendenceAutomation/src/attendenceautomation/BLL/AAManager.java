@@ -173,8 +173,14 @@ public class AAManager implements AttendanceInterface
     {
         
         List<Attendance> tempList = aDAO.getTotalClassPresence(id);
+        return countPresence(tempList);
+       
+    }
+    
+    public int countPresence(List<Attendance> attList)
+    {
         int classPresence = 0;
-        for (Attendance attendance : tempList)
+        for (Attendance attendance : attList)
         {
             classPresence++;
         }
